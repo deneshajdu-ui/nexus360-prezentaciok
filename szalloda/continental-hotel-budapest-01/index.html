@@ -123,6 +123,24 @@ section.on.div .big span{clip-path:inset(0 0 0 0)}
 .arov .d:nth-child(2){bottom:8%;width:20px;height:20px;margin-left:-10px}.arov .d:nth-child(3){bottom:21%;width:16px;height:16px;margin-left:-8px;animation-delay:.2s}.arov .d:nth-child(4){bottom:32%;animation-delay:.4s}.arov .d:nth-child(5){bottom:40%;width:9px;height:9px;margin-left:-4.5px;animation-delay:.6s}.arov .d:nth-child(6){bottom:46%;width:7px;height:7px;margin-left:-3.5px;animation-delay:.8s}
 @keyframes ard{0%,100%{opacity:.35}40%{opacity:1}}
 .arov .bot{position:absolute;left:8px;right:8px;bottom:8px;font-size:9.5px;padding:7px 9px;border-radius:12px;background:rgba(0,0,0,.72);backdrop-filter:blur(6px)}
+/* minimap */
+.mmwrap .mm{position:absolute;left:4%;bottom:7%;width:34%;aspect-ratio:1400/808;border-radius:12px;overflow:hidden;background:#fff;border:2px solid rgba(255,255,255,.9);box-shadow:0 10px 30px rgba(0,0,0,.5);z-index:3}
+.mmwrap .mm img{width:100%;height:100%;object-fit:cover;transform:none!important}
+.mm .here{position:absolute;left:47%;top:44%;width:12px;height:12px;border-radius:50%;background:var(--blue);box-shadow:0 0 0 4px rgba(43,0,255,.3)}
+.mm .here:after{content:"";position:absolute;inset:-6px;border-radius:50%;border:2px solid var(--blue);animation:ping 2s infinite}
+/* crossfade */
+.xf img{position:absolute;inset:0}.xf .af{animation:xf 7s infinite}
+@keyframes xf{0%,35%{opacity:0}50%,85%{opacity:1}100%{opacity:0}}
+.xf .lb{position:absolute;top:10px;left:10px;z-index:3;font-family:'JetBrains Mono';font-size:10px;letter-spacing:.12em;text-transform:uppercase;padding:5px 9px;border-radius:6px;background:rgba(0,0,0,.72)}
+.xf .l2{animation:xf 7s infinite;background:rgba(43,0,255,.9)}.xf .l1{animation:xf 7s infinite reverse}
+/* welcome mockup */
+.welcome .wl{position:absolute;inset:0;z-index:3;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;background:radial-gradient(60% 60% at 50% 50%,rgba(0,0,0,.45),rgba(0,0,0,.15));text-align:center}
+.welcome .wk{font-family:'JetBrains Mono';font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:#e6e6ea}
+.welcome b{font-family:Outfit;font-weight:600;font-size:clamp(20px,2.2vw,32px);letter-spacing:-.01em;text-shadow:0 2px 20px rgba(0,0,0,.6)}
+.welcome .wb{margin-top:6px;font-family:Outfit;font-weight:600;font-size:14px;padding:10px 20px;border-radius:999px;background:var(--blue);box-shadow:0 10px 30px -8px var(--blue)}
+.welcome .wmenu{position:absolute;left:0;right:0;bottom:12px;z-index:3;display:flex;justify-content:center;gap:8px}
+.welcome .wmenu span{font-size:11.5px;padding:6px 11px;border-radius:999px;background:rgba(0,0,0,.6);border:1px solid rgba(255,255,255,.25);backdrop-filter:blur(6px)}
+.cap2{position:absolute;right:10px;top:8px;z-index:4;font-size:7px;color:rgba(255,255,255,.45)}
 /* seasons */
 .seasons{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:12px;position:relative;margin-top:8px}
 .seasons:before{content:"";position:absolute;left:4%;right:4%;top:23px;height:1px;background:linear-gradient(90deg,var(--blue),var(--tealL));opacity:.7}
@@ -174,12 +192,12 @@ section.on.div .big span{clip-path:inset(0 0 0 0)}
 <section class="cover" data-sec="Bevezető">
  <div class="bgimg"><img src="img/hero.jpg" alt=""></div>
  <div class="tag t1" style="left:62%;top:30%"><i></i>Rendezvényterem · adatlap</div>
- <div class="tag g t2" style="left:73%;top:52%"><i></i>Araz · menü és asztalfoglalás</div>
+ <div class="tag g t2" style="left:73%;top:52%"><i></i>Araz · étlap és asztalfoglalás</div>
  <div class="tag t3" style="left:58%;top:68%"><i></i>Spa · szolgáltatások</div>
  <div class="in"><div>
   <div class="kick rv">Javaslat · 2026. november</div>
-  <h1 class="rv d1">Continental Hotel Budapest<br><span class="hl">Amit a séták még adhatnak</span></h1>
-  <p class="lead rv d2" style="margin-top:24px">Javaslat a szálloda elkészült virtuális sétáinak továbbfejlesztésére: pontos információ a megfelelő helyen, személyes jelenlét a térben és mérhető partnermegjelenés – fokozatosan bevezetve.</p>
+  <h1 class="rv d1">Continental Hotel Budapest<br><span class="hl" style="font-size:.78em">A virtuális séták továbbfejlesztési irányai</span></h1>
+  <p class="lead rv d2" style="margin-top:24px">Hogyan válhatnak a szálloda elkészült virtuális sétái értékesítő, tájékoztató és mérhető eszközzé – vendégeknek, rendezvényszervezőknek, partnereknek és a saját csapatnak.</p>
   <div class="meta rv d3"><span>Hajdu Dénes · NEXUS360</span></div>
   <p class="src tiny rv d4">Illusztráció</p>
  </div></div>
@@ -207,8 +225,8 @@ section.on.div .big span{clip-path:inset(0 0 0 0)}
   <div><div class="big rv">01<span>01</span></div></div>
   <div>
    <span class="chip rv">Első lépés · a meglévő sétákon belül</span>
-   <h2 class="rv d1" style="margin-top:20px">Pontos információ, <span class="hl">a pontos helyen</span></h2>
-   <p class="lead rv d2">Tartalom és tájékozódás a már elkészült sétákban, új rendszer bevezetése nélkül. A látogató ott kapja meg a választ, ahol a kérdés felmerül benne.</p>
+   <h2 class="rv d1" style="margin-top:20px">Pontos információ,<br><span class="hl">a pontos helyen</span></h2>
+   <p class="lead rv d2">Tartalom és tájékozódás a már elkészült sétákban, új rendszer bevezetése nélkül. A látogató a megfelelő térben kapja meg a szükséges információt.</p>
   </div>
  </div>
 </section>
@@ -216,15 +234,15 @@ section.on.div .big span{clip-path:inset(0 0 0 0)}
 <!-- 4 INFÓPONTOK -->
 <section data-sec="1. A meglévő sétákban">
  <div class="w grid2 rev">
-  <div class="fr rv d1" style="aspect-ratio:16/10"><img src="img/laptop.jpg" alt="Virtuális séta laptopon, infóponttal"><div class="scan"></div>
-   <div class="tag t1" style="left:30%;top:14%"><i></i>Konferenciaterem · adatlap</div>
-   <div class="tag g t2" style="left:46%;top:44%"><i></i>Kapacitás és elrendezések</div></div>
+  <div class="fr rv d1" style="aspect-ratio:800/352"><video src="img/restaurant-menu.mp4" poster="img/restaurant-menu.jpg" autoplay muted loop playsinline></video><div class="scan"></div>
+   <div class="tag g t1" style="left:40%;top:12%"><i></i>Araz · étlap és nyitvatartás</div>
+   <div class="tag t2" style="left:56%;top:70%"><i></i>Asztalfoglalás</div></div>
   <div>
    <div class="kick rv">Infópontok térrészenként</div>
    <h2 class="rv d1">Minden tér <span class="hl">elmondja a lényeget</span></h2>
    <ul class="ls rv d2">
     <li><span><b>Rendezvény- és konferenciatermek</b>kapacitás, elrendezési módok, technika, letölthető teremadatlap</span></li>
-    <li><span><b>Araz étterem, lobby és kávézó</b>menü, nyitvatartás, asztalfoglalás egy kattintással</span></li>
+    <li><span><b>Araz étterem, lobby és kávézó</b>étlap, nyitvatartás, asztalfoglalás egy kattintással</span></li>
     <li><span><b>Konditerem, spa, tetőterasz</b>szolgáltatások, nyitvatartás, a kültéri medence szezonja</span></li>
    </ul>
    <p class="src rv d3">Szöveg, kép, videó, dokumentum vagy link – a tartalmat a szálloda adja, mi helyezzük el.</p>
@@ -232,9 +250,28 @@ section.on.div .big span{clip-path:inset(0 0 0 0)}
  </div>
 </section>
 
-<!-- 5 BELÉPÉSI PONTOK -->
+<!-- 5 GYIK -->
 <section data-sec="1. A meglévő sétákban">
  <div class="w grid2">
+  <div>
+   <div class="kick rv">Gyakori kérdések a térben</div>
+   <h2 class="rv d1">Válasz ott,<br><span class="hl">ahol a kérdés felmerül</span></h2>
+   <div class="cards c2 rv d2" style="margin-top:4px">
+    <div class="card"><span class="n">Szállóvendégeknek</span><ul class="mini"><li>Be- és kijelentkezés időpontjai, lépései</li><li>Parkolás, megközelítés, csomagmegőrzés</li><li>Reggeli, Wi-Fi, spa- és medencehasználat</li><li>Akadálymentes útvonalak</li></ul></div>
+    <div class="card"><span class="n">Rendezvényügyfeleknek</span><ul class="mini"><li>Beszállítói bejárat és rakodás</li><li>Terem-előkészítés, technika, áramvételi pontok</li><li>Catering, ruhatár, regisztrációs pult helye</li><li>Szünetek, kiszolgáló terek</li></ul></div>
+   </div>
+   <p class="src rv d3">Alapváltozatban infópontként a sétában; bővített változatban kereshető, videós és többnyelvű formában.</p>
+  </div>
+  <div class="fr rv d2" style="aspect-ratio:16/9"><video src="img/hotel-reception.mp4" poster="img/hotel-reception.jpg" autoplay muted loop playsinline></video><div class="scan"></div>
+   <div class="tag g t1" style="left:5%;top:10%"><i></i>Bejelentkezés · lépések és időpontok</div>
+   <div class="tag t2" style="left:48%;top:76%"><i></i>Parkolás · Wi-Fi · reggeli</div></div>
+ </div>
+</section>
+
+<!-- 6 BELÉPÉSI PONTOK -->
+<section data-sec="1. A meglévő sétákban">
+ <div class="w grid2 rev">
+  <div class="fr rv d1" style="aspect-ratio:1152/648"><img src="img/booking.jpg" alt="Virtuális séta tableten, foglalás gombbal"><div class="scan"></div></div>
   <div>
    <div class="kick rv">Célzott belépési pontok</div>
    <h2 class="rv d1">Közvetlen belépés<br><span class="hl">a keresett térbe</span></h2>
@@ -242,27 +279,25 @@ section.on.div .big span{clip-path:inset(0 0 0 0)}
     <li><span><b>Gyorsgombok és tematikus nézetek</b>„Rendezvények”, „Araz”, „Wellness”, „Tetőterasz” – egy kattintással a megfelelő térben</span></li>
     <li><span><b>Saját link és QR-kód nézetenként</b>az ajánlatban a szervező közvetlenül a rendezvényszintre lép be</span></li>
     <li><span><b>Vezetett körséta</b>a legfontosabb terek sorrendben, automatikus lejátszással</span></li>
-    <li><span><b>Az értékesítő elérhetősége a térben</b>névjegy és ajánlatkérés ott, ahol a döntés születik</span></li>
+    <li><span><b>Az értékesítő névjegye a sétában</b>elérhetőség és ajánlatkérés ott, ahol a döntés születik</span></li>
    </ul>
   </div>
-  <div class="fr rv d2" style="aspect-ratio:1152/648"><img src="img/booking.jpg" alt="Virtuális séta tableten, foglalás gombbal"><div class="scan"></div></div>
  </div>
 </section>
 
-<!-- 6 RENDEZVÉNYTERVEZÉS -->
+<!-- 7 TÁJÉKOZÓDÁS ÉS TÉRLÁTVÁNY -->
 <section data-sec="1. A meglévő sétákban">
  <div class="w">
-  <div class="kick rv">Rendezvényszervezőknek</div>
-  <h2 class="rv d1" style="max-width:900px">A terem megismerése<br><span class="hl">a helyszíni bejárás előtt</span></h2>
-  <div class="cards c3">
-   <div class="card img rv d2"><div class="fr"><img src="img/floorplan.jpg" alt="Szállodai alaprajz"><div class="scan"></div></div><div class="tx"><h3>Sematikus alaprajz</h3><p>Színezett, feliratozott szint- és teremalaprajz a meglévő felvételből, ajánlathoz csatolva.</p></div></div>
-   <div class="card img rv d3"><div class="fr"><img src="img/meeting.jpg" alt="Rendezvényterem bankett-elrendezésben"><div class="scan"></div></div><div class="tx"><h3>Bankett-elrendezés</h3><p>Asztalok, terítés és színpad 3D-ben, a valódi teremben elhelyezve – a szervező előre látja a vendégteret.</p></div></div>
-   <div class="card img rv d4"><div class="fr"><video src="img/conference-theatre.mp4" poster="img/conference-theatre.jpg" autoplay muted loop playsinline></video><div class="scan"></div></div><div class="tx"><h3>Színházi és konferencia-elrendezés</h3><p>Széksorok, pódium, kivetítő: a kapacitás és a rálátás a kritikus méretek előzetes egyeztetésével ellenőrizhető.</p></div></div>
+  <div class="kick rv">Tájékozódás és térlátvány</div>
+  <h2 class="rv d1" style="max-width:940px">Biztos tájékozódás, <span class="hl">tiszta térlátvány</span></h2>
+  <div class="cards c2">
+   <div class="card img rv d2"><div class="fr mmwrap"><img src="img/corridor-wide.jpg" alt="Szállodai folyosó a sétában, minitérképpel"><div class="mm"><img src="img/floorplan.jpg" alt=""><i class="here"></i></div><div class="scan"></div></div><div class="tx"><h3>Minitérkép</h3><p>Állandóan látható kis alaprajz a séta sarkában, a látogató aktuális helyével – a nagy, többszintes épületben is egyértelmű a tájékozódás.</p></div></div>
+   <div class="card img rv d3"><div class="fr xf"><img src="img/conf-before.jpg" alt="Konferenciaterem berendezve"><img class="af" src="img/conf-empty.jpg" alt="Konferenciaterem bútormentes nézetben"><span class="lb l1">Berendezve</span><span class="lb l2">Bútormentes nézet</span></div><div class="tx"><h3>Bútormentes térnézet</h3><p>Mesterséges intelligenciával egy kattintásra eltűnik a berendezés: a szervező a terem valódi alapterületét és adottságait látja, saját elrendezést tervezhet.</p></div></div>
   </div>
  </div>
 </section>
 
-<!-- 7 DIVIDER 02 -->
+<!-- 8 DIVIDER 02 -->
 <section class="div" data-sec="2. Interaktív bővítés">
  <div class="w grid2">
   <div><div class="big t rv">02<span>02</span></div></div>
@@ -274,18 +309,19 @@ section.on.div .big span{clip-path:inset(0 0 0 0)}
  </div>
 </section>
 
-<!-- 8 SAJÁT FELÜLET -->
+<!-- 9 SAJÁT FELÜLET + NYITÓVIDEÓ -->
 <section data-sec="2. Interaktív bővítés">
  <div class="w grid2 rev">
-  <div class="fr rv d1" style="aspect-ratio:16/9"><img src="img/computer.jpg" alt="Szállodai séta laptopon, recepció"><div class="scan"></div>
-   <div class="tag t1" style="left:8%;top:12%"><i></i>Rendezvények · Araz · Wellness · Tetőterasz</div>
-   <div class="tag g t2" style="left:52%;top:70%"><i></i>Ajánlatkérés</div></div>
+  <div class="fr welcome rv d1" style="aspect-ratio:16/9"><video src="img/drone-intro.mp4" poster="img/drone-intro.jpg" autoplay muted loop playsinline></video>
+   <div class="wl"><span class="wk">Virtuális séta</span><b>Continental Hotel Budapest</b><span class="wb">Séta indítása</span></div>
+   <div class="wmenu"><span>Rendezvények</span><span>Araz</span><span>Wellness</span><span>Tetőterasz</span></div>
+   <span class="cap2">Illusztráció</span></div>
   <div>
    <div class="kick rv">A Continental Hotel Budapest saját felülete</div>
    <h2 class="rv d1">A szálloda saját <span class="hl">fogadófelülete</span> a sétában</h2>
    <ul class="ls rv d2">
-    <li><span><b>Üdvözlés a betöltéskor</b>a szálloda logója, üdvözlő képe vagy rövid videója fogadja a látogatót, mielőtt a séta elindul</span></li>
-    <li><span><b>Saját menü a séta szélén</b>a látogató a menüből választ – Rendezvények, Araz, Wellness, Tetőterasz – és egy kattintással ott van</span></li>
+    <li><span><b>Nyitóvideó a séta előtt</b>drónfelvétel vagy rövid bemutatófilm fogadja a látogatót, a szálloda nevével, mielőtt belép a térbe</span></li>
+    <li><span><b>Saját menü</b>Rendezvények, Araz, Wellness, Tetőterasz – egy kattintással a kiválasztott térben</span></li>
     <li><span><b>Foglalás és ajánlatkérés</b>a gomb a szálloda saját foglalási, illetve ajánlatkérő felületére vezet</span></li>
     <li><span><b>Közös, élő bejárás</b>az értékesítő chatben vagy videóhívásban végigvezeti a szervezőt a termeken</span></li>
    </ul>
@@ -293,7 +329,7 @@ section.on.div .big span{clip-path:inset(0 0 0 0)}
  </div>
 </section>
 
-<!-- 9 VIDEÓS HÁZIGAZDA -->
+<!-- 10 VIDEÓS HÁZIGAZDA -->
 <section data-sec="2. Interaktív bővítés">
  <div class="w grid2">
   <div>
@@ -306,13 +342,11 @@ section.on.div .big span{clip-path:inset(0 0 0 0)}
     <li><span><b>Az Araz étteremben</b>a séf vagy az étteremvezető ajánlja a konyhát</span></li>
    </ul>
   </div>
-  <div class="rv d2">
-   <div class="fr" style="aspect-ratio:1/1;max-width:520px;margin:0 auto"><img src="img/host_green.jpg" alt="Zöld hátteres videó a virtuális térben"><div class="scan"></div></div>
-  </div>
+  <div class="fr rv d2" style="aspect-ratio:1280/762"><img src="img/hotel-host.jpg" alt="Videós házigazda egy szálloda virtuális sétájában"><div class="scan"></div></div>
  </div>
 </section>
 
-<!-- 10 ONLINE ÉS HELYSZÍNEN -->
+<!-- 11 ONLINE ÉS HELYSZÍNEN -->
 <section data-sec="2. Interaktív bővítés">
  <div class="w grid2">
   <div>
@@ -321,61 +355,78 @@ section.on.div .big span{clip-path:inset(0 0 0 0)}
    <ul class="ls rv d2">
     <li><span><b>Számítógépen és telefonon</b>ugyanaz a séta, kiegészítve – a weboldalon, az ajánlatban, a közösségi médiában</span></li>
     <li><span><b>A szállodában, telefonon vagy tableten</b>a vendég a valódi térben látja az útvonalat a konferenciateremhez, a spához vagy a tetőteraszhoz</span></li>
-    <li><span><b>Tartalom a valódi térre vetítve</b>ugyanazok az információk és ajánlatok, amelyek a sétában is szerepelnek</span></li>
+    <li><span><b>Tartalom a valódi térbe illesztve</b>ugyanazok az információk és ajánlatok, amelyek a sétában is szerepelnek</span></li>
    </ul>
    <p class="src rv d3">Kiterjesztett valóság (AR) · telefon, tablet · érintőképernyős tájékoztató pult</p>
   </div>
   <div class="devs rv d2">
-   <div class="fr" style="flex:1;min-width:0;aspect-ratio:16/10"><video src="img/hotel-lobby-tablet.mp4" poster="img/hotel-lobby-tablet.jpg" autoplay muted loop playsinline></video><div class="scan"></div><div class="tag t1" style="left:6%;top:10%"><i></i>Spa · nyitvatartás</div><div class="tag g t2" style="left:40%;top:78%"><i></i>Araz · asztalfoglalás</div></div>
+   <div class="fr" style="flex:1;min-width:0;aspect-ratio:16/9"><img src="img/computer.jpg" alt="Szállodai séta laptopon"><div class="scan"></div><div class="tag t1" style="left:6%;top:10%"><i></i>Online · a recepció a sétában</div></div>
    <div class="phone"><video src="img/hotel-corridor.mp4" poster="img/hotel-corridor.jpg" autoplay muted loop playsinline></video><div class="arov"><div class="pill">Konferenciaterem<small>40 m · egyenesen</small></div><i class="d"></i><i class="d"></i><i class="d"></i><i class="d"></i><i class="d"></i><div class="bot">Útvonal a konferenciateremhez</div></div><span class="lbl">Útvonal a szállodában</span></div>
   </div>
  </div>
 </section>
 
-<!-- 11 AI LÁTVÁNYTERV -->
+<!-- 12 AI LÁTVÁNYTERV -->
 <section data-sec="2. Interaktív bővítés">
  <div class="w grid2">
   <div>
    <div class="kick rv">AI-alapú látványterv</div>
-   <h2 class="rv d1">Látványterv <span class="hl">szöveges utasításból</span></h2>
-   <p class="lead rv d2">Szöveges utasításból fotószerű látványterv készül a valódi teremről: más stílus, más berendezés, más dekoráció. Egy kattintással váltható a jelenlegi és a tervezett állapot.</p>
+   <h2 class="rv d1">Látványterv <span class="hl">a valódi teremben</span></h2>
+   <p class="lead rv d2">A terem fotószerűen átalakítható – más stílus, más berendezés, más dekoráció –, és a tervezett állapot a sétában ugyanúgy bejárható, mint a valódi.</p>
    <ul class="ls rv d3" style="margin-top:18px">
-    <li><span><b>Rendezvénydekoráció és tematika</b>a szervező előre látja a saját eseményét</span></li>
-    <li><span><b>Felújítási változatok</b>összevethető látványtervek a döntés előtt</span></li>
+    <li><span><b>Rendezvénydekoráció és tematika</b>a szervező előre bejárja a saját eseményét</span></li>
+    <li><span><b>Felújítási változatok</b>összevethető, bejárható látványtervek a döntés előtt</span></li>
    </ul>
    <p class="src rv d4">Húzza a csúszkát</p>
   </div>
   <div class="rv d2">
    <div class="cmp" id="cmp"><img src="img/meeting.jpg" alt="Bankettterem jelenlegi állapotban"><img class="af" src="img/gala-after.jpg" alt="Bankettterem gálavacsorára díszítve – AI-látványterv"><div class="bar"></div><span class="lb" style="left:12px">Jelenlegi</span><span class="lb" style="right:12px">Látványterv</span></div>
-   <div class="prompt"><i>UTASÍTÁS</i><span id="typed"></span><span class="caret"></span></div>
   </div>
  </div>
 </section>
 
-<!-- 12 HIRDETÉSI FELÜLET -->
+<!-- 13 HIRDETÉSI FELÜLET -->
 <section data-sec="Partnerek és szezon">
  <div class="w grid2">
   <div>
    <div class="kick rv">Partnerek a térben</div>
-   <h2 class="rv d1">Hirdetési felület <span class="hl">a 3D térben</span></h2>
+   <h2 class="rv d1">Hirdetési felület<br><span class="hl">a 3D térben</span></h2>
    <ul class="ls rv d2">
     <li><span><b>Megjelenés a megfelelő helyen</b>partner logója, plakátja vagy videója a lobbyban, a spában, a rendezvénytérben vagy a tetőteraszon</span></li>
+    <li><span><b>Kattintásra az ajánlat</b>a partner ajánlata vagy foglalási oldala egy kattintással megnyílik</span></li>
     <li><span><b>Fizetett megjelenés vagy partnerbemutató</b>bevételt hozó hirdetési hely, illetve a szálloda partnereinek kiemelése</span></li>
     <li><span><b>Támogatott ügyek</b>alapítvány vagy karitatív kezdeményezés bemutatása a térben</span></li>
-    <li><span><b>Mérhető, hőtérképpel</b>megtekintések, kattintások és hőtérkép: látszik, mely pontok vonzzák a figyelmet – a partnernek riportban kimutatható</span></li>
-    <li><span><b>GDPR-megfelelés</b>az adatgyűjtés az európai adatvédelmi szabályok szerint, a látogató sütihozzájárulásával történik</span></li>
    </ul>
   </div>
-  <div class="fr rv d2" style="aspect-ratio:696/560;background:#000"><img src="img/heatmap.webp" alt="Kattintási hőtérkép a séta alaprajzán"><div class="scan"></div></div>
+  <div class="fr rv d2" style="aspect-ratio:1328/800"><img src="img/ad-lobby.jpg" alt="Digitális hirdetési felület a szálloda lobbyjában"><div class="scan"></div>
+   <div class="tag g t1" style="left:4%;top:28%"><i></i>Partnerajánlat · Spa</div>
+   <div class="tag t2" style="left:30%;top:80%"><i></i>Kattintásra: foglalás</div></div>
  </div>
 </section>
 
-<!-- 13 SZEZONÁLIS -->
+<!-- 14 MÉRHETŐ EREDMÉNYEK -->
+<section data-sec="Mérés">
+ <div class="w grid2 rev">
+  <div class="fr rv d1" style="aspect-ratio:696/560;background:#000"><img src="img/heatmap.webp" alt="Kattintási hőtérkép a séta alaprajzán"><div class="scan"></div></div>
+  <div>
+   <div class="kick rv">Mérhető eredmények</div>
+   <h2 class="rv d1">Hőtérkép, <span class="hl">adatvédelmi megfeleléssel</span></h2>
+   <ul class="ls rv d2">
+    <li><span><b>Hőtérkép</b>látszik, a séta mely pontjai vonzzák leginkább a figyelmet, és hová kattintanak a látogatók</span></li>
+    <li><span><b>Látogatottsági adatok</b>megtekintések, kattintások, átlagos időtöltés és forgalmi források</span></li>
+    <li><span><b>Riport</b>exportálható kimutatás a vezetésnek és a partnereknek (CSV, PDF)</span></li>
+    <li><span><b>GDPR-megfelelés</b>az adatgyűjtés az európai adatvédelmi szabályok szerint, a látogató sütihozzájárulásával történik</span></li>
+   </ul>
+  </div>
+ </div>
+</section>
+
+<!-- 15 ALKALOMHOZ IGAZÍTOTT -->
 <section data-sec="Partnerek és szezon">
  <div class="w">
   <div class="kick rv">Szezonális tartalom</div>
-  <h2 class="rv d1" style="max-width:920px">Időszakonként <span class="hl">frissülő tartalom</span></h2>
-  <p class="lead rv d2" style="max-width:760px;margin-bottom:30px">A sétába helyezett elemek – dekoráció, köszöntő videó, ajánlat, partnermegjelenés – időszakonként cserélhetők, így a séta mindig az aktuális kínálatot mutatja.</p>
+  <h2 class="rv d1" style="max-width:920px">Alkalomhoz <span class="hl">igazított tartalom</span></h2>
+  <p class="lead rv d2" style="max-width:760px;margin-bottom:30px">A sétába helyezett elemek – dekoráció, köszöntő videó, ajánlat, partnermegjelenés – alkalmanként cserélhetők, így a séta mindig az aktuális kínálatot mutatja.</p>
   <div class="seasons rv d3">
    <div class="ss"><div class="dot">I</div><h3>Húsvét</h3><p>Tavaszi dekoráció, ünnepi menü az Arazban, családi ajánlat.</p></div>
    <div class="ss"><div class="dot">II</div><h3>Teraszszezon</h3><p>A tetőterasz és a kültéri medence nyitása, nyári ajánlatok.</p></div>
@@ -386,25 +437,44 @@ section.on.div .big span{clip-path:inset(0 0 0 0)}
  </div>
 </section>
 
-<!-- 14 CSAPAT -->
+<!-- 16 RENDEZVÉNYBÉRLŐK -->
+<section data-sec="Rendezvénybérlők">
+ <div class="w grid2" style="grid-template-columns:minmax(0,1.25fr) minmax(0,1fr)">
+  <div>
+   <div class="kick rv">A Continental Hotel Budapest szolgáltatásaként</div>
+   <h2 class="rv d1">Kiegészítő szolgáltatás<br><span class="hl">a rendezvénybérlőknek</span></h2>
+   <p class="lead rv d2">A termek bérlői saját eseményükre szabott sétát kaphatnak. A szálloda ezt kiegészítő szolgáltatásként kínálja, a kivitelezést a NEXUS360 végzi.</p>
+   <div class="cards c2 rv d3" style="margin-top:20px">
+    <div class="card"><span class="n">A bérlőnek és vendégeinek</span><ul class="mini"><li>Saját arculat és szponzorok a térben</li><li>Program, előadók, regisztráció infópontokon</li><li>Útvonal a teremhez, a helyszínen is</li><li>Előzetes bejárás a résztvevőknek</li></ul></div>
+    <div class="card"><span class="n">A Continental Hotel Budapestnek</span><ul class="mini"><li>Megkülönböztető elem a teremajánlatban</li><li>Továbbértékesíthető, felárral kínálható szolgáltatás</li><li>Az értékesítés a szállodánál marad, a kivitelezést a NEXUS360 végzi</li><li>Szorosabb, visszatérő ügyfélkapcsolat</li></ul></div>
+   </div>
+  </div>
+  <div class="fr rv d2" style="aspect-ratio:800/450"><video src="img/conference-theatre.mp4" poster="img/conference-theatre.jpg" autoplay muted loop playsinline></video><div class="scan"></div>
+   <div class="tag t1" style="left:5%;top:10%"><i></i>Konferencia · program és regisztráció</div>
+   <div class="tag g t2" style="left:50%;top:44%"><i></i>Főtámogató</div>
+   <div class="tag t3" style="left:22%;top:80%"><i></i>Útvonal a teremhez</div></div>
+ </div>
+</section>
+
+<!-- 17 CSAPAT -->
 <section data-sec="A csapatnak">
  <div class="w grid2 rev">
-  <div class="fr rv d1" style="aspect-ratio:16/9"><video src="img/hotel-reception.mp4" poster="img/hotel-reception.jpg" autoplay muted loop playsinline></video><div class="scan"></div>
-   <div class="tag g t1" style="left:6%;top:10%"><i></i>Recepció · bejelentkezés lépései</div>
-   <div class="tag t2" style="left:46%;top:76%"><i></i>Betanító videó · a pult mögött</div></div>
+  <div class="fr rv d1" style="aspect-ratio:1184/666"><img src="img/team-note.jpg" alt="Belső munkatársi jegyzet a séta egy pontján"><div class="scan"></div>
+   <div class="tag g t2" style="left:60%;top:34%"><i></i>Új kolléga · bevezető körséta</div>
+   <div class="tag t3" style="left:54%;top:58%"><i></i>Biztonsági pont · tűzoltó készülék</div></div>
   <div>
    <div class="kick rv">Belső használat</div>
-   <h2 class="rv d1">Ugyanaz a séta, <span class="hl">a csapat betanítására</span></h2>
+   <h2 class="rv d1">Ugyanaz a séta, <span class="hl">a csapat fejlesztésére</span></h2>
    <ul class="ls g rv d2">
-    <li><span><b>Új munkatársak bevezetése</b>az új munkatárs már az első napja előtt megismeri a házat: vendégtereket, háttérterületeket, útvonalakat</span></li>
+    <li><span><b>Új munkatársak bevezetése</b>az új kolléga már az első napja előtt megismeri a házat: vendégtereket, háttérterületeket, útvonalakat</span></li>
     <li><span><b>Biztonsági oktatás</b>menekülési útvonalak, tűzvédelmi eszközök és gyülekezési pontok a valódi térben jelölve, ismételhetően</span></li>
-    <li><span><b>Lépésenkénti útmutatók</b>munkafolyamatok – például a recepciós bejelentkezés vagy a terem-előkészítés – a valódi térben, telefonon is követhetően</span></li>
+    <li><span><b>Belső jegyzetek a pontos helyen</b>karbantartási és üzemeltetési feladatok, megjegyzések – csak a csapat látja</span></li>
    </ul>
   </div>
  </div>
 </section>
 
-<!-- 15 TAPASZTALATOK -->
+<!-- 18 TAPASZTALATOK -->
 <section data-sec="Tapasztalatok">
  <div class="w">
   <div class="kick rv">Nemzetközi tapasztalatok</div>
@@ -413,29 +483,29 @@ section.on.div .big span{clip-path:inset(0 0 0 0)}
    <div class="card rv d2"><div class="stat">+25%</div><h3>Lindner Hotels</h3><p>Több online interakció a szállodák teljes virtuális sétájával – szobák, éttermek, konferenciatermek.</p><p class="src tiny">nemzetközi esettanulmány</p></div>
    <div class="card rv d3"><div class="stat">240+</div><h3>TUI Sensatori</h3><p>Több mint 240 felmért tér kilenc szállodában, értékesítésre és üzemeltetési dokumentációra egyaránt.</p><p class="src tiny">nemzetközi esettanulmány</p></div>
    <div class="card rv d4"><div class="stat">−20%</div><h3>Garni Hotel, Krakkó</h3><p>Kevesebb idő megy el a szoba keresésére a beltéri útvonalvezetésnek köszönhetően; 4,7/5 vendégelégedettség.</p><p class="src tiny">nemzetközi esettanulmány</p></div>
-   <div class="card rv d5"><div class="stat">+20%</div><h3>Interaktív réteggel</h3><p>Az interaktív bővítést használó vállalatok átlagosan 20%-kal magasabb konverzióról számolnak be.</p><p class="src tiny">nemzetközi esettanulmány</p></div>
+   <div class="card rv d5"><div class="stat">+20%</div><h3>Interaktív réteggel</h3><p>Az interaktív bővítést használó vállalatok átlagosan 20%-kal magasabb konverzióról számolnak be.</p><p class="src tiny">iparági adat</p></div>
   </div>
  </div>
 </section>
 
-<!-- 16 ÖSSZEFOGLALÓ -->
+<!-- 19 ÖSSZEFOGLALÓ -->
 <section data-sec="Összefoglaló">
  <div class="w sum">
   <div class="kick rv">Összefoglalva</div>
-  <h2 class="rv d1" style="max-width:940px">Amit a séták <span class="hl">még adhatnak</span></h2>
+  <h2 class="rv d1" style="max-width:940px">Továbbfejlesztési irányok<br><span class="hl">egy áttekintésben</span></h2>
   <div class="cards c3">
-   <div class="card rv d2"><span class="n">Tartalom a térben</span><ul class="mini"><li>Infópontok térrészenként</li><li>Gyorsgombok, tematikus nézetek, saját linkek</li><li>Vezetett körséta, értékesítői elérhetőség</li></ul></div>
-   <div class="card rv d2"><span class="n">Rendezvénytervezés</span><ul class="mini"><li>Sematikus alaprajz</li><li>Bankett- és színházi elrendezés 3D-ben</li><li>AI-alapú dekorációs látványterv</li></ul></div>
-   <div class="card rv d3"><span class="n">Értékesítés</span><ul class="mini"><li>A szálloda saját nyitóképe és menüje</li><li>Foglalás- és ajánlatkérő gombok</li><li>Chat és közös élő bejárás</li></ul></div>
+   <div class="card rv d2"><span class="n">Tartalom és tájékozódás</span><ul class="mini"><li>Infópontok és gyakori kérdések a térben</li><li>Gyorsgombok, saját linkek, vezetett körséta</li><li>Minitérkép, értékesítői névjegy</li></ul></div>
+   <div class="card rv d2"><span class="n">Rendezvénytervezés</span><ul class="mini"><li>Bútormentes térnézet</li><li>Bejárható AI-látványterv dekorációhoz</li><li>Szolgáltatás a rendezvénybérlőknek</li></ul></div>
+   <div class="card rv d3"><span class="n">Értékesítés</span><ul class="mini"><li>Nyitóvideó és saját menü</li><li>Foglalás- és ajánlatkérő gombok</li><li>Chat és közös élő bejárás</li></ul></div>
    <div class="card rv d3"><span class="n">Személyes jelenlét</span><ul class="mini"><li>Videós fogadás a recepciónál</li><li>Teremismertető a rendezvénytérben</li><li>Ajánló az Araz étteremben</li></ul></div>
-   <div class="card rv d4"><span class="n">Partnerek és szezon</span><ul class="mini"><li>Hirdetési felület a térben</li><li>Ünnepi és szezonális tartalomcsere</li><li>Hőtérkép és riport, GDPR-megfelelően</li></ul></div>
-   <div class="card rv d4"><span class="n">Helyszínen és a csapatnak</span><ul class="mini"><li>Útvonalvezetés telefonon, tableten</li><li>Új munkatársak bevezetése, betanítás</li><li>Biztonsági oktatás</li></ul></div>
+   <div class="card rv d4"><span class="n">Partnerek és mérés</span><ul class="mini"><li>Hirdetési felület a térben</li><li>Alkalomhoz igazított tartalomcsere</li><li>Hőtérkép és riport, a GDPR-nak megfelelően</li></ul></div>
+   <div class="card rv d4"><span class="n">Helyszínen és a csapatnak</span><ul class="mini"><li>Útvonalvezetés telefonon, tableten</li><li>Új munkatársak bevezetése</li><li>Biztonsági oktatás, belső jegyzetek</li></ul></div>
   </div>
   <p class="src rv d5">Minden elem külön is bevezethető. Díjazás: egyszeri kialakítás és rendszeres díj, külön tételként; a pontos tartalmat az ajánlat rögzíti.</p>
  </div>
 </section>
 
-<!-- 17 KÖVETKEZŐ LÉPÉS -->
+<!-- 20 KÖVETKEZŐ LÉPÉS -->
 <section data-sec="Következő lépés">
  <div class="w">
   <div class="kick rv">Javasolt menet</div>
@@ -446,7 +516,7 @@ section.on.div .big span{clip-path:inset(0 0 0 0)}
    <div class="st"><div class="k">3</div><h3>Közös értékelés</h3><p>Átbeszéljük a tapasztalatokat és az eredményeket, és finomítjuk, ami szükséges.</p></div>
    <div class="st"><div class="k">4</div><h3>Teljes kivitelezés</h3><p>A bevált megoldásokat kiterjesztjük a többi térre és mindkét sétára.</p></div>
   </div>
-  <div class="contact rv d3"><img src="img/logo.png" alt="NEXUS360"><span>Hajdu Dénes</span><a href="mailto:nexus@nexus360.hu">nexus@nexus360.hu</a><span>+36 70 432 0521</span><a href="https://nexus360.hu" target="_blank" rel="noopener">nexus360.hu</a></div>
+  <div class="contact rv d3"><img src="img/logo.png" alt="NEXUS360"><span>Hajdu Dénes</span><a href="mailto:nexus@nexus360.hu">nexus@nexus360.hu</a><span>+36 70 432 0521</span></div>
  </div>
 </section>
 
@@ -483,7 +553,7 @@ let drag=false;cmp.addEventListener('pointerdown',e=>{drag=true;user=true;cancel
 cmp.addEventListener('pointermove',e=>{if(drag)setP(pos(e))});addEventListener('pointerup',()=>drag=false);
 function runCmp(){if(user)return;const t0=performance.now();cancelAnimationFrame(anim);
  const f=t=>{const k=(t-t0)/1000;if(k>4.2){setP(50);return}setP(50+Math.sin(k*1.5)*38*Math.max(0,1-k/4.6));anim=requestAnimationFrame(f)};anim=requestAnimationFrame(f);
- const txt='Díszítse a termet esti gálavacsorára: fehér abroszok, virágdíszek, gyertyák, meleg fények';const el=document.getElementById('typed');el.textContent='';clearInterval(typer);let n=0;typer=setInterval(()=>{el.textContent=txt.slice(0,++n);if(n>=txt.length)clearInterval(typer)},38)}
+ }
 addEventListener('pointermove',e=>{if(matchMedia('(max-width:900px)').matches)return;const x=e.clientX/innerWidth-.5,y=e.clientY/innerHeight-.5;const s=S[idx];if(!s)return;s.querySelectorAll('.fr').forEach(f=>{f.style.transform=`perspective(1200px) rotateY(${x*3}deg) rotateX(${-y*3}deg)`})});
 go(fromHash(),false);
 })();
