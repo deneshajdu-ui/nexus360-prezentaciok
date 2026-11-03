@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+<meta name="robots" content="noindex, nofollow, noarchive">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Continental Hotel Budapest – a 3D séta következő szintje · NEXUS360</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap&subset=latin-ext" rel="stylesheet">
+<style>
+:root{--bg:#000;--ink:#fff;--mute:#a9a9b2;--dim:#66666f;--blue:#2B00FF;--blueL:#2B00FF;--teal:#1B8386;--tealL:#1B8386;--line:rgba(255,255,255,.12);--glass:rgba(12,12,14,.62)}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%;background:#000;color:var(--ink);overflow:hidden;font-family:Inter,system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%}
+/* ambient */
+.amb{position:fixed;inset:0;pointer-events:none;z-index:0;
+ background:radial-gradient(60% 50% at 85% 10%,rgba(43,0,255,.28),transparent 60%),radial-gradient(50% 50% at 0% 100%,rgba(27,131,134,.22),transparent 60%)}
+.gridbg{position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.35;
+ background-image:linear-gradient(rgba(255,255,255,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.05) 1px,transparent 1px);background-size:64px 64px;
+ -webkit-mask-image:radial-gradient(70% 70% at 50% 40%,#000,transparent);mask-image:radial-gradient(70% 70% at 50% 40%,#000,transparent)}
+/* chrome */
+header{position:fixed;top:0;left:0;right:0;z-index:10;display:flex;align-items:center;justify-content:space-between;padding:22px clamp(18px,4vw,52px);pointer-events:none}
+header img{height:30px;width:auto}
+.hm{font-family:'JetBrains Mono';font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--mute);display:flex;gap:18px;align-items:center}
+.hm button{pointer-events:auto;background:none;border:1px solid var(--line);color:var(--mute);border-radius:8px;padding:6px 10px;font:inherit;cursor:pointer}
+.hm button:hover{color:#fff;border-color:var(--blueL)}
+footer{position:fixed;left:0;right:0;bottom:0;z-index:10;display:flex;align-items:center;gap:18px;padding:0 clamp(18px,4vw,52px) 20px}
+.nav{display:flex;gap:8px}
+.nav button{width:44px;height:44px;border-radius:50%;border:1px solid var(--line);background:rgba(0,0,0,.5);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);color:#fff;cursor:pointer;display:grid;place-items:center;transition:.25s}
+.nav button:hover{border-color:var(--blueL);box-shadow:0 0 22px rgba(43,0,255,.55)}
+.nav svg{width:18px;height:18px}
+.count{font-family:'JetBrains Mono';font-size:12px;color:var(--mute);letter-spacing:.1em;min-width:64px;text-align:center}.count b{color:#fff;font-weight:500}
+.prog{flex:1;height:2px;background:var(--line);border-radius:2px;overflow:hidden}
+.prog i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--blue),var(--tealL));box-shadow:0 0 12px var(--blueL);transition:width .9s cubic-bezier(.7,0,.2,1)}
+.sec{font-family:'JetBrains Mono';font-size:11px;letter-spacing:.14em;color:var(--mute);text-transform:uppercase;white-space:nowrap}
+/* slides */
+main{position:fixed;inset:0;z-index:2}
+section{position:absolute;inset:0;padding:92px clamp(18px,5vw,84px) 88px;display:flex;align-items:center;visibility:hidden;opacity:0;transition:opacity .7s,visibility 0s .7s}
+section.on{visibility:visible;opacity:1;transition:opacity .7s}
+.rv{opacity:0;transform:translateY(24px);transition:opacity .9s cubic-bezier(.2,.7,.2,1),transform .9s cubic-bezier(.2,.7,.2,1)}
+section.on .rv{opacity:1;transform:none}
+section.on .d1{transition-delay:.12s}section.on .d2{transition-delay:.24s}section.on .d3{transition-delay:.36s}section.on .d4{transition-delay:.48s}section.on .d5{transition-delay:.6s}section.on .d6{transition-delay:.72s}
+.kick{font-family:'JetBrains Mono';font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:#fff;display:flex;align-items:center;gap:12px;margin-bottom:20px}
+.kick:before{content:"";width:26px;height:2px;background:var(--blue);box-shadow:0 0 10px var(--blueL)}
+h1,h2,h3{font-family:Outfit,sans-serif;font-weight:600;letter-spacing:-.025em;line-height:1.03}
+h1{font-size:clamp(42px,6.4vw,96px)}
+h2{font-size:clamp(30px,3.9vw,56px);margin-bottom:18px}
+h3{font-size:19px;letter-spacing:-.01em;margin-bottom:6px}
+.hl{color:#fff;background:#2B00FF;padding:0 .14em;-webkit-box-decoration-break:clone;box-decoration-break:clone;border-radius:.06em}
+.lead{font-size:clamp(16px,1.35vw,20px);line-height:1.55;color:#d9d9de;font-weight:300;max-width:560px}
+p.s{font-size:14.5px;line-height:1.55;color:var(--mute)}
+.src{font-family:'JetBrains Mono';font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--dim);margin-top:10px}
+.grid2{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:clamp(24px,4vw,64px);align-items:center;width:100%}
+.grid2.rev{grid-template-columns:minmax(0,1.15fr) minmax(0,1fr)}
+.w{width:min(1240px,100%);margin:0 auto}
+/* media frame */
+.fr{position:relative;border-radius:18px;overflow:hidden;border:1px solid var(--line);box-shadow:0 30px 80px -30px rgba(43,0,255,.55),0 0 0 1px rgba(255,255,255,.04)}
+.fr img{width:100%;height:100%;object-fit:cover;transform:scale(1.08);transition:transform 7s ease-out}
+section.on .fr img{transform:scale(1)}
+.fr:after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(180deg,transparent 60%,rgba(0,0,0,.45))}
+.fr .scan{position:absolute;left:0;right:0;height:30%;top:-30%;background:linear-gradient(180deg,transparent,rgba(43,0,255,.22),transparent);pointer-events:none;z-index:2}
+section.on .fr .scan{animation:scan 2.4s .3s cubic-bezier(.6,0,.3,1) forwards}
+@keyframes scan{to{top:110%}}
+.tag{position:absolute;z-index:3;display:flex;align-items:center;gap:8px;padding:7px 12px 7px 8px;border-radius:999px;background:rgba(0,0,0,.72);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.18);font-size:12px;font-weight:500;white-space:nowrap;opacity:0;transform:scale(.8);transition:.5s cubic-bezier(.2,.9,.3,1.3)}
+section.on .tag{opacity:1;transform:none}
+section.on .tag.t1{transition-delay:1.1s}section.on .tag.t2{transition-delay:1.4s}section.on .tag.t3{transition-delay:1.7s}
+.tag i{width:18px;height:18px;border-radius:50%;background:var(--blue);box-shadow:0 0 0 4px rgba(43,0,255,.3);position:relative;flex:none}
+.tag i:after{content:"";position:absolute;inset:-6px;border-radius:50%;border:1.5px solid var(--blueL);animation:ping 2.2s infinite}
+@keyframes ping{from{transform:scale(.6);opacity:1}to{transform:scale(1.6);opacity:0}}
+.cap{position:absolute;right:12px;bottom:10px;z-index:3;font-family:'JetBrains Mono';font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.65)}
+/* cover */
+.cover{padding:0}
+.cover .bgimg{position:absolute;inset:0;overflow:hidden}
+.cover .bgimg img{width:100%;height:100%;object-fit:cover;transform:scale(1.15);transition:transform 14s ease-out;filter:saturate(.9)}
+section.on.cover .bgimg img{transform:scale(1.02)}
+.cover .bgimg:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,#000 0%,rgba(0,0,0,.86) 38%,rgba(0,0,0,.25) 75%,rgba(0,0,0,.5) 100%),linear-gradient(0deg,#000 0%,transparent 35%)}
+.cover .in{position:relative;z-index:2;padding:92px clamp(18px,5vw,84px) 88px;width:100%}
+.cover .in>div{max-width:720px}
+.meta{margin-top:34px;display:flex;flex-wrap:wrap;gap:10px 24px;font-family:'JetBrains Mono';font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--mute)}
+.meta span{display:flex;align-items:center;gap:8px}.meta span:before{content:"";width:6px;height:6px;background:var(--blue);box-shadow:0 0 8px var(--blueL)}
+.cover .tag{font-size:13px}
+/* cards */
+.cards{display:grid;gap:12px}
+.c2{grid-template-columns:repeat(2,minmax(0,1fr))}.c3{grid-template-columns:repeat(3,minmax(0,1fr))}.c4{grid-template-columns:repeat(4,minmax(0,1fr))}
+.card{position:relative;padding:18px 18px 18px;border-radius:14px;background:var(--glass);border:1px solid var(--line);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);transition:.35s;overflow:hidden}
+.card:hover{border-color:rgba(43,0,255,.7);transform:translateY(-3px);box-shadow:0 18px 40px -18px rgba(43,0,255,.7)}
+.card .n{font-family:'JetBrains Mono';font-size:11px;color:var(--tealL);letter-spacing:.12em;margin-bottom:10px;display:block}
+.card p{font-size:14px;line-height:1.5;color:var(--mute)}
+.card.img{padding:0}.card.img .fr{border:0;border-radius:0;box-shadow:none;aspect-ratio:16/9}.card.img .tx{padding:14px 16px 16px}
+ul.ls{list-style:none;display:grid;gap:11px;margin-top:4px}
+ul.ls li{display:grid;grid-template-columns:22px 1fr;gap:10px;font-size:15.5px;line-height:1.5;color:#e6e6ea}
+ul.ls li:before{content:"";width:8px;height:8px;margin:8px 0 0 4px;background:var(--blue);box-shadow:0 0 10px var(--blueL);transform:rotate(45deg)}
+ul.ls b{color:#fff;font-weight:600}
+/* divider */
+.div .big{font-family:Outfit;font-weight:700;font-size:clamp(120px,20vw,300px);line-height:.8;letter-spacing:-.06em;color:transparent;-webkit-text-stroke:1.5px rgba(255,255,255,.18);position:relative}
+.div .big span{position:absolute;inset:0;-webkit-text-stroke:1.5px var(--blueL);clip-path:inset(0 100% 0 0);transition:clip-path 1.6s .3s cubic-bezier(.7,0,.2,1);filter:drop-shadow(0 0 18px rgba(43,0,255,.8))}
+section.on.div .big span{clip-path:inset(0 0 0 0)}
+.chip{display:inline-flex;align-items:center;gap:8px;padding:7px 13px;border-radius:999px;font-family:'JetBrains Mono';font-size:11px;letter-spacing:.12em;text-transform:uppercase;border:1px solid var(--line);color:#ffffff;background:rgba(43,0,255,.18)}
+.chip.t{background:rgba(27,131,134,.2);color:#ffffff}
+/* compare slider */
+.cmp{position:relative;aspect-ratio:1600/1034;border-radius:18px;overflow:hidden;border:1px solid var(--line);box-shadow:0 30px 80px -30px rgba(43,0,255,.6);cursor:ew-resize;user-select:none;touch-action:pan-y}
+.cmp img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.cmp .af{clip-path:inset(0 0 0 50%)}
+.cmp .bar{position:absolute;top:0;bottom:0;left:50%;width:2px;background:#fff;box-shadow:0 0 16px var(--blueL);transform:translateX(-1px)}
+.cmp .bar:after{content:"⟷";position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:42px;height:42px;border-radius:50%;background:var(--blue);display:grid;place-items:center;font-size:18px;box-shadow:0 0 24px var(--blueL)}
+.cmp .lb{position:absolute;top:12px;z-index:2;font-family:'JetBrains Mono';font-size:10px;letter-spacing:.14em;text-transform:uppercase;padding:5px 9px;border-radius:6px;background:rgba(0,0,0,.7)}
+.prompt{margin-top:12px;display:flex;align-items:center;gap:10px;padding:12px 14px;border-radius:12px;background:#0c0c0e;border:1px solid rgba(43,0,255,.5);font-size:14px;color:#ffffff;box-shadow:0 0 30px -10px rgba(43,0,255,.7)}
+.prompt i{font-style:normal;font-family:'JetBrains Mono';font-size:10px;color:var(--tealL);letter-spacing:.12em}
+.caret{display:inline-block;width:8px;height:16px;background:var(--blueL);vertical-align:-3px;animation:bl 1s steps(1) infinite;margin-left:2px}@keyframes bl{50%{opacity:0}}
+/* stats */
+.stat{font-family:Outfit;font-weight:600;font-size:clamp(34px,3.4vw,52px);letter-spacing:-.03em;line-height:1;color:#fff;margin-bottom:8px;border-bottom:3px solid #1B8386;display:inline-block;padding-bottom:4px}
+/* packages */
+.pk{display:flex;flex-direction:column;padding:22px;border-radius:18px;border:1px solid var(--line);background:var(--glass);backdrop-filter:blur(12px);position:relative;overflow:hidden;transition:.35s}
+.pk:hover{transform:translateY(-4px);border-color:rgba(43,0,255,.7)}
+.pk.hot{border-color:rgba(43,0,255,.8);box-shadow:0 0 0 1px rgba(43,0,255,.5),0 30px 70px -30px rgba(43,0,255,.9);background:linear-gradient(170deg,rgba(43,0,255,.25),rgba(12,12,14,.7) 55%)}
+.pk .lvl{font-family:'JetBrains Mono';font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--tealL);margin-bottom:10px}
+.pk h3{font-size:24px;margin-bottom:6px}.pk .for{font-size:13.5px;color:var(--mute);margin-bottom:16px;line-height:1.45}
+.pk ul{list-style:none;display:grid;gap:8px;font-size:14px;color:#e6e6ea;line-height:1.4}
+.pk li{display:grid;grid-template-columns:18px 1fr;gap:6px}.pk li:before{content:"✓";color:var(--tealL);font-weight:600}
+.pk .plus{font-family:'JetBrains Mono';font-size:10.5px;letter-spacing:.1em;color:#1B8386;text-transform:uppercase;margin:2px 0 4px}
+.badge{position:absolute;top:16px;right:16px;font-family:'JetBrains Mono';font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;padding:5px 8px;border-radius:6px;background:var(--blue);box-shadow:0 0 16px var(--blueL)}
+/* steps */
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;position:relative;margin:10px 0 28px}
+.steps:before{content:"";position:absolute;top:26px;left:6%;right:6%;height:1px;background:linear-gradient(90deg,var(--blue),var(--tealL));opacity:.6}
+.st .k{width:52px;height:52px;border-radius:50%;background:#000;border:1px solid var(--blueL);display:grid;place-items:center;font-family:Outfit;font-weight:700;font-size:18px;box-shadow:0 0 22px rgba(43,0,255,.6);position:relative;z-index:1;margin-bottom:16px}
+.st p{font-size:14px;color:var(--mute);line-height:1.5;max-width:320px}
+.cta{display:inline-flex;align-items:center;gap:10px;padding:14px 22px;border-radius:999px;background:var(--blue);color:#fff;text-decoration:none;font-family:Outfit;font-weight:600;font-size:15px;box-shadow:0 12px 40px -10px var(--blue),inset 0 0 0 1px rgba(255,255,255,.2);transition:.3s;position:relative;overflow:hidden}
+.cta:hover{transform:translateY(-2px);box-shadow:0 18px 50px -10px var(--blueL)}
+.cta:after{content:"";position:absolute;inset:0;background:linear-gradient(100deg,transparent 30%,rgba(255,255,255,.3) 50%,transparent 70%);transform:translateX(-100%);animation:sh 3.6s infinite}@keyframes sh{60%,100%{transform:translateX(100%)}}
+.cta.g{background:transparent;box-shadow:inset 0 0 0 1px var(--line)}.cta.g:after{display:none}
+.cta svg{width:15px;height:15px}
+.contact{display:flex;flex-wrap:wrap;align-items:center;gap:12px 28px;padding:18px 22px;border-radius:14px;border:1px solid var(--line);background:var(--glass);width:fit-content;max-width:100%}
+.contact img{height:26px}.contact span{font-family:'JetBrains Mono';font-size:13px;color:#e6e6ea}.contact a{color:#ffffff;text-decoration:none}
+.aud{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-top:26px}
+.aud .card h3{font-size:17px}
+@media (max-width:900px){
+ header img{height:24px}.hm .x{display:none}
+ section{align-items:flex-start;padding:76px 18px 86px;overflow-y:auto;-webkit-overflow-scrolling:touch}
+ .grid2,.grid2.rev{grid-template-columns:1fr;gap:18px}
+ .grid2.rev>:first-child{order:2}
+ .c2,.c3,.c4,.aud,.steps{grid-template-columns:1fr}
+ .steps:before{display:none}
+ .st{display:grid;grid-template-columns:52px 1fr;gap:0 14px}.st .k{grid-row:span 2;margin:0}
+ .cover .in{padding:76px 18px 90px;align-self:flex-end}
+ .cover .bgimg:after{background:linear-gradient(0deg,#000 0%,rgba(0,0,0,.85) 55%,rgba(0,0,0,.35) 100%)}
+ .cover .tag{display:none}
+ .div .big{font-size:120px}
+ .sec{display:none}
+ .hide-m{display:none}
+ footer{background:linear-gradient(180deg,transparent,#000 45%);padding-top:26px}
+ header{background:linear-gradient(0deg,transparent,#000 40%)}
+}
+</style>
+</head>
+<body>
+<div class="amb"></div><div class="gridbg"></div>
+<header><img src="img/logo.png" alt="NEXUS360 – 3D Solutions"><div class="hm"><span class="x">Continental Hotel Budapest</span><button id="fs">Teljes képernyő</button></div></header>
+<main id="deck">
+
+<!-- 1 COVER -->
+<section class="cover" data-sec="Bevezető">
+ <div class="bgimg"><img src="img/hero.jpg" alt=""></div>
+ <div class="tag t1" style="left:62%;top:34%"><i></i>Rendezvényterem · adatlap</div>
+ <div class="tag t2" style="left:74%;top:56%"><i></i>Asztalfoglalás</div>
+ <div class="tag t3" style="left:58%;top:70%"><i></i>Partnerajánlat · wellness</div>
+ <div class="in"><div>
+  <div class="kick rv">Javaslat · 2026. november</div>
+  <h1 class="rv d1">Continental Hotel Budapest<br><span class="hl">A 3D séta következő szintje</span></h1>
+  <p class="lead rv d2" style="margin-top:22px">Hogyan dolgozzanak a Continental Hotel Budapest kész Matterport-sétái a szállodának: több ajánlatkérés, jobban felkészült szervezők, mérhető partnermegjelenés – két rétegben.</p>
+  <div class="meta rv d3"><span>Bali Zsuzsa részére</span><span>Hajdu Dénes · NEXUS360</span></div>
+  <div class="src rv d4" style="margin-top:22px">Illusztráció: Matterport ügyfélanyag</div>
+ </div></div>
+</section>
+
+<!-- 2 -->
+<section data-sec="Kiindulás">
+ <div class="w">
+  <div class="kick rv">Ahonnan indulunk</div>
+  <h2 class="rv d1" style="max-width:900px">A séták elkészültek. <span class="hl">Most dolgozzanak is.</span></h2>
+  <p class="lead rv d2">A Continental Hotel Budapest két sétája – az épület-sétába utólag felvett kiegészítő területekkel együtt – már elkészült. Ugyanezekből a terekből, új felmérés nélkül, négy különböző közönségnek lehet célzott eszközt építeni.</p>
+  <div class="aud">
+   <div class="card rv d3"><span class="n">01 · MICE</span><h3>Rendezvényszervezők</h3><p>Termek, méretek, elrendezések – helyszíni bejárás előtt.</p></div>
+   <div class="card rv d4"><span class="n">02 · Vendég</span><h3>Szobák és szolgáltatások</h3><p>Szobatípusok, wellness, étterem – foglalás előtt.</p></div>
+   <div class="card rv d5"><span class="n">03 · Partner</span><h3>Partnerek és programok</h3><p>Fürdők, programok, szolgáltatók a térben, mérhetően.</p></div>
+   <div class="card rv d6"><span class="n">04 · Csapat</span><h3>Saját munkatársak</h3><p>Betanítás, karbantartás, felújítások dokumentálása.</p></div>
+  </div>
+  <div class="rv d6" style="margin-top:26px"><a class="cta g" href="https://my.matterport.com/show/?m=te3tmG3iYRe" target="_blank" rel="noopener">A Continental Hotel Budapest jelenlegi sétájának megnyitása <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M8 7h9v9"/></svg></a></div>
+ </div>
+</section>
+
+<!-- 3 -->
+<section data-sec="Kiindulás">
+ <div class="w grid2">
+  <div>
+   <div class="kick rv">Egy felmérés – sok eszköz</div>
+   <h2 class="rv d1">Ami a sétákban <span class="hl">már benne van</span></h2>
+   <p class="lead rv d2">A Matterport-modell nem csak egy link. Ugyanabból a felmérésből több marketinganyag készíthető – a legtöbb szálloda ezek töredékét használja.</p>
+   <ul class="ls rv d3" style="margin-top:20px">
+    <li><span><b>3D séta és babaház-nézet</b> – weboldalra, ajánlatba, e-mailbe</span></li>
+    <li><span><b>Fotók a modellből</b> – akár nagy felbontásban</span></li>
+    <li><span><b>Alaprajz</b> – terem- és szintenként</span></li>
+    <li><span><b>Rövid bemutatóvideó</b> – közösségi médiára</span></li>
+   </ul>
+   <p class="src rv d4">A Matterport szerint a 3D bejárást tartalmazó hirdetéseknél akár 300%-kal nagyobb az érdeklődés (gyártói adat).</p>
+  </div>
+  <div class="fr rv d2" style="aspect-ratio:1400/769"><img src="img/eco.jpg" alt="Matterport: egy modellből 3D séta, fotók, alaprajz és videó"><div class="scan"></div><span class="cap">Kép: Matterport</span></div>
+ </div>
+</section>
+
+<!-- 4 DIVIDER -->
+<section class="div" data-sec="1. réteg · Matterport">
+ <div class="w grid2">
+  <div><div class="big rv">01<span>01</span></div></div>
+  <div>
+   <span class="chip rv">Matterport · a meglévő sétákon belül</span>
+   <h2 class="rv d1" style="margin-top:18px">Okosabb séták, <span class="hl">új platform nélkül</span></h2>
+   <p class="lead rv d2">Tartalom, útvonalak, méretek és mérés a már elkészült modellekben. Gyorsan bevezethető, a mostani előfizetésre épül.</p>
+  </div>
+ </div>
+</section>
+
+<!-- 5 -->
+<section data-sec="1. réteg · Matterport">
+ <div class="w grid2 rev">
+  <div class="fr rv d1" style="aspect-ratio:16/10"><img src="img/laptop.jpg" alt="Matterport 3D séta laptopon"><div class="scan"></div>
+   <div class="tag t1" style="left:30%;top:16%"><i></i>Rendezvényterem · adatlap</div>
+   <div class="tag t2" style="left:48%;top:44%"><i></i>Vezetett körséta</div>
+   <span class="cap">Kép: Matterport</span></div>
+  <div>
+   <div class="kick rv">Infópontok és útvonalak</div>
+   <h2 class="rv d1">A tér <span class="hl">beszél</span> a látogatóhoz</h2>
+   <ul class="ls rv d2">
+    <li><span><b>Infópontok a pontos helyen:</b> teremadatlap, kapacitás, menü, szobatípus, wellness-árlista – szöveg, kép, videó, link vagy dokumentum.</span></li>
+    <li><span><b>Vezetett körséták:</b> a legfontosabb terek sorrendben, automatikusan lejátszva.</span></li>
+    <li><span><b>Külön nézetek saját linkkel:</b> „Rendezvény”, „Szobák”, „Wellness” – mindegyik a maga kezdőpontjával, ajánlatba illeszthetően.</span></li>
+    <li><span><b>Minitérkép és gyorslinkek</b> a nagy épületben való tájékozódáshoz.</span></li>
+   </ul>
+   <p class="src rv d3">A példaértékek illusztrációk; a tartalmat a Continental Hotel Budapest adja, a NEXUS360 helyezi el.</p>
+  </div>
+ </div>
+</section>
+
+<!-- 6 -->
+<section data-sec="1. réteg · Matterport">
+ <div class="w">
+  <div class="kick rv">Rendezvényszervezőknek</div>
+  <h2 class="rv d1" style="max-width:860px">Méretek és alaprajz, <span class="hl">mielőtt bárki kijönne</span></h2>
+  <div class="cards c3" style="margin-top:8px">
+   <div class="card img rv d2"><div class="fr"><img src="img/floorplan.jpg" alt="Szállodai alaprajz"><div class="scan"></div><span class="cap">Kép: Matterport</span></div><div class="tx"><h3>Sematikus alaprajz</h3><p>Színezett, feliratozott szint- és teremalaprajz a modellből, az ajánlatba csatolható.</p></div></div>
+   <div class="card img rv d3"><div class="fr"><img src="img/measure.jpg" alt="Méretek a 3D sétában"><div class="scan"></div><span class="cap">Kép: Matterport</span></div><div class="tx"><h3>Automatikus méretek</h3><p>Falhosszak és belmagasság automatikusan, mérés mód a látogatónak – a szervező maga ellenőrzi, mi fér el.</p></div></div>
+   <div class="card img rv d4"><div class="fr"><img src="img/defurnish.jpg" alt="Defurnish – bútorok eltávolítása"><div class="scan"></div><span class="cap">Kép: Matterport</span></div><div class="tx"><h3>Üres terem nézet (AI)</h3><p>A Defurnish egy kattintással „kiüríti” a teret – tiszta lap az átrendezéshez és a tervezéshez.</p></div></div>
+  </div>
+  <p class="src rv d5">A Matterport kifejezetten szállodai tervezőcsapatoknak is ajánlja az üres és alaprajzi nézetet felújításokhoz, akadálymentességi ellenőrzéshez. A méretek tájékoztató jellegűek, nem mérnöki hitelesítés.</p>
+ </div>
+</section>
+
+<!-- 7 -->
+<section data-sec="1. réteg · Matterport">
+ <div class="w grid2">
+  <div>
+   <div class="kick rv">Megjelenés és mérés</div>
+   <h2 class="rv d1">Ott legyen, ahol <span class="hl">döntenek</span></h2>
+   <ul class="ls rv d2">
+    <li><span><b>Weboldal, foglalási oldalak:</b> beágyazás fejlesztés nélkül, teremenként is.</span></li>
+    <li><span><b>Google Street View:</b> a séta megjelenik a Google-ban, a környékkel együtt.</span></li>
+    <li><span><b>Ajánlat és e-mail:</b> QR-kód és nézetenkénti link minden árajánlathoz.</span></li>
+    <li><span><b>Közösségi média:</b> interaktív megosztás és rövid videók.</span></li>
+    <li><span><b>Látogatottsági adatok:</b> megtekintések és forgalom – látszik, mit hoz a séta.</span></li>
+   </ul>
+  </div>
+  <div class="fr rv d2" style="aspect-ratio:1152/648"><img src="img/booking.jpg" alt="3D séta foglalás gombbal tableten"><div class="scan"></div><span class="cap">Kép: Matterport</span></div>
+ </div>
+</section>
+
+<!-- 8 DIVIDER -->
+<section class="div" data-sec="2. réteg · Treedis">
+ <div class="w grid2">
+  <div><div class="big rv">02<span>02</span></div></div>
+  <div>
+   <span class="chip t rv">Treedis Studio · interaktív réteg</span>
+   <h2 class="rv d1" style="margin-top:18px">A tér, amelyre <span class="hl">kattintani lehet</span></h2>
+   <p class="lead rv d2">A Treedis a Matterport hivatalos platformpartnere: ugyanarra a modellre épít, és értékesítő felületté alakítja – foglalással, berendezéssel, AI-val, mélyebb mérésekkel.</p>
+  </div>
+ </div>
+</section>
+
+<!-- 9 -->
+<section data-sec="2. réteg · Treedis">
+ <div class="w grid2 rev">
+  <div class="fr rv d1" style="aspect-ratio:1200/630"><img src="img/t_studio.jpg" alt="Treedis Digital Twin Studio"><div class="scan"></div><span class="cap">Kép: Treedis</span></div>
+  <div>
+   <div class="kick rv">Digital Twin Studio</div>
+   <h2 class="rv d1">Arculatos, <span class="hl">értékesítő</span> felület</h2>
+   <ul class="ls rv d2">
+    <li><span><b>A Continental Hotel Budapest arculata:</b> nyitó- és záróképernyő, saját menü, minitérkép, alaprajz.</span></li>
+    <li><span><b>Kattintható tárgyak:</b> egy fal, bútor vagy ablak kattintásra képet, videót, weboldalt nyit.</span></li>
+    <li><span><b>Foglalás és ajánlatkérés</b> gombja a saját foglalórendszerre vezet.</span></li>
+    <li><span><b>Párbeszéd a térben:</b> chat és közös, élő bejárás az értékesítővel (HUB).</span></li>
+   </ul>
+  </div>
+ </div>
+</section>
+
+<!-- 10 -->
+<section data-sec="2. réteg · Treedis">
+ <div class="w grid2">
+  <div>
+   <div class="kick rv">TAI Design · AI-tervezés</div>
+   <h2 class="rv d1">Egy mondat – <span class="hl">új enteriőr</span></h2>
+   <p class="lead rv d2">A Treedis AI-ja egy szöveges utasításból fotószerűen átalakítja a 360°-os nézetet: más stílus, más berendezés, más dekoráció. Az összehasonlító mód egy kattintással vált a valós és a tervezett állapot között.</p>
+   <ul class="ls rv d3" style="margin-top:16px">
+    <li><span><b>Rendezvénydekoráció és tematika</b> előre megmutatva</span></li>
+    <li><span><b>Felújítási változatok</b> a döntés előtt</span></li>
+    <li><span><b>Saját 3D bútorok</b> feltöltése a tervbe</span></li>
+   </ul>
+   <p class="src rv d4">Húzd a csúszkát · Kép: Treedis · Kreditalapú funkció</p>
+  </div>
+  <div class="rv d2">
+   <div class="cmp" id="cmp"><img src="img/t_before.jpg" alt="Eredeti tér"><img class="af" src="img/t_after.jpg" alt="AI-val átalakított tér"><div class="bar"></div><span class="lb" style="left:12px">Eredeti</span><span class="lb" style="right:12px">TAI Design</span></div>
+   <div class="prompt"><i>PROMPT</i><span id="typed"></span><span class="caret"></span></div>
+  </div>
+ </div>
+</section>
+
+<!-- 11 -->
+<section data-sec="2. réteg · Treedis">
+ <div class="w">
+  <div class="kick rv">Berendezés és tájékozódás</div>
+  <h2 class="rv d1" style="max-width:900px">Az esemény, <span class="hl">mielőtt megtörténik</span></h2>
+  <div class="cards c3" style="margin-top:8px">
+   <div class="card img rv d2"><div class="fr"><img src="img/meeting.jpg" alt="Szállodai rendezvényterem bankett-elrendezésben"><div class="scan"></div><span class="cap">Kép: Matterport</span></div><div class="tx"><h3>Rendezvény-elrendezések</h3><p>Bankett, színházi, kiállítói: asztalok, színpad, standok a valódi teremben – a kritikus méreteket előre egyeztetjük.</p></div></div>
+   <div class="card img rv d3"><div class="fr"><img src="img/t_editor.jpg" alt="Treedis 3D Editor"><div class="scan"></div><span class="cap">Kép: Treedis</span></div><div class="tx"><h3>3D Editor</h3><p>Saját 3D tárgyak és több mint 750 000 modell könyvtárból; zöld hátteres videó a térben, például köszöntő a lobbyban.</p></div></div>
+   <div class="card img rv d4"><div class="fr"><img src="img/t_nav.jpg" alt="Treedis beltéri navigáció"><div class="scan"></div><span class="cap">Kép: Treedis</span></div><div class="tx"><h3>Beltéri útvonalvezetés</h3><p>A krakkói Garni Hotelben a vendégek 20%-kal kevesebb időt töltöttek a szobájuk keresésével (Treedis-esettanulmány).</p></div></div>
+  </div>
+ </div>
+</section>
+
+<!-- 12 -->
+<section data-sec="Partnerek">
+ <div class="w grid2">
+  <div>
+   <div class="kick rv">Partnerek a térben</div>
+   <h2 class="rv d1">A reklámtábla <span class="hl">digitális, mérhető</span> változata</h2>
+   <ul class="ls rv d2">
+    <li><span>Partner logója, plakátja vagy videója <b>a megfelelő helyen</b>: lobby, wellness, rendezvénytér.</span></li>
+    <li><span>Kattintásra a partner <b>ajánlata vagy foglalása</b> nyílik meg.</span></li>
+    <li><span><b>Szezonhoz, kampányhoz</b> igazítva cserélhető.</span></li>
+    <li><span><b>Hőtérkép és kattintásszám:</b> a partner felé kimutatható, mennyien látták és nyitották meg – exportálható riportban, GDPR-kompatibilisen.</span></li>
+   </ul>
+   <p class="src rv d3">Előkészítendő: arculati anyag · hely és méret · link · megjelenési időszak · jóváhagyó</p>
+  </div>
+  <div class="fr rv d2" style="aspect-ratio:1200/630"><img src="img/t_analytics.jpg" alt="Treedis hőtérképes analitika"><div class="scan"></div><span class="cap">Kép: Treedis</span></div>
+ </div>
+</section>
+
+<!-- 13 -->
+<section data-sec="A sétán túl">
+ <div class="w grid2 rev">
+  <div class="fr rv d1" style="aspect-ratio:1052/592"><img src="img/merge.jpg" alt="Több modell egy babaház-nézetben"><div class="scan"></div><span class="cap">Kép: Matterport</span></div>
+  <div>
+   <div class="kick rv">A sétán túl · belső használat</div>
+   <h2 class="rv d1">Ugyanaz a modell <span class="hl">a csapatnak</span></h2>
+   <ul class="ls rv d2">
+    <li><span><b>Betanítás:</b> új kollégák a valódi terekben ismerkednek – vendégterek és háttérterületek.</span></li>
+    <li><span><b>Felújítás és karbantartás:</b> állapotok rögzítése, megjegyzések a pontos helyen, kevesebb helyszíni egyeztetés a kivitelezőkkel.</span></li>
+    <li><span><b>Előtte–utána:</b> időszakos újrafelméréssel összevethető állapotok.</span></li>
+   </ul>
+   <p class="src rv d3">A Matterport szállodai megoldásainak része; nálunk opcionális, később bővíthető irány.</p>
+  </div>
+ </div>
+</section>
+
+<!-- 14 -->
+<section data-sec="Referenciák">
+ <div class="w">
+  <div class="kick rv">Akik már így használják</div>
+  <h2 class="rv d1">Szállodák, <span class="hl">amelyek továbbléptek</span></h2>
+  <div class="cards c4" style="margin-top:10px">
+   <div class="card rv d2"><div class="stat">+25%</div><h3>Lindner Hotels</h3><p>Online elköteleződés a teljes hotelek digitális másával – szobák, éttermek, konferenciatermek.</p><p class="src">Forrás: Matterport</p></div>
+   <div class="card rv d3"><div class="stat">240+</div><h3>TUI Sensatori</h3><p>Felmért tér kilenc szállodában, foglalásra és üzemeltetési dokumentációra is.</p><p class="src">Forrás: Matterport</p></div>
+   <div class="card rv d4"><div class="stat">−20%</div><h3>Garni Hotel, Krakkó</h3><p>Kevesebb szobakeresési idő beltéri navigációval; 4,7/5 elégedettség.</p><p class="src">Forrás: Treedis</p></div>
+   <div class="card rv d5"><div class="stat">9</div><h3>NEXUS360 Budapest</h3><p>Continental Hotel Budapest, Gundel, Halászbástya, Magyar Zene Háza, Millenáris és más helyszínek.</p><p class="src">Saját referenciák</p></div>
+  </div>
+ </div>
+</section>
+
+<!-- 15 -->
+<section data-sec="Javaslat">
+ <div class="w">
+  <div class="kick rv">Javasolt bővítési szintek</div>
+  <h2 class="rv d1">Három lépcső – <span class="hl">a Continental Hotel Budapest tempójában</span></h2>
+  <div class="cards c3" style="margin-top:8px">
+   <div class="pk rv d2"><div class="lvl">Szint 1 · Matterport</div><h3>Okos séta</h3><p class="for">Gyors indulás a meglévő modellekben.</p>
+    <ul><li>Infópontok: termek, szobák, wellness, étterem</li><li>Vezetett körséták és külön nézetek</li><li>Sematikus alaprajz, méretek</li><li>Street View, weboldal, QR</li><li>Látogatottsági riport</li></ul></div>
+   <div class="pk hot rv d3"><span class="badge">Ajánlott</span><div class="lvl">Szint 2 · + Treedis Studio</div><h3>Értékesítő séta</h3><p class="for">A séta ajánlatkérést és foglalást hoz.</p>
+    <div class="plus">Az 1. szint, plusz:</div>
+    <ul><li>A Continental Hotel Budapest arculatával</li><li>Foglalás- és ajánlatkérő gombok</li><li>Kattintható tárgyak, partnerfelületek</li><li>Hőtérképes, exportálható analitika</li><li>Chat és élő közös bejárás</li></ul></div>
+   <div class="pk rv d4"><div class="lvl">Szint 3 · Rendezvény-stúdió</div><h3>Látványtervezés</h3><p class="for">A szervező előre látja az eseményt.</p>
+    <div class="plus">A 2. szint, plusz:</div>
+    <ul><li>3D bankett-, színházi, kiállítói elrendezések</li><li>Üres terem nézet (Defurnish)</li><li>AI-dekoráció és stílusváltozatok (TAI Design)</li><li>Beltéri útvonalvezetés</li></ul></div>
+  </div>
+  <p class="src rv d5">Díjazás: egyszeri kialakítás + rendszeres platform- és tartalomgondozási díj, külön tételként. A pontos tartalmat az ajánlat rögzíti.</p>
+ </div>
+</section>
+
+<!-- 16 -->
+<section data-sec="Következő lépés">
+ <div class="w">
+  <div class="kick rv">Javasolt következő lépés</div>
+  <h2 class="rv d1" style="max-width:900px">Kicsiben indulunk, <span class="hl">mérhető céllal</span></h2>
+  <div class="steps rv d2">
+   <div class="st"><div class="k">1</div><h3>30 perces egyeztetés</h3><p>Mi a legfontosabb most: rendezvények, szobák, wellness vagy partnerek?</p></div>
+   <div class="st"><div class="k">2</div><h3>Első modul, 1–2 elemmel</h3><p>Körülhatárolt indulás, előre rögzített céllal és mérőszámmal.</p></div>
+   <div class="st"><div class="k">3</div><h3>Részletes ajánlat</h3><p>Egyszeri munka és rendszeres díjak külön, átlátható tételekben.</p></div>
+  </div>
+  <div class="contact rv d3"><img src="img/logo.png" alt="NEXUS360"><span>Hajdu Dénes</span><a href="mailto:nexus@nexus360.hu">nexus@nexus360.hu</a><span>+36 70 432 0521</span><a href="https://nexus360.hu" target="_blank" rel="noopener">nexus360.hu</a></div>
+ </div>
+</section>
+
+</main>
+<footer>
+ <div class="nav"><button id="pv" aria-label="Előző"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 6l-6 6 6 6"/></svg></button><button id="nx" aria-label="Következő"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6l6 6-6 6"/></svg></button></div>
+ <div class="count"><b id="cur">01</b> / <span id="tot"></span></div>
+ <div class="prog"><i id="bar"></i></div>
+ <div class="sec" id="secn"></div>
+</footer>
+<script>
+(function(){
+const S=[...document.querySelectorAll('#deck section')],N=S.length;let idx=-1;
+const pad=n=>String(n).padStart(2,'0');document.getElementById('tot').textContent=pad(N);
+function fromHash(){const m=/^#dia-(\d+)$/.exec(location.hash);return m?Math.min(N-1,Math.max(0,+m[1]-1)):0}
+let typer;
+function go(i,push=true){i=Math.max(0,Math.min(N-1,i));if(i===idx)return;idx=i;
+ S.forEach((s,k)=>s.classList.toggle('on',k===i));S[i].scrollTop=0;
+ document.getElementById('cur').textContent=pad(i+1);document.getElementById('bar').style.width=((i+1)/N*100)+'%';
+ document.getElementById('secn').textContent=S[i].dataset.sec||'';
+ if(push){try{history.replaceState(null,'','#dia-'+(i+1))}catch(e){}}
+ if(S[i].querySelector('#cmp'))runCmp();}
+document.getElementById('nx').onclick=()=>go(idx+1);document.getElementById('pv').onclick=()=>go(idx-1);
+addEventListener('keydown',e=>{if(['ArrowRight','PageDown',' '].includes(e.key)){e.preventDefault();go(idx+1)}if(['ArrowLeft','PageUp'].includes(e.key)){e.preventDefault();go(idx-1)}if(e.key==='Home')go(0);if(e.key==='End')go(N-1)});
+let wl=0;addEventListener('wheel',e=>{const s=S[idx];if(s.scrollHeight>s.clientHeight+4)return;const t=Date.now();if(t-wl<900||Math.abs(e.deltaY)<20)return;wl=t;go(idx+(e.deltaY>0?1:-1))},{passive:true});
+let tx=0,ty=0,inCmp=false;addEventListener('touchstart',e=>{tx=e.touches[0].clientX;ty=e.touches[0].clientY;inCmp=!!e.target.closest('#cmp')},{passive:true});
+addEventListener('touchend',e=>{if(inCmp)return;const dx=e.changedTouches[0].clientX-tx,dy=e.changedTouches[0].clientY-ty;if(Math.abs(dx)>50&&Math.abs(dx)>Math.abs(dy)*1.3)go(idx+(dx<0?1:-1))},{passive:true});
+addEventListener('hashchange',()=>go(fromHash(),false));
+document.getElementById('fs').onclick=()=>{try{if(!document.fullscreenElement)document.documentElement.requestFullscreen().catch(()=>{});else document.exitFullscreen()}catch(e){}};
+/* compare slider */
+const cmp=document.getElementById('cmp'),af=cmp.querySelector('.af'),bar=cmp.querySelector('.bar');let user=false,anim;
+function setP(p){p=Math.max(0,Math.min(100,p));af.style.clipPath=`inset(0 0 0 ${p}%)`;bar.style.left=p+'%'}
+function pos(e){const r=cmp.getBoundingClientRect();const x=(e.touches?e.touches[0].clientX:e.clientX)-r.left;return x/r.width*100}
+let drag=false;cmp.addEventListener('pointerdown',e=>{drag=true;user=true;cancelAnimationFrame(anim);setP(pos(e));try{cmp.setPointerCapture(e.pointerId)}catch(_){}});
+cmp.addEventListener('pointermove',e=>{if(drag)setP(pos(e))});addEventListener('pointerup',()=>drag=false);
+function runCmp(){if(user)return;const t0=performance.now();cancelAnimationFrame(anim);
+ const f=t=>{const k=(t-t0)/1000;if(k>4.2){setP(50);return}setP(50+Math.sin(k*1.5)*38*Math.max(0,1-k/4.6)+(k<.4?0:0));anim=requestAnimationFrame(f)};anim=requestAnimationFrame(f);
+ const txt='Változtasd a teret indusztriális stílusúra, sötét fával és téglával';const el=document.getElementById('typed');el.textContent='';clearInterval(typer);let n=0;typer=setInterval(()=>{el.textContent=txt.slice(0,++n);if(n>=txt.length)clearInterval(typer)},38)}
+/* subtle parallax on frames */
+addEventListener('pointermove',e=>{if(matchMedia('(max-width:900px)').matches)return;const x=e.clientX/innerWidth-.5,y=e.clientY/innerHeight-.5;const s=S[idx];if(!s)return;s.querySelectorAll('.fr').forEach(f=>{f.style.transform=`perspective(1200px) rotateY(${x*3}deg) rotateX(${-y*3}deg)`})});
+go(fromHash(),false);
+})();
+</script>
+</body>
+</html>
