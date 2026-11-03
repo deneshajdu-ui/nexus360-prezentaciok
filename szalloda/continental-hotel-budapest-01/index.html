@@ -141,14 +141,19 @@ section.on.div .big span{clip-path:inset(0 0 0 0)}
 .welcome .wmenu{position:absolute;left:0;right:0;bottom:12px;z-index:3;display:flex;justify-content:center;gap:8px}
 .welcome .wmenu span{font-size:11.5px;padding:6px 11px;border-radius:999px;background:rgba(0,0,0,.6);border:1px solid rgba(255,255,255,.25);backdrop-filter:blur(6px)}
 .cap2{position:absolute;right:10px;top:8px;z-index:4;font-size:7px;color:rgba(255,255,255,.45)}
-.pcard{position:absolute;left:5%;top:9%;width:36%;z-index:3;background:rgba(255,255,255,.96);color:#111;border-radius:12px;padding:10px;box-shadow:0 18px 40px rgba(0,0,0,.45);transform:perspective(900px) rotateY(10deg)}
-.plogo{height:54px;border-radius:8px;background:linear-gradient(135deg,#1B8386,#2B00FF);display:flex;flex-direction:column;align-items:center;justify-content:center;color:#fff;font-family:Outfit;font-weight:700;letter-spacing:.2em;font-size:15px}
-.plogo small{font-family:Inter;font-weight:400;letter-spacing:.06em;font-size:9px;opacity:.85}
-.pweb{margin-top:8px;border:1px solid #ddd;border-radius:6px;overflow:hidden;padding:0 0 8px}
-.pweb i{display:block;height:9px;background:#eee;border-bottom:1px solid #ddd}
-.pweb b{display:block;height:7px;margin:8px 8px 0;border-radius:3px;background:#cfcfd6;width:70%}.pweb b.s{width:45%}
-.pweb em{display:block;height:34px;margin:8px 8px 0;border-radius:4px;background:linear-gradient(120deg,#e9e9ee,#d7d7df)}
-.pcap{margin-top:8px;font-size:10.5px;font-weight:600;color:#222}
+.pspace{position:absolute;left:17%;top:20%;width:27%;min-width:150px;z-index:3;perspective:900px}
+.pcard{background:rgba(255,255,255,.95);color:#111;border-radius:8px;padding:8px;box-shadow:0 14px 30px rgba(0,0,0,.35);transform:rotateY(16deg) rotateX(3deg);transform-origin:left center;animation:pfloat 5s ease-in-out infinite}
+@keyframes pfloat{0%,100%{translate:0 0}50%{translate:0 -5px}}
+.pshadow{width:70%;height:10px;margin:22px auto 0;border-radius:50%;background:radial-gradient(closest-side,rgba(0,0,0,.35),transparent)}
+.plogo{display:flex;align-items:center;gap:8px;padding:2px 2px 7px;border-bottom:1px solid #e3e3e8}
+.plogo svg{flex:none}
+.plogo b{display:block;font-family:Outfit;font-size:14px;letter-spacing:.08em;color:#1a1a2e}
+.plogo small{display:block;font-size:7.5px;line-height:1.25;color:#555}
+.pweb{margin-top:7px;border:1px solid #ddd;border-radius:5px;overflow:hidden;padding:0 0 7px}
+.pweb i{display:block;height:7px;background:#eee;border-bottom:1px solid #ddd}
+.pweb b{display:block;height:5px;margin:7px 7px 0;border-radius:3px;background:#cfcfd6;width:70%}.pweb b.s{width:45%}
+.pweb em{display:block;height:26px;margin:7px 7px 0;border-radius:3px;background:linear-gradient(120deg,rgba(43,0,255,.25),rgba(27,131,134,.3))}
+.pcap{margin-top:7px;font-size:9px;font-weight:600;color:#222}
 .note{position:absolute;left:5%;top:9%;width:44%;z-index:3;background:#fff;color:#111;border-radius:12px;padding:12px 14px;box-shadow:0 16px 40px rgba(0,0,0,.4)}
 .note:after{content:"";position:absolute;left:30px;bottom:-8px;width:16px;height:16px;background:#fff;transform:rotate(45deg)}
 .note .nh{display:flex;gap:10px;align-items:center;margin-bottom:8px}.note .av{width:30px;height:30px;border-radius:50%;border:2px solid #e8305c;color:#e8305c;display:grid;place-items:center;font-size:11px;font-weight:700;flex:none}
@@ -170,8 +175,8 @@ section.on.div .big span{clip-path:inset(0 0 0 0)}
 .cta{display:inline-flex;align-items:center;gap:10px;padding:13px 21px;border-radius:999px;background:transparent;color:#fff;text-decoration:none;font-family:Outfit;font-weight:500;font-size:15px;box-shadow:inset 0 0 0 1px var(--line);transition:.3s}
 .cta:hover{box-shadow:inset 0 0 0 1px var(--tealL)}
 .cta svg{width:15px;height:15px}
-.contact{display:flex;flex-wrap:wrap;align-items:center;gap:12px 28px;padding:18px 22px;border-radius:14px;border:1px solid var(--line);background:var(--glass);width:fit-content;max-width:100%}
-.contact img{height:26px}.contact span{font-family:'JetBrains Mono';font-size:13px;color:#e6e6ea}.contact a{color:#fff;text-decoration:none}
+.contact{display:flex;flex-wrap:wrap;align-items:center;gap:10px 26px;padding:12px 4px;width:fit-content;max-width:100%}
+.contact img{height:22px;opacity:.9}.contact a{font-family:'JetBrains Mono';font-size:12px;letter-spacing:.06em;color:var(--mute);text-decoration:none;transition:color .2s}.contact a:hover{color:#fff}
 .sum .card h3{font-size:17px}
 @media (max-width:900px){
  :root{--padB:96px}
@@ -411,8 +416,8 @@ section.on.div .big span{clip-path:inset(0 0 0 0)}
    </ul>
   </div>
   <div class="fr rv d2" style="aspect-ratio:1400/808"><img src="img/hero.jpg" alt="Partner logója és weboldala a szálloda lobbyjának terében"><div class="scan"></div>
-   <div class="pcard"><div class="plogo"><span>PARTNER</span><small>logó</small></div><div class="pweb"><i></i><b></b><b class="s"></b><em></em></div><div class="pcap">Partner · weboldal egy kattintással</div></div>
-   <div class="tag g t2" style="left:44%;top:80%"><i></i>Logó és weboldal a térben</div></div>
+   <div class="pspace"><div class="pcard"><div class="plogo"><svg viewBox="0 0 40 40" width="30" height="30"><circle cx="20" cy="20" r="18" fill="none" stroke="#1B8386" stroke-width="3"/><path d="M13 11h7a9 9 0 0 1 0 18h-7z" fill="#2B00FF"/><circle cx="27" cy="13" r="3" fill="#1B8386"/></svg><div><b>DKMA</b><small>Digitális Kultúra<br>Mindenkié Alapítvány</small></div></div><div class="pweb"><i></i><b></b><b class="s"></b><em></em></div><div class="pcap">Támogatott ügy · weboldal</div></div><div class="pshadow"></div></div>
+   <div class="tag g t2" style="left:40%;top:80%"><i></i>Logó és weboldal a térben</div></div>
  </div>
 </section>
 
@@ -529,7 +534,7 @@ section.on.div .big span{clip-path:inset(0 0 0 0)}
    <div class="st"><div class="k">3</div><h3>Közös értékelés</h3><p>Átbeszéljük a tapasztalatokat és az eredményeket, és finomítjuk, ami szükséges.</p></div>
    <div class="st"><div class="k">4</div><h3>Kiterjesztés a többi területre</h3><p>A bevált megoldásokat fokozatosan kiterjesztjük a többi térre és mindkét sétára.</p></div>
   </div>
-  <div class="contact rv d3"><img src="img/logo.png" alt="NEXUS360"><span>Hajdu Dénes</span><a href="mailto:nexus@nexus360.hu">nexus@nexus360.hu</a><span>+36 70 432 0521</span></div>
+  <div class="contact rv d3"><img src="img/logo.png" alt="NEXUS360"><a href="mailto:nexus@nexus360.hu">nexus@nexus360.hu</a><a href="tel:+36704320521">+36 70 432 0521</a></div>
  </div>
 </section>
 
