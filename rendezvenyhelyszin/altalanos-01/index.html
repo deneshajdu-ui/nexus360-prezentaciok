@@ -78,7 +78,7 @@ section.on.cover .bgimg video{transform:scale(1.01)}
 /* cards */
 .cards{display:grid;gap:14px}
 .c2{grid-template-columns:repeat(2,minmax(0,1fr))}.c3{grid-template-columns:repeat(3,minmax(0,1fr))}.c4{grid-template-columns:repeat(4,minmax(0,1fr))}
-.card{position:relative;padding:20px;border-radius:14px;background:var(--glass);border:1px solid var(--line);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);transition:.35s;overflow:hidden}
+.card{position:relative;padding:20px;border-radius:14px;background:rgba(14,14,17,.86);border:1px solid var(--line);transition:.35s;overflow:hidden}
 .card:hover{border-color:rgba(47,179,182,.7);transform:translateY(-3px);box-shadow:0 18px 40px -18px rgba(27,131,134,.8)}
 .card .n{font-family:'JetBrains Mono';font-size:11px;color:var(--tL);letter-spacing:.12em;margin-bottom:10px;display:block;text-transform:uppercase}
 .card p{font-size:14px;line-height:1.55;color:var(--mute)}
@@ -240,7 +240,7 @@ blockquote em{font-style:normal;color:#fff;font-weight:500;background:linear-gra
 
 <!-- 1 COVER -->
 <section class="cover" data-sec="Bevezető">
- <div class="bgimg"><video src="img/hero.mp4" poster="img/hero.jpg" autoplay muted loop playsinline></video></div>
+ <div class="bgimg"><video src="img/hero.mp4" poster="img/hero.jpg" preload="auto" autoplay muted loop playsinline></video></div>
  <div class="tag t1" style="left:66%;top:34%"><i></i>Budapest · 3D séta</div>
  <div class="tag p t2" style="left:74%;top:56%"><i></i>Rendezvényterem · befogadóképesség</div>
  <div class="in"><div>
@@ -264,7 +264,7 @@ blockquote em{font-style:normal;color:#fff;font-weight:500;background:linear-gra
    </ul>
    <p class="note rv d4"><b>A rejtett költség:</b> az értékesítő és a rendezvényes kolléga ideje – és a lassabb döntés.</p>
   </div>
-  <div class="fr rv d2" style="aspect-ratio:3/2"><img src="img/planners.jpg" alt="Rendezvényszervezők egy helyszín 3D sétáját nézik laptopon"><div class="scan"></div>
+  <div class="fr rv d2" style="aspect-ratio:3/2"><img loading="lazy" src="img/planners.jpg" alt="Rendezvényszervezők egy helyszín 3D sétáját nézik laptopon"><div class="scan"></div>
    <div class="tag p t1" style="left:6%;top:10%"><i></i>Elfér-e a regisztráció?</div>
    <div class="tag t2" style="left:46%;top:78%"><i></i>Hol lesz a kávészünet?</div></div>
  </div>
@@ -307,7 +307,7 @@ blockquote em{font-style:normal;color:#fff;font-weight:500;background:linear-gra
 <section data-sec="A szervező szemével">
  <div class="w grid2 rev">
   <div class="rv d1">
-   <div class="fr" style="aspect-ratio:916/372"><img src="img/measure.jpg" alt="Méretfelvétel egy rendezvényterem 3D sétájában"><div class="scan"></div>
+   <div class="fr" style="aspect-ratio:916/372"><img loading="lazy" src="img/measure.jpg" alt="Méretfelvétel egy rendezvényterem 3D sétájában"><div class="scan"></div>
     <div class="tag t1" style="left:4%;top:12%"><i></i>Méret a sétában</div></div>
    <div class="cards c2" style="margin-top:14px">
     <div class="card"><div class="stat" data-count="43">43<small>%</small></div><p>az európai szervezők közül a pontos online fotókra és videókra támaszkodik a döntésnél</p></div>
@@ -340,7 +340,7 @@ blockquote em{font-style:normal;color:#fff;font-weight:500;background:linear-gra
    </ul>
    <div class="rv d3" style="margin-top:26px"><a class="cta" href="https://my.matterport.com/show/?m=te3tmG3iYRe" target="_blank" rel="noopener">Nézzen körül egy elkészült helyszínen <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M8 7h9v9"/></svg></a></div>
   </div>
-  <div class="fr rv d2" style="aspect-ratio:16/9"><video src="img/walk.mp4" poster="img/walk.jpg" autoplay muted loop playsinline></video><div class="scan"></div>
+  <div class="fr rv d2" style="aspect-ratio:16/9"><video src="img/walk.mp4" poster="img/walk.jpg" preload="none" muted loop playsinline></video><div class="scan"></div>
    <div class="tag t1" style="left:5%;top:9%"><i></i>Rendezvényszint · teremadatlap</div>
    <div class="tag p t2" style="left:52%;top:72%"><i></i>Befogadóképesség · elrendezések</div>
    <span style="position:absolute;right:10px;bottom:8px;z-index:4;font-size:8px;color:rgba(255,255,255,.5)">Illusztráció</span></div>
@@ -386,21 +386,21 @@ blockquote em{font-style:normal;color:#fff;font-weight:500;background:linear-gra
   </div>
   <div class="rv d3">
    <div class="pan grid2 act">
-    <div class="fr" style="aspect-ratio:16/9;background:#000"><img src="img/dollhouse-ballroom.jpg" alt="Rendezvényterem 3D modellje bankettelrendezéssel"><div class="tag t1" style="left:5%;top:9%"><i></i>Bankettelrendezés · 3D nézet</div></div>
+    <div class="fr" style="aspect-ratio:16/9;background:#000"><img loading="lazy" src="img/dollhouse-ballroom.jpg" alt="Rendezvényterem 3D modellje bankettelrendezéssel"><div class="tag t1" style="left:5%;top:9%"><i></i>Bankettelrendezés · 3D nézet</div></div>
     <div><h3 style="font-size:24px;margin-bottom:16px">A szervező a döntés előtt látja, mit kap</h3><ul class="ls">
      <li><span><b>Termek és elrendezések</b>a felvett elrendezés bejárható; a méretek és az alaprajz segítenek megtervezni a bankett-, színházi vagy koktélelrendezést</span></li>
      <li><span><b>Kiszolgáló terek és megközelítés</b>regisztráció, rakodás, akadálymentesség és a terek kapcsolata egy helyen, az ajánlathoz csatolva</span></li>
      <li><span><b>Különleges helyszínek</b>kastélyok, birtokok, pincészetek: a nehezebben megközelíthető helyeken a távoli megtekintés különösen sokat segít</span></li></ul></div>
    </div>
    <div class="pan grid2">
-    <div class="fr" style="aspect-ratio:16/9"><video src="img/rooftop.mp4" poster="img/rooftop.jpg" muted loop playsinline></video><div class="tag t1" style="left:5%;top:9%"><i></i>Tetőterasz · szolgáltatások</div></div>
+    <div class="fr" style="aspect-ratio:16/9"><video src="img/rooftop.mp4" poster="img/rooftop.jpg" preload="none" muted loop playsinline></video><div class="tag t1" style="left:5%;top:9%"><i></i>Tetőterasz · szolgáltatások</div></div>
     <div><h3 style="font-size:24px;margin-bottom:16px">Egy felvétel, több üzleti cél</h3><ul class="ls">
      <li><span><b>Rendezvény- és konferenciatermek</b>a kiindulópont: a MICE-értékesítés támogatása, szekciótermekkel együtt</span></li>
      <li><span><b>A teljes vendégélmény</b>lobbi, étterem és bár, közösségi terek, terasz, szobatípusok – foglalás előtt megmutatva</span></li></ul>
      <div class="kpi"><b>9,9 millió</b><span>külföldi vendég szállt meg 2025-ben a hazai szálláshelyeken, 12%-kal több, mint egy évvel korábban (KSH). Nekik a többnyelvű 3D séta gyakran az első találkozás a helyszínnel.</span></div></div>
    </div>
    <div class="pan grid2">
-    <div class="fr" style="aspect-ratio:16/9"><img src="img/restaurant.jpg" alt="Étterem vendégtere a 3D sétában"><div class="tag t1" style="left:5%;top:9%"><i></i>Különterem · kapacitás</div><div class="tag p t2" style="left:48%;top:76%"><i></i>Menü és asztalfoglalás</div><span style="position:absolute;right:10px;bottom:8px;z-index:4;font-size:8px;color:rgba(255,255,255,.5)">Illusztráció</span></div>
+    <div class="fr" style="aspect-ratio:16/9"><img loading="lazy" src="img/restaurant.jpg" alt="Étterem vendégtere a 3D sétában"><div class="tag t1" style="left:5%;top:9%"><i></i>Különterem · kapacitás</div><div class="tag p t2" style="left:48%;top:76%"><i></i>Menü és asztalfoglalás</div><span style="position:absolute;right:10px;bottom:8px;z-index:4;font-size:8px;color:rgba(255,255,255,.5)">Illusztráció</span></div>
     <div><h3 style="font-size:24px;margin-bottom:16px">Különterem és vendégélmény</h3><ul class="ls">
      <li><span><b>Különterem és rendezvények</b>céges vacsorák, csoportos és magánrendezvények: a szervező előre látja a különtermet és a vendégteret</span></li>
      <li><span><b>A hangulat is eladja</b>az átlagos vendég is körülnézhet asztalfoglalás előtt, a weboldalon vagy a Google-profilon</span></li>
@@ -416,10 +416,10 @@ blockquote em{font-style:normal;color:#fff;font-weight:500;background:linear-gra
   <div class="kick rv">Hazai referenciák</div>
   <h2 class="rv d1" style="max-width:980px">Helyszínek, <span class="hl">amelyeket bejárhatóvá tettünk</span></h2>
   <div class="refs">
-   <a class="ref rv d2" href="https://my.matterport.com/show/?m=bo4Mw1pqD8r" target="_blank" rel="noopener"><div class="fr"><img src="img/ref-hall.jpg" alt="Rendezvényterem a 3D sétában"><i class="hot"></i></div><h3>Rendezvényterem</h3><span class="open">3D séta megnyitása ↗</span></a>
-   <a class="ref rv d3" href="https://my.matterport.com/show/?m=BffbsmCw7zk" target="_blank" rel="noopener"><div class="fr"><img src="img/ref-conference.jpg" alt="Konferenciaterem a 3D sétában"><i class="hot"></i></div><h3>Konferenciaterem</h3><span class="open">3D séta megnyitása ↗</span></a>
-   <a class="ref rv d4" href="https://my.matterport.com/show/?m=te3tmG3iYRe" target="_blank" rel="noopener"><div class="fr"><img src="img/ref-hotel.jpg" alt="Szálloda a 3D sétában"><i class="hot"></i></div><h3>Szálloda</h3><span class="open">3D séta megnyitása ↗</span></a>
-   <a class="ref rv d5" href="https://my.matterport.com/show/?m=pip6bDbdm2B" target="_blank" rel="noopener"><div class="fr"><img src="img/ref-culture.jpg" alt="Kulturális rendezvénytér a 3D sétában"><i class="hot"></i></div><h3>Kulturális rendezvénytér</h3><span class="open">3D séta megnyitása ↗</span></a>
+   <a class="ref rv d2" href="https://my.matterport.com/show/?m=bo4Mw1pqD8r" target="_blank" rel="noopener"><div class="fr"><img loading="lazy" src="img/ref-hall.jpg" alt="Rendezvényterem a 3D sétában"><i class="hot"></i></div><h3>Rendezvényterem</h3><span class="open">3D séta megnyitása ↗</span></a>
+   <a class="ref rv d3" href="https://my.matterport.com/show/?m=BffbsmCw7zk" target="_blank" rel="noopener"><div class="fr"><img loading="lazy" src="img/ref-conference.jpg" alt="Konferenciaterem a 3D sétában"><i class="hot"></i></div><h3>Konferenciaterem</h3><span class="open">3D séta megnyitása ↗</span></a>
+   <a class="ref rv d4" href="https://my.matterport.com/show/?m=te3tmG3iYRe" target="_blank" rel="noopener"><div class="fr"><img loading="lazy" src="img/ref-hotel.jpg" alt="Szálloda a 3D sétában"><i class="hot"></i></div><h3>Szálloda</h3><span class="open">3D séta megnyitása ↗</span></a>
+   <a class="ref rv d5" href="https://my.matterport.com/show/?m=pip6bDbdm2B" target="_blank" rel="noopener"><div class="fr"><img loading="lazy" src="img/ref-culture.jpg" alt="Kulturális rendezvénytér a 3D sétában"><i class="hot"></i></div><h3>Kulturális rendezvénytér</h3><span class="open">3D séta megnyitása ↗</span></a>
   </div>
   <div class="tlab rv d5">Ügyfeleink között</div>
   <div class="ticker rv d6"><div class="tr" id="tick"><span>Continental Hotel Budapest</span><span>Millenáris</span><span>Magyar Zene Háza</span><span>Néprajzi Múzeum</span><span>Gundel</span><span>Foton</span><span>VakVarjú éttermek</span><span>Mooncity</span><span>Budapest Music Center</span><span>Halászbástya Étterem</span></div></div>
@@ -435,7 +435,7 @@ blockquote em{font-style:normal;color:#fff;font-weight:500;background:linear-gra
    <blockquote class="rv d2">A 3D-s bejárás nem csupán látványos, de <em>rendkívül praktikus is</em>; könnyedén megoszthatom partnereinkkel, így ők maguk is bejárhatják a helyszínt. […] Kiemelkedő volt a partner segítőkész és rugalmas hozzáállása.</blockquote>
    <div class="who rv d3"><div><b>Bali Zsuzsanna</b><small>Marketing Manager · szálloda és étterem</small></div></div>
   </div>
-  <div class="im"><img src="img/ref-hotel.jpg" alt=""></div>
+  <div class="im"><img loading="lazy" src="img/ref-hotel.jpg" alt=""></div>
  </div>
 </section>
 
@@ -456,7 +456,7 @@ blockquote em{font-style:normal;color:#fff;font-weight:500;background:linear-gra
 <!-- 12 MÉRHETŐSÉG ÉS TÉRADATOK -->
 <section data-sec="Mérés és téradat">
  <div class="w grid2 rev">
-  <div class="fr rv d1" style="aspect-ratio:16/9;background:#000"><img src="img/dollhouse-hotel.jpg" alt="Szálloda 3D modellje szintekkel"><div class="scan"></div>
+  <div class="fr rv d1" style="aspect-ratio:16/9;background:#000"><img loading="lazy" src="img/dollhouse-hotel.jpg" alt="Szálloda 3D modellje szintekkel"><div class="scan"></div>
    <div class="tag t1" style="left:6%;top:12%"><i></i>Alaprajz · 2D és 3D</div>
    <div class="tag p t2" style="left:50%;top:80%"><i></i>Megtekintések csatornánként</div></div>
   <div>
@@ -549,9 +549,9 @@ blockquote em{font-style:normal;color:#fff;font-weight:500;background:linear-gra
    <div class="contact rv d5"><img src="img/logo.png" alt="NEXUS360"><span>Hajdu Dénes, alapító</span><a href="mailto:nexus@nexus360.hu">nexus@nexus360.hu</a><a href="tel:+36704320521">+36 70 432 0521</a></div>
   </div>
   <div class="rv d2" style="display:grid;gap:16px;justify-items:start">
-   <div class="fr" style="aspect-ratio:16/9;width:100%"><img src="img/ref-culture.jpg" alt="Kulturális rendezvénytér a 3D sétában"><div class="scan"></div><div class="tag t1" style="left:5%;top:9%"><i></i>Elkészült 3D séta</div></div>
+   <div class="fr" style="aspect-ratio:16/9;width:100%"><img loading="lazy" src="img/ref-culture.jpg" alt="Kulturális rendezvénytér a 3D sétában"><div class="scan"></div><div class="tag t1" style="left:5%;top:9%"><i></i>Elkészült 3D séta</div></div>
    <a class="qrc" href="https://my.matterport.com/show/?m=te3tmG3iYRe" target="_blank" rel="noopener" style="text-decoration:none;color:inherit">
-    <div class="q"><img src="img/qr-demo.svg" alt="QR-kód egy elkészült 3D sétához"></div>
+    <div class="q"><img loading="lazy" src="img/qr-demo.svg" alt="QR-kód egy elkészült 3D sétához"></div>
     <div><h3>Nézzen körül most</h3><p>Olvassa be a QR-kódot a telefonjával, vagy kattintson: egy elkészült helyszín 3D sétája nyílik meg.</p></div>
    </a>
   </div>
