@@ -41,7 +41,7 @@ h1,h2,h3{font-family:Outfit,sans-serif;font-weight:600;letter-spacing:-.025em}
 h1{font-size:clamp(40px,5.6vw,86px);line-height:1.08}
 h2{font-size:clamp(28px,3.5vw,50px);line-height:1.16;margin-bottom:22px}
 h3{font-size:18px;letter-spacing:-.01em;line-height:1.25;margin-bottom:6px}
-.hl{color:#fff;background:var(--t);padding:.02em .16em .06em;-webkit-box-decoration-break:clone;box-decoration-break:clone;border-radius:.08em}
+.hl{color:#fff;background:#2B00FF;padding:.02em .16em .06em;-webkit-box-decoration-break:clone;box-decoration-break:clone;border-radius:.08em}
 .pk{color:var(--p)}
 .lead{font-size:clamp(16px,1.3vw,19px);line-height:1.6;color:#d9d9de;font-weight:300;max-width:620px}
 .src{font-family:'JetBrains Mono';font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--dim);margin-top:14px;line-height:1.5}
@@ -59,9 +59,9 @@ section.on .fr .scan{animation:scan 2.4s .3s cubic-bezier(.6,0,.3,1) forwards}
 .tag{position:absolute;z-index:3;display:flex;align-items:center;gap:8px;padding:7px 12px 7px 8px;border-radius:999px;background:rgba(0,0,0,.74);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.18);font-size:12px;font-weight:500;white-space:nowrap;opacity:0;transform:scale(.8);transition:.5s cubic-bezier(.2,.9,.3,1.3)}
 section.on .tag{opacity:1;transform:none}
 section.on .tag.t1{transition-delay:1.1s}section.on .tag.t2{transition-delay:1.4s}section.on .tag.t3{transition-delay:1.7s}section.on .tag.t4{transition-delay:2s}
-.tag i{width:18px;height:18px;border-radius:50%;background:var(--t);box-shadow:0 0 0 4px rgba(27,131,134,.35);position:relative;flex:none}
+.tag i{width:18px;height:18px;border-radius:50%;background:#2B00FF;box-shadow:0 0 0 4px rgba(43,0,255,.3);position:relative;flex:none}
 .tag.p i{background:var(--p);box-shadow:0 0 0 4px rgba(254,89,101,.3)}
-.tag i:after{content:"";position:absolute;inset:-6px;border-radius:50%;border:1.5px solid var(--tL);animation:ping 2.2s infinite}
+.tag i:after{content:"";position:absolute;inset:-6px;border-radius:50%;border:1.5px solid #2B00FF;animation:ping 2.2s infinite}
 .tag.p i:after{border-color:var(--p)}
 @keyframes ping{from{transform:scale(.6);opacity:1}to{transform:scale(1.6);opacity:0}}
 /* cover */
@@ -143,7 +143,7 @@ section.on .stp,section.on .arr{opacity:1;transform:none}
 .ref .fr{aspect-ratio:4/3}
 .ref .fr .hot{position:absolute;right:14px;bottom:14px;z-index:3;width:16px;height:16px;border-radius:50%;background:var(--p);box-shadow:0 0 0 4px rgba(254,89,101,.3)}
 .ref .fr .hot:after{content:"";position:absolute;inset:-6px;border-radius:50%;border:1.5px solid var(--p);animation:ping 2.2s infinite}
-.ref h3{font-size:16px;margin-top:12px}
+.ref{display:block;color:inherit;text-decoration:none}.ref h3{font-size:16px;margin-top:12px}.ref .open{display:block;margin-top:4px;font-family:'JetBrains Mono';font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--mute);transition:color .25s}.ref:hover .open{color:#fff}.ref:hover .fr{border-color:rgba(254,89,101,.7)}.ref .fr img{transition:transform .6s}.ref:hover .fr img{transform:scale(1.05)}
 .ticker{margin-top:34px;overflow:hidden;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:16px 0;-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
 .ticker .tr{display:flex;gap:44px;width:max-content;animation:tick 38s linear infinite}
 .ticker span{font-family:Outfit;font-size:clamp(17px,1.5vw,22px);font-weight:500;color:#e6e6ea;white-space:nowrap;display:flex;align-items:center;gap:44px}
@@ -416,10 +416,10 @@ blockquote em{font-style:normal;color:#fff;font-weight:500;background:linear-gra
   <div class="kick rv">Hazai referenciák</div>
   <h2 class="rv d1" style="max-width:980px">Helyszínek, <span class="hl">amelyeket bejárhatóvá tettünk</span></h2>
   <div class="refs">
-   <div class="ref rv d2"><div class="fr"><img src="img/ref-hall.jpg" alt="Rendezvényterem a 3D sétában"><i class="hot"></i></div><h3>Rendezvényterem</h3></div>
-   <div class="ref rv d3"><div class="fr"><img src="img/ref-conference.jpg" alt="Konferenciaterem a 3D sétában"><i class="hot"></i></div><h3>Konferenciaterem</h3></div>
-   <div class="ref rv d4"><div class="fr"><img src="img/ref-hotel.jpg" alt="Szálloda a 3D sétában"><i class="hot"></i></div><h3>Szálloda</h3></div>
-   <div class="ref rv d5"><div class="fr"><img src="img/ref-culture.jpg" alt="Kulturális rendezvénytér a 3D sétában"><i class="hot"></i></div><h3>Kulturális rendezvénytér</h3></div>
+   <a class="ref rv d2" href="https://my.matterport.com/show/?m=bo4Mw1pqD8r" target="_blank" rel="noopener"><div class="fr"><img src="img/ref-hall.jpg" alt="Rendezvényterem a 3D sétában"><i class="hot"></i></div><h3>Rendezvényterem</h3><span class="open">3D séta megnyitása ↗</span></a>
+   <a class="ref rv d3" href="https://my.matterport.com/show/?m=BffbsmCw7zk" target="_blank" rel="noopener"><div class="fr"><img src="img/ref-conference.jpg" alt="Konferenciaterem a 3D sétában"><i class="hot"></i></div><h3>Konferenciaterem</h3><span class="open">3D séta megnyitása ↗</span></a>
+   <a class="ref rv d4" href="https://my.matterport.com/show/?m=te3tmG3iYRe" target="_blank" rel="noopener"><div class="fr"><img src="img/ref-hotel.jpg" alt="Szálloda a 3D sétában"><i class="hot"></i></div><h3>Szálloda</h3><span class="open">3D séta megnyitása ↗</span></a>
+   <a class="ref rv d5" href="https://my.matterport.com/show/?m=pip6bDbdm2B" target="_blank" rel="noopener"><div class="fr"><img src="img/ref-culture.jpg" alt="Kulturális rendezvénytér a 3D sétában"><i class="hot"></i></div><h3>Kulturális rendezvénytér</h3><span class="open">3D séta megnyitása ↗</span></a>
   </div>
   <div class="tlab rv d5">Ügyfeleink között</div>
   <div class="ticker rv d6"><div class="tr" id="tick"><span>Continental Hotel Budapest</span><span>Millenáris</span><span>Magyar Zene Háza</span><span>Néprajzi Múzeum</span><span>Gundel</span><span>Foton</span><span>VakVarjú éttermek</span><span>Mooncity</span><span>Budapest Music Center</span><span>Halászbástya Étterem</span></div></div>
