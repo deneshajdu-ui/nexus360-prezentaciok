@@ -1,0 +1,21 @@
+/* NEXUS360 – mobilnézet minden kiküldött anyaghoz.
+   Telefonon (html.nx-m) a diás lapozás helyett folyamatosan görgethető oldal lesz;
+   asztali gépen semmi nem változik. */
+html.nx-m,html.nx-m body{height:auto!important;overflow-x:hidden!important;overflow-y:auto!important}
+html.nx-m main{position:static!important;inset:auto!important}
+html.nx-m section{position:relative!important;inset:auto!important;visibility:visible!important;opacity:1!important;transition:none!important;display:block!important;min-height:0!important;height:auto!important;overflow:visible!important;padding:76px 18px 40px!important}
+html.nx-m section+section{border-top:1px solid rgba(255,255,255,.07)}
+html.nx-m section.cover{display:flex!important;align-items:flex-end!important;min-height:100svh!important;padding:0!important}
+html.nx-m section.cover .in{padding:96px 18px 44px!important}
+html.nx-m section.div{display:flex!important;flex-direction:column;justify-content:center;min-height:52svh!important}
+html.nx-m section[style*="padding:0"]{padding:0!important}
+html.nx-m footer{display:none!important}
+html.nx-m #fs{display:none!important}
+html.nx-m header{background:linear-gradient(0deg,rgba(0,0,0,0),rgba(0,0,0,.92) 45%)!important;padding:14px 18px 22px!important}
+html.nx-m img,html.nx-m video{max-width:100%}
+html.nx-m .fr{max-width:100%}
+html.nx-m table{display:block;overflow-x:auto}
+.nxprog{position:fixed;left:0;top:0;height:3px;width:0;z-index:30;background:linear-gradient(90deg,#2B00FF,#1B8386);transition:width .25s;display:none}
+html.nx-m .nxprog{display:block}
+.nxtop{position:fixed;right:16px;bottom:18px;z-index:30;width:44px;height:44px;border-radius:50%;border:1px solid rgba(255,255,255,.18);background:rgba(10,10,14,.82);color:#fff;font-size:18px;display:none;align-items:center;justify-content:center;-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
+html.nx-m .nxtop.on{display:flex}

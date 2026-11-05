@@ -34,7 +34,7 @@
     person_profiles: 'identified_only',
     loaded: function (ph) { if (belso) ph.opt_out_capturing(); }
   });
-  posthog.register({ prezentacio: prez, iparag: iparag, marka: marka, sorszam: sorszam, eszkoz: matchMedia('(max-width:900px)').matches ? 'mobil' : 'asztali' });
+  posthog.register({ prezentacio: prez, iparag: iparag, marka: marka, sorszam: sorszam, eszkoz: document.documentElement.classList.contains('nx-m') ? 'mobil' : 'asztali' });
   posthog.capture('prezentacio_megnyitva', { forras: document.referrer || 'kozvetlen' });
 
   // diák követése: melyik dián mennyi időt töltött
@@ -50,7 +50,7 @@
       osszes += mp;
     }
     function aktiv() {
-      var i = -1; for (var k = 0; k < S.length; k++) if (S[k].classList.contains('on')) { i = k; break; }
+      var i = -1, mob = document.documentElement.classList.contains('nx-m'), cls = mob ? 'nxcur' : 'on'; for (var k = 0; k < S.length; k++) if (S[k].classList.contains(cls)) { i = k; break; }
       if (i === cur || i < 0) return;
       zar(); cur = i; t0 = Date.now(); if (i + 1 > max) max = i + 1;
     }
