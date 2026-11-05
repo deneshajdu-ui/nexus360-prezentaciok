@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>NEXUS360</title>
+<meta name="apple-mobile-web-app-title" content="NEXUS360">
+<link rel="apple-touch-icon" sizes="180x180" href="/pult/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="512x512" href="/pult/icon-512.png">
+<meta name="theme-color" content="#000000">
+<style>html,body{margin:0;height:100%;background:#000;color:#fff;font:16px/1.5 -apple-system,system-ui,sans-serif}main{height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px;padding:24px;box-sizing:border-box;text-align:center}img{width:96px;height:96px;border-radius:22px}a{color:#FFBE5B}</style>
+</head>
+<body>
+<main>
+<img src="/pult/icon-512.png" alt="NEXUS360">
+<p id="t">NEXUS360 Asszisztens megnyitása…</p>
+<p id="h" hidden>Kezdőképernyőre tétel: Megosztás → „Főképernyőhöz adás”. Utána ez az ikon nyitja a pultot.<br><a href="https://claude.ai/artifact/9twfCYXSqvmM9dGSZNReuj">Pult megnyitása most</a></p>
+</main>
+<script>
+var P='https://claude.ai/artifact/9twfCYXSqvmM9dGSZNReuj';
+// ?telepites=1: marad az oldalon, hogy a Főképernyőhöz adás ezt az ikont vegye át
+if(/[?&]telepites=1/.test(location.search)){document.getElementById('t').hidden=true;document.getElementById('h').hidden=false}
+else{location.replace(P)}
+</script>
+</body>
+</html>
