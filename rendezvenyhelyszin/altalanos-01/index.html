@@ -40,108 +40,100 @@ section.on .d1{transition-delay:.12s}section.on .d2{transition-delay:.24s}sectio
 .kick{font-family:'JetBrains Mono';font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:#fff;display:flex;align-items:center;gap:12px;margin-bottom:20px}
 .kick:before{content:"";width:26px;height:2px;background:var(--tealL);box-shadow:0 0 10px var(--tealL)}
 h1,h2,h3{font-family:Outfit,sans-serif;font-weight:600;letter-spacing:-.025em}
-h1{font-size:clamp(40px,5.6vw,86px);line-height:1.1}
-h2{font-size:clamp(28px,3.5vw,50px);line-height:1.16;margin-bottom:22px}
+h1{font-size:clamp(38px,4.8vw,74px);line-height:1.28}
+h2{font-size:clamp(28px,3.4vw,48px);line-height:1.32;margin-bottom:24px}
 h3{font-size:18px;letter-spacing:-.01em;line-height:1.25;margin-bottom:6px}
-.hl{color:#fff;background:#2B00FF;padding:.02em .16em .06em;-webkit-box-decoration-break:clone;box-decoration-break:clone;border-radius:.08em}
-.lead{font-size:clamp(16px,1.3vw,19px);line-height:1.6;color:#d9d9de;font-weight:300;max-width:620px}
+.hl{display:inline-block;color:#fff;background:#2B00FF;padding:0 .16em .04em;line-height:1.18;border-radius:.08em;margin-top:.08em}
+.lead{font-size:clamp(16px,1.3vw,19px);line-height:1.6;color:#d9d9de;font-weight:300;max-width:640px}
 .lead+.lead{margin-top:14px}
-.src{font-family:'JetBrains Mono';font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--dim);margin-top:14px;line-height:1.5}
 .grid2{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.12fr);gap:clamp(28px,4.5vw,72px);align-items:center;width:100%}
-.grid2.rev{grid-template-columns:minmax(0,1.12fr) minmax(0,1fr)}
 .w{width:min(1240px,100%);margin:0 auto}
 .fr{position:relative;border-radius:18px;overflow:hidden;border:1px solid var(--line);box-shadow:0 30px 80px -30px rgba(43,0,255,.55),0 0 0 1px rgba(255,255,255,.04);background:#050507}
 .fr img,.fr video{width:100%;height:100%;object-fit:cover;transform:scale(1.06);transition:transform 7s ease-out}
 .fr.dh{background:#000}.fr.dh img{object-fit:contain}
+.fr.sharp img,.fr.sharp video{transform:none;transition:none}
 section.on .fr img,section.on .fr video{transform:scale(1)}
 .fr:after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(180deg,transparent 62%,rgba(0,0,0,.4))}
-.fr.dh:after{display:none}
+.fr.dh:after,.fr.sharp:after{display:none}
 .fr .scan{position:absolute;left:0;right:0;height:30%;top:-30%;background:linear-gradient(180deg,transparent,rgba(43,0,255,.22),transparent);pointer-events:none;z-index:2}
 section.on .fr .scan{animation:scan 2.4s .3s cubic-bezier(.6,0,.3,1) forwards}
 @keyframes scan{to{top:110%}}
-.cover{padding:0}
-.cover .bgimg{position:absolute;inset:0;overflow:hidden}
-.cover .bgimg video{width:100%;height:100%;object-fit:cover;transform:scale(1.12);transition:transform 14s ease-out;}
-section.on.cover .bgimg video{transform:scale(1.02)}
-.cover .bgimg:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(0,0,0,.78) 0%,rgba(0,0,0,.5) 30%,rgba(0,0,0,0) 58%),linear-gradient(0deg,rgba(0,0,0,.7) 0%,transparent 22%)}
-.cover h1,.cover .lead,.cover .meta{text-shadow:0 2px 18px rgba(0,0,0,.7)}
-.cover .in{position:relative;z-index:2;padding:96px clamp(18px,5vw,84px) var(--padB);width:100%}
-.cover .in>div{max-width:740px}
-.meta{margin-top:34px;display:flex;flex-wrap:wrap;gap:10px 24px;font-family:'JetBrains Mono';font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--mute)}
+.meta{margin-top:30px;display:flex;flex-wrap:wrap;gap:10px 24px;font-family:'JetBrains Mono';font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--mute)}
+.cmeta{position:absolute;left:clamp(18px,5vw,84px);bottom:calc(var(--padB) - 48px);margin:0}
 .meta span{display:flex;align-items:center;gap:8px}.meta span:before{content:"";width:6px;height:6px;background:var(--tealL);box-shadow:0 0 8px var(--tealL)}
 .cards{display:grid;gap:14px}
-.c2{grid-template-columns:repeat(2,minmax(0,1fr))}.c3{grid-template-columns:repeat(3,minmax(0,1fr))}.c4{grid-template-columns:repeat(4,minmax(0,1fr))}.c5{grid-template-columns:repeat(5,minmax(0,1fr))}
+.c2{grid-template-columns:repeat(2,minmax(0,1fr))}.c3{grid-template-columns:repeat(3,minmax(0,1fr))}
 .card{position:relative;padding:20px;border-radius:14px;background:var(--glass);border:1px solid var(--line);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);transition:.35s;overflow:hidden}
 .card:hover{border-color:rgba(43,0,255,.7);transform:translateY(-3px);box-shadow:0 18px 40px -18px rgba(43,0,255,.7)}
-.card .n{font-family:'JetBrains Mono';font-size:11px;color:var(--tealL);letter-spacing:.12em;margin-bottom:10px;display:block;text-transform:uppercase}
-.card p{font-size:14px;line-height:1.55;color:var(--mute)}
-.card h3+p{margin-top:2px}
-.card .big{font-family:Outfit;font-weight:600;font-size:clamp(30px,2.6vw,40px);letter-spacing:-.03em;line-height:1;color:#fff;margin-bottom:14px;border-bottom:3px solid var(--tealL);display:inline-block;padding-bottom:5px}
-.card.q h3{color:#fff;font-size:17px}
+.card .n{font-family:'JetBrains Mono';font-size:10.5px;color:var(--tealL);letter-spacing:.12em;margin-bottom:8px;display:block;text-transform:uppercase}
+.card h3{font-size:20px;color:#fff;margin-bottom:8px}
+.card p{font-size:14.5px;line-height:1.55;color:var(--mute)}
+.card.q h3{font-size:17px}
 ul.ls{list-style:none;display:grid;gap:14px;margin-top:4px}
 ul.ls li{display:grid;grid-template-columns:22px 1fr;gap:10px;font-size:15.5px;line-height:1.55;color:#e6e6ea}
 ul.ls li:before{content:"";width:8px;height:8px;margin:8px 0 0 4px;background:var(--blue);box-shadow:0 0 10px var(--blueL);transform:rotate(45deg)}
 ul.ls.g li:before{background:var(--tealL);box-shadow:0 0 10px var(--tealL)}
 ul.ls b{color:#fff;font-weight:600;display:block;margin-bottom:1px}
 .note{margin-top:22px;padding:14px 18px;border-left:2px solid var(--tealL);background:rgba(27,131,134,.08);border-radius:0 10px 10px 0;font-size:14.5px;line-height:1.55;color:#d9d9de;max-width:960px}
-/* references */
-.refs{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;margin-top:6px}
-.ref{display:block;text-decoration:none;color:#fff;border-radius:14px;overflow:hidden;border:1px solid var(--line);background:var(--glass);transition:.35s}
-.ref:hover{border-color:rgba(43,0,255,.8);transform:translateY(-4px);box-shadow:0 22px 50px -18px rgba(43,0,255,.8)}
-.ref .ph{position:relative;aspect-ratio:410/270;overflow:hidden}
-.ref .ph img{width:100%;height:100%;object-fit:cover;transition:transform .8s}
-.ref:hover .ph img{transform:scale(1.05)}
-.ref .go{position:absolute;right:10px;bottom:10px;display:flex;align-items:center;gap:7px;padding:7px 11px 7px 8px;border-radius:999px;background:rgba(0,0,0,.74);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.2);font-size:11.5px;font-weight:500}
-.ref .go i{width:16px;height:16px;border-radius:50%;background:var(--blue);box-shadow:0 0 0 4px rgba(43,0,255,.3);position:relative;flex:none}
-.ref .go i:after{content:"";position:absolute;inset:-6px;border-radius:50%;border:1.5px solid var(--blueL);animation:ping 2.2s infinite}
-@keyframes ping{from{transform:scale(.6);opacity:1}to{transform:scale(1.6);opacity:0}}
-.ref .tx{padding:14px 16px;font-family:Outfit;font-weight:500;font-size:17px;border-top:2px solid var(--blue)}
-.clients{display:grid;grid-template-columns:auto 1fr;gap:10px 22px;margin-top:26px;align-items:baseline;max-width:980px}
-.clients .n{font-family:'JetBrains Mono';font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--tealL)}
-.clients p{font-size:15px;line-height:1.6;color:#e6e6ea}
-/* quote */
-blockquote{font-family:Outfit;font-weight:300;font-size:clamp(17px,1.45vw,21px);line-height:1.55;color:#ecebf0;position:relative;padding-left:22px;border-left:2px solid var(--blue)}
-.who{margin-top:20px}.who b{font-family:Outfit;font-weight:600;font-size:18px;display:block}.who span{font-size:13.5px;color:var(--mute)}
-/* steps */
-.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;position:relative;margin:30px 0 10px}
-.steps:before{content:"";position:absolute;top:27px;left:5%;right:5%;height:1px;background:linear-gradient(90deg,var(--blue),var(--tealL));opacity:.6}
-.st .k{width:54px;height:54px;border-radius:50%;background:#000;border:1px solid var(--blueL);display:grid;place-items:center;font-family:Outfit;font-weight:700;font-size:18px;box-shadow:0 0 22px rgba(43,0,255,.6);position:relative;z-index:1;margin-bottom:20px}
-.st:nth-child(even) .k{border-color:var(--tealL);box-shadow:0 0 22px rgba(27,131,134,.6)}
-.st h3{font-size:19px;margin-bottom:8px}
-.st p{font-size:14.5px;color:var(--mute);line-height:1.6;max-width:280px}
 .split{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,4vw,64px);margin-top:10px}
 .split>div{padding-left:22px;border-left:2px solid var(--blue)}.split>div:nth-child(2){border-color:var(--tealL)}
 .split h3{font-size:22px;margin-bottom:14px}
+.split .sub{font-family:'JetBrains Mono';font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--mute);margin:-8px 0 14px}
+/* steps */
+.steps{display:grid;grid-template-columns:repeat(5,1fr);gap:18px;position:relative;margin:30px 0 10px}
+.steps:before{content:"";position:absolute;top:27px;left:5%;right:5%;height:1px;background:linear-gradient(90deg,var(--blue),var(--tealL));opacity:.6}
+.st .k{width:54px;height:54px;border-radius:50%;background:#000;border:1px solid var(--blueL);display:grid;place-items:center;font-family:Outfit;font-weight:700;font-size:18px;box-shadow:0 0 22px rgba(43,0,255,.6);position:relative;z-index:1;margin-bottom:20px}
+.st:nth-child(even) .k{border-color:var(--tealL);box-shadow:0 0 22px rgba(27,131,134,.6)}
+.st h3{font-size:20px;margin-bottom:8px}
+.st p{font-size:14.5px;color:#cfcfd6;line-height:1.6;max-width:260px}
+/* references */
+.tour{position:relative;aspect-ratio:16/10;border-radius:18px;overflow:hidden;border:1px solid var(--line);background:#050507;box-shadow:0 30px 80px -30px rgba(43,0,255,.55)}
+.tour img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.tour iframe{position:absolute;inset:0;width:100%;height:100%;border:0;z-index:2;background:#050507}
+.tour .ld{position:absolute;left:14px;bottom:14px;z-index:1;font-family:'JetBrains Mono';font-size:11px;letter-spacing:.12em;text-transform:uppercase;padding:7px 11px;border-radius:999px;background:rgba(0,0,0,.74);border:1px solid rgba(255,255,255,.2)}
+.open{display:inline-flex;align-items:center;gap:8px;margin-top:14px;font-family:'JetBrains Mono';font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--mute);text-decoration:none}
+.open:hover{color:#fff}.open svg{width:13px;height:13px}
+.rc{display:grid;gap:16px;margin-top:8px}
+.rc div{padding-left:18px;border-left:2px solid var(--blue)}
+.rc div:nth-child(2){border-color:var(--tealL)}.rc div:nth-child(3){border-color:#fff}
+.rc small{display:block;font-family:'JetBrains Mono';font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--mute);margin-bottom:4px}
+.rc p{font-size:15.5px;line-height:1.55;color:#e6e6ea}
+/* quote */
+blockquote{font-family:Outfit;font-weight:300;font-size:clamp(18px,1.6vw,23px);line-height:1.55;color:#ecebf0;position:relative;padding-left:24px;border-left:2px solid var(--blue);max-width:980px}
+.who{margin-top:20px;padding-left:26px}.who b{font-family:Outfit;font-weight:600;font-size:18px;display:block}.who span{font-size:13.5px;color:var(--mute)}
+.clients{display:grid;grid-template-columns:auto 1fr;gap:10px 22px;margin-top:40px;align-items:baseline;max-width:980px;padding-top:22px;border-top:1px solid var(--line)}
+.clients .n{font-family:'JetBrains Mono';font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--tealL)}
+.clients p{font-size:15px;line-height:1.6;color:#e6e6ea}
+/* closing */
 .contactbox{display:grid;gap:18px;margin-top:6px}
 .contactbox .row{padding:4px 0 4px 18px;border-left:2px solid var(--tealL)}
 .contactbox small{display:block;font-family:'JetBrains Mono';font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--mute);margin-bottom:4px}
 .contactbox a,.contactbox span{font-family:Outfit;font-size:clamp(18px,1.7vw,24px);font-weight:500;color:#fff;text-decoration:none}
 .contactbox a:hover{color:var(--tealL)}
-.qrrow{display:flex;align-items:center;gap:22px;margin-top:30px}
-.qrrow img{width:132px;height:132px;border-radius:10px;background:#fff;padding:6px;box-shadow:0 0 40px -10px rgba(43,0,255,.8)}
-.cta{display:inline-flex;align-items:center;gap:10px;padding:13px 21px;border-radius:999px;background:var(--blue);color:#fff;text-decoration:none;font-family:Outfit;font-weight:500;font-size:16px;box-shadow:0 10px 30px -8px var(--blue);transition:.3s}
-.cta:hover{box-shadow:0 10px 40px -4px var(--blue)}
-.cta svg{width:15px;height:15px}
-.qrrow p{font-size:13.5px;color:var(--mute);margin-top:10px}
+.cta{display:inline-flex;align-items:center;gap:12px;padding:17px 28px;border-radius:999px;background:var(--blue);color:#fff;text-decoration:none;font-family:Outfit;font-weight:600;font-size:clamp(17px,1.4vw,20px);box-shadow:0 10px 30px -8px var(--blue);transition:.3s}
+.cta:hover{box-shadow:0 10px 44px -2px var(--blue);transform:translateY(-2px)}
+.cta svg{width:17px;height:17px}
+.ctasub{font-size:13.5px;color:var(--mute);margin-top:12px}
+.qrrow{display:flex;align-items:center;gap:20px;margin-top:34px}
+.qrrow img{width:112px;height:112px;border-radius:10px;background:#fff;padding:6px}
+.qrrow p{font-size:14px;color:#d9d9de;line-height:1.5;max-width:300px}
 @media (max-width:900px){
  :root{--padB:96px}
  header img{height:24px}.hm .x{display:none}
  section{align-items:flex-start;padding:76px 18px var(--padB);overflow-y:auto;-webkit-overflow-scrolling:touch}
- .grid2,.grid2.rev,.split{grid-template-columns:1fr;gap:18px}
- .grid2.rev>:first-child{order:2}
- .c2,.c3,.c4,.c5,.steps{grid-template-columns:1fr}
- .refs{grid-template-columns:1fr 1fr}
+ .grid2,.split{grid-template-columns:1fr;gap:18px}
+ .c2,.c3,.steps{grid-template-columns:1fr}
  .clients{grid-template-columns:1fr}
  .steps:before{display:none}.steps{margin:14px 0 26px}
  .st{display:grid;grid-template-columns:54px 1fr;gap:0 14px}.st .k{grid-row:span 2;margin:0}
- .cover .in{padding:76px 18px var(--padB);align-self:flex-end}
- .cover .bgimg:after{background:linear-gradient(0deg,rgba(0,0,0,.85) 0%,rgba(0,0,0,.45) 45%,transparent 75%)}
  .sec{display:none}
+ .cmeta{position:static;margin-top:28px}
+ #deck section:first-child{flex-direction:column;align-items:flex-start}
  .fr.dh{max-height:46vh}
  footer{background:linear-gradient(180deg,transparent,#000 45%);padding-top:26px}
  header{background:linear-gradient(0deg,transparent,#000 40%)}
 }
-@media (max-height:760px) and (min-width:901px){h2{font-size:clamp(26px,3vw,42px)}ul.ls{gap:10px}ul.ls li{font-size:14.5px}.lead{font-size:16px}.card{padding:16px}}
+@media (max-height:760px) and (min-width:901px){h2{font-size:clamp(26px,3vw,40px)}ul.ls{gap:10px}ul.ls li{font-size:14.5px}.lead{font-size:16px}.card{padding:16px}.card h3{font-size:18px}.st p{font-size:13.5px}}
 </style>
 </head>
 <body>
@@ -149,299 +141,292 @@ blockquote{font-family:Outfit;font-weight:300;font-size:clamp(17px,1.45vw,21px);
 <header><img src="img/logo.png" alt="NEXUS360"><div class="hm"><span class="x">Térdigitalizáció rendezvényhelyszíneknek</span><button id="fs">Teljes képernyő</button></div></header>
 <main id="deck">
 
-<!-- 1 -->
-<section class="cover" data-sec="Bevezető">
- <div class="bgimg"><video src="img/cover.mp4" poster="img/cover.jpg" autoplay muted loop playsinline></video></div>
- <div class="in"><div>
-  <h1 class="rv d1">Hány bejárás kell<br><span class="hl" style="font-size:.86em">egy foglaláshoz?</span></h1>
-  <p class="lead rv d2" style="margin-top:24px">Térdigitalizáció MICE-helyszíneknek: konferencia, céges rendezvény, incentive. Rendezvényhelyszínek, szállodák, éttermek.</p>
-  <div class="meta rv d3"><span>Hajdu Dénes, NEXUS360</span></div>
- </div></div>
-</section>
-
-<!-- 2 -->
-<section data-sec="A kiindulás">
+<!-- 1 Nyitó -->
+<section data-sec="Bevezető">
  <div class="w grid2">
   <div>
-   <h2 class="rv d1">A foglalási döntés <span class="hl">a bejárás előtt kezdődik</span></h2>
-   <p class="lead rv d2">Egy konferencia vagy céges rendezvény szervezője fotók és alaprajz alapján ritkán érti meg igazán a teret. Ezért kérdez, egyeztet és bejárást kér.</p>
+   <div class="kick rv">Rendezvényhelyszínt, szállodát vagy éttermet vezet?</div>
+   <h1 class="rv d1">Mutassa meg a helyszínt <span class="hl">bármikor, bárkinek</span></h1>
+   <p class="lead rv d2" style="margin-top:24px">Bejárható digitális helyszín, amely az első érdeklődéstől a rendezvény napjáig dolgozik Önökért: rövidebb út a foglalásig, kevesebb felesleges kör.</p>
   </div>
-  <div class="fr rv d2" style="aspect-ratio:1297/864"><img src="img/laptop.jpg" alt="Virtuális bejárás laptopon, közös egyeztetés"><div class="scan"></div></div>
+  <div class="fr sharp rv d2" style="aspect-ratio:16/10"><video src="img/cover.mp4" poster="img/cover.jpg" autoplay muted loop playsinline></video></div>
  </div>
+ <div class="meta cmeta rv d3"><span>Hajdu Dénes, NEXUS360</span></div>
 </section>
 
-<!-- 3 -->
-<section data-sec="A kiindulás">
- <div class="w grid2">
-  <div>
-   <h2 class="rv d1">A szervező <span class="hl">kihívásai ma</span></h2>
-   <div class="kick rv d2" style="margin-bottom:16px">Kevesebb idő, több feladat, szűkebb büdzsé</div>
-   <p class="lead rv d2">Az európai szervezők 36%-a a költségkerettel, 31%-a az időbeosztással küzd (Cvent, 2025).</p>
-   <p class="lead rv d3">A helyszínkeresés online kezdődik, és a legnehezebb távolról megérteni, hogyan működik a tér az ő eseményükre.</p>
-  </div>
-  <div class="fr dh rv d2" style="aspect-ratio:793/1080;max-height:66vh;justify-self:center"><img src="img/dollhouse-hotel.jpg" alt="Szálloda 3D modellje"><div class="scan"></div></div>
- </div>
-</section>
-
-<!-- 4 -->
+<!-- 2 Ismerős helyzetek -->
 <section data-sec="A kiindulás">
  <div class="w">
-  <div class="grid2" style="align-items:start">
-   <h2 class="rv d1">Ami ma <span class="hl">történik</span></h2>
-   <div>
-    <ul class="ls rv d2">
-     <li><span>Fotók és alaprajz, majd pótlólagos kérdések.</span></li>
-     <li><span>Hosszú e-mail-váltások, majd személyes bejárás.</span></li>
-     <li><span>Sok bejárásból végül nem lesz foglalás.</span></li>
+  <h2 class="rv d1">Ismerős helyzetek <span class="hl">a helyszín értékesítéséből</span></h2>
+  <div class="split">
+   <div class="rv d2"><h3>Stratégiai kérdések</h3>
+    <ul class="ls">
+     <li><span>Kihasználatlan termek és időpontok.</span></li>
+     <li><span>Nehéz kitűnni a hasonló helyszínek közül.</span></li>
+     <li><span>A döntés hosszú, és több emberen múlik: szervező, megrendelő, technika.</span></li>
+     <li><span>A távoli és külföldi szervezők nehezen jutnak el egy szemlére.</span></li>
+     <li><span>A helyszín alapos ismerete néhány kollégán múlik.</span></li>
     </ul>
-    <p class="note rv d3" style="margin-top:18px">A rejtett költség: az értékesítő és a rendezvényes kolléga ideje, valamint a lassabb döntés.</p>
+   </div>
+   <div class="rv d3"><h3>Hétköznapi helyzetek</h3>
+    <ul class="ls g">
+     <li><span>Újra és újra ugyanazok a kérdések: méret, belmagasság, áram, rakodás.</span></li>
+     <li><span>Szemlék, amelyekből végül nem lesz foglalás.</span></li>
+     <li><span>Fotók, alaprajzok és leírások összegyűjtése minden ajánlathoz.</span></li>
+     <li><span>Hosszú egyeztetések a technikával, a dekorral és a cateringgel.</span></li>
+    </ul>
    </div>
   </div>
-  <div class="fr dh rv d3" style="aspect-ratio:1800/612;margin-top:22px;border:0;box-shadow:none"><img src="img/dollhouse-showroom.jpg" alt="Bemutatótér 3D modellje"></div>
+  <p class="note rv d4">Mindegyiknek ugyanaz az ára: az értékesítő és a rendezvényes kolléga ideje, és a lassabb döntés.</p>
  </div>
 </section>
 
-<!-- 5 -->
-<section data-sec="A szervező szemével">
- <div class="w grid2">
-  <div>
-   <h2 class="rv d1">Mit akar látni <span class="hl">a szervező?</span></h2>
-   <div class="kick rv d2" style="margin-bottom:16px">Bizonyosságot, nem csak szép képeket</div>
-   <p class="lead rv d2">Plénáris terem és szekciótermek, regisztráció, kávészünet, kiállítói standok, technika: elfér-e, és hogyan mozognak a résztvevők.</p>
-   <p class="lead rv d3">Az észak-amerikai szervezők 49%-a több időt tölt a terek online átnézésével, 31%-uk a 3D bejárást a helyszínválasztás egyik fő szempontjának tartja.</p>
-   <p class="src rv d4">Cvent, 2025</p>
+<!-- 3 Hogyan segít -->
+<section data-sec="A megoldás">
+ <div class="w">
+  <h2 class="rv d1">Hogyan segíti a helyszín értékesítését <span class="hl">és a rendezvény előkészítését?</span></h2>
+  <p class="lead rv d2" style="max-width:900px">Az első érdeklődéstől a rendezvény napjáig ugyanaz a bejárás dolgozik a helyszínért.</p>
+  <div class="steps rv d3">
+   <div class="st"><div class="k">01</div><h3>Érdeklődés</h3><p>A termek, a kapcsolódó terek és az útvonalak a honlapról bármikor bejárhatók, telefonon is.</p></div>
+   <div class="st"><div class="k">02</div><h3>Ajánlat</h3><p>A bejárás linkje az ajánlat része. A döntéshozó ugyanazt a teret látja, mint az értékesítő.</p></div>
+   <div class="st"><div class="k">03</div><h3>Döntés</h3><p>A kérdések a tér egy konkrét pontjára vonatkoznak. A bejárásban méret is vehető.</p></div>
+   <div class="st"><div class="k">04</div><h3>Előkészítés</h3><p>Technika, dekor és catering a valós térből tervez: méretek, ajtók, útvonalak.</p></div>
+   <div class="st"><div class="k">05</div><h3>Újra és újra</h3><p>Ugyanaz a bejárás minden következő érdeklődőnek is dolgozik.</p></div>
   </div>
-  <div class="fr rv d2" style="aspect-ratio:1034/1080;max-height:66vh;justify-self:center"><img src="img/measure.jpg" alt="Méretfelvétel a 3D bejárásban"><div class="scan"></div></div>
  </div>
 </section>
 
-<!-- 6 -->
+<!-- 4 Mit kap -->
 <section data-sec="A megoldás">
  <div class="w grid2">
   <div>
-   <div class="kick rv">A megoldás</div>
-   <h2 class="rv d1"><span class="hl">Térdigitalizáció</span></h2>
-   <p class="lead rv d2">A helyszín valósághű, bejárható digitális mása</p>
-   <ul class="ls g rv d3" style="margin-top:20px">
-    <li><span>Egy linken bárhonnan megnyitható, mobilon is.</span></li>
-    <li><span>Kattintható információk: befogadóképesség, technikai adatok, letölthető anyagok.</span></li>
-    <li><span>Használható ajánlatban, online egyeztetésen, a weboldalon és a Google-profilon.</span></li>
+   <h2 class="rv d1">Mit kap <span class="hl">kézbe?</span></h2>
+   <ul class="ls g rv d2">
+    <li><span><b>Bejárható digitális helyszín</b>Valósághű tér, rendezett kezdőnézettel, szintekkel és termekkel.</span></li>
+    <li><span><b>Link, QR-kód és beágyazó kód</b>Ajánlatba, e-mailbe, nyomtatott anyagra és a honlapra.</span></li>
+    <li><span><b>Közös bevezetés</b>Egy 1–2 órás alkalom a kollégákkal.</span></li>
+    <li><span><b>Statisztika</b>Látja, hányan és hányszor nyitották meg a bejárást.</span></li>
+    <li><span><b>Üzemeltetés</b>A tárhelyet és a technikát mi kezeljük, Önöknek csak használni kell.</span></li>
    </ul>
+   <p class="note rv d3">A megrendelt kiegészítők, például az információs pontok, az alaprajz vagy a többnyelvű bejárás, ugyanebben a bejárásban jelennek meg.</p>
   </div>
   <div class="fr rv d2" style="aspect-ratio:1024/572"><video src="img/tour.mp4" poster="img/tour.jpg" autoplay muted loop playsinline></video><div class="scan"></div></div>
  </div>
 </section>
 
-<!-- 7 -->
-<section data-sec="A megoldás">
- <div class="w">
-  <h2 class="rv d1">Mit változtat <span class="hl">üzletileg?</span></h2>
-  <p class="lead rv d2" style="max-width:820px">Akkor segít, amikor a szervező még nem járt a helyszínen, de már döntenie kell.</p>
-  <div class="cards c3" style="margin-top:30px">
-   <div class="card rv d2"><span class="big">01</span><p>Felkészültebb érdeklődők: aki ajánlatot kér, már látta a teret.</p></div>
-   <div class="card rv d3"><span class="big">02</span><p>Kevesebb felesleges bejárás: személyesen a komoly érdeklődő jön, külföldről is.</p></div>
-   <div class="card rv d4"><span class="big">03</span><p>Gyorsabb döntés: a szervező továbbküldheti ügyfelének, kollégáinak.</p></div>
+<!-- 5 Referencia: Rendezvényterem -->
+<section data-sec="Referenciák">
+ <div class="w grid2">
+  <div>
+   <div class="kick rv">Referencia 1 / 4</div>
+   <h2 class="rv d1"><span class="hl">Rendezvényterem</span></h2>
+   <div class="rc rv d2">
+    <div><small>Stratégiai kérdés</small><p>Fotókon nehéz átadni, mire alkalmas a terem, és hogyan kapcsolódik hozzá a többi tér.</p></div>
+    <div><small>Hétköznapi kérdés</small><p>Mekkora a terem, hol lehet a színpad, merre van a rakodás?</p></div>
+    <div><small>Amit a bejárás ad</small><p>A teljes terem és a kapcsolódó terek egy linken, bárhonnan bejárhatóan.</p></div>
+   </div>
+  </div>
+  <div class="rv d2">
+   <div class="tour" data-m="bo4Mw1pqD8r"></div>
   </div>
  </div>
 </section>
 
-<!-- 8 -->
-<section data-sec="MICE">
+<!-- 6 Referencia: Konferenciaterem -->
+<section data-sec="Referenciák">
+ <div class="w grid2">
+  <div>
+   <div class="kick rv">Referencia 2 / 4</div>
+   <h2 class="rv d1"><span class="hl">Konferenciaterem</span></h2>
+   <div class="rc rv d2">
+    <div><small>Stratégiai kérdés</small><p>A döntés több emberen múlik: a szervezőn, a megrendelőn és a technikai csapaton.</p></div>
+    <div><small>Hétköznapi kérdés</small><p>Hogyan ül a közönség, hol a kivetítés, hol vannak a szekciótermek?</p></div>
+    <div><small>Amit a bejárás ad</small><p>A link továbbküldhető, így mindenki ugyanazt a teret látja, utazás nélkül.</p></div>
+   </div>
+  </div>
+  <div class="rv d2">
+   <div class="tour" data-m="BffbsmCw7zk"></div>
+  </div>
+ </div>
+</section>
+
+<!-- 7 Referencia: Szálloda -->
+<section data-sec="Referenciák">
+ <div class="w grid2">
+  <div>
+   <div class="kick rv">Referencia 3 / 4</div>
+   <h2 class="rv d1"><span class="hl">Szálloda</span></h2>
+   <div class="rc rv d2">
+    <div><small>Stratégiai kérdés</small><p>A rendezvénytermek mellett a lobby, a közösségi terek és az étterem is számít a döntésben.</p></div>
+    <div><small>Hétköznapi kérdés</small><p>Merre jutnak a vendégek a regisztrációtól a teremig és az étteremig?</p></div>
+    <div><small>Amit a bejárás ad</small><p>A vendégek teljes útja egyetlen bejárásban, a terekkel együtt.</p></div>
+   </div>
+  </div>
+  <div class="rv d2">
+   <div class="tour" data-m="te3tmG3iYRe"></div>
+  </div>
+ </div>
+</section>
+
+<!-- 8 Referencia: Kulturális rendezvénytér -->
+<section data-sec="Referenciák">
+ <div class="w grid2">
+  <div>
+   <div class="kick rv">Referencia 4 / 4</div>
+   <h2 class="rv d1"><span class="hl">Kulturális rendezvénytér</span></h2>
+   <div class="rc rv d2">
+    <div><small>Stratégiai kérdés</small><p>Különleges helyszín, amelyet sok szervező még nem ismer rendezvényhelyszínként.</p></div>
+    <div><small>Hétköznapi kérdés</small><p>Hogyan közelíthető meg, akadálymentes-e, hogyan kapcsolódnak a terek?</p></div>
+    <div><small>Amit a bejárás ad</small><p>A helyszín hangulata és felépítése utazás nélkül is átlátható.</p></div>
+   </div>
+  </div>
+  <div class="rv d2">
+   <div class="tour" data-m="pip6bDbdm2B"></div>
+  </div>
+ </div>
+</section>
+
+<!-- 9 Mit változtat -->
+<section data-sec="Eredmény">
  <div class="w">
-  <h2 class="rv d1">MICE: a döntés <span class="hl">több emberen múlik</span></h2>
-  <p class="lead rv d2" style="max-width:900px;margin-bottom:24px">Konferencia, céges rendezvény, incentive: a szervező, az ügyfele és a technikai csapat is látni akarja a helyszínt.</p>
+  <h2 class="rv d1">Mit változtat <span class="hl">a működésben?</span></h2>
+  <p class="lead rv d2" style="max-width:900px;margin-bottom:24px">Kevesebb idő megy el egy foglalásra, és több marad a valódi lehetőségekre.</p>
   <div class="cards c3">
-   <div class="card rv d2"><h3>Az ajánlat mellé</h3><p>Az észak-amerikai szervezők 17%-a szerint a 3D bejárás javítana leginkább a helyszín-ajánlatokon (Cvent, 2025). A link az ajánlat része lehet.</p></div>
-   <div class="card rv d2"><h3>A szemle előtt</h3><p>A szervező előre szűr: személyes szemle csak a komolyan szóba jövő helyszínekre.</p></div>
-   <div class="card rv d3"><h3>A végső döntéshozónak</h3><p>Az ügynökség továbbküldi a céges megrendelőnek, aki így utazás nélkül is jóváhagyhatja a helyszínt.</p></div>
-   <div class="card rv d3"><h3>A tervezéshez</h3><p>Színpad, kiállítói standok, technika: méretek és alaprajz a rendezvénytechnikának.</p></div>
-   <div class="card rv d4"><h3>A résztvevőknek</h3><p>QR-kód a regisztrációs anyagban: a vendégek előre körülnézhetnek a helyszínen.</p></div>
-   <div class="card rv d4"><h3>Nemzetközi szervezőknek</h3><p>Többnyelvű bejárás azoknak, akik csak a döntés után utaznak Magyarországra.</p></div>
+   <div class="card rv d2"><h3>Kevesebb ismétlődő kérdés</h3><p>Méret, elrendezés, megközelítés: a válasz a bejárásban van. Az értékesítő ideje az ajánlatra és a megkötésre megy.</p></div>
+   <div class="card rv d2"><h3>Kevesebb felesleges szemle</h3><p>Személyesen az jön, aki már látta a teret, és komolyan érdeklődik. A kollégák ideje a valódi lehetőségekre jut.</p></div>
+   <div class="card rv d3"><h3>Gyorsabb döntés</h3><p>A link továbbküldhető a megrendelőnek és a kollégáknak. Nem kell mindenkinek utaznia ahhoz, hogy véleményt mondjon.</p></div>
+   <div class="card rv d3"><h3>Gördülékenyebb előkészítés</h3><p>A technika, a dekor és a catering a valós térből dolgozik: kevesebb levélváltás, kevesebb meglepetés a rendezvény napján.</p></div>
+   <div class="card rv d4"><h3>Távoli szervezők is</h3><p>Utazás nélkül is megismerhetik a helyszínt, akkor is, ha csak a döntés után jönnek Magyarországra.</p></div>
+   <div class="card rv d4"><h3>Láthatóvá váló terek</h3><p>Nem csak a nagyterem: a különterem, a terasz és a kisebb szekciótermek is megjelennek az érdeklődők előtt.</p></div>
   </div>
-  <p class="note rv d5">Európában is így látják: a szervezők 43%-a online fotók és videók, 42%-a alaprajzok alapján ítéli meg a helyszínt (Cvent, 2025; 600+ szervező, UK és öt EU-ország).</p>
  </div>
 </section>
 
-<!-- 9 -->
-<section data-sec="Tapasztalatok">
- <div class="w">
-  <h2 class="rv d1">Nemzetközi <span class="hl">tapasztalatok</span></h2>
-  <p class="lead rv d2" style="max-width:820px;margin-bottom:28px">Nemzetközi szállodák és rendezvényhelyszínek már így értékesítenek.</p>
-  <div class="cards c4">
-   <div class="card rv d2"><span class="big">01</span><p>Lindner Hotels (30+ szálloda): 25%-kal több online aktivitás, minőségibb érdeklődők.</p></div>
-   <div class="card rv d2"><span class="big">02</span><p>The Ivy Collection: 50 különterem digitalizálva, kevesebb személyes bemutató.</p></div>
-   <div class="card rv d3"><span class="big">03</span><p>Allseated ügyfelei: 30%-os értékesítésnövekedés, terv hetek helyett 3-4 nap alatt.</p></div>
-   <div class="card rv d3"><span class="big">04</span><p>Google-felmérés: virtuális sétával kétszer nagyobb az érdeklődés.</p></div>
-  </div>
-  <p class="src rv d5">Forrás: Matterport- és Cvent-esettanulmányok, Google (2015).</p>
- </div>
-</section>
-
-<!-- 10 -->
+<!-- 10 Ügyfélidézet -->
 <section data-sec="Referenciák">
  <div class="w">
-  <h2 class="rv d1">Hazai <span class="hl">referenciáink</span></h2>
-  <p class="lead rv d2" style="max-width:900px;margin-bottom:24px">Rendezvénytermek, szállodák és kulturális rendezvényterek a NEXUS360 3D bejárásaiból</p>
-  <div class="refs">
-   <a class="ref rv d2" href="https://my.matterport.com/show/?m=bo4Mw1pqD8r" target="_blank" rel="noopener"><div class="ph"><img src="img/ref-rendezvenyterem.jpg" alt="Rendezvényterem referencia"><span class="go"><i></i>Bejárás</span></div><div class="tx">Rendezvényterem</div></a>
-   <a class="ref rv d3" href="https://my.matterport.com/show/?m=BffbsmCw7zk" target="_blank" rel="noopener"><div class="ph"><img src="img/ref-konferenciaterem.jpg" alt="Konferenciaterem referencia"><span class="go"><i></i>Bejárás</span></div><div class="tx">Konferenciaterem</div></a>
-   <a class="ref rv d4" href="https://my.matterport.com/show/?m=te3tmG3iYRe" target="_blank" rel="noopener"><div class="ph"><img src="img/ref-szalloda.jpg" alt="Szállodai referencia"><span class="go"><i></i>Bejárás</span></div><div class="tx">Szálloda</div></a>
-   <a class="ref rv d5" href="https://my.matterport.com/show/?m=pip6bDbdm2B" target="_blank" rel="noopener"><div class="ph"><img src="img/ref-kulturalis.jpg" alt="Kulturális rendezvénytér referencia"><span class="go"><i></i>Bejárás</span></div><div class="tx">Kulturális rendezvénytér</div></a>
-  </div>
-  <div class="clients rv d5"><span class="n">Ügyfeleink között:</span><p>Continental Hotel Budapest, Millenáris, Magyar Zene Háza, Néprajzi Múzeum, Gundel,  Foton, VakVarjú éttermek, Mooncity, Budapest Music Center, Halászbástya Étterem</p></div>
+  <h2 class="rv d1">Amit az ügyfeleink <span class="hl">mondanak</span></h2>
+  <blockquote class="rv d2">„A NEXUS360 segítségével készült bemutató lehetővé tette számunkra, hogy a potenciális vendégek egy interaktív, lenyűgöző élmény keretében fedezhessék fel a szálloda és az étterem helyszíneit, beleértve a megújult konferenciatermeket is. A 3D-s bejárás nem csupán látványos, de rendkívül praktikus is; könnyedén megoszthatom partnereinkkel, így ők maguk is bejárhatják a helyszínt. […] Kiemelkedő volt a partner segítőkész és rugalmas hozzáállása.”</blockquote>
+  <div class="who rv d3"><b>Bali Zsuzsanna</b><span>Marketing Manager, szálloda és étterem</span></div>
+  <div class="clients rv d4"><span class="n">Ügyfeleink között:</span><p>Continental Hotel Budapest, Millenáris, Magyar Zene Háza, Néprajzi Múzeum, Gundel, Foton, VakVarjú éttermek, Mooncity, Budapest Music Center, Halászbástya Étterem</p></div>
  </div>
 </section>
 
-<!-- 11 -->
-<section data-sec="Referenciák">
+<!-- 11 Közös bevezetés -->
+<section data-sec="Együttműködés">
  <div class="w grid2">
   <div>
-   <h2 class="rv d1">Amit az ügyfeleink <span class="hl">mondanak</span></h2>
-   <blockquote class="rv d2">„A NEXUS360 segítségével készült bemutató lehetővé tette számunkra, hogy a potenciális vendégek egy interaktív, lenyűgöző élmény keretében fedezhessék fel a szálloda és az étterem helyszíneit, beleértve a megújult konferenciatermeket is. A 3D-s bejárás nem csupán látványos, de rendkívül praktikus is; könnyedén megoszthatom partnereinkkel, így ők maguk is bejárhatják a helyszínt. […] Kiemelkedő volt a partner segítőkész és rugalmas hozzáállása.”</blockquote>
-   <div class="who rv d3"><b>Bali Zsuzsanna</b><span>Marketing Manager, szálloda és étterem</span></div>
+   <h2 class="rv d1">Közös bevezetés: <span class="hl">az egész csapat használja</span></h2>
+   <p class="lead rv d2">A bejárás akkor hoz eredményt, ha a napi munka része. Ezért egy 1–2 órás alkalommal közösen végigvesszük a kollégákkal.</p>
+   <ul class="ls rv d3" style="margin-top:22px">
+    <li><span><b>Kikkel</b>Értékesítés, rendezvényszervezés, recepció, marketing.</span></li>
+    <li><span><b>Mit néznek át</b>Hogyan kerül a bejárás az ajánlatba, az e-mailbe, a honlapra, és hogyan használható online egyeztetésen vagy kiállításon, a saját feladataikra szabva.</span></li>
+    <li><span><b>Mi az eredmény</b>Mindenki ugyanúgy mutatja be a helyszínt, az új kolléga is gyorsan átlátja a teret, és a bejárás nem egy elfelejtett link marad a honlapon.</span></li>
+   </ul>
   </div>
-  <div class="fr rv d2" style="aspect-ratio:680/1080;max-height:68vh;justify-self:center"><img src="img/bar-tall.jpg" alt="Szállodai referencia"><div class="scan"></div></div>
+  <div class="fr rv d2" style="aspect-ratio:1297/864"><img src="img/laptop.jpg" alt="Virtuális bejárás laptopon, közös egyeztetés"><div class="scan"></div></div>
  </div>
 </section>
 
-<!-- 12 -->
-<section data-sec="Helyszíntípusok">
- <div class="w grid2">
-  <div>
-   <h2 class="rv d1"><span class="hl">Rendezvényhelyszínek</span></h2>
-   <p class="lead rv d2">A szervező a döntés előtt látja, mit kap</p>
-   <div class="fr dh rv d3" style="aspect-ratio:1660/884;margin-top:22px;border:0;box-shadow:none"><img src="img/dollhouse-banquet.jpg" alt="Rendezvényterem 3D modellje bankettelrendezéssel"></div>
+<!-- 12 Hol használható -->
+<section data-sec="Használat">
+ <div class="w">
+  <h2 class="rv d1">Hol használható <span class="hl">a mindennapokban?</span></h2>
+  <p class="lead rv d2" style="max-width:900px;margin-bottom:24px">Telefonon, tableten és számítógépen, böngészőből, alkalmazás letöltése nélkül.</p>
+  <div class="cards c3">
+   <div class="card rv d2"><span class="n">Honlap</span><h3>Nem lassítja az oldalt</h3><p>A bejárás külső felhőből, kattintásra töltődik be, az oldal betöltését nem terheli.</p></div>
+   <div class="card rv d2"><span class="n">Ajánlat és e-mail</span><h3>Egy link, minden ajánlatban</h3><p>A szervező és a döntéshozó az ajánlat mellett azonnal körül is nézhet.</p></div>
+   <div class="card rv d3"><span class="n">Online egyeztetés</span><h3>Közösen a térben</h3><p>Megosztott képernyőn együtt járják be a termet, és ott beszélik meg a részleteket.</p></div>
+   <div class="card rv d3"><span class="n">Kiállítás, szakmai vásár</span><h3>A helyszín a standon</h3><p>Tableten vagy kivetítve, QR-kóddal a nyomtatott anyagon: a látogató a telefonján is belép.</p></div>
+   <div class="card rv d4"><span class="n">Kollégáknak</span><h3>Betanítás és tájékozódás</h3><p>Az új munkatárs a tényleges munkakezdés előtt megismeri a teljes helyszínt.</p></div>
+   <div class="card rv d4"><span class="n">Partnereknek</span><h3>Közös kiindulópont</h3><p>Rendezvénytechnika, dekor, catering: mindenki ugyanabból a térből tervez.</p></div>
   </div>
-  <ul class="ls rv d2">
-   <li><span><b>Termek és elrendezések</b>Bankett-, színházi vagy koktélelrendezés megmutatható anélkül, hogy minden érdeklődőnek át kellene rendezni a termet.</span></li>
-   <li><span><b>Kiszolgáló terek és megközelítés</b>Regisztráció, rakodás, akadálymentesség és a terek kapcsolata egy helyen, az ajánlathoz csatolva.</span></li>
-   <li><span><b>Különleges helyszínek</b>Kastélyok, birtokok, pincészetek: nehezebben megközelíthetők, ezért a távoli bejárás itt különösen sokat segít.</span></li>
-  </ul>
  </div>
 </section>
 
-<!-- 13 -->
-<section data-sec="Helyszíntípusok">
- <div class="w grid2">
-  <div>
-   <h2 class="rv d1">Szállodák: <span class="hl">rendezvény és még több</span></h2>
-   <p class="lead rv d2">Egy felmérés, több üzleti cél</p>
-   <div class="fr rv d3" style="aspect-ratio:760/400;margin-top:22px"><img src="img/bar-wide.jpg" alt="Szállodai referencia 3D bejárásból"><div class="scan"></div></div>
+<!-- 13 Bővíthető -->
+<section data-sec="Lehetőségek">
+ <div class="w">
+  <h2 class="rv d1">Bővíthető, <span class="hl">amikor szükség van rá</span></h2>
+  <p class="lead rv d2" style="max-width:900px">A bejárás az alap. Erre épülhet minden, ami az adott helyszínnek többet hoz.</p>
+  <div class="split" style="margin-top:22px">
+   <div class="rv d2"><h3>Tartalmak</h3><p class="sub">Információ ott, ahol kérdés merül fel</p>
+    <ul class="ls">
+     <li><span><b>Információs pontok</b>Szöveg, kép, videó, dokumentum vagy link a térben: kapacitás, technikai adatok, menü.</span></li>
+     <li><span><b>Többnyelvű bejárás</b>A külföldi szervezőknek a saját nyelvükön.</span></li>
+     <li><span><b>Google Street View</b>A helyszín bejárása a Google Térképen és a Google-profilon is.</span></li>
+     <li><span><b>Alaprajz és drónfelvétel</b>Az ajánlathoz, a berendezési tervhez és a helyszín bemutatásához.</span></li>
+    </ul>
+   </div>
+   <div class="rv d3"><h3>Haladó megoldások</h3><p class="sub">Látványterv, adat és megjelenési felület</p>
+    <ul class="ls g">
+     <li><span><b>Látványterv bármely nézetből</b>A bejárás egy nézetéből mesterséges intelligenciával látványkép készül, például bankett- vagy konferenciaelrendezéssel. Látványtervként jelöljük.</span></li>
+     <li><span><b>Látogatottsági hőtérkép</b>Látszik, mely termek és részek érdeklik leginkább a látogatókat, és honnan érkeznek.</span></li>
+     <li><span><b>Térbe helyezett tartalom</b>Videó, 3D tárgy vagy partner megjelenése ott, ahol a térben releváns.</span></li>
+    </ul>
+   </div>
   </div>
-  <ul class="ls g rv d2">
-   <li><span><b>Rendezvénytermek</b>Konferencia- és rendezvénytermek, szekciótermek: ez a kiindulópont, a MICE-értékesítés támogatása.</span></li>
-   <li><span><b>Új területek</b>Lobby, kávézó és étterem, közösségi terek, terasz és szobatípusok: a teljes vendégélmény megmutatható foglalás előtt.</span></li>
-   <li><span><b>Többnyelvű bejárás</b>2025-ben közel 10 millió külföldi vendég szállt meg a hazai szálláshelyeken (KSH). Nekik a digitális bejárás gyakran az első találkozás a helyszínnel.</span></li>
-  </ul>
  </div>
 </section>
 
-<!-- 14 -->
-<section data-sec="Helyszíntípusok">
- <div class="w grid2">
-  <div>
-   <h2 class="rv d1">Éttermek: <span class="hl">különterem és vendégélmény</span></h2>
-   <p class="lead rv d2">Kevesebb kérdés és helyszíni szemle a nagyobb foglalások előtt</p>
-  </div>
-  <ul class="ls rv d2">
-   <li><span><b>Különterem és rendezvények</b>Céges vacsorák, csoportos és magánrendezvények: a szervező előre látja a különtermet és a teljes vendégteret.</span></li>
-   <li><span><b>Plusz ok: a hangulat</b>Az átlagos vendég is körülnézhet asztalfoglalás előtt, a weboldalon vagy a Google-profilon.</span></li>
-   <li><span><b>Menü és foglalási linkek</b>Menü, kapacitás és foglalási link helyezhető el közvetlenül a bejárásban.</span></li>
-  </ul>
- </div>
-</section>
-
-<!-- 15 -->
+<!-- 14 Hogyan dolgozunk -->
 <section data-sec="Együttműködés">
  <div class="w">
   <h2 class="rv d1">Hogyan <span class="hl">dolgozunk?</span></h2>
-  <p class="lead rv d2" style="max-width:900px">Partnerként dolgozunk: a tartalmat (szöveg, menü, fotó) a helyszín adja, mi elhelyezzük és gondozzuk, a bevezetést pedig közösen végezzük.</p>
+  <p class="lead rv d2" style="max-width:900px">Partnerként, az első egyeztetéstől a napi használatig.</p>
   <div class="steps rv d3">
-   <div class="st"><div class="k">01</div><h3>Felmérés</h3><p>a helyszín és a valódi felhasználási cél megértése, majd 3D szkennelés.</p></div>
-   <div class="st"><div class="k">02</div><h3>Feldolgozás</h3><p>rendezett kezdőnézet, szintek, helyiségek, információs pontok.</p></div>
-   <div class="st"><div class="k">03</div><h3>Közös bevezetés</h3><p>partnerként végigvesszük a kollégákkal, hogyan használják a napi munkában.</p></div>
-   <div class="st"><div class="k">04</div><h3>Gondozás</h3><p>tartalomfrissítés, alaprajz, Google Street View, drónfelvétel, többnyelvűség.</p></div>
+   <div class="st"><div class="k">01</div><h3>Egyeztetés</h3><p>Megértjük a helyszínt és a valódi felhasználási célt. Ebből készül az ajánlat.</p></div>
+   <div class="st"><div class="k">02</div><h3>Felmérés</h3><p>Egyeztetett időpontban, akár üzem közben. Az időtartam a terület méretétől függ.</p></div>
+   <div class="st"><div class="k">03</div><h3>Feldolgozás</h3><p>Rendezett kezdőnézet, szintek és termek, a megrendelt tartalmakkal.</p></div>
+   <div class="st"><div class="k">04</div><h3>Közös bevezetés</h3><p>Egy 1–2 órás alkalom a kollégákkal, a saját feladataikra szabva.</p></div>
+   <div class="st"><div class="k">05</div><h3>Gondozás</h3><p>Tartalomfrissítés, bővítés és statisztika, amikor szükség van rá.</p></div>
   </div>
  </div>
 </section>
 
-<!-- 16 -->
-<section data-sec="Együttműködés">
- <div class="w">
-  <h2 class="rv d1">Mérhetőség <span class="hl">és téradatok</span></h2>
-  <p class="lead rv d2" style="max-width:900px;margin-bottom:26px">Nem csak látvány: adat a döntéshez és a tervezéshez.</p>
-  <div class="split">
-   <div class="rv d2"><h3>Mérhetőség</h3><ul class="ls"><li><span>Külön link vagy QR-kód csatornánként és kampányonként: weboldal, ajánlat, hírlevél, MICE-esemény, kiállítás.</span></li><li><span>Látszik, honnan érkeznek a megtekintések, és melyik csatorna hoz érdeklődőt.</span></li><li><span>A megtekintési adatok a platform elérhető analitikája szerint követhetők.</span></li></ul></div>
-   <div class="rv d3"><h3>Téradatok</h3><ul class="ls g"><li><span>A bejárásban méretek vehetők fel: elfér-e a színpad, a stánd, a berendezés.</span></li><li><span>2D alaprajz az ajánlathoz és a berendezési tervhez.</span></li><li><span>Igény szerint pontfelhő és tervezési adatcsomag a rendezvénytechnikának, építésznek.</span></li></ul></div>
-  </div>
- </div>
-</section>
-
-<!-- 17 -->
-<section data-sec="Együttműködés">
- <div class="w">
-  <h2 class="rv d1">Egyszerű használat, <span class="hl">bárhol</span></h2>
-  <div class="cards c3" style="margin-top:10px">
-   <div class="card rv d2"><span class="n">01</span><h3>Felhőben fut</h3><p>Nem foglal tárhelyet, és nem lassítja a weboldalt: a bejárás külső felhőből töltődik be.</p></div>
-   <div class="card rv d2"><span class="n">02</span><h3>Minden eszközön</h3><p>Telefonon, tableten és számítógépen is működik, böngészőből, alkalmazás letöltése nélkül.</p></div>
-   <div class="card rv d3"><span class="n">03</span><h3>Egy linken megosztható</h3><p>Ajánlatban, e-mailben, online egyeztetésen, weboldalon és Google-profilon is.</p></div>
-   <div class="card rv d3"><span class="n">04</span><h3>QR-kód eseményeken</h3><p>MICE-eseményen, szakkiállításon, nyomtatott anyagon: a látogató a telefonjával azonnal belép a helyszínre.</p></div>
-   <div class="card rv d4"><span class="n">05</span><h3>Külön linkek, mérhetően</h3><p>Minden csatorna és kampány saját linket vagy QR-kódot kaphat, így látszik, mi működik.</p></div>
-   <div class="card rv d4"><span class="n">06</span><h3>Mindig friss</h3><p>Menü, elrendezés, ajánlat változik? Az információs pontokat partnerként frissítjük.</p></div>
-  </div>
- </div>
-</section>
-
-<!-- 18 -->
+<!-- 15 GYIK 1 -->
 <section data-sec="Gyakori kérdések">
  <div class="w">
   <h2 class="rv d1">Gyakori <span class="hl">kérdések</span></h2>
   <div class="cards c2" style="margin-top:10px">
-   <div class="card q rv d2"><h3>Mennyire zavarja a felmérés a működést?</h3><p>Előre egyeztetett időpontban, akár nyitvatartáson kívül dolgozunk. Az időtartam a helyszín méretétől függ.</p></div>
-   <div class="card q rv d2"><h3>Mi történik, ha átrendezzük a termet?</h3><p>Az információs pontok (menü, kapacitás, linkek) bármikor frissíthetők. Nagyobb átépítésnél a teret is újra felmérjük.</p></div>
-   <div class="card q rv d3"><h3>Nem veszi el a kedvet a személyes látogatástól?</h3><p>Nem helyettesíti a bejárást, hanem előszűr: személyesen az jön, aki már komolyan érdeklődik.</p></div>
-   <div class="card q rv d3"><h3>Be kell építeni a weboldalunkba?</h3><p>Nem feltétel. Linkként és QR-kódként is működik: ajánlatban, e-mailben, eseményen, a Google-profilon.</p></div>
+   <div class="card q rv d2"><h3>Mennyire zavarja a felmérés a működést?</h3><p>Egyeztetett időpontban dolgozunk, akár üzem közben is. A legjobb eredményhez azt javasoljuk, hogy a felmérés idején ne legyenek emberek a felmért térben.</p></div>
+   <div class="card q rv d2"><h3>Mennyi idő alatt készül el?</h3><p>A terület méretétől és a kért tartalmaktól függ. A pontos ütemezést az ajánlat rögzíti.</p></div>
+   <div class="card q rv d3"><h3>Lassítja a honlapot?</h3><p>Nem. A bejárás külső felhőből, kattintásra töltődik be, az oldal betöltését nem terheli.</p></div>
+   <div class="card q rv d3"><h3>Valós állapotot látunk a bejárásban?</h3><p>Igen, a bejárás a felméréskori valós állapotot mutatja. A virtuálisan készült elrendezéseket látványtervként jelöljük.</p></div>
   </div>
  </div>
 </section>
 
-<!-- 19 -->
+<!-- 16 GYIK 2 -->
 <section data-sec="Gyakori kérdések">
  <div class="w">
   <h2 class="rv d1">Gyakori <span class="hl">kérdések</span></h2>
   <div class="cards c2" style="margin-top:10px">
-   <div class="card q rv d2"><h3>Ki kezeli nálunk? Bonyolult?</h3><p>Partnerként közösen vezetjük be a kollégákkal, a saját feladataikra szabva. A napi használat egy link vagy QR-kód megosztása.</p></div>
-   <div class="card q rv d2"><h3>Ki adja a szöveget, a menüt, a fotókat?</h3><p>A tartalmat a helyszín adja, mi elhelyezzük a bejárásban és gondozzuk.</p></div>
+   <div class="card q rv d2"><h3>Mi történik, ha átrendezzük a termet?</h3><p>Az információs pontok bármikor frissíthetők. Nagyobb átépítésnél a teret újra felmérjük.</p></div>
+   <div class="card q rv d2"><h3>Nem veszi el a kedvet a személyes látogatástól?</h3><p>Nem helyettesíti a szemlét, hanem előszűr: személyesen az jön, aki már komolyan érdeklődik.</p></div>
+   <div class="card q rv d3"><h3>Ki kezeli nálunk? Bonyolult?</h3><p>A technikát mi kezeljük. A kollégák dolga a link vagy a QR-kód megosztása, a használatot közösen vezetjük be.</p></div>
    <div class="card q rv d3"><h3>Mi kerül bele, és mi marad ki?</h3><p>Előre egyeztetjük, mely terek kerülnek a bejárásba. A belső, nem nyilvános helyiségek kimaradhatnak.</p></div>
-   <div class="card q rv d3"><h3>Mennyibe kerül?</h3><p>Egyszeri kialakítási díj és rendszeres tárhelydíj. A pontos összeg a helyszín méretétől és a kért tartalmaktól függ, ezt az ajánlat rögzíti.</p></div>
   </div>
  </div>
 </section>
 
-<!-- 20 -->
-<section data-sec="Következő lépés">
- <div class="w">
-  <h2 class="rv d1">Önöknek érdemes? <span class="hl">Ha kettőre igaz, beszéljünk.</span></h2>
-  <div class="cards c3" style="margin-top:26px">
-   <div class="card rv d2"><span class="big">01</span><p>Sok érdeklődő kér bejárást, de kevés foglal?</p></div>
-   <div class="card rv d3"><span class="big">02</span><p>Rendszeresen kapnak konferencia-, céges vagy incentive-megkeresést, akár távoli szervezőktől?</p></div>
-   <div class="card rv d4"><span class="big">03</span><p>Több terem vagy elrendezés van, esetleg különleges, nehezen elérhető a helyszín?</p></div>
-  </div>
- </div>
-</section>
-
-<!-- 21 -->
+<!-- 17 Zárás -->
 <section data-sec="Következő lépés">
  <div class="w grid2">
   <div>
-   <h2 class="rv d1">Következő lépés: <span class="hl">15 perces online bemutató</span></h2>
-   <div class="qrrow rv d3">
-    <img src="img/qr.png" alt="QR-kód: elkészült helyszín bejárása">
-    <div><a class="cta" href="https://my.matterport.com/show/?m=te3tmG3iYRe" target="_blank" rel="noopener">Járja be most egy elkészült helyszínt! <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M8 7h9v9"/></svg></a><p>Olvassa be a QR-kódot a telefonjával.</p></div>
+   <h2 class="rv d1">Következő lépés: <span class="hl">30 perces online bemutató</span></h2>
+   <p class="lead rv d2">Fél óra alatt megmutatjuk, hogyan működne az Önök helyszínén, és válaszolunk a kérdéseikre.</p>
+   <div class="rv d3" style="margin-top:28px">
+    <a class="cta" id="book" href="https://calendar.app.google/zFH8etA7r1gQPKPB7" target="_blank" rel="noopener">Kérek egy 30 perces online bemutatót <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+    <p class="ctasub">Vagy írjon közvetlenül: nexus@nexus360.hu</p>
+   </div>
+   <div class="qrrow rv d4">
+    <img src="img/qr-foglalas.png" alt="QR-kód az online bemutató foglalásához">
+    <p>Foglaljon időpontot a telefonjával: olvassa be a QR-kódot.</p>
    </div>
   </div>
   <div class="contactbox rv d2">
-   <div class="row"><small>Email</small><a href="mailto:nexus@nexus360.hu">nexus@nexus360.hu</a></div>
+   <div class="row"><small>E-mail</small><a href="mailto:nexus@nexus360.hu">nexus@nexus360.hu</a></div>
    <div class="row"><small>Web</small><a href="https://nexus360.hu" target="_blank" rel="noopener">www.nexus360.hu</a></div>
    <div class="row"><small>Hajdu Dénes, alapító</small><a href="tel:+36704320521">+36 70 432 0521</a></div>
   </div>
@@ -458,10 +443,20 @@ blockquote{font-family:Outfit;font-weight:300;font-size:clamp(17px,1.45vw,21px);
 <script>
 (function(){
 const S=[...document.querySelectorAll('#deck section')],N=S.length;let idx=-1;
+// Ide kerül a Google Naptár foglalási oldalának linkje; ha be van írva, a gomb oda visz.
+const BOOKING_URL='https://calendar.app.google/zFH8etA7r1gQPKPB7';
+if(BOOKING_URL){const b=document.getElementById('book');b.href=BOOKING_URL;}
 const pad=n=>String(n).padStart(2,'0');document.getElementById('tot').textContent=pad(N);
+// A bejárás az aktív dián töltődik be közvetlenül.
+const EMBED=true;
+function tour(t,on){
+ const f=t.querySelector('iframe');
+ if(on&&!f&&EMBED){const x=document.createElement('iframe');x.src='https://my.matterport.com/show/?m='+t.dataset.m+'&play=1&qs=1&brand=0&help=0';x.allow='fullscreen; xr-spatial-tracking';x.setAttribute('allowfullscreen','');x.title='Élő bejárás';t.appendChild(x)}
+ if(!on&&f)f.remove();
+}
 function fromHash(){const m=/^#dia-(\d+)$/.exec(location.hash);return m?Math.min(N-1,Math.max(0,+m[1]-1)):0}
 function go(i,push=true){i=Math.max(0,Math.min(N-1,i));if(i===idx)return;idx=i;
- S.forEach((s,k)=>{s.classList.toggle('on',k===i);s.querySelectorAll('video').forEach(v=>{try{k===i?v.play().catch(()=>{}):v.pause()}catch(e){}})});S[i].scrollTop=0;
+ S.forEach((s,k)=>{s.classList.toggle('on',k===i);s.querySelectorAll('video').forEach(v=>{try{k===i?v.play().catch(()=>{}):v.pause()}catch(e){}});if(!document.documentElement.classList.contains('nx-m'))s.querySelectorAll('.tour').forEach(t=>tour(t,k===i))});S[i].scrollTop=0;
  document.getElementById('cur').textContent=pad(i+1);document.getElementById('bar').style.width=((i+1)/N*100)+'%';
  document.getElementById('secn').textContent=S[i].dataset.sec||'';
  if(push){try{history.replaceState(null,'','#dia-'+(i+1))}catch(e){}}}
@@ -472,8 +467,13 @@ let tx=0,ty=0;addEventListener('touchstart',e=>{tx=e.touches[0].clientX;ty=e.tou
 addEventListener('touchend',e=>{const dx=e.changedTouches[0].clientX-tx,dy=e.changedTouches[0].clientY-ty;if(Math.abs(dx)>50&&Math.abs(dx)>Math.abs(dy)*1.3)go(idx+(dx<0?1:-1))},{passive:true});
 addEventListener('hashchange',()=>go(fromHash(),false));
 document.getElementById('fs').onclick=()=>{try{if(!document.fullscreenElement)document.documentElement.requestFullscreen().catch(()=>{});else document.exitFullscreen()}catch(e){}};
-addEventListener('pointermove',e=>{if(matchMedia('(max-width:900px)').matches)return;const x=e.clientX/innerWidth-.5,y=e.clientY/innerHeight-.5;const s=S[idx];if(!s)return;s.querySelectorAll('.fr:not(.dh)').forEach(f=>{f.style.transform=`perspective(1200px) rotateY(${x*3}deg) rotateX(${-y*3}deg)`})});
+addEventListener('pointermove',e=>{if(matchMedia('(max-width:900px)').matches)return;const x=e.clientX/innerWidth-.5,y=e.clientY/innerHeight-.5;const s=S[idx];if(!s)return;s.querySelectorAll('.fr:not(.dh):not(.sharp)').forEach(f=>{f.style.transform=`perspective(1200px) rotateY(${x*3}deg) rotateX(${-y*3}deg)`})});
 go(fromHash(),false);
+// Mobilnézetben (görgethető oldal) a séta akkor tölt be, amikor a képernyőre ér.
+if(document.documentElement.classList.contains('nx-m')&&'IntersectionObserver' in window){
+ const io=new IntersectionObserver(es=>es.forEach(e=>tour(e.target,e.isIntersecting)),{rootMargin:'200px 0px'});
+ document.querySelectorAll('.tour').forEach(t=>io.observe(t));
+}
 })();
 </script>
 </body>
