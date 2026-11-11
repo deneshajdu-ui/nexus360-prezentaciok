@@ -175,10 +175,12 @@ section.on.div .big span{clip-path:inset(0 0 0 0)}
 .cta{display:inline-flex;align-items:center;gap:10px;padding:13px 21px;border-radius:999px;background:transparent;color:#fff;text-decoration:none;font-family:Outfit;font-weight:500;font-size:15px;box-shadow:inset 0 0 0 1px var(--line);transition:.3s}
 .cta:hover{box-shadow:inset 0 0 0 1px var(--tealL)}
 .cta svg{width:15px;height:15px}
-.book{display:flex;flex-wrap:wrap;align-items:center;gap:18px 28px;margin-top:26px}
-.cta.pri{background:var(--blue);box-shadow:0 10px 30px -8px var(--blue);font-weight:600;font-size:clamp(16px,1.3vw,19px);padding:15px 26px}
+.cta.pri{background:var(--blue);box-shadow:0 10px 30px -8px var(--blue);font-weight:600;font-size:clamp(16px,1.3vw,19px);padding:16px 27px}
 .cta.pri:hover{box-shadow:0 10px 44px -2px var(--blue)}
-.book .qr{display:flex;align-items:center;gap:14px}.book .qr img{width:92px;height:92px;border-radius:8px;background:#fff;padding:5px}.book .qr p{font-size:13px;color:var(--mute);line-height:1.45;max-width:190px}
+.bqr{width:118px;height:118px;border-radius:10px;background:#fff;padding:6px;margin-top:30px;box-shadow:0 0 40px -12px rgba(43,0,255,.8)}
+.cbox{display:grid;gap:20px}.cbox .row{padding:4px 0 4px 18px;border-left:2px solid var(--tealL)}
+.cbox small{display:block;font-family:'JetBrains Mono';font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--mute);margin-bottom:4px}
+.cbox a{font-family:Outfit;font-size:clamp(18px,1.7vw,24px);font-weight:500;color:#fff;text-decoration:none}.cbox a:hover{color:var(--tealL)}
 .contact{display:flex;flex-wrap:wrap;align-items:center;gap:10px 26px;padding:12px 4px;width:fit-content;max-width:100%}
 .contact img{height:22px;opacity:.9}.contact a{font-family:'JetBrains Mono';font-size:12px;letter-spacing:.06em;color:var(--mute);text-decoration:none;transition:color .2s}.contact a:hover{color:#fff}
 .sum .card h3{font-size:17px}
@@ -540,8 +542,24 @@ section.on.div .big span{clip-path:inset(0 0 0 0)}
    <div class="st"><div class="k">3</div><h3>Közös értékelés</h3><p>Átbeszéljük a tapasztalatokat és az eredményeket, és finomítjuk, ami szükséges.</p></div>
    <div class="st"><div class="k">4</div><h3>Kiterjesztés a többi területre</h3><p>A bevált megoldásokat fokozatosan kiterjesztjük a többi térre és a teljes sétára.</p></div>
   </div>
-  <div class="book rv d3"><a class="cta pri" href="https://calendar.app.google/zFH8etA7r1gQPKPB7" target="_blank" rel="noopener">Kérek egy 30 perces online bemutatót <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a><div class="qr"><img src="img/qr-foglalas.png" alt="QR-kód az online bemutató foglalásához"><p>Időpontfoglalás telefonon: olvassa be a QR-kódot.</p></div></div>
-  <div class="contact rv d4"><img src="img/logo.png" alt="NEXUS360"><a href="mailto:nexus@nexus360.hu">nexus@nexus360.hu</a><a href="tel:+36704320521">+36 70 432 0521</a></div>
+ </div>
+</section>
+
+<!-- 21 FOGLALÁS -->
+<section data-sec="Kapcsolat">
+ <div class="w grid2">
+  <div>
+   <div class="kick rv">Következő lépés</div>
+   <h2 class="rv d1">Beszéljük át<br><span class="hl">30 percben, online</span></h2>
+   <p class="lead rv d2">Megmutatjuk, hogyan működne mindez az Önök sétáiban, és válaszolunk a kérdéseikre.</p>
+   <div class="rv d3" style="margin-top:30px"><a class="cta pri" href="https://calendar.app.google/zFH8etA7r1gQPKPB7" target="_blank" rel="noopener">Kérek egy 30 perces online bemutatót <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
+   <img class="bqr rv d4" src="img/qr-foglalas.png" alt="QR-kód az online bemutató foglalásához">
+  </div>
+  <div class="cbox rv d2">
+   <div class="row"><small>E-mail</small><a href="mailto:nexus@nexus360.hu">nexus@nexus360.hu</a></div>
+   <div class="row"><small>Web</small><a href="https://nexus360.hu" target="_blank" rel="noopener">www.nexus360.hu</a></div>
+   <div class="row"><small>Hajdu Dénes, alapító</small><a href="tel:+36704320521">+36 70 432 0521</a></div>
+  </div>
  </div>
 </section>
 
