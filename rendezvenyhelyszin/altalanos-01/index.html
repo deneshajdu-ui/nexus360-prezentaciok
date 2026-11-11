@@ -447,16 +447,17 @@ const S=[...document.querySelectorAll('#deck section')],N=S.length;let idx=-1;
 const BOOKING_URL='https://calendar.app.google/zFH8etA7r1gQPKPB7';
 if(BOOKING_URL){const b=document.getElementById('book');b.href=BOOKING_URL;}
 const pad=n=>String(n).padStart(2,'0');document.getElementById('tot').textContent=pad(N);
-// A bejárás az aktív dián töltődik be közvetlenül.
+// A séták nyitóképernyője két diával előre betöltődik (egyszerre legfeljebb kettő); a sétát a látogató a lejátszással indítja.
 const EMBED=true;
 function tour(t,on){
  const f=t.querySelector('iframe');
- if(on&&!f&&EMBED){const x=document.createElement('iframe');x.src='https://my.matterport.com/show/?m='+t.dataset.m+'&play=1&qs=1&brand=0&help=0';x.allow='fullscreen; xr-spatial-tracking';x.setAttribute('allowfullscreen','');x.title='Élő bejárás';t.appendChild(x)}
+ if(on&&!f&&EMBED){const x=document.createElement('iframe');x.src='https://my.matterport.com/show/?m='+t.dataset.m;x.allow='fullscreen; xr-spatial-tracking';x.setAttribute('allowfullscreen','');x.title='Élő bejárás';t.appendChild(x)}
  if(!on&&f)f.remove();
 }
+function TW(i){return S.map((s,k)=>k).filter(k=>k>=i&&k<=i+2&&S[k].querySelector('.tour')).slice(0,2)}
 function fromHash(){const m=/^#dia-(\d+)$/.exec(location.hash);return m?Math.min(N-1,Math.max(0,+m[1]-1)):0}
 function go(i,push=true){i=Math.max(0,Math.min(N-1,i));if(i===idx)return;idx=i;
- S.forEach((s,k)=>{s.classList.toggle('on',k===i);s.querySelectorAll('video').forEach(v=>{try{k===i?v.play().catch(()=>{}):v.pause()}catch(e){}});if(!document.documentElement.classList.contains('nx-m'))s.querySelectorAll('.tour').forEach(t=>tour(t,k===i))});S[i].scrollTop=0;
+ S.forEach((s,k)=>{s.classList.toggle('on',k===i);s.querySelectorAll('video').forEach(v=>{try{k===i?v.play().catch(()=>{}):v.pause()}catch(e){}});if(!document.documentElement.classList.contains('nx-m'))s.querySelectorAll('.tour').forEach(t=>tour(t,k>=i&&k<=i+2&&TW(i).includes(k)))});S[i].scrollTop=0;
  document.getElementById('cur').textContent=pad(i+1);document.getElementById('bar').style.width=((i+1)/N*100)+'%';
  document.getElementById('secn').textContent=S[i].dataset.sec||'';
  if(push){try{history.replaceState(null,'','#dia-'+(i+1))}catch(e){}}}
@@ -471,7 +472,7 @@ addEventListener('pointermove',e=>{if(matchMedia('(max-width:900px)').matches)re
 go(fromHash(),false);
 // Mobilnézetben (görgethető oldal) a séta akkor tölt be, amikor a képernyőre ér.
 if(document.documentElement.classList.contains('nx-m')&&'IntersectionObserver' in window){
- const io=new IntersectionObserver(es=>es.forEach(e=>tour(e.target,e.isIntersecting)),{rootMargin:'200px 0px'});
+ const io=new IntersectionObserver(es=>es.forEach(e=>tour(e.target,e.isIntersecting)),{rootMargin:'120% 0px'});
  document.querySelectorAll('.tour').forEach(t=>io.observe(t));
 }
 })();
