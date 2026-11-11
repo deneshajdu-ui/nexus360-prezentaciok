@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+<meta name="robots" content="noindex, nofollow, noarchive">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Térdigitalizáció irodaházaknak · NEXUS360</title>
+<link rel="stylesheet" href="/assets/nx-mobil.css">
+<script src="/assets/nx-mobil.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap&subset=latin-ext" rel="stylesheet">
+<style>
+:root{--bg:#000;--ink:#fff;--mute:#a9a9b2;--dim:#66666f;--blue:#2B00FF;--blueL:#2B00FF;--teal:#1B8386;--tealL:#22a3a6;--line:rgba(255,255,255,.12);--glass:rgba(12,12,14,.62);--padB:clamp(104px,15vh,140px)}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%;background:#000;color:var(--ink);overflow:hidden;font-family:Inter,system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+img,video{display:block;max-width:100%}
+a{color:inherit}
+.amb{position:fixed;inset:0;pointer-events:none;z-index:0;background:radial-gradient(60% 50% at 85% 10%,rgba(43,0,255,.28),transparent 60%),radial-gradient(50% 50% at 0% 100%,rgba(27,131,134,.24),transparent 60%)}
+.gridbg{position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.35;background-image:linear-gradient(rgba(255,255,255,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.05) 1px,transparent 1px);background-size:64px 64px;-webkit-mask-image:radial-gradient(70% 70% at 50% 40%,#000,transparent);mask-image:radial-gradient(70% 70% at 50% 40%,#000,transparent)}
+header{position:fixed;top:0;left:0;right:0;z-index:10;display:flex;align-items:center;justify-content:space-between;padding:22px clamp(18px,4vw,52px);pointer-events:none}
+header img{height:30px;width:auto}
+.hm{font-family:'JetBrains Mono';font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--mute);display:flex;gap:18px;align-items:center}
+.hm button{pointer-events:auto;background:none;border:1px solid var(--line);color:var(--mute);border-radius:8px;padding:6px 10px;font:inherit;cursor:pointer}
+.hm button:hover{color:#fff;border-color:var(--blueL)}
+footer{position:fixed;left:0;right:0;bottom:0;z-index:10;display:flex;align-items:center;gap:18px;padding:0 clamp(18px,4vw,52px) 20px}
+.nav{display:flex;gap:8px}
+.nav button{width:44px;height:44px;border-radius:50%;border:1px solid var(--line);background:rgba(0,0,0,.5);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);color:#fff;cursor:pointer;display:grid;place-items:center;transition:.25s}
+.nav button:hover{border-color:var(--blueL);box-shadow:0 0 22px rgba(43,0,255,.55)}
+.nav svg{width:18px;height:18px}
+.count{font-family:'JetBrains Mono';font-size:12px;color:var(--mute);letter-spacing:.1em;min-width:64px;text-align:center}.count b{color:#fff;font-weight:500}
+.prog{flex:1;height:2px;background:var(--line);border-radius:2px;overflow:hidden}
+.prog i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--blue),var(--tealL));box-shadow:0 0 12px var(--blueL);transition:width .9s cubic-bezier(.7,0,.2,1)}
+.sec{font-family:'JetBrains Mono';font-size:11px;letter-spacing:.14em;color:var(--mute);text-transform:uppercase;white-space:nowrap}
+main{position:fixed;inset:0;z-index:2}
+section{position:absolute;inset:0;padding:96px clamp(18px,5vw,84px) var(--padB);display:flex;align-items:center;visibility:hidden;opacity:0;transition:opacity .7s,visibility 0s .7s}
+section.on{visibility:visible;opacity:1;transition:opacity .7s}
+.rv{opacity:0;transform:translateY(24px);transition:opacity .9s cubic-bezier(.2,.7,.2,1),transform .9s cubic-bezier(.2,.7,.2,1)}
+section.on .rv{opacity:1;transform:none}
+section.on .d1{transition-delay:.12s}section.on .d2{transition-delay:.24s}section.on .d3{transition-delay:.36s}section.on .d4{transition-delay:.48s}section.on .d5{transition-delay:.6s}section.on .d6{transition-delay:.72s}
+.kick{font-family:'JetBrains Mono';font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:#fff;display:flex;align-items:center;gap:12px;margin-bottom:20px}
+.kick:before{content:"";width:26px;height:2px;background:var(--tealL);box-shadow:0 0 10px var(--tealL)}
+h1,h2,h3{font-family:Outfit,sans-serif;font-weight:600;letter-spacing:-.025em}
+h1{font-size:clamp(38px,4.8vw,74px);line-height:1.28}
+h2{font-size:clamp(28px,3.4vw,48px);line-height:1.32;margin-bottom:24px}
+h3{font-size:18px;letter-spacing:-.01em;line-height:1.25;margin-bottom:6px}
+.hl{display:inline-block;color:#fff;background:#2B00FF;padding:0 .16em .04em;line-height:1.18;border-radius:.08em;margin-top:.08em}
+.lead{font-size:clamp(16px,1.3vw,19px);line-height:1.6;color:#d9d9de;font-weight:300;max-width:640px}
+.lead+.lead{margin-top:14px}
+.grid2{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.12fr);gap:clamp(28px,4.5vw,72px);align-items:center;width:100%}
+.w{width:min(1240px,100%);margin:0 auto}
+.fr{position:relative;border-radius:18px;overflow:hidden;border:1px solid var(--line);box-shadow:0 30px 80px -30px rgba(43,0,255,.55),0 0 0 1px rgba(255,255,255,.04);background:#050507}
+.fr img,.fr video{width:100%;height:100%;object-fit:cover;transform:scale(1.06);transition:transform 7s ease-out}
+.fr.dh{background:#000}.fr.dh img{object-fit:contain}
+.fr.sharp img,.fr.sharp video{transform:none;transition:none}
+section.on .fr img,section.on .fr video{transform:scale(1)}
+.fr:after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(180deg,transparent 62%,rgba(0,0,0,.4))}
+.fr.dh:after,.fr.sharp:after{display:none}
+.fr .scan{position:absolute;left:0;right:0;height:30%;top:-30%;background:linear-gradient(180deg,transparent,rgba(43,0,255,.22),transparent);pointer-events:none;z-index:2}
+section.on .fr .scan{animation:scan 2.4s .3s cubic-bezier(.6,0,.3,1) forwards}
+@keyframes scan{to{top:110%}}
+.meta{margin-top:30px;display:flex;flex-wrap:wrap;gap:10px 24px;font-family:'JetBrains Mono';font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--mute)}
+.cmeta{position:absolute;left:clamp(18px,5vw,84px);bottom:calc(var(--padB) - 48px);margin:0}
+.meta span{display:flex;align-items:center;gap:8px}.meta span:before{content:"";width:6px;height:6px;background:var(--tealL);box-shadow:0 0 8px var(--tealL)}
+.cards{display:grid;gap:14px}
+.c2{grid-template-columns:repeat(2,minmax(0,1fr))}.c3{grid-template-columns:repeat(3,minmax(0,1fr))}
+.card{position:relative;padding:20px;border-radius:14px;background:var(--glass);border:1px solid var(--line);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);transition:.35s;overflow:hidden}
+.card:hover{border-color:rgba(43,0,255,.7);transform:translateY(-3px);box-shadow:0 18px 40px -18px rgba(43,0,255,.7)}
+.card .n{font-family:'JetBrains Mono';font-size:10.5px;color:var(--tealL);letter-spacing:.12em;margin-bottom:8px;display:block;text-transform:uppercase}
+.card h3{font-size:20px;color:#fff;margin-bottom:8px}
+.card p{font-size:14.5px;line-height:1.55;color:var(--mute)}
+.card.q h3{font-size:17px}
+ul.ls{list-style:none;display:grid;gap:14px;margin-top:4px}
+ul.ls li{display:grid;grid-template-columns:22px 1fr;gap:10px;font-size:15.5px;line-height:1.55;color:#e6e6ea}
+ul.ls li:before{content:"";width:8px;height:8px;margin:8px 0 0 4px;background:var(--blue);box-shadow:0 0 10px var(--blueL);transform:rotate(45deg)}
+ul.ls.g li:before{background:var(--tealL);box-shadow:0 0 10px var(--tealL)}
+ul.ls b{color:#fff;font-weight:600;display:block;margin-bottom:1px}
+.note{margin-top:22px;padding:14px 18px;border-left:2px solid var(--tealL);background:rgba(27,131,134,.08);border-radius:0 10px 10px 0;font-size:14.5px;line-height:1.55;color:#d9d9de;max-width:960px}
+.split{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,4vw,64px);margin-top:10px}
+.split>div{padding-left:22px;border-left:2px solid var(--blue)}.split>div:nth-child(2){border-color:var(--tealL)}
+.split h3{font-size:22px;margin-bottom:14px}
+.split .sub{font-family:'JetBrains Mono';font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--mute);margin:-8px 0 14px}
+/* steps */
+.steps{display:grid;grid-template-columns:repeat(5,1fr);gap:18px;position:relative;margin:30px 0 10px}
+.steps:before{content:"";position:absolute;top:27px;left:5%;right:5%;height:1px;background:linear-gradient(90deg,var(--blue),var(--tealL));opacity:.6}
+.st .k{width:54px;height:54px;border-radius:50%;background:#000;border:1px solid var(--blueL);display:grid;place-items:center;font-family:Outfit;font-weight:700;font-size:18px;box-shadow:0 0 22px rgba(43,0,255,.6);position:relative;z-index:1;margin-bottom:20px}
+.st:nth-child(even) .k{border-color:var(--tealL);box-shadow:0 0 22px rgba(27,131,134,.6)}
+.st h3{font-size:20px;margin-bottom:8px}
+.st p{font-size:14.5px;color:#cfcfd6;line-height:1.6;max-width:260px}
+/* references */
+.tour{position:relative;aspect-ratio:16/10;border-radius:18px;overflow:hidden;border:1px solid var(--line);background:#050507;box-shadow:0 30px 80px -30px rgba(43,0,255,.55)}
+.tour img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.tour iframe{position:absolute;inset:0;width:100%;height:100%;border:0;z-index:2;background:#050507}
+.tour .ld{position:absolute;left:14px;bottom:14px;z-index:1;font-family:'JetBrains Mono';font-size:11px;letter-spacing:.12em;text-transform:uppercase;padding:7px 11px;border-radius:999px;background:rgba(0,0,0,.74);border:1px solid rgba(255,255,255,.2)}
+.open{display:inline-flex;align-items:center;gap:8px;margin-top:14px;font-family:'JetBrains Mono';font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--mute);text-decoration:none}
+.open:hover{color:#fff}.open svg{width:13px;height:13px}
+.rc{display:grid;gap:16px;margin-top:8px}
+.rc div{padding-left:18px;border-left:2px solid var(--blue)}
+.rc div:nth-child(2){border-color:var(--tealL)}.rc div:nth-child(3){border-color:#fff}
+.rc small{display:block;font-family:'JetBrains Mono';font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--mute);margin-bottom:4px}
+.rc p{font-size:15.5px;line-height:1.55;color:#e6e6ea}
+/* quote */
+blockquote{font-family:Outfit;font-weight:300;font-size:clamp(18px,1.6vw,23px);line-height:1.55;color:#ecebf0;position:relative;padding-left:24px;border-left:2px solid var(--blue);max-width:980px}
+.who{margin-top:20px;padding-left:26px}.who b{font-family:Outfit;font-weight:600;font-size:18px;display:block}.who span{font-size:13.5px;color:var(--mute)}
+.clients{display:grid;grid-template-columns:auto 1fr;gap:10px 22px;margin-top:40px;align-items:baseline;max-width:980px;padding-top:22px;border-top:1px solid var(--line)}
+.clients .n{font-family:'JetBrains Mono';font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--tealL)}
+.clients p{font-size:15px;line-height:1.6;color:#e6e6ea}
+/* closing */
+.contactbox{display:grid;gap:18px;margin-top:6px}
+.contactbox .row{padding:4px 0 4px 18px;border-left:2px solid var(--tealL)}
+.contactbox small{display:block;font-family:'JetBrains Mono';font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--mute);margin-bottom:4px}
+.contactbox a,.contactbox span{font-family:Outfit;font-size:clamp(18px,1.7vw,24px);font-weight:500;color:#fff;text-decoration:none}
+.contactbox a:hover{color:var(--tealL)}
+.cta{display:inline-flex;align-items:center;gap:12px;padding:17px 28px;border-radius:999px;background:var(--blue);color:#fff;text-decoration:none;font-family:Outfit;font-weight:600;font-size:clamp(17px,1.4vw,20px);box-shadow:0 10px 30px -8px var(--blue);transition:.3s}
+.cta:hover{box-shadow:0 10px 44px -2px var(--blue);transform:translateY(-2px)}
+.cta svg{width:17px;height:17px}
+.ctasub{font-size:13.5px;color:var(--mute);margin-top:12px}
+.qrrow{display:flex;align-items:center;gap:20px;margin-top:34px}
+.qrrow img{width:112px;height:112px;border-radius:10px;background:#fff;padding:6px}
+.qrrow p{font-size:14px;color:#d9d9de;line-height:1.5;max-width:300px}
+
+/* iroda */
+.fr.ph{height:min(62vh,620px);aspect-ratio:1320/1800;width:auto;margin:0 auto;border-radius:22px}
+.stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-top:8px}
+.stat .big{font-family:Outfit,sans-serif;font-weight:600;font-size:clamp(46px,5.4vw,82px);line-height:1;letter-spacing:-.03em;margin-bottom:14px;color:#fff}
+.stat .big i{font-style:normal;color:var(--tealL)}
+.stat p{font-size:15px;line-height:1.55;color:#d9d9de}
+.stat{padding:24px}
+.cmp{position:relative;touch-action:pan-y;cursor:ew-resize;--s:50%}
+.cmp img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transform:none!important;pointer-events:none;-webkit-user-drag:none}
+.cmp img.b{clip-path:inset(0 calc(100% - var(--s)) 0 0)}
+.cmp .dv{position:absolute;top:0;bottom:0;left:var(--s);width:2px;background:#fff;transform:translateX(-50%);pointer-events:none;box-shadow:0 0 12px rgba(0,0,0,.5);z-index:2}
+.cmp .dv span{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:44px;height:44px;border-radius:50%;background:var(--blue);color:#fff;display:grid;place-items:center;box-shadow:0 0 22px rgba(43,0,255,.7);font-size:18px}
+.cmp .cl{position:absolute;top:12px;z-index:3;font-family:'JetBrains Mono';font-size:11px;letter-spacing:.12em;text-transform:uppercase;padding:6px 10px;border-radius:999px;background:rgba(0,0,0,.72);border:1px solid rgba(255,255,255,.2);pointer-events:none}
+.cmp .cl.l{left:12px}.cmp .cl.r{right:12px}
+.cr{display:block;width:100%;height:36px;margin-top:10px;accent-color:#2B00FF;cursor:ew-resize}
+.hint{font-size:13.5px;color:var(--mute);margin-top:2px}
+.c3.six .card{padding:18px}
+.cta.pri{background:var(--blue);box-shadow:0 10px 30px -8px var(--blue);font-weight:600;font-size:clamp(16px,1.3vw,19px);padding:16px 27px}
+.cta.pri:hover{box-shadow:0 10px 44px -2px var(--blue)}
+.bqr{width:112px;height:112px;border-radius:10px;background:#fff;padding:6px;margin-top:34px}
+.hlb{display:inline-block;-webkit-box-decoration-break:slice;box-decoration-break:slice}
+.ctasub a{color:inherit;text-decoration:none}.ctasub a:hover{color:#fff}
+.cbox{display:grid;gap:20px}.cbox .row{padding:4px 0 4px 18px;border-left:2px solid var(--tealL)}
+.cbox small{display:block;font-family:'JetBrains Mono';font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--mute);margin-bottom:4px}
+.cbox a{font-family:Outfit;font-size:clamp(18px,1.7vw,24px);font-weight:500;color:#fff;text-decoration:none}.cbox a:hover{color:var(--tealL)}
+@media (max-width:900px){
+ :root{--padB:96px}
+ header img{height:24px}.hm .x{display:none}
+ section{align-items:flex-start;padding:76px 18px var(--padB);overflow-y:auto;-webkit-overflow-scrolling:touch}
+ .grid2,.split{grid-template-columns:1fr;gap:18px}
+ .c2,.c3,.steps{grid-template-columns:1fr}
+ .clients{grid-template-columns:1fr}
+ .steps:before{display:none}.steps{margin:14px 0 26px}
+ .st{display:grid;grid-template-columns:54px 1fr;gap:0 14px}.st .k{grid-row:span 2;margin:0}
+ .sec{display:none}
+ .cmeta{position:static;margin-top:28px}
+ #deck section:first-child{flex-direction:column;align-items:flex-start}
+ .fr.dh{max-height:46vh}
+ .fr.ph{height:auto;width:min(70vw,300px)}.stats{grid-template-columns:1fr}.stat{padding:20px}
+ footer{background:linear-gradient(180deg,transparent,#000 45%);padding-top:26px}
+ header{background:linear-gradient(0deg,transparent,#000 40%)}
+}
+@media (max-height:760px) and (min-width:901px){h2{font-size:clamp(26px,3vw,40px)}ul.ls{gap:10px}ul.ls li{font-size:14.5px}.lead{font-size:16px}.card{padding:16px}.card h3{font-size:18px}.st p{font-size:13.5px}}
+</style>
+</head>
+<body>
+<div class="amb"></div><div class="gridbg"></div>
+<header><img src="img/logo.png" alt="NEXUS360"><div class="hm"><span class="x">Irodaházak és irodaterületek</span><button id="fs">Teljes képernyő</button></div></header>
+<main id="deck">
+
+<!-- 1 Nyitó -->
+<section data-sec="Bevezető">
+ <div class="w grid2">
+  <div>
+   <div class="kick rv">Irodaházat vagy irodaterületet kezel?</div>
+   <h1 class="rv d1">Mutassa meg az irodát <span class="hl">bárhonnan, bárkinek</span></h1>
+   <p class="lead rv d2" style="margin-top:24px">Bejárható digitális iroda, amely a bérbeadástól az üzemeltetésig ugyanabból a pontos térből dolgozik: kevesebb bejárás, gyorsabb döntés, rendezett dokumentáció.</p>
+  </div>
+  <div class="fr sharp ph rv d2"><video src="img/iroda-seta.mp4" poster="img/iroda-seta.jpg" autoplay muted loop playsinline></video></div>
+ </div>
+ <div class="meta cmeta rv d3"><span>Hajdu Dénes, NEXUS360</span></div>
+</section>
+
+<!-- 2 Piac -->
+<section data-sec="A piac">
+ <div class="w">
+  <h2 class="rv d1">Mit mutat <span class="hl">az irodapiac?</span></h2>
+  <p class="lead rv d2" style="max-width:900px">A kereslet a legjobb épületekre koncentrálódik. A többi irodának ki kell tűnnie, és könnyűvé kell tennie a döntést.</p>
+  <div class="stats" style="margin-top:26px">
+   <div class="card stat rv d2"><div class="big">9,4<i>%</i></div><p>az európai irodák átlagos üresedése. Nagyjából minden tizedik négyzetméter áll üresen.</p></div>
+   <div class="card stat rv d3"><div class="big">~2<i>%</i></div><p>a legjobb belvárosi irodák üresedése. A kereslet itt sűrűsödik, és a bérleti díjak is itt emelkednek.</p></div>
+   <div class="card stat rv d4"><div class="big">4,7<i>×</i></div><p>akkora eséllyel kerül az érdeklődő listájára az az iroda, amelyhez virtuális bejárás tartozik. Személyes szemléig 6,4-szer nagyobb eséllyel jut el.</p></div>
+  </div>
+ </div>
+</section>
+
+<!-- 3 Ismerős helyzetek -->
+<section data-sec="A kiindulás">
+ <div class="w">
+  <h2 class="rv d1">Ismerős helyzetek <span class="hl">az irodák kezeléséből</span></h2>
+  <div class="split">
+   <div class="rv d2"><h3>Stratégiai kérdések</h3>
+    <ul class="ls">
+     <li><span>Üres szintek és hosszú bérbeadási folyamat.</span></li>
+     <li><span>A döntés több emberen múlik, a bérlő gyakran külföldi vagy távoli központ.</span></li>
+     <li><span>Az épület állapota nehezen dokumentált, a tudás néhány kollégán múlik.</span></li>
+     <li><span>Több épület egységes, távoli átlátása és kezelése.</span></li>
+    </ul>
+   </div>
+   <div class="rv d3"><h3>Hétköznapi helyzetek</h3>
+    <ul class="ls g">
+     <li><span>Sok bejárás, amelyből végül nem lesz bérlet.</span></li>
+     <li><span>Elavult vagy hiányzó alaprajzok, ismétlődő mérések.</span></li>
+     <li><span>Bérlői kialakításnál újabb és újabb helyszíni felmérés.</span></li>
+     <li><span>Átadás-átvételkor vita arról, mi volt az eredeti állapot.</span></li>
+     <li><span>A falak mögötti gépészet és a dokumentumok szétszórtan, nehezen elérhetők.</span></li>
+    </ul>
+   </div>
+  </div>
+  <p class="note rv d4">Mindegyiknek ugyanaz az ára: a bérbeadó és az üzemeltető ideje, és a lassabb döntés.</p>
+ </div>
+</section>
+
+<!-- 4 Hogyan segít -->
+<section data-sec="A megoldás">
+ <div class="w">
+  <h2 class="rv d1">Hogyan segít <span class="hl">az épület életútján?</span></h2>
+  <p class="lead rv d2" style="max-width:900px">A bérbeadástól az üzemeltetésig ugyanaz a pontos tér dolgozik.</p>
+  <div class="steps rv d3">
+   <div class="st"><div class="k">01</div><h3>Bérbeadás</h3><p>Az iroda a hirdetésben és az ajánlatban bejárható. A döntéshozó ugyanazt látja, mint az értékesítő.</p></div>
+   <div class="st"><div class="k">02</div><h3>Döntés</h3><p>A kérdések a tér egy konkrét pontjára vonatkoznak, a méret pedig a bejárásban vehető.</p></div>
+   <div class="st"><div class="k">03</div><h3>Kialakítás</h3><p>A bérlői kialakítás a valós térből tervezhető: méretek, ajtók, útvonalak, hozzáférések.</p></div>
+   <div class="st"><div class="k">04</div><h3>Átadás</h3><p>Az átadás előtti és utáni állapot rögzítve van, nincs vita az eredeti állapotról.</p></div>
+   <div class="st"><div class="k">05</div><h3>Üzemeltetés</h3><p>Alaprajz, dokumentumok és információk egy helyen. Az új kolléga és a partner is eligazodik.</p></div>
+  </div>
+ </div>
+</section>
+
+<!-- 5 Mit kap kézbe -->
+<section data-sec="A megoldás">
+ <div class="w">
+  <h2 class="rv d1">Mit kap <span class="hl">kézbe?</span></h2>
+  <div class="cards c3" style="margin-top:14px">
+   <div class="card rv d2"><span class="n">Alap</span><h3>Bejárható digitális iroda</h3><p>Valósághű tér, rendezett kezdőnézettel, szintekkel, helyiségekkel és alaprajzzal.</p></div>
+   <div class="card rv d2"><span class="n">Megosztás</span><h3>Link, QR-kód és beágyazó kód</h3><p>Ajánlatba, e-mailbe, hirdetésbe, nyomtatott anyagra és a honlapra.</p></div>
+   <div class="card rv d3"><span class="n">Mérés</span><h3>Méret a bejárásból</h3><p>Belmagasság, ajtószélesség, bútorméret: a helyszínre menés nélkül.</p></div>
+   <div class="card rv d3"><span class="n">Bevezetés</span><h3>Közös bevezetés</h3><p>Egy 1–2 órás alkalom a kollégákkal, a saját feladataikra szabva.</p></div>
+   <div class="card rv d4"><span class="n">Visszajelzés</span><h3>Statisztika</h3><p>Látja, hányan és hányszor nyitották meg a bejárást.</p></div>
+   <div class="card rv d4"><span class="n">Üzemeltetés</span><h3>Technika nélkül</h3><p>A tárhelyet és a technikát mi kezeljük, Önöknek csak használni kell.</p></div>
+  </div>
+  <p class="note rv d4">A megrendelt kiegészítők, például információs pontok vagy többnyelvű bejárás, ugyanebben a bejárásban jelennek meg.</p>
+ </div>
+</section>
+
+<!-- 6 Mérés -->
+<section data-sec="A megoldás">
+ <div class="w grid2">
+  <div>
+   <h2 class="rv d1">Méret a bejárásból, <span class="hl">újabb helyszíni mérés nélkül</span></h2>
+   <ul class="ls g rv d2">
+    <li><span><b>Néhány kattintás</b>Belmagasság, ajtószélesség, asztalhossz: közvetlenül a bejárásban.</span></li>
+    <li><span><b>Bútorozás és kapacitás</b>Hány munkaállomás fér el, hová kerül a tárgyaló: a bérlő a helyszín elhagyása nélkül eldöntheti.</span></li>
+    <li><span><b>Mérőszalag helyett link</b>A tervező, a kivitelező és a bérlő ugyanabban a térben mér.</span></li>
+   </ul>
+   <p class="note rv d3">A bejárásban vett méret a legtöbb gyakorlati kérdéshez elegendő. Hivatalos kitűzést vagy földmérést nem helyettesít.</p>
+  </div>
+  <div class="fr sharp ph rv d2"><video src="img/iroda-meres.mp4" poster="img/iroda-meres.jpg" muted loop playsinline preload="none"></video></div>
+ </div>
+</section>
+
+<!-- 7 Üres / berendezett -->
+<section data-sec="A megoldás">
+ <div class="w grid2">
+  <div>
+   <h2 class="rv d1">Berendezve és üresen, <span class="hl">ugyanabban a bejárásban</span></h2>
+   <ul class="ls rv d2">
+    <li><span><b>Bútor nélkül</b>Egy kattintással eltűnnek a bútorok, a bérlő tiszta, üres teret lát, és a sajátját tudja elképzelni.</span></li>
+    <li><span><b>Eredeti állapot</b>Az eredeti és a módosított nézet között váltani lehet, a valós állapot mindig elérhető.</span></li>
+    <li><span><b>Üresen álló szint</b>A berendezett változat látványtervként készül el, erről később mutatunk példát.</span></li>
+   </ul>
+   <p class="note rv d3">A módosított nézeteket jelöljük, hogy a bérlő mindig tudja, mit lát.</p>
+  </div>
+  <div class="fr sharp ph rv d2"><video src="img/iroda-ures.mp4" poster="img/iroda-ures.jpg" muted loop playsinline preload="none"></video></div>
+ </div>
+</section>
+
+<!-- 8 Referencia -->
+<section data-sec="Referenciák">
+ <div class="w grid2">
+  <div>
+   <div class="kick rv">Referencia</div>
+   <h2 class="rv d1"><span class="hl">Irodaterület</span></h2>
+   <div class="rc rv d2">
+    <div><small>Stratégiai kérdés</small><p>A bérlő döntése a beosztáson és a hangulaton múlik, ezt fotókon nehéz átadni.</p></div>
+    <div><small>Hétköznapi kérdés</small><p>Hány munkaállomás fér el, hol vannak a tárgyalók és a kiszolgáló terek?</p></div>
+    <div><small>Amit a bejárás ad</small><p>Az egész terület egy linken, bárhonnan bejárhatóan és mérhetően.</p></div>
+   </div>
+  </div>
+  <div class="rv d2">
+   <div class="tour" data-m="7zBtzJ68Dv5"></div>
+  </div>
+ </div>
+</section>
+
+<!-- 9 Hol használható -->
+<section data-sec="Használat">
+ <div class="w">
+  <h2 class="rv d1">Hol használható <span class="hl">a mindennapokban?</span></h2>
+  <p class="lead rv d2" style="max-width:900px;margin-bottom:24px">Telefonon, tableten és számítógépen, böngészőből, alkalmazás letöltése nélkül.</p>
+  <div class="cards c3">
+   <div class="card rv d2"><span class="n">Honlap és hirdetés</span><h3>Nem lassítja az oldalt</h3><p>A bejárás külső felhőből, kattintásra töltődik be, az oldal betöltését nem terheli.</p></div>
+   <div class="card rv d2"><span class="n">Ajánlat és e-mail</span><h3>Egy link, minden ajánlatban</h3><p>A bérlő és a döntéshozó az ajánlat mellett azonnal körül is nézhet.</p></div>
+   <div class="card rv d3"><span class="n">Online egyeztetés</span><h3>Közösen a térben</h3><p>Megosztott képernyőn együtt járják be a szintet, és ott beszélik meg a részleteket.</p></div>
+   <div class="card rv d3"><span class="n">Tulajdonosnak</span><h3>Az épület távolról is látható</h3><p>Több épület állapota és üres területei egy helyről átláthatók.</p></div>
+   <div class="card rv d4"><span class="n">Kollégáknak</span><h3>Betanítás és tájékozódás</h3><p>Az új munkatárs a munkakezdés előtt megismeri az egész épületet.</p></div>
+   <div class="card rv d4"><span class="n">Partnereknek</span><h3>Közös kiindulópont</h3><p>Kivitelező, gépész, takarítás: mindenki ugyanabból a térből dolgozik.</p></div>
+  </div>
+ </div>
+</section>
+
+<!-- 10 Ráépíthető megoldások -->
+<section data-sec="Lehetőségek">
+ <div class="w grid2">
+  <div>
+   <h2 class="rv d1">Amit a bejárásra <span class="hl">ráépíthet</span></h2>
+   <ul class="ls g rv d2">
+    <li><span><b>Információs pontok</b>Szöveg, kép, videó vagy dokumentum a térben: bérleti feltételek, kapacitás, műszaki adatok.</span></li>
+    <li><span><b>Többnyelvű bejárás</b>A külföldi bérlőnek és a távoli központnak a saját nyelvén.</span></li>
+    <li><span><b>Google Street View</b>Az épület és a bejárat a Google Térképen és a Google-profilon is bejárható.</span></li>
+    <li><span><b>Alaprajz</b>Az aktuális állapotból készült alaprajz a hirdetéshez és a bérlői egyeztetéshez.</span></li>
+   </ul>
+  </div>
+  <div class="fr sharp rv d2" style="aspect-ratio:1012/642"><img src="img/infopont.jpg" alt="Digitális iroda információs pontokkal a térben"></div>
+ </div>
+</section>
+
+<!-- 11 Műszaki fájlok -->
+<section data-sec="Lehetőségek">
+ <div class="w grid2">
+  <div>
+   <h2 class="rv d1">Pontos alap <span class="hl">a tervezéshez és az üzemeltetéshez</span></h2>
+   <ul class="ls rv d2">
+    <li><span><b>Alaprajz és CAD-hoz használható adatok</b>Bérlői kialakításhoz és felújításhoz.</span></li>
+    <li><span><b>3D modell és pontfelhő</b>BIM-hez, tervezéshez, gépészeti egyeztetéshez.</span></li>
+    <li><span><b>A felmérés idején látható elemek</b>Például a nyitott álmennyezeti részek és a gépészeti helyiségek dokumentálva.</span></li>
+    <li><span><b>Átadható állományok</b>Az Önök és a partnerek rendszeréhez.</span></li>
+   </ul>
+   <p class="note rv d3">Az adott állapot dokumentálása a cél. Mérnöki vagy földmérési tanúsítványt nem helyettesít.</p>
+  </div>
+  <div class="fr sharp rv d2" style="aspect-ratio:1000/563"><img src="img/muszaki.jpg" alt="Az épület 3D modellje a szerkezeti és gépészeti elemekkel"></div>
+ </div>
+</section>
+
+<!-- 12 Változásdokumentáció -->
+<section data-sec="Lehetőségek">
+ <div class="w grid2">
+  <div>
+   <h2 class="rv d1">Mi változott, <span class="hl">és mikor?</span></h2>
+   <p class="lead rv d2">Két időpontban készült felmérés ugyanabból a nézőpontból, egymás mellett összevethető.</p>
+   <ul class="ls g rv d3" style="margin-top:18px">
+    <li><span><b>Bérlői kialakítás</b>A terv és a megvalósult állapot, a falak és az álmennyezet mögötti vezetékekkel, mielőtt befedik őket.</span></li>
+    <li><span><b>Átadás-átvétel</b>A bérbeadás előtti és utáni állapot dokumentálva: vita helyett kép.</span></li>
+    <li><span><b>Évek múlva is</b>Hol futott a kábel, hol van a csatlakozó, mi volt az eredeti kialakítás.</span></li>
+   </ul>
+   <p class="note rv d4">Ott érhető el, ahol a felmérés a változás előtt és után is megtörténik. Érdemes előre egyeztetni.</p>
+  </div>
+  <div class="fr sharp rv d2" style="aspect-ratio:818/412"><img src="img/valtozas.jpg" alt="A tervezett és a megvalósult állapot egymás mellett, ugyanabból a nézőpontból"></div>
+ </div>
+</section>
+
+<!-- 13 Látványterv -->
+<section data-sec="Lehetőségek">
+ <div class="w grid2">
+  <div>
+   <h2 class="rv d1">Látványterv <span class="hl">az üres irodából</span></h2>
+   <ul class="ls rv d2">
+    <li><span><b>Egy nézetből berendezett kép</b>Az üres szint egy nézetéből mesterséges intelligenciával látványkép készül: munkaállomások, tárgyaló, pihenősarok.</span></li>
+    <li><span><b>Döntés a kialakítás előtt</b>A bérlő a saját igényeihez tudja mérni a teret, mielőtt bármi épülne.</span></li>
+    <li><span><b>Jelölve</b>Látványtervként jelöljük, a valós állapot mindig látható marad.</span></li>
+   </ul>
+  </div>
+  <div class="rv d2">
+   <div class="fr sharp cmp" id="cmp" style="aspect-ratio:16/9"><img src="img/re-latvanyterv.jpg" alt="Berendezett modern iroda: fa munkaállomások, tárgyaló, pihenősarok, növények"><img class="b" src="img/re-eredeti.jpg" alt="Az eredeti, üres irodatér"><span class="cl l">Eredeti tér</span><span class="cl r">Látványterv</span><div class="dv"><span>↔</span></div></div>
+   <input id="cmpr" class="cr" type="range" min="0" max="100" step="0.1" value="50" aria-label="Eredeti tér és látványterv közötti választóvonal">
+   <p class="hint">Húzza a választóvonalat, telefonon ujjal is mozgatható.</p>
+  </div>
+ </div>
+</section>
+
+<!-- 14 Haladó -->
+<section data-sec="Lehetőségek">
+ <div class="w">
+  <h2 class="rv d1">Mérhető és élő, <span class="hl">amikor szükség van rá</span></h2>
+  <p class="lead rv d2" style="max-width:900px">A bejárás az alap. Erre épülhet minden, ami az adott épületnek többet hoz.</p>
+  <div class="split" style="margin-top:22px">
+   <div class="rv d2"><h3>Mérhető</h3><p class="sub">Mi érdekli a látogatókat</p>
+    <ul class="ls">
+     <li><span><b>Látogatottsági hőtérkép</b>Látszik, mely szintek, tárgyalók és részek érdeklik leginkább az érdeklődőket. Ebből tudható, mit érdemes kiemelni az ajánlatban.</span></li>
+     <li><span><b>Statisztika</b>Hányan és hányszor nyitották meg a bejárást, és honnan érkeztek.</span></li>
+    </ul>
+   </div>
+   <div class="rv d3"><h3>Élő tartalom a térben</h3><p class="sub">Információ ott, ahol releváns</p>
+    <ul class="ls g">
+     <li><span><b>Videó és 3D tárgy</b>Például a recepciónál az épület bemutatkozó videója, a liftek mellett a használati tudnivalók.</span></li>
+     <li><span><b>Partnerek megjelenése</b>Szolgáltatók és bérlők bemutatkozása ott, ahol a térben értelme van.</span></li>
+    </ul>
+   </div>
+  </div>
+ </div>
+</section>
+
+<!-- 15 Hogyan dolgozunk -->
+<section data-sec="Együttműködés">
+ <div class="w">
+  <h2 class="rv d1">Hogyan <span class="hl">dolgozunk?</span></h2>
+  <p class="lead rv d2" style="max-width:900px">Partnerként, az első egyeztetéstől a napi használatig.</p>
+  <div class="steps rv d3">
+   <div class="st"><div class="k">01</div><h3>Egyeztetés</h3><p>Megértjük az épületet és a valódi felhasználási célt. Ebből készül az ajánlat.</p></div>
+   <div class="st"><div class="k">02</div><h3>Felmérés</h3><p>Egyeztetett időpontban, akár használat közben is. Az időtartam a terület méretétől függ.</p></div>
+   <div class="st"><div class="k">03</div><h3>Feldolgozás</h3><p>Rendezett kezdőnézet, szintek és helyiségek, a megrendelt tartalmakkal.</p></div>
+   <div class="st"><div class="k">04</div><h3>Közös bevezetés</h3><p>Egy 1–2 órás alkalom a kollégákkal, a saját feladataikra szabva.</p></div>
+   <div class="st"><div class="k">05</div><h3>Gondozás</h3><p>Tartalomfrissítés, bővítés és statisztika, amikor szükség van rá.</p></div>
+  </div>
+ </div>
+</section>
+
+<!-- 16 GYIK -->
+<section data-sec="Gyakori kérdések">
+ <div class="w">
+  <h2 class="rv d1">Gyakori <span class="hl">kérdések</span></h2>
+  <div class="cards c3 six" style="margin-top:10px">
+   <div class="card q rv d2"><h3>Zavarja a bérlőket a felmérés?</h3><p>Egyeztetett időpontban dolgozunk, akár használat közben is. A legjobb eredményhez azt javasoljuk, hogy a felmérés idején ne legyenek emberek a felmért térben.</p></div>
+   <div class="card q rv d2"><h3>Mennyi idő alatt készül el?</h3><p>A terület méretétől és a kért tartalmaktól függ. A pontos ütemezést az ajánlat rögzíti.</p></div>
+   <div class="card q rv d3"><h3>Mi kerül bele, és mi marad ki?</h3><p>Előre egyeztetjük. A bérlők által használt, érzékeny vagy nem nyilvános helyiségek kimaradhatnak.</p></div>
+   <div class="card q rv d3"><h3>Valós állapotot látunk?</h3><p>Igen, a felméréskori valós állapotot. A módosított nézeteket, például a bútor nélküli vagy berendezett változatot, jelöljük.</p></div>
+   <div class="card q rv d4"><h3>Mi van átépítésnél vagy bérlőváltásnál?</h3><p>Az információs pontok bármikor frissíthetők. Nagyobb átalakításnál újra felmérjük a teret, és a két állapot összevethető marad.</p></div>
+   <div class="card q rv d4"><h3>Lassítja a honlapot?</h3><p>Nem. A bejárás külső felhőből, kattintásra töltődik be, az oldal betöltését nem terheli.</p></div>
+  </div>
+ </div>
+</section>
+
+<!-- 17 Zárás -->
+<section data-sec="Következő lépés">
+ <div class="w grid2">
+  <div>
+   <h2 class="rv d1">Következő lépés: <span class="hl hlb">30 perces online bemutató</span></h2>
+   <p class="lead rv d2">Fél óra alatt megmutatjuk, hogyan működne az Önök épületében, és válaszolunk a kérdéseikre.</p>
+   <div class="rv d3" style="margin-top:28px">
+    <a class="cta pri" id="book" href="https://calendar.app.google/zFH8etA7r1gQPKPB7" target="_blank" rel="noopener">Kérek egy 30 perces online bemutatót <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+    <p class="ctasub">Vagy írjon közvetlenül: <a href="mailto:nexus@nexus360.hu">nexus@nexus360.hu</a></p>
+   </div>
+   <img class="bqr rv d4" src="img/qr-foglalas.png" alt="QR-kód az online bemutató foglalásához">
+  </div>
+  <div class="cbox rv d2">
+   <div class="row"><small>E-mail</small><a href="mailto:nexus@nexus360.hu">nexus@nexus360.hu</a></div>
+   <div class="row"><small>Web</small><a href="https://nexus360.hu" target="_blank" rel="noopener">www.nexus360.hu</a></div>
+   <div class="row"><small>Hajdu Dénes, alapító</small><a href="tel:+36704320521">+36 70 432 0521</a></div>
+  </div>
+ </div>
+</section>
+
+</main>
+<footer>
+ <div class="nav"><button id="pv" aria-label="Előző"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 6l-6 6 6 6"/></svg></button><button id="nx" aria-label="Következő"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6l6 6-6 6"/></svg></button></div>
+ <div class="count"><b id="cur">01</b> / <span id="tot"></span></div>
+ <div class="prog"><i id="bar"></i></div>
+ <div class="sec" id="secn"></div>
+</footer>
+<script>
+(function(){
+const S=[...document.querySelectorAll('#deck section')],N=S.length;let idx=-1;
+// Ide kerül a Google Naptár foglalási oldalának linkje; ha be van írva, a gomb oda visz.
+const BOOKING_URL='https://calendar.app.google/zFH8etA7r1gQPKPB7';
+if(BOOKING_URL){const b=document.getElementById('book');b.href=BOOKING_URL;}
+const pad=n=>String(n).padStart(2,'0');document.getElementById('tot').textContent=pad(N);
+// A séták nyitóképernyője két diával előre betöltődik (egyszerre legfeljebb kettő); a sétát a látogató a lejátszással indítja.
+const EMBED=true;
+function tour(t,on){
+ const f=t.querySelector('iframe');
+ if(on&&!f&&EMBED){const x=document.createElement('iframe');x.src='https://my.matterport.com/show/?m='+t.dataset.m;x.allow='fullscreen; xr-spatial-tracking';x.setAttribute('allowfullscreen','');x.title='Élő bejárás';t.appendChild(x)}
+ if(!on&&f)f.remove();
+}
+function TW(i){return S.map((s,k)=>k).filter(k=>k>=i&&k<=i+2&&S[k].querySelector('.tour')).slice(0,2)}
+function fromHash(){const m=/^#dia-(\d+)$/.exec(location.hash);return m?Math.min(N-1,Math.max(0,+m[1]-1)):0}
+function go(i,push=true){i=Math.max(0,Math.min(N-1,i));if(i===idx)return;idx=i;
+ S.forEach((s,k)=>{s.classList.toggle('on',k===i);s.querySelectorAll('video').forEach(v=>{try{k===i?v.play().catch(()=>{}):v.pause()}catch(e){}});if(!document.documentElement.classList.contains('nx-m'))s.querySelectorAll('.tour').forEach(t=>tour(t,k>=i&&k<=i+2&&TW(i).includes(k)))});S[i].scrollTop=0;
+ document.getElementById('cur').textContent=pad(i+1);document.getElementById('bar').style.width=((i+1)/N*100)+'%';
+ document.getElementById('secn').textContent=S[i].dataset.sec||'';
+ if(push){try{history.replaceState(null,'','#dia-'+(i+1))}catch(e){}}}
+document.getElementById('nx').onclick=()=>go(idx+1);document.getElementById('pv').onclick=()=>go(idx-1);
+addEventListener('keydown',e=>{if(['ArrowRight','PageDown',' '].includes(e.key)){e.preventDefault();go(idx+1)}if(['ArrowLeft','PageUp'].includes(e.key)){e.preventDefault();go(idx-1)}if(e.key==='Home')go(0);if(e.key==='End')go(N-1)});
+let wl=0;addEventListener('wheel',e=>{const s=S[idx];if(s.scrollHeight>s.clientHeight+4)return;const t=Date.now();if(t-wl<900||Math.abs(e.deltaY)<20)return;wl=t;go(idx+(e.deltaY>0?1:-1))},{passive:true});
+let tx=0,ty=0;addEventListener('touchstart',e=>{tx=(e.target.closest&&e.target.closest('.cmp'))?null:e.touches[0].clientX;ty=e.touches[0].clientY},{passive:true});
+addEventListener('touchend',e=>{if(tx===null)return;const dx=e.changedTouches[0].clientX-tx,dy=e.changedTouches[0].clientY-ty;if(Math.abs(dx)>50&&Math.abs(dx)>Math.abs(dy)*1.3)go(idx+(dx<0?1:-1))},{passive:true});
+addEventListener('hashchange',()=>go(fromHash(),false));
+document.getElementById('fs').onclick=()=>{try{if(!document.fullscreenElement)document.documentElement.requestFullscreen().catch(()=>{});else document.exitFullscreen()}catch(e){}};
+addEventListener('pointermove',e=>{if(matchMedia('(max-width:900px)').matches)return;const x=e.clientX/innerWidth-.5,y=e.clientY/innerHeight-.5;const s=S[idx];if(!s)return;s.querySelectorAll('.fr:not(.dh):not(.sharp)').forEach(f=>{f.style.transform=`perspective(1200px) rotateY(${x*3}deg) rotateX(${-y*3}deg)`})});
+(function(){const c=document.getElementById('cmp');if(!c)return;const r=document.getElementById('cmpr');let ap=null;
+function u(v){v=Math.max(0,Math.min(100,+v));c.style.setProperty('--s',v+'%');r.value=v}
+function p(e){const b=c.getBoundingClientRect();u((e.clientX-b.left)/b.width*100)}
+r.addEventListener('input',()=>u(r.value));
+c.addEventListener('pointerdown',e=>{if(!e.isPrimary||(e.pointerType==='mouse'&&e.button!==0))return;ap=e.pointerId;try{c.setPointerCapture(e.pointerId)}catch(x){}p(e)});
+c.addEventListener('pointermove',e=>{if(ap===e.pointerId)p(e)});
+['pointerup','pointercancel','lostpointercapture'].forEach(n=>c.addEventListener(n,()=>{ap=null}));u(50)})();
+go(fromHash(),false);
+// Mobilnézetben (görgethető oldal) a séta akkor tölt be, amikor a képernyőre ér.
+if(document.documentElement.classList.contains('nx-m')&&'IntersectionObserver' in window){
+ const io=new IntersectionObserver(es=>es.forEach(e=>tour(e.target,e.isIntersecting)),{rootMargin:'120% 0px'});
+ document.querySelectorAll('.tour').forEach(t=>io.observe(t));
+}
+})();
+</script>
+</body>
+</html>
