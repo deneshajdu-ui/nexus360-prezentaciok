@@ -143,6 +143,9 @@ blockquote{font-family:Outfit;font-weight:300;font-size:clamp(18px,1.6vw,23px);l
 .cbox{display:grid;gap:20px}.cbox .row{padding:4px 0 4px 18px;border-left:2px solid var(--tealL)}
 .cbox small{display:block;font-family:'JetBrains Mono';font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--mute);margin-bottom:4px}
 .cbox a{font-family:Outfit;font-size:clamp(18px,1.7vw,24px);font-weight:500;color:#fff;text-decoration:none}.cbox a:hover{color:var(--tealL)}
+.hli{display:inline;color:#fff;background:#2B00FF;-webkit-box-decoration-break:clone;box-decoration-break:clone;padding:.03em .16em;line-height:1.32}
+.yt{cursor:pointer}.yt iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.yt .ytp{position:absolute;left:50%;top:50%;width:76px;height:76px;margin:-38px 0 0 -38px;border-radius:50%;border:0;background:#2B00FF;color:#fff;font-size:26px;cursor:pointer;box-shadow:0 10px 40px rgba(43,0,255,.6);z-index:3}
 @media (max-width:900px){
  :root{--padB:96px}
  header img{height:24px}.hm .x{display:none}
@@ -197,41 +200,40 @@ blockquote{font-family:Outfit;font-weight:300;font-size:clamp(18px,1.6vw,23px);l
 <!-- 3 Ismerős helyzetek -->
 <section data-sec="A kiindulás">
  <div class="w">
-  <h2 class="rv d1">Ismerős helyzetek <span class="hl">az irodák kezeléséből</span></h2>
+  <h2 class="rv d1">Stratégiai és operatív <span class="hl">kihívások</span></h2>
   <div class="split">
-   <div class="rv d2"><h3>Stratégiai kérdések</h3>
+   <div class="rv d2"><h3>Portfólió- és bérbeadási szint</h3>
     <ul class="ls">
-     <li><span>Üres szintek és hosszú bérbeadási folyamat.</span></li>
-     <li><span>A döntés több emberen múlik, a bérlő gyakran külföldi vagy távoli központ.</span></li>
-     <li><span>Az épület állapota nehezen dokumentált, a tudás néhány kollégán múlik.</span></li>
-     <li><span>Több épület egységes, távoli átlátása és kezelése.</span></li>
+     <li><span>Üres szintek, hosszú bérbeadási ciklus.</span></li>
+     <li><span>Többszereplős döntés, a bérlői központ gyakran külföldön van.</span></li>
+     <li><span>Hiányos épületdokumentáció, a tudás néhány kollégánál van.</span></li>
+     <li><span>Több épület egységes, távoli átláthatósága.</span></li>
     </ul>
    </div>
-   <div class="rv d3"><h3>Hétköznapi helyzetek</h3>
+   <div class="rv d3"><h3>Napi üzemeltetési szint</h3>
     <ul class="ls g">
-     <li><span>Sok bejárás, amelyből végül nem lesz bérlet.</span></li>
-     <li><span>Elavult vagy hiányzó alaprajzok, ismétlődő mérések.</span></li>
-     <li><span>Bérlői kialakításnál újabb és újabb helyszíni felmérés.</span></li>
-     <li><span>Átadás-átvételkor vita arról, mi volt az eredeti állapot.</span></li>
-     <li><span>A falak mögötti gépészet és a dokumentumok szétszórtan, nehezen elérhetők.</span></li>
+     <li><span>Sok helyszíni bejárás alacsony konverzióval.</span></li>
+     <li><span>Elavult vagy hiányzó alaprajzok, ismételt felmérések.</span></li>
+     <li><span>Bérlői kialakításnál többszöri helyszíni adatfelvétel.</span></li>
+     <li><span>Átadás-átvételkor vitatott kiindulási állapot.</span></li>
+     <li><span>A gépészeti rendszerek és dokumentumok szétszórtan érhetők el.</span></li>
     </ul>
    </div>
   </div>
-  <p class="note rv d4">Mindegyiknek ugyanaz az ára: a bérbeadó és az üzemeltető ideje, és a lassabb döntés.</p>
  </div>
 </section>
 
 <!-- 4 Hogyan segít -->
 <section data-sec="A megoldás">
  <div class="w">
-  <h2 class="rv d1">Hogyan segít <span class="hl">az épület életútján?</span></h2>
-  <p class="lead rv d2" style="max-width:900px">A bérbeadástól az üzemeltetésig ugyanaz a pontos tér dolgozik.</p>
+  <h2 class="rv d1">Egy digitális modell <span class="hli">az épület teljes életciklusán</span></h2>
+  <p class="lead rv d2" style="max-width:900px">A bérbeadástól az üzemeltetésig ugyanaz a pontos digitális tér szolgálja ki a folyamatot.</p>
   <div class="steps rv d3">
-   <div class="st"><div class="k">01</div><h3>Bérbeadás</h3><p>Az iroda a hirdetésben és az ajánlatban bejárható. A döntéshozó ugyanazt látja, mint az értékesítő.</p></div>
-   <div class="st"><div class="k">02</div><h3>Döntés</h3><p>A kérdések a tér egy konkrét pontjára vonatkoznak, a méret pedig a bejárásban vehető.</p></div>
-   <div class="st"><div class="k">03</div><h3>Kialakítás</h3><p>A bérlői kialakítás a valós térből tervezhető: méretek, ajtók, útvonalak, hozzáférések.</p></div>
-   <div class="st"><div class="k">04</div><h3>Átadás</h3><p>Az átadás előtti és utáni állapot rögzítve van, nincs vita az eredeti állapotról.</p></div>
-   <div class="st"><div class="k">05</div><h3>Üzemeltetés</h3><p>Alaprajz, dokumentumok és információk egy helyen. Az új kolléga és a partner is eligazodik.</p></div>
+   <div class="st"><div class="k">01</div><h3>Bérbeadás</h3><p>Az iroda a hirdetésben és az ajánlatban bejárható, a döntéshozó távolról is megismeri.</p></div>
+   <div class="st"><div class="k">02</div><h3>Bérlői döntés</h3><p>A kérdések a tér konkrét pontjára vonatkoznak, a méretek a modellből levehetők.</p></div>
+   <div class="st"><div class="k">03</div><h3>Kialakítás</h3><p>A tervezés a valós állapotból indul: méretek, nyílászárók, útvonalak, csatlakozási pontok.</p></div>
+   <div class="st"><div class="k">04</div><h3>Átadás-átvétel</h3><p>Az átadás előtti és utáni állapot dokumentált, az eredeti állapot nem vitatható.</p></div>
+   <div class="st"><div class="k">05</div><h3>Üzemeltetés</h3><p>Alaprajz, dokumentumok és műszaki információk egy helyen, a kollégák és a partnerek számára.</p></div>
   </div>
  </div>
 </section>
@@ -239,16 +241,15 @@ blockquote{font-family:Outfit;font-weight:300;font-size:clamp(18px,1.6vw,23px);l
 <!-- 5 Mit kap kézbe -->
 <section data-sec="A megoldás">
  <div class="w">
-  <h2 class="rv d1">Mit kap <span class="hl">kézbe?</span></h2>
+  <h2 class="rv d1">A szolgáltatás <span class="hl">tartalma</span></h2>
   <div class="cards c3" style="margin-top:14px">
    <div class="card rv d2"><span class="n">Alap</span><h3>Bejárható digitális iroda</h3><p>Valósághű tér, rendezett kezdőnézettel, szintekkel, helyiségekkel és alaprajzzal.</p></div>
    <div class="card rv d2"><span class="n">Megosztás</span><h3>Link, QR-kód és beágyazó kód</h3><p>Ajánlatba, e-mailbe, hirdetésbe, nyomtatott anyagra és a honlapra.</p></div>
-   <div class="card rv d3"><span class="n">Mérés</span><h3>Méret a bejárásból</h3><p>Belmagasság, ajtószélesség, asztalhossz néhány kattintással, a helyszínre menés nélkül. A nyitóoldali videóban is látszik.</p></div>
-   <div class="card rv d3"><span class="n">Bevezetés</span><h3>Közös bevezetés</h3><p>Egy 1–2 órás alkalom a kollégákkal, a saját feladataikra szabva.</p></div>
-   <div class="card rv d4"><span class="n">Visszajelzés</span><h3>Statisztika</h3><p>Látja, hányan és hányszor nyitották meg a bejárást.</p></div>
-   <div class="card rv d4"><span class="n">Üzemeltetés</span><h3>Technika nélkül</h3><p>A tárhelyet és a technikát mi kezeljük, Önöknek csak használni kell.</p></div>
+   <div class="card rv d3"><span class="n">Mérés</span><h3>Mérés a digitális térben</h3><p>Belmagasság, nyílásméret, távolság és terület a modellben, helyszíni kiszállás nélkül.</p></div>
+   <div class="card rv d3"><span class="n">Betanítás</span><h3>Használati betanítás</h3><p>Egy 1–2 órás alkalom a kollégákkal, a saját feladataikra szabva.</p></div>
+   <div class="card rv d4"><span class="n">Elemzés</span><h3>Használati statisztika</h3><p>Megnyitások száma, időtartam és forgalmi források követhetők.</p></div>
+   <div class="card rv d4"><span class="n">Üzemeltetés</span><h3>Tárhely és fenntartás</h3><p>A tárhelyet, a frissítéseket és a technikai hátteret mi biztosítjuk.</p></div>
   </div>
-  <p class="note rv d4">A megrendelt kiegészítők, például információs pontok vagy többnyelvű bejárás, ugyanebben a bejárásban jelennek meg. A bejárásban vett méret a legtöbb gyakorlati kérdéshez elegendő, hivatalos kitűzést vagy földmérést nem helyettesít.</p>
  </div>
 </section>
 
@@ -256,13 +257,13 @@ blockquote{font-family:Outfit;font-weight:300;font-size:clamp(18px,1.6vw,23px);l
 <section data-sec="A megoldás">
  <div class="w grid2">
   <div>
-   <h2 class="rv d1">Berendezve és üresen, <span class="hl">ugyanabban a bejárásban</span></h2>
+   <h2 class="rv d1">Berendezés eltávolítása <span class="hl">a digitális térből</span></h2>
    <ul class="ls rv d2">
-    <li><span><b>Bútor nélkül</b>Egy kattintással eltűnnek a bútorok, a bérlő tiszta, üres teret lát, és a sajátját tudja elképzelni.</span></li>
-    <li><span><b>Eredeti állapot</b>Az eredeti és a módosított nézet között váltani lehet, a valós állapot mindig elérhető.</span></li>
-    <li><span><b>Üresen álló szint</b>A berendezett változat látványtervként készül el, erről később mutatunk példát.</span></li>
+    <li><span><b>Üres tér egy kattintással</b>A bútorok és a berendezési tárgyak eltávolíthatók, a bérlő a tiszta alapterületet látja.</span></li>
+    <li><span><b>Saját elrendezés elképzelése</b>A leendő bérlő a saját munkaállomás- és tárgyalószám-igényéhez tudja mérni a teret.</span></li>
+    <li><span><b>Eredeti és módosított nézet</b>A kettő között váltani lehet, a felméréskori állapot mindig elérhető marad.</span></li>
    </ul>
-   <p class="note rv d3">A módosított nézeteket jelöljük, hogy a bérlő mindig tudja, mit lát.</p>
+   <p class="note rv d3">A módosított nézeteket jelöljük, hogy mindig egyértelmű legyen, mit lát a felhasználó.</p>
   </div>
   <div class="fr sharp ph rv d2"><video src="img/iroda-ures-teljes.mp4" poster="img/iroda-ures.jpg" muted loop playsinline controls controlsList="nodownload noplaybackrate" preload="none"></video></div>
  </div>
@@ -306,7 +307,7 @@ blockquote{font-family:Outfit;font-weight:300;font-size:clamp(18px,1.6vw,23px);l
 <section data-sec="Lehetőségek">
  <div class="w grid2">
   <div>
-   <h2 class="rv d1">Amit a bejárásra <span class="hl">ráépíthet</span></h2>
+   <h2 class="rv d1">Fejlesztési <span class="hl">irányaink</span></h2>
    <ul class="ls g rv d2">
     <li><span><b>Információs pontok</b>Szöveg, kép, videó vagy dokumentum a térben: bérleti feltételek, kapacitás, műszaki adatok.</span></li>
     <li><span><b>Többnyelvű bejárás</b>A külföldi bérlőnek és a távoli központnak a saját nyelvén.</span></li>
@@ -314,7 +315,7 @@ blockquote{font-family:Outfit;font-weight:300;font-size:clamp(18px,1.6vw,23px);l
     <li><span><b>Alaprajz</b>Az aktuális állapotból készült alaprajz a hirdetéshez és a bérlői egyeztetéshez.</span></li>
    </ul>
   </div>
-  <div class="fr sharp rv d2" style="aspect-ratio:1012/642"><img src="img/infopont.jpg" alt="Digitális iroda információs pontokkal a térben"></div>
+  <div class="fr sharp ph rv d2"><video src="img/fejlesztes.mp4" poster="img/fejlesztes.jpg" muted loop playsinline controls controlsList="nodownload noplaybackrate" preload="none"></video></div>
  </div>
 </section>
 
@@ -322,14 +323,13 @@ blockquote{font-family:Outfit;font-weight:300;font-size:clamp(18px,1.6vw,23px);l
 <section data-sec="Lehetőségek">
  <div class="w grid2">
   <div>
-   <h2 class="rv d1">Pontos alap <span class="hl">a tervezéshez és az üzemeltetéshez</span></h2>
+   <h2 class="rv d1">Pontos alap <span class="hli">a tervezéshez és az üzemeltetéshez</span></h2>
    <ul class="ls rv d2">
-    <li><span><b>Alaprajz és CAD-hoz használható adatok</b>Bérlői kialakításhoz és felújításhoz.</span></li>
+    <li><span><b>Alaprajz és CAD-adatok</b>Autodesk- és CAD-környezetben használható adatok a kialakításhoz és a tervezéshez.</span></li>
     <li><span><b>3D modell és pontfelhő</b>BIM-hez, tervezéshez, gépészeti egyeztetéshez.</span></li>
-    <li><span><b>A felmérés idején látható elemek</b>Például a nyitott álmennyezeti részek és a gépészeti helyiségek dokumentálva.</span></li>
+    <li><span><b>Egységes kiindulási adatbázis</b>Minden szakági tervező és kivitelező ugyanabból a felmért állapotból dolgozik.</span></li>
     <li><span><b>Átadható állományok</b>Az Önök és a partnerek rendszeréhez.</span></li>
    </ul>
-   <p class="note rv d3">Az adott állapot dokumentálása a cél. Mérnöki vagy földmérési tanúsítványt nem helyettesít.</p>
   </div>
   <div class="fr sharp rv d2" style="aspect-ratio:1000/563"><img src="img/muszaki.jpg" alt="Az épület 3D modellje a szerkezeti és gépészeti elemekkel"></div>
  </div>
@@ -346,9 +346,8 @@ blockquote{font-family:Outfit;font-weight:300;font-size:clamp(18px,1.6vw,23px);l
     <li><span><b>Átadás-átvétel</b>A bérbeadás előtti és utáni állapot dokumentálva: vita helyett kép.</span></li>
     <li><span><b>Évek múlva is</b>Hol futott a kábel, hol van a csatlakozó, mi volt az eredeti kialakítás.</span></li>
    </ul>
-   <p class="note rv d4">Ott érhető el, ahol a felmérés a változás előtt és után is megtörténik. Érdemes előre egyeztetni.</p>
   </div>
-  <div class="fr sharp rv d2" style="aspect-ratio:818/412"><img src="img/valtozas.jpg" alt="A tervezett és a megvalósult állapot egymás mellett, ugyanabból a nézőpontból"></div>
+  <div class="fr sharp yt rv d2" data-yt="-5GUI9K8d1g" style="aspect-ratio:16/9"><img src="img/stages-iroda.jpg" alt="Irodaépület építési folyamata szakaszonként, 3D nézetben"><button class="ytp" type="button" aria-label="Videó lejátszása">&#9654;</button></div>
  </div>
 </section>
 
@@ -376,19 +375,14 @@ blockquote{font-family:Outfit;font-weight:300;font-size:clamp(18px,1.6vw,23px);l
  <div class="w">
   <h2 class="rv d1">Mérhető és élő, <span class="hl">amikor szükség van rá</span></h2>
   <p class="lead rv d2" style="max-width:900px">A bejárás az alap. Erre épülhet minden, ami az adott épületnek többet hoz.</p>
-  <div class="split" style="margin-top:22px">
-   <div class="rv d2"><h3>Mérhető</h3><p class="sub">Mi érdekli a látogatókat</p>
-    <ul class="ls">
-     <li><span><b>Látogatottsági hőtérkép</b>Látszik, mely szintek, tárgyalók és részek érdeklik leginkább az érdeklődőket. Ebből tudható, mit érdemes kiemelni az ajánlatban.</span></li>
-     <li><span><b>Statisztika</b>Hányan és hányszor nyitották meg a bejárást, és honnan érkeztek.</span></li>
-    </ul>
-   </div>
-   <div class="rv d3"><h3>Élő tartalom a térben</h3><p class="sub">Információ ott, ahol releváns</p>
-    <ul class="ls g">
-     <li><span><b>Videó és 3D tárgy</b>Például a recepciónál az épület bemutatkozó videója, a liftek mellett a használati tudnivalók.</span></li>
-     <li><span><b>Partnerek megjelenése</b>Szolgáltatók és bérlők bemutatkozása ott, ahol a térben értelme van.</span></li>
-    </ul>
-   </div>
+  <div class="grid2" style="margin-top:22px;align-items:center">
+   <ul class="ls rv d2">
+    <li><span><b>Látogatottsági hőtérkép</b>Látszik, mely szintek, tárgyalók és térrészek érdeklik leginkább az érdeklődőket, így tudható, mit érdemes kiemelni az ajánlatban.</span></li>
+    <li><span><b>Statisztika</b>Megnyitások száma, átlagos időtartam és forgalmi források.</span></li>
+    <li><span><b>Videó és 3D tárgy a térben</b>Például a recepciónál az épület bemutatkozó videója, a liftek mellett a használati tudnivalók.</span></li>
+    <li><span><b>Útvonal- és biztonsági információk</b>Menekülési útvonalak, gyűjtőpontok és belépési szabályok pontosan ott, ahol szükség van rájuk.</span></li>
+   </ul>
+   <div class="fr sharp rv d3" style="aspect-ratio:750/460"><img src="img/mero.jpg" alt="Látogatottsági hőtérkép és statisztika egy digitális tér fölött"></div>
   </div>
  </div>
 </section>
@@ -415,9 +409,9 @@ blockquote{font-family:Outfit;font-weight:300;font-size:clamp(18px,1.6vw,23px);l
   <div class="cards c3 six" style="margin-top:10px">
    <div class="card q rv d2"><h3>Zavarja a bérlőket a felmérés?</h3><p>Egyeztetett időpontban dolgozunk, akár használat közben is. A legjobb eredményhez azt javasoljuk, hogy a felmérés idején ne legyenek emberek a felmért térben.</p></div>
    <div class="card q rv d2"><h3>Mennyi idő alatt készül el?</h3><p>A terület méretétől és a kért tartalmaktól függ. A pontos ütemezést az ajánlat rögzíti.</p></div>
-   <div class="card q rv d3"><h3>Mi kerül bele, és mi marad ki?</h3><p>Előre egyeztetjük. A bérlők által használt, érzékeny vagy nem nyilvános helyiségek kimaradhatnak.</p></div>
-   <div class="card q rv d3"><h3>Valós állapotot látunk?</h3><p>Igen, a felméréskori valós állapotot. A módosított nézeteket, például a bútor nélküli vagy berendezett változatot, jelöljük.</p></div>
-   <div class="card q rv d4"><h3>Mi van átépítésnél vagy bérlőváltásnál?</h3><p>Az információs pontok bármikor frissíthetők. Nagyobb átalakításnál újra felmérjük a teret, és a két állapot összevethető marad.</p></div>
+   <div class="card q rv d3"><h3>Mi kerül bele, és mi marad ki?</h3><p>Előre egyeztetjük. A bérlők által használt, érzékeny vagy nem nyilvános helyiségek kimaradhatnak, egyes részek pedig elhomályosíthatók.</p></div>
+   <div class="card q rv d3"><h3>Ki láthatja a bejárást?</h3><p>Ön dönt: nyilvános link, jelszóval védett vagy csak meghívott felhasználóknak elérhető hozzáférés is beállítható.</p></div>
+   <div class="card q rv d4"><h3>Mi van átépítésnél vagy bérlőváltásnál?</h3><p>Az információs pontok bármikor frissíthetők. Ha a tér egy része megváltozik, csak azt a részt szkenneljük újra. Új területek esetén a felmérés folytatható, nem kell elölről kezdeni.</p></div>
    <div class="card q rv d4"><h3>Lassítja a honlapot?</h3><p>Nem. A bejárás külső felhőből, kattintásra töltődik be, az oldal betöltését nem terheli.</p></div>
   </div>
  </div>
@@ -431,7 +425,6 @@ blockquote{font-family:Outfit;font-weight:300;font-size:clamp(18px,1.6vw,23px);l
    <p class="lead rv d2">Fél óra alatt megmutatjuk, hogyan működne az Önök épületében, és válaszolunk a kérdéseikre.</p>
    <div class="rv d3" style="margin-top:28px">
     <a class="cta pri" id="book" href="https://calendar.app.google/zFH8etA7r1gQPKPB7" target="_blank" rel="noopener">Kérek egy 30 perces online bemutatót <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-    <p class="ctasub">Vagy írjon közvetlenül: <a href="mailto:nexus@nexus360.hu">nexus@nexus360.hu</a></p>
    </div>
    <img class="bqr rv d4" src="img/qr-foglalas.png" alt="QR-kód az online bemutató foglalásához">
   </div>
@@ -466,6 +459,7 @@ function tour(t,on){
 }
 function TW(i){return S.map((s,k)=>k).filter(k=>k>=i&&k<=i+2&&S[k].querySelector('.tour')).slice(0,2)}
 function fromHash(){const m=/^#dia-(\d+)$/.exec(location.hash);return m?Math.min(N-1,Math.max(0,+m[1]-1)):0}
+document.addEventListener('click',function(e){var y=e.target.closest&&e.target.closest('.yt');if(!y||y.querySelector('iframe'))return;var f=document.createElement('iframe');f.src='https://www.youtube-nocookie.com/embed/'+y.getAttribute('data-yt')+'?autoplay=1&rel=0';f.allow='autoplay; encrypted-media; picture-in-picture; fullscreen';f.allowFullscreen=true;f.title='SIMLAB STAGES';y.innerHTML='';y.appendChild(f);});
 function go(i,push=true){i=Math.max(0,Math.min(N-1,i));if(i===idx)return;idx=i;
  S.forEach((s,k)=>{s.classList.toggle('on',k===i);s.querySelectorAll('video').forEach(v=>{try{k===i?v.play().catch(()=>{}):v.pause()}catch(e){}});if(!document.documentElement.classList.contains('nx-m'))s.querySelectorAll('.tour').forEach(t=>tour(t,k>=i&&k<=i+2&&TW(i).includes(k)))});S[i].scrollTop=0;
  document.getElementById('cur').textContent=pad(i+1);document.getElementById('bar').style.width=((i+1)/N*100)+'%';
