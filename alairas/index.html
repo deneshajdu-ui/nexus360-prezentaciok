@@ -1,9 +1,12 @@
 <!doctype html>
-<html lang="hu"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow"><title>E-mail aláírás · NEXUS360</title>
-<style>body{font-family:Arial,Helvetica,sans-serif;background:#f4f4f7;margin:0;padding:24px;color:#24242e}.box{background:#fff;max-width:620px;margin:0 auto 18px;padding:24px;border-radius:12px}.tip{font-size:13px;color:#5c5c66;max-width:620px;margin:0 auto;line-height:1.5}</style></head>
-<body>
-<div class="box" id="sig">
-<table cellpadding="0" cellspacing="0" border="0" style="border-collapse:collapse;font-family:&quot;Times New Roman&quot;,Times,serif;color:#000000;">
+<html lang="hu"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow"><title>E-mail aláírás · NEXUS360</title><style>body{font-family:Arial,Helvetica,sans-serif;background:#f4f4f7;margin:0;padding:24px;color:#24242e}.box{background:#fff;max-width:620px;margin:0 auto 10px;padding:24px;border-radius:12px}.lbl{max-width:620px;margin:0 auto 6px;font-size:13px;font-weight:bold;color:#5c5c66}.btn{display:block;max-width:620px;margin:0 auto 26px;width:100%;padding:12px;border:0;border-radius:10px;background:#2B00FF;color:#fff;font-size:15px;font-weight:bold;cursor:pointer}.tip{font-size:13px;color:#5c5c66;max-width:620px;margin:0 auto;line-height:1.5}</style><script>
+async function nxCopy(id,btn){const el=document.getElementById(id);const html=el.innerHTML;const txt=el.innerText;
+try{await navigator.clipboard.write([new ClipboardItem({'text/html':new Blob([html],{type:'text/html'}),'text/plain':new Blob([txt],{type:'text/plain'})})]);btn.textContent='Kimásolva ✓';}
+catch(e){const r=document.createRange();r.selectNodeContents(el);const s=getSelection();s.removeAllRanges();s.addRange(r);try{document.execCommand('copy');btn.textContent='Kimásolva ✓';}catch(e2){btn.textContent='Kijelöltem – nyomd meg a Másolás gombot';}}
+setTimeout(()=>btn.textContent='Aláírás másolása',2500);}
+</script></head><body>
+<div class="lbl">nexus@nexus360.hu</div>
+<div class="box" id="s1"><table cellpadding="0" cellspacing="0" border="0" style="border-collapse:collapse;font-family:&quot;Times New Roman&quot;,Times,serif;color:#000000;">
 <tr><td style="padding:0 0 2px 0;font-size:16px;font-weight:bold;line-height:20px;color:#000000;">Hajdu Dénes</td></tr>
 <tr><td style="padding:0 0 12px 0;font-size:14px;line-height:18px;color:#5c5c66;">Alapító · Founder</td></tr>
 <tr><td style="padding:0 0 12px 0;"><a href="https://nexus360.hu" style="text-decoration:none;"><img src="https://prezentacio.nexus360.hu/alairas/nexus360-logo.png" width="180" height="45" alt="NEXUS360 3D Solutions" style="display:block;border:0;width:180px;height:45px;"></a></td></tr>
@@ -13,7 +16,7 @@
 <a href="mailto:nexus@nexus360.hu" style="color:#24242e;text-decoration:none;">nexus@nexus360.hu</a><br>
 <a href="https://nexus360.hu" style="color:#2B00FF;text-decoration:none;font-weight:bold;">nexus360.hu</a>
 </td></tr>
-</table>
-</div>
-<p class="tip">Másolás: jelöld ki a fenti aláírást (⌘A után a kártyán belül, vagy egérrel), ⌘C, majd a Mail → Beállítások → Aláírások mezőbe ⌘V. Fontos: a Mailben kapcsold ki az „Az üzenet alapértelmezett betűtípusának használata” (Always match my default message font) beállítást.</p>
+</table></div>
+<button class="btn" onclick="nxCopy('s1',this)">Aláírás másolása</button>
+<p class="tip">Koppints az aláírás alatti gombra, majd illeszd be a Mail aláírásai közé (Mac: Mail → Beállítások → Aláírások; iPhone: Beállítások → Appok → Mail → Aláírás → Fiókonként). iPhone-on, ha beillesztés után eltűnik a formázás: rázd meg a telefont → Visszavonás.</p>
 </body></html>
