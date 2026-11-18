@@ -10,3 +10,9 @@ A `<head>`-be a követőkód elé:
 <script src="/assets/nx-mobil.js"></script>
 ```
 Telefonon (≤900 px, vagy álló tablet) a diás lapozás helyett folyamatosan görgethető oldal lesz, görgetésre induló animációkkal, felső haladásjelzővel; asztali gépen nem változik semmi. Kényszerítés próbához: `?nezet=mobil` / `?nezet=asztali`.
+
+## Sablonból épülő ügyféloldalak (2026-11-18)
+A pult az ajánlásoknál magától hozza létre az ügyfél oldalát egy rövid csonkként:
+`/<iparág>/<márka>-<sorszám>/index.html` → `<script src="/assets/nx-sablon.js" data-sablon="/sablonok/<iparág>/" data-marka="…">`.
+A tartalom a `sablonok/<iparág>/index.html` fájlból jön (`{{MARKA}}` helyére a márkanév kerül), így egy sablonjavítás minden ilyen oldalon él.
+Sablonok: szalloda, rendezvenyhelyszin, iroda. Új iparághoz új sablonmappa kell, és a pult NXAJ_SABLON térképébe is fel kell venni.
