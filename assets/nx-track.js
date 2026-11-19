@@ -5,6 +5,27 @@
    - session replay: névtelen felvétel, minden beviteli mező maszkolva */
 (function () {
   if (window.__nxTrack) return; window.__nxTrack = true;
+
+  // Dénes saját eszközei: ha ez a böngésző egyszer meg lett jelölve (/sajat-eszkoz/ oldal,
+  // vagy bármely prezentáció ?nx_belso=1 címmel, pl. a pultból), innen semmi nem kerül a statisztikába.
+  // ?nx_belso=0 törli a jelölést. A jelölést minden megnyitás megújítja (Safari 7 napos törlése ellen).
+  var sajat = false;
+  try {
+    var q = location.search;
+    if (/[?&]nx_belso=0(?:&|$)/.test(q)) {
+      localStorage.removeItem('nx_belso');
+      document.cookie = 'nx_belso=; path=/; max-age=0; SameSite=Lax; Secure';
+    } else {
+      if (/[?&]nx_belso=1(?:&|$)/.test(q)) localStorage.setItem('nx_belso', new Date().toISOString());
+      sajat = !!localStorage.getItem('nx_belso') || /(?:^|;\s*)nx_belso=1(?:;|$)/.test(document.cookie);
+      if (sajat) {
+        localStorage.setItem('nx_belso', new Date().toISOString());
+        document.cookie = 'nx_belso=1; path=/; max-age=31536000; SameSite=Lax; Secure';
+      }
+    }
+  } catch (e) {}
+  window.nxSajatEszkoz = sajat;
+  if (sajat) return; // a PostHog be sem töltődik, így ez a megnyitás sehol nem jelenik meg
   var KEY = 'phc_tZFKPvUU9XJCPjTedwdTLmYvgBWN97tkPNtJQFb4xQBi';
   var HOST = 'https://eu.i.posthog.com';
 

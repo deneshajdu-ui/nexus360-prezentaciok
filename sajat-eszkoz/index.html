@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>NEXUS360 – saját eszköz kizárása a statisztikából</title>
+<style>
+  body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Inter","Segoe UI",sans-serif;background:#F6F6FA;color:#0B0B12;display:flex;min-height:100vh;align-items:center;justify-content:center;padding:20px;box-sizing:border-box}
+  .k{background:#fff;border:1px solid #ECECF2;border-radius:16px;max-width:460px;width:100%;padding:28px 24px;box-shadow:0 8px 30px rgba(11,11,18,.06)}
+  h1{font-size:20px;margin:0 0 10px}
+  p{font-size:15px;line-height:1.5;color:#3A3A48;margin:0 0 14px}
+  .st{border-radius:12px;padding:14px 16px;font-weight:600;margin:16px 0}
+  .on{background:#E8F6EE;color:#14663A}
+  .off{background:#FFF4E5;color:#8A4B00}
+  button{font:inherit;font-weight:600;border-radius:10px;padding:12px 16px;border:1px solid #2B00FF;background:#2B00FF;color:#fff;width:100%;cursor:pointer;margin-top:8px}
+  button.m{background:#fff;color:#2B00FF}
+  small{display:block;color:#6B6B7B;font-size:13px;line-height:1.45;margin-top:16px}
+</style>
+</head>
+<body>
+<div class="k">
+  <h1>Saját eszköz kizárása</h1>
+  <p>Ha ezt a böngészőt megjelölöd, a róla megnyitott NEXUS360-prezentációk nem kerülnek be a megnyitási statisztikába.</p>
+  <div id="st" class="st"></div>
+  <button id="be">Megjelölöm ezt az eszközt</button>
+  <button id="ki" class="m">Jelölés törlése</button>
+  <small>Minden böngészőben külön kell megjelölni: iPhone Safari, Mac Safari, és ha a LinkedIn vagy a Levelek alkalmazás saját böngészőjében nyitod meg a linket, ott is egyszer nyisd meg ezt az oldalt. A jelölés minden prezentáció-megnyitással megújul, és a pultból indított megnyitás is magától megjelöli az eszközt.</small>
+</div>
+<script>
+(function(){
+  function van(){try{return !!localStorage.getItem('nx_belso')||/(?:^|;\s*)nx_belso=1(?:;|$)/.test(document.cookie)}catch(e){return /(?:^|;\s*)nx_belso=1(?:;|$)/.test(document.cookie)}}
+  function rajz(){var on=van(),el=document.getElementById('st');el.className='st '+(on?'on':'off');el.textContent=on?'✓ Ez az eszköz meg van jelölve – a megnyitásaid nem számítanak.':'Ez az eszköz még nincs megjelölve – a megnyitásaid most beszámítanak.';document.getElementById('be').style.display=on?'none':'block';document.getElementById('ki').style.display=on?'block':'none'}
+  document.getElementById('be').onclick=function(){try{localStorage.setItem('nx_belso',new Date().toISOString())}catch(e){}document.cookie='nx_belso=1; path=/; max-age=31536000; SameSite=Lax; Secure';rajz()};
+  document.getElementById('ki').onclick=function(){try{localStorage.removeItem('nx_belso')}catch(e){}document.cookie='nx_belso=; path=/; max-age=0; SameSite=Lax; Secure';rajz()};
+  if(/[?&]nx_belso=1(?:&|$)/.test(location.search))document.getElementById('be').onclick();
+  rajz();
+})();
+</script>
+</body>
+</html>
