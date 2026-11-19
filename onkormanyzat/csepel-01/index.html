@@ -21,6 +21,7 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://prezentacio.nexus360.hu/onkormanyzat/csepel-01/img/elonezet.jpg">
 <link rel="image_src" href="https://prezentacio.nexus360.hu/onkormanyzat/csepel-01/img/elonezet.jpg">
+<script>try{history.scrollRestoration='manual';if(location.hash)history.replaceState(null,'',location.pathname+location.search)}catch(e){}addEventListener('load',function(){scrollTo(0,0)});</script>
 <link rel="stylesheet" href="/assets/nx-mobil.css">
 <script src="/assets/nx-mobil.js"></script>
 <script src="/assets/nx-track.js" defer></script>
@@ -527,14 +528,13 @@ function go(i,push=true){i=Math.max(0,Math.min(N-1,i));if(i===idx)return;idx=i;c
  S.forEach((s,k)=>{s.classList.toggle('on',k===i);s.querySelectorAll('video').forEach(v=>{try{k===i?v.play().catch(()=>{}):v.pause()}catch(e){}});if(k!==i)s.querySelectorAll('.tour').forEach(t=>tour(t,false))});S[i].scrollTop=0;
  document.getElementById('cur').textContent=pad(i+1);document.getElementById('bar').style.width=((i+1)/N*100)+'%';
  document.getElementById('secn').textContent=S[i].dataset.sec||'';
- if(push){try{history.replaceState(null,'','#dia-'+(i+1))}catch(e){}}}
+}
 document.getElementById('nx').onclick=()=>go(idx+1);document.getElementById('pv').onclick=()=>go(idx-1);
 addEventListener('keydown',e=>{if(['ArrowRight','PageDown',' '].includes(e.key)){e.preventDefault();go(idx+1)}if(['ArrowLeft','PageUp'].includes(e.key)){e.preventDefault();go(idx-1)}if(e.key==='Home')go(0);if(e.key==='End')go(N-1);});
 let wl=0;addEventListener('wheel',e=>{if(e.target.closest&&e.target.closest('iframe'))return;const s=S[idx];if(s.scrollHeight>s.clientHeight+4)return;const t=Date.now();if(t-wl<900||Math.abs(e.deltaY)<20)return;wl=t;go(idx+(e.deltaY>0?1:-1))},{passive:true});
 let tx=0,ty=0;addEventListener('touchstart',e=>{tx=e.touches[0].clientX;ty=e.touches[0].clientY},{passive:true});
 addEventListener('touchend',e=>{const dx=e.changedTouches[0].clientX-tx,dy=e.changedTouches[0].clientY-ty;if(Math.abs(dx)>50&&Math.abs(dx)>Math.abs(dy)*1.3)go(idx+(dx<0?1:-1))},{passive:true});
-addEventListener('hashchange',()=>go(fromHash(),false));
-go(fromHash(),false);
+go(0,false);
 })();
 
 </script>
