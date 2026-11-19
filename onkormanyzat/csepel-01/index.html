@@ -4,26 +4,125 @@
 <meta name="robots" content="noindex, nofollow, noarchive">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>A kerület 3D-ben · NEXUS360</title>
-<meta name="description" content="Online bejárható terek, kapcsolat a lakossággal, pontos műszaki adatok, gyorsabb döntések, átláthatóbb vezetés.">
+<title>Digitalizált önkormányzat · NEXUS360</title>
+<meta name="description" content="Online bejárható, mérhető terek: pontos nyilvántartás, jól hasznosított vagyon, közelebb a lakosokhoz.">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="NEXUS360">
 <meta property="og:locale" content="hu_HU">
-<meta property="og:title" content="A kerület 3D-ben · NEXUS360">
-<meta property="og:description" content="Online bejárható terek, kapcsolat a lakossággal, pontos műszaki adatok, gyorsabb döntések, átláthatóbb vezetés.">
+<meta property="og:title" content="Digitalizált önkormányzat · NEXUS360">
+<meta property="og:description" content="Online bejárható, mérhető terek: pontos nyilvántartás, jól hasznosított vagyon, közelebb a lakosokhoz.">
 <meta property="og:url" content="https://prezentacio.nexus360.hu/onkormanyzat/csepel-01/">
 <meta property="og:image" content="https://prezentacio.nexus360.hu/onkormanyzat/csepel-01/img/elonezet.jpg">
 <meta property="og:image:secure_url" content="https://prezentacio.nexus360.hu/onkormanyzat/csepel-01/img/elonezet.jpg">
 <meta property="og:image:type" content="image/jpeg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="A kerület 3D-ben – NEXUS360 prezentáció">
+<meta property="og:image:alt" content="Digitalizált önkormányzat – NEXUS360 prezentáció">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://prezentacio.nexus360.hu/onkormanyzat/csepel-01/img/elonezet.jpg">
 <link rel="image_src" href="https://prezentacio.nexus360.hu/onkormanyzat/csepel-01/img/elonezet.jpg">
 <script>try{history.scrollRestoration='manual';if(location.hash)history.replaceState(null,'',location.pathname+location.search)}catch(e){}addEventListener('load',function(){scrollTo(0,0)});</script>
-<link rel="stylesheet" href="/assets/nx-mobil.css">
-<script src="/assets/nx-mobil.js"></script>
+<style>/* NEXUS360 – mobilnézet minden kiküldött anyaghoz.
+   Telefonon (html.nx-m) a diás lapozás helyett folyamatosan görgethető oldal lesz;
+   asztali gépen semmi nem változik. */
+html.nx-m,html.nx-m body{height:auto!important;overflow-x:hidden!important;overflow-y:auto!important}
+html.nx-m main{position:static!important;inset:auto!important}
+html.nx-m section{position:relative!important;inset:auto!important;visibility:visible!important;opacity:1!important;transition:none!important;display:block!important;min-height:0!important;height:auto!important;overflow:visible!important;padding:76px 18px 40px!important}
+html.nx-m section+section{border-top:1px solid rgba(255,255,255,.07)}
+html.nx-m section.cover{display:flex!important;align-items:flex-end!important;min-height:100svh!important;padding:0!important}
+html.nx-m section.cover .in{padding:96px 18px 44px!important}
+html.nx-m section.div{display:flex!important;flex-direction:column;justify-content:center;min-height:52svh!important}
+html.nx-m section[style*="padding:0"]{padding:0!important}
+html.nx-m footer{display:none!important}
+html.nx-m #fs{display:none!important}
+html.nx-m header{background:linear-gradient(0deg,rgba(0,0,0,0),rgba(0,0,0,.92) 45%)!important;padding:14px 18px 22px!important}
+html.nx-m img,html.nx-m video{max-width:100%}
+html.nx-m .fr{max-width:100%}
+html.nx-m table{display:block;overflow-x:auto}
+.nxprog{position:fixed;left:0;top:0;height:3px;width:0;z-index:30;background:linear-gradient(90deg,#2B00FF,#1B8386);transition:width .25s;display:none}
+html.nx-m .nxprog{display:block}
+.nxtop{position:fixed;right:16px;bottom:18px;z-index:30;width:44px;height:44px;border-radius:50%;border:1px solid rgba(255,255,255,.18);background:rgba(10,10,14,.82);color:#fff;font-size:18px;display:none;align-items:center;justify-content:center;-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
+html.nx-m .nxtop.on{display:flex}
+</style>
+<script>/* NEXUS360 – automatikus asztali / mobil nézet.
+   A <head>-ben, defer nélkül kell betölteni (a nx-mobil.css után). */
+(function () {
+  var MQ = '(max-width: 900px), (max-height: 500px), (pointer: coarse) and (max-width: 1100px) and (orientation: portrait)';
+  var mobil = window.matchMedia && matchMedia(MQ).matches;
+  if (/[?&]nezet=asztali/.test(location.search)) mobil = false;
+  if (/[?&]nezet=mobil/.test(location.search)) mobil = true;
+  if (!mobil) return;
+  document.documentElement.classList.add('nx-m');
+
+  // a diás lapozás gesztusait mobilon kikapcsoljuk (függőleges görgetés van helyette)
+  ['touchend', 'wheel', 'keydown'].forEach(function (t) {
+    window.addEventListener(t, function (e) {
+      if (t === 'touchend' && e.target.closest && e.target.closest('#cmp')) return;
+      if (t === 'keydown' && !/Arrow|Page|Home|End|^ $/.test(e.key)) return;
+      e.stopPropagation();
+    }, true);
+  });
+
+  function init() {
+    var S = [].slice.call(document.querySelectorAll('#deck section'));
+    if (!S.length) return;
+
+    // a „dia aktív” animációk mobilon görgetésre indulnak: section.on → section.nxin
+    var css = [];
+    [].forEach.call(document.styleSheets, function (sh) {
+      var R; try { R = sh.cssRules; } catch (e) { return; }
+      [].forEach.call(R || [], function (r) {
+        if (r.selectorText && r.selectorText.indexOf('section.on') > -1) {
+          css.push(r.selectorText.split(',').map(function (s) { return s.indexOf('section.on') > -1 ? 'html.nx-m ' + s.trim().replace(/section\.on/g, 'section.nxin') : null; }).filter(Boolean).join(',') + '{' + r.style.cssText + '}');
+        }
+      });
+    });
+    var st = document.createElement('style'); st.textContent = css.join('\n'); document.head.appendChild(st);
+
+    // keskenyre szorult rácsok (pl. beégetett kétoszlopos elrendezés) egy oszlopba
+    function racs() {
+      [].forEach.call(document.querySelectorAll('#deck section *'), function (el) {
+        var cs = getComputedStyle(el); if (cs.display.indexOf('grid') < 0) return;
+        var cols = cs.gridTemplateColumns.split(' ').filter(Boolean).length; if (cols < 2) return;
+        var keskeny = [].some.call(el.children, function (c) { return c.getBoundingClientRect().width < 150 && (c.textContent || '').trim().length > 40; });
+        if (keskeny || (cols >= 2 && el.clientWidth / cols < 140 && el.textContent.trim().length > 120)) el.style.setProperty('grid-template-columns', '1fr', 'important');
+      });
+    }
+    racs(); setTimeout(racs, 800);
+    var bar = document.createElement('div'); bar.className = 'nxprog'; document.body.appendChild(bar);
+    var top = document.createElement('button'); top.className = 'nxtop'; top.setAttribute('aria-label', 'Vissza a tetejére'); top.textContent = '↑';
+    top.onclick = function () { window.scrollTo({ top: 0, behavior: 'smooth' }); }; document.body.appendChild(top);
+
+    var io = new IntersectionObserver(function (E) {
+      E.forEach(function (e) { if (e.isIntersecting) e.target.classList.add('nxin'); });
+    }, { rootMargin: '0px 0px -12% 0px', threshold: 0.05 });
+    S.forEach(function (s) { io.observe(s); });
+
+    var cur = -1, tick = false;
+    function aktiv() {
+      tick = false;
+      var mid = innerHeight * 0.45, i = 0;
+      for (var k = 0; k < S.length; k++) { var r = S[k].getBoundingClientRect(); if (r.top <= mid) i = k; else break; }
+      var vege = (innerHeight + scrollY) >= document.documentElement.scrollHeight - 4;
+      if (vege) i = S.length - 1;
+      bar.style.width = ((i + 1) / S.length * 100) + '%';
+      top.classList.toggle('on', scrollY > innerHeight);
+      if (i === cur) return;
+      if (cur >= 0) S[cur].classList.remove('nxcur');
+      cur = i; S[i].classList.add('nxcur', 'nxin');
+      S.forEach(function (s, k) { s.querySelectorAll('video').forEach(function (v) { try { if (k === i) { v.muted = true; v.play().catch(function () {}); } else v.pause(); } catch (e) {} }); });
+      try { history.replaceState(null, '', location.pathname + location.search + '#dia-' + (i + 1)); } catch (e) {}
+    }
+    addEventListener('scroll', function () { if (!tick) { tick = true; requestAnimationFrame(aktiv); } }, { passive: true });
+    addEventListener('resize', aktiv);
+
+    var m = /^#dia-(\d+)$/.exec(location.hash);
+    if (m && S[+m[1] - 1] && +m[1] > 1) setTimeout(function () { S[+m[1] - 1].scrollIntoView(); aktiv(); }, 60);
+    aktiv();
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init); else init();
+})();
+</script>
 <script src="/assets/nx-track.js" defer></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap&subset=latin-ext" rel="stylesheet">
@@ -208,6 +307,67 @@ html.nx-m .amb,html.nx-m .gridbg{position:fixed!important}
 html.nx-m body{position:static}
 html.nx-m section.cover{flex-direction:column!important;align-items:stretch!important;justify-content:flex-start!important;min-height:0!important;padding:90px 0 40px!important}
 html.nx-m .w.final{gap:32px}
+html.m .covtxt h1[style]{font-size:44px!important}
+.covgrid.mq{display:flex!important;gap:12px;aspect-ratio:16/12.6;overflow:hidden;-webkit-mask-image:linear-gradient(180deg,transparent,#000 9%,#000 91%,transparent);mask-image:linear-gradient(180deg,transparent,#000 9%,#000 91%,transparent)}
+.mqc{flex:1;overflow:hidden}
+.mqt{display:flex;flex-direction:column;gap:12px;animation:mqup 46s linear infinite}
+.mqc.dn .mqt{animation-name:mqdn;animation-duration:52s}
+.mqi{aspect-ratio:16/9;border-radius:10px;overflow:hidden;border:1px solid rgba(255,255,255,.12);background:#0b0b10;flex:none}
+.mqi img{width:100%;height:100%;object-fit:cover;display:block}
+.mqi.dh img{object-fit:contain}
+.mqi.dh{background:radial-gradient(circle at 50% 55%,#1a1838,#06060a 70%)}
+@keyframes mqup{from{transform:translateY(0)}to{transform:translateY(calc(-50% - 6px))}}
+@keyframes mqdn{from{transform:translateY(calc(-50% - 6px))}to{transform:translateY(0)}}
+html.m .covgrid.mq,html.nx-m .covgrid.mq{position:relative!important;width:100%!important;right:auto!important;top:auto!important;transform:none!important;aspect-ratio:16/13;margin-top:24px}
+@media (prefers-reduced-motion:reduce){.mqt{animation:none}}
+/* telefon-illusztráció */
+.ill{position:relative;aspect-ratio:16/10;border-radius:18px;border:1px solid var(--line);background:radial-gradient(circle at 50% 40%,#1a1640,#07070a 70%);overflow:hidden}
+.ph{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);height:88%;aspect-ratio:9/18.5;border-radius:34px;border:6px solid #1d1d24;box-shadow:0 30px 80px -20px rgba(43,0,255,.6),0 0 0 1px rgba(255,255,255,.12);overflow:hidden;background:#000}
+.ph>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:28% 50%}
+.phbar{position:absolute;left:0;right:0;top:0;padding:16px 12px 10px;font:600 11px Inter;color:#fff;background:linear-gradient(180deg,rgba(0,0,0,.7),transparent);text-align:center}
+.phnav{position:absolute;left:10px;right:10px;bottom:12px;padding:9px;border-radius:12px;background:#2B00FF;color:#fff;font:600 11px Inter;text-align:center}
+.pin{position:absolute;transform:translate(-50%,-50%);display:flex;flex-direction:column;align-items:center;gap:4px}
+.pin i{width:14px;height:14px;border-radius:50%;background:#fff;box-shadow:0 0 0 4px rgba(43,0,255,.55),0 0 0 9px rgba(43,0,255,.18);animation:pp 2s infinite}
+.pin em{font:600 10px Inter;font-style:normal;color:#fff;background:rgba(0,0,0,.72);padding:4px 7px;border-radius:999px;white-space:nowrap}
+.pin.t i{background:#22a3a6}
+@keyframes pp{50%{box-shadow:0 0 0 6px rgba(43,0,255,.4),0 0 0 14px rgba(43,0,255,0)}}
+.side{position:absolute;top:50%;transform:translateY(-50%);width:23%;padding:14px 16px;border-radius:14px;background:rgba(255,255,255,.04);border:1px solid var(--line)}
+.side.l{left:4%}.side.r{right:4%;text-align:right}
+.side small{display:block;font-family:'JetBrains Mono';font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:#22a3a6;margin-bottom:6px}
+.side b{font:600 15px Outfit;color:#fff}
+/* adatlap */
+.reg{position:relative;min-height:440px;padding:20px 0;border-radius:18px;border:1px solid var(--line);background:radial-gradient(circle at 30% 50%,#17153a,#07070a 70%);overflow:hidden;display:flex;align-items:center}
+.regimg{width:52%;height:100%;display:flex;align-items:center;justify-content:center}
+.regimg img{max-width:100%;max-height:92%;object-fit:contain}
+.regcard{width:44%;margin-right:4%;padding:20px 20px 18px;border-radius:14px;background:rgba(12,12,18,.9);border:1px solid rgba(255,255,255,.14);box-shadow:0 20px 50px -20px rgba(43,0,255,.6)}
+.regcard small{font-family:'JetBrains Mono';font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:#22a3a6}
+.regcard h4{font:600 18px Outfit;color:#fff;margin:6px 0 12px}
+.regcard dl{display:grid;grid-template-columns:auto 1fr;gap:7px 14px;margin:0 0 12px;font-size:13px}
+.regcard dt{color:var(--mute)}.regcard dd{margin:0;color:#fff;text-align:right}
+.regcard .tags{display:flex;flex-wrap:wrap;gap:6px}
+.regcard .tags span{font-size:11px;padding:4px 8px;border-radius:999px;border:1px solid rgba(255,255,255,.18);color:#d8d8e0}
+/* mérés */
+.mrow{display:flex;justify-content:center;gap:28px;margin-top:6px}
+.mfig{margin:0;border-radius:16px;overflow:hidden;border:1px solid var(--line);background:#0b0b10}
+.mfig img{display:block;height:470px;width:auto}
+.mfig figcaption{padding:12px 16px}
+.mfig .n{display:block;font-family:'JetBrains Mono';font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:#22a3a6;margin-bottom:4px}
+.mfig b{font:600 16px Outfit;color:#fff}
+html.m .mrow,html.nx-m .mrow{flex-direction:column;align-items:center}
+html.m .mfig img,html.nx-m .mfig img{height:auto;width:100%}
+/* zárás */
+.cta{display:inline-block;margin-top:28px;padding:16px 30px;border-radius:999px;background:#2B00FF;color:#fff;font:600 18px Outfit;text-decoration:none;box-shadow:0 14px 40px -10px rgba(43,0,255,.8)}
+.cta:hover{filter:brightness(1.15)}
+.contactrow a{position:relative;z-index:6}
+html.m .ill .side,html.nx-m .ill .side{display:none}
+
+html.m .reg,html.nx-m .reg{flex-direction:column;padding:16px;gap:14px}
+html.m .regimg,html.nx-m .regimg{width:100%;height:auto}
+html.m .regimg img,html.nx-m .regimg img{max-height:300px}
+html.m .regcard,html.nx-m .regcard{width:100%;margin:0}
+html.m .mfig,html.nx-m .mfig{width:100%}
+html:not(.m) .grid2:has(img[src*="rendelo"]){grid-template-columns:.8fr 1.25fr!important}
+.hl{display:inline!important;-webkit-box-decoration-break:clone;box-decoration-break:clone;padding:.02em .16em .06em!important;line-height:1.3}
 
 </style>
 </head>
@@ -217,289 +377,204 @@ html.nx-m .w.final{gap:32px}
 <header><img src="img/logo.png" alt="NEXUS360"></header>
 <main id="deck">
 <!-- 1 -->
-<section class="cover" data-sec="Bevezető" data-note="Köszönöm az időt. Nem kész megoldást hoztam, hanem lehetőségeket: hol segíthet egy digitálisan bejárható tér a kerület mindennapi munkájában. A képek saját felméréseinkből valók: Budapest Music Center, Estonia ipari tér, József Attila Emlékhely, Irhás árok, irodaház. Kíváncsi vagyok, Önöknél most melyik terület a legaktuálisabb.">
-<div class="covgrid" aria-hidden="true">
- <img src="img/bmc.jpg" alt=""><img src="img/estonia.jpg" alt="">
- <img src="img/emlekhely.jpg" alt=""><img src="img/irhas.jpg" alt="">
- <img src="img/iroda1.jpg" alt=""><img src="img/iroda2.jpg" alt="">
-</div>
+<section class="cover" data-sec="Bevezető" data-note="">
+<div class="covgrid mq" aria-hidden="true"><div class="mqc up"><div class="mqt"><div class="mqi"><img src="img/bmc.jpg" alt=""></div><div class="mqi dh"><img src="img/bankett-dollhouse.jpg" alt=""></div><div class="mqi"><img src="img/estonia.jpg" alt=""></div><div class="mqi"><img src="img/iroda1.jpg" alt=""></div><div class="mqi dh"><img src="img/szalloda-dollhouse.jpg" alt=""></div><div class="mqi"><img src="img/bmc.jpg" alt=""></div><div class="mqi dh"><img src="img/bankett-dollhouse.jpg" alt=""></div><div class="mqi"><img src="img/estonia.jpg" alt=""></div><div class="mqi"><img src="img/iroda1.jpg" alt=""></div><div class="mqi dh"><img src="img/szalloda-dollhouse.jpg" alt=""></div></div></div><div class="mqc dn"><div class="mqt"><div class="mqi"><img src="img/emlekhely.jpg" alt=""></div><div class="mqi dh"><img src="img/iroda-dollhouse.jpg" alt=""></div><div class="mqi"><img src="img/irhas.jpg" alt=""></div><div class="mqi dh"><img src="img/bim-gepeszet.jpg" alt=""></div><div class="mqi"><img src="img/iroda2.jpg" alt=""></div><div class="mqi"><img src="img/emlekhely.jpg" alt=""></div><div class="mqi dh"><img src="img/iroda-dollhouse.jpg" alt=""></div><div class="mqi"><img src="img/irhas.jpg" alt=""></div><div class="mqi dh"><img src="img/bim-gepeszet.jpg" alt=""></div><div class="mqi"><img src="img/iroda2.jpg" alt=""></div></div></div></div>
 <div class="covtxt">
  <div class="kick rv">Budapest XXI. kerület Csepel Önkormányzata részére</div>
- <h1 class="rv d1">A kerület<br><span class="hl">3D-ben</span></h1>
- <p class="lead rv d2">Online bejárható terek, kapcsolat a lakossággal, pontos műszaki adatok, gyorsabb döntések, átláthatóbb vezetés.</p>
+ <h1 class="rv d1" style="font-size:84px">Digitalizált<br><span class="hl">önkormányzat</span></h1>
+ <p class="lead rv d2">Online bejárható, mérhető terek: pontos nyilvántartás, jól hasznosított vagyon, közelebb a lakosokhoz.</p>
  <div class="meta rv d3"><span>Hajdu Dénes, NEXUS360</span><span>2026. november</span></div>
 </div>
 </section>
 <!-- 2 -->
-<section class="" data-sec="A kiindulás" data-note="Ezek nem különleges problémák, minden önkormányzatnál előfordulnak. Érdemes rákérdezni, melyik ismerős nekik a leginkább, és innen haladni tovább.">
+<section class="" data-sec="A kiindulás" data-note="">
 <div class="w">
- <h2 class="rv d1">Ismerős helyzetek <span class="hl">az épületek körül</span></h2>
- <div class="split">
-  <div class="rv d2"><h3>Hosszabb távon</h3>
-   <ul class="ls">
-    <li><span>Az épületek állapotáról szóló tudás több helyen, több kollégánál van.</span></li>
-    <li><span>Egy üres helyiség hasznosítása sok egyeztetéssel jár.</span></li>
-    <li><span>A felújítások tervezéséhez gyakran újra fel kell mérni a meglévő állapotot.</span></li>
-    <li><span>A helyi kulturális és ipari értékek leginkább helyben ismerhetők meg.</span></li>
-   </ul>
-  </div>
-  <div class="rv d3"><h3>A napi munkában</h3>
-   <ul class="ls g">
-    <li><span>Bejárás egy-egy érdeklődőnek vagy vállalkozónak.</span></li>
-    <li><span>Alaprajz és méret keresése régebbi dokumentumokban.</span></li>
-    <li><span>Ugyanazok a kérdések: mekkora, hogyan közelíthető meg, mi van a falban?</span></li>
-   </ul>
-  </div>
+ <h2 class="rv d1">Ismerős helyzetek <span class="hl">a település épületei körül</span></h2>
+ <div class="cards c4" style="margin-top:10px">
+  <div class="card rv d2"><span class="n">Lakos</span><h3>Nem tudja, hová érkezik</h3><p>Melyik épület, melyik bejárat, melyik emelet, hol az iroda?</p></div>
+  <div class="card rv d2"><span class="n">Bérlő, vevő</span><h3>Csak személyes bejárás után dönt</h3><p>Minden érdeklődőhöz külön időpont és kiszállás kell.</p></div>
+  <div class="card rv d3"><span class="n">Vagyonkezelő</span><h3>Szétszórt fotók és emlékek</h3><p>Egy épület állapotáról az információ több helyen, több kollégánál van.</p></div>
+  <div class="card rv d3"><span class="n">Tervező</span><h3>Újra ki kell mennie mérni</h3><p>A meglévő állapot felmérése minden munkánál újrakezdődik.</p></div>
  </div>
- <p class="note rv d4">Ezekben a helyzetekben a digitális bejárás nem helyettesíti a helyszínt, de sok utat és egyeztetést megspórolhat.</p>
+ <p class="note rv d4">A digitális bejárás nem helyettesíti a helyszínt, de sok utat, egyeztetést és kérdést megspórolhat.</p>
 </div>
 </section>
 <!-- 3 -->
-<section class="" data-sec="A lehetőség" data-note="A lényeg, hogy egy felmérést több részleg is használhat. Melyik kollégák munkájában lenne erre a legtöbb igény?">
+<section class="" data-sec="A lehetőség" data-note="">
 <div class="w">
  <h2 class="rv d1">Egy felmérés, <span class="hl">több felhasználó</span></h2>
- <p class="lead rv d2" style="max-width:900px;margin-bottom:24px">Ugyanaz a digitális tér több területen is használható, ezért egy felmérés értéke több helyen jelenik meg.</p>
- <div class="cards c3"><div class="card rv d2"><span class="n">Felhasználó</span><h3>Polgármesteri Hivatal</h3><p>Döntés-előkészítés, városfejlesztés, tájékoztatás.</p></div><div class="card rv d2"><span class="n">Felhasználó</span><h3>Csepeli Városgazda</h3><p>Üzemeltetés, karbantartás, betanítás.</p></div><div class="card rv d3"><span class="n">Felhasználó</span><h3>Ingatlanhasznosítás</h3><p>Helyiségek bemutatása bérlőknek, vevőknek.</p></div><div class="card rv d3"><span class="n">Felhasználó</span><h3>Intézmények</h3><p>Rendezvénytermek, kiállítások, közösségi terek.</p></div><div class="card rv d4"><span class="n">Felhasználó</span><h3>Tervezők, kivitelezők</h3><p>Meglévő állapot, méretek, műszaki adatok.</p></div><div class="card rv d4"><span class="n">Felhasználó</span><h3>Lakosság</h3><p>Tájékozódás, akadálymentes megközelítés.</p></div></div>
+ <p class="lead rv d2" style="max-width:900px;margin-bottom:24px">Ugyanazt a digitális teret több terület is használja, ezért egy felmérés értéke több helyen jelenik meg.</p>
+ <div class="cards c5"><div class="card rv d2"><span class="n">Felhasználó</span><h3>Lakosság</h3><p>Tájékozódás, ügyintézés, akadálymentes megközelítés.</p></div><div class="card rv d2"><span class="n">Felhasználó</span><h3>Kultúra és turizmus</h3><p>Kiállítások, események, városmarketing.</p></div><div class="card rv d3"><span class="n">Felhasználó</span><h3>Vagyonkezelő</h3><p>Nyilvántartás, bérbeadás, állapotkövetés.</p></div><div class="card rv d3"><span class="n">Felhasználó</span><h3>Műszaki terület</h3><p>Méretek, alaprajz, tervezői adatok.</p></div><div class="card rv d4"><span class="n">Felhasználó</span><h3>Vezetés és testület</h3><p>Döntés-előkészítés, átlátható beszámolás.</p></div></div>
 </div>
 </section>
 <!-- 4 -->
-<section class="" data-sec="A lehetőség" data-note="Egy mondatban: a valós épületről pontos, bejárható digitális másolat készül, amely munkaeszközként is használható. A kép a Budapest Music Center bankett-elrendezésének makettnézete, saját felmérésünk.">
+<section class="" data-sec="A lehetőség" data-note="">
 <div class="w grid2">
  <div>
   <h2 class="rv d1">Mi a <span class="hl">digitális bejárás?</span></h2>
   <ul class="ls g rv d2">
-   <li><span><b>Bejárható tér</b>A valós épület pontos, bejárható mása, szintekkel és helyiségekkel.</span></li>
-   <li><span><b>Makettnézet</b>Az épület egésze egy nézetben, a terek kapcsolatával.</span></li>
-   <li><span><b>Alaprajz és mérés</b>Méretek közvetlenül a térből, méterben.</span></li>
+   <li><span><b>Bejárható tér</b>A valós épület valósághű, körbejárható mása, szintekkel és helyiségekkel.</span></li>
+   <li><span><b>Makettnézet és alaprajz</b>Az épület egésze egy nézetben, a terek kapcsolatával.</span></li>
+   <li><span><b>Mérés</b>Méretek közvetlenül a térből, méterben.</span></li>
    <li><span><b>Információs pontok</b>Dokumentum, fotó vagy link a térben, ahová tartozik.</span></li>
-   <li><span><b>Szabályozott megosztás</b>Nyilvánosan, linkkel vagy védetten.</span></li>
   </ul>
   <p class="note rv d3">Böngészőből, telefonon és számítógépen is működik, program telepítése nélkül.</p>
  </div>
- <div class="fr dh rv d2" style="aspect-ratio:1660/884"><img src="img/bankett-dollhouse.jpg" alt="Rendezvényterem makettnézete, saját felmérés"></div>
+ <div class="rv d2"><div class="tour mp" data-m="QQbPKGSAD4H"><img src="img/bmc.jpg" alt="Budapest Music Center"><span class="mpt">Budapest Music Center</span><button class="mpp" aria-label="3D bejárás indítása"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z" fill="currentColor"/></svg></button><span class="mpb">3D bejárás indítása</span></div><p class="cap">Saját munka: Budapest Music Center, rendezvénytér</p></div>
 </div>
 </section>
 <!-- 5 -->
-<section class="" data-sec="Műszaki lehetőségek" data-note="Itt válik a bejárás munkaeszközzé. Mindkét kép saját munkánk: egy irodaház makettnézete és alaprajza, illetve mérés a Budapest Music Center termében. Ahol mérnöki pontosság kell, azt külön egyeztetjük, nem ígérjük alapból.">
-<div class="w">
- <h2 class="rv d1">Látni és mérni: <span class="hl">a tér adatai</span></h2>
- <div class="cards c2" style="margin-top:10px">
-  <div class="card mc rv d2"><div class="mi dh" style="height:400px"><img src="img/bim-retegek.jpg" alt=""></div><span class="n">Makettnézet, alaprajz, BIM</span><h3>Az épület rétegei egy felmérésből</h3><p>Alul az alaprajz, középen a makettnézet, felül a belőle készült BIM-modell.</p></div>
-  <div class="card mc rv d2"><div class="mi dh" style="height:400px"><img src="img/meres.jpg" alt=""></div><span class="n">Mérés a térben</span><h3>Méretek közvetlenül a bejárásból</h3><p>Hossz, szélesség és belmagasság mérése méterben, helyszíni út nélkül.</p></div>
+<section class="" data-sec="Lakossági kapcsolat" data-note="">
+<div class="w grid2">
+ <div>
+  <div class="kick rv">Lakossági kapcsolat</div>
+  <h2 class="rv d1">Előre bejárható intézmények, <span class="hl">könnyebb ügyintézés</span></h2>
+  <ul class="ls g rv d2"><li><span>A lakosok előre megnézhetik, hová érkeznek: ügyfélszolgálat, hivatal, egészségház, sportlétesítmény.</span></li><li><span>Könnyebb tájékozódás: bejárat, emelet, iroda, útvonal megjelölve.</span></li><li><span>Iskolai nyílt nap, óvodai beiratkozás vagy idősek klubja előtt is bejárható.</span></li><li><span>Akadálymentes megközelítés bemutatva: rámpák, liftek, bejáratok.</span></li><li><span>Egy tervezett átalakítás előtt a lakosok megnézhetik a teret, és elmondhatják a véleményüket.</span></li></ul>
+  <p class="note rv d3"><b>Eredmény:</b> egyszerűbb ügyintézés, kevesebb kérdés és félreértés, esélyegyenlőség, szolgáltató önkormányzat.</p>
  </div>
- <p class="note rv d3">Saját felmérések. A méretek tervezési és tájékozódási célra megbízhatók; mérnöki pontosság igényét előre egyeztetjük.</p>
+ <div class="fr nat rv d2"><img src="img/rendelo-infopont.jpg" alt="Rendelő előtere információs pontokkal"></div>
 </div>
 </section>
 <!-- 6 -->
-<section class="" data-sec="Műszaki lehetőségek" data-note="Ez a tervezőknek és a beruházási területnek szól. A kép egy felmérésből készült BIM-modellt mutat. Ezek külön szolgáltatások, csak ott javasoljuk, ahol valós tervezési igény van.">
+<section class="" data-sec="Kultúra és turizmus" data-note="">
 <div class="w grid2">
  <div>
-  <h2 class="rv d1">Tervezői adatok: <span class="hl">kiindulópont a munkához</span></h2>
-  <ul class="ls rv d2">
-   <li><span><b>E57 pontfelhő</b>A tér geometriája szakmai tervezőszoftverekhez.</span></li>
-   <li><span><b>BIM-modell (RVT, IFC)</b>Épületmodell felújításhoz, üzemeltetéshez, vagyonkezeléshez.</span></li>
-   <li><span><b>CAD-rajz (DWG, PDF)</b>A meglévő állapot alaprajzai és mennyezeti rajzai.</span></li>
-   <li><span><b>3D adatcsomag</b>Textúrázott 3D háló, nagy felbontású képek, mennyezeti nézet.</span></li>
-  </ul>
-  <p class="note rv d3">Ezek külön, igény szerint rendelhető kimenetek. Tartalmukat, részletességüket és pontosságukat a felhasználási célhoz igazítva, előre egyeztetjük.</p>
- </div>
- <div class="fr light nat rv d2"><img src="img/bim-modell2.png" alt="BIM-modell"></div>
-</div>
-</section>
-<!-- 7 -->
-<section class="" data-sec="Ingatlanvagyon" data-note="Itt nem a vagyonkataszter kiváltásáról van szó, hanem annak kiegészítéséről: amit ma papír és tapasztalat hordoz, az bejárhatóan is elérhető lesz. Érdemes megkérdezni, hány épületről van naprakész dokumentáció.">
-<div class="w grid2">
- <div>
-  <div class="kick rv">Ingatlanvagyon · nyilvántartás</div>
-  <h2 class="rv d1">Az épületek állapota <span class="hl">egy helyen</span></h2>
-  <div class="rc rv d2">
-   <div><small>Helyzet</small><p>Az épületekről szóló információ iratokban, fotókon és a kollégák tapasztalatában él.</p></div>
-   <div><small>Amit a digitális tér ad</small><p>Bejárható, mérhető tér alaprajzzal; a fontos dokumentumok a térben elhelyezve.</p></div>
-   <div><small>Eredmény</small><p>Gyorsabban megválaszolható kérdések, és a tudás kollégaváltáskor is megmarad.</p></div>
-  </div>
- </div>
- <div class="fr dh rv d2" style="aspect-ratio:4/3"><img src="img/szalloda-dollhouse.jpg" alt=""><div class="scan"></div></div>
-</div>
-</section>
-<!-- 8 -->
-<section class="" data-sec="Ingatlanvagyon" data-note="Az Állami Számvevőszék 2026-os jelentése a kerület lakásállományánál az alacsony felújítási szintet emeli ki. Ezt csak háttérként említsük: ha felújítási program indul, a felmérés a tervezést segítheti.">
-<div class="w grid2">
- <div>
-  <div class="kick rv">Ingatlanvagyon · állapot és felújítás</div>
-  <h2 class="rv d1">Rögzített kiinduló állapot <span class="hl">a felújítások előtt</span></h2>
-  <div class="rc rv d2">
-   <div><small>Helyzet</small><p>A tervezéshez és az egyeztetésekhez gyakran újra ki kell menni az épülethez.</p></div>
-   <div><small>Amit a digitális tér ad</small><p>Felmérés a munka előtt, szükség esetén utána is; a két állapot összevethető.</p></div>
-   <div><small>Eredmény</small><p>Megalapozottabb tervezés, dokumentált átadás.</p></div>
-  </div>
- </div>
- <div class="fr sharp rv d2" style="aspect-ratio:854/480"><video src="img/iroda.mp4" poster="img/iroda.jpg" autoplay muted loop playsinline></video></div>
-</div>
-</section>
-<!-- 9 -->
-<section class="" data-sec="Ingatlanvagyon" data-note="Ez az egyik legkézzelfoghatóbb terület. A bejárás nem helyettesíti a személyes megtekintést, de előszűr. Hány üres helyiségük van most, és hogyan mutatják be őket?">
-<div class="w grid2">
- <div>
-  <div class="kick rv">Ingatlanvagyon · bérbeadás és értékesítés</div>
-  <h2 class="rv d1">Helyiségek, amelyek <span class="hl">online is megtekinthetők</span></h2>
-  <div class="rc rv d2">
-   <div><small>Helyzet</small><p>Minden érdeklődőhöz bejárást kell szervezni, akkor is, ha végül nem lesz belőle szerződés.</p></div>
-   <div><small>Amit a digitális tér ad</small><p>A hirdetés vagy pályázati kiírás mellett bejárható helyiség, alaprajzzal és méretekkel.</p></div>
-   <div><small>Eredmény</small><p>Kevesebb kiszállás; személyesen többnyire már a komoly érdeklődők jönnek.</p></div>
-  </div>
- </div>
- <div class="rv d2"><div class="tour mp" data-m="mrsJTbj6DYJ"><img src="img/irhas.jpg" alt="Eladó ingatlan – Irhás árok"><span class="mpt">Eladó ingatlan – Irhás árok</span><button class="mpp" aria-label="3D bejárás indítása"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z" fill="currentColor"/></svg></button><span class="mpb">3D bejárás indítása</span></div><p class="cap">Saját munka: eladó ingatlan, Irhás árok</p></div>
-</div>
-</section>
-<!-- 10 -->
-<section class="" data-sec="Ingatlanvagyon" data-note="A képen egy saját felmérésű irodaszint látható. Érdemes megkérdezni, van-e most olyan épület, amelynek új hasznosítása napirenden van.">
-<div class="w grid2">
- <div>
-  <div class="kick rv">Ingatlanvagyon · felszabaduló épületek</div>
-  <h2 class="rv d1">Az épület bemutatása <span class="hl">új hasznosítás előtt</span></h2>
-  <div class="rc rv d2">
-   <div><small>Helyzet</small><p>Egy kiürült épület bemutatása a lehetséges hasznosítóknak sok bejárást igényel.</p></div>
-   <div><small>Amit a digitális tér ad</small><p>A teljes épület egy linken, makettnézettel és alaprajzzal, az átalakítás tervezéséhez is.</p></div>
-   <div><small>Eredmény</small><p>Könnyebb első tájékozódás a döntéshozóknak és az érdeklődőknek.</p></div>
-  </div>
- </div>
- <div class="fr dh rv d2" style="aspect-ratio:16/9"><img src="img/iroda-dollhouse.jpg" alt=""><div class="scan"></div></div>
-</div>
-</section>
-<!-- 11 -->
-<section class="" data-sec="Üzemeltetés" data-note="Ez a Városgazdának szól. A cél nem egy új rendszer bevezetése, hanem hogy a gépészeti terek és dokumentumaik egy helyen, előre megnézhetők legyenek.">
-<div class="w grid2">
- <div>
-  <div class="kick rv">Városgazda · üzemeltetés és karbantartás</div>
-  <h2 class="rv d1">Helyismeret <span class="hl">a kiszállás előtt</span></h2>
-  <div class="rc rv d2">
-   <div><small>Helyzet</small><p>A szakember sokszor csak a helyszínen látja, mi vár rá, és ezért többször kell kimennie.</p></div>
-   <div><small>Amit a digitális tér ad</small><p>Információs pontok a gépészeten: típus, dokumentáció, karbantartási adatok a helyükön.</p></div>
-   <div><small>Eredmény</small><p>Felkészültebb kiszállás, könnyebben átadható helyismeret.</p></div>
-  </div>
- </div>
- <div class="fr  rv d2" style="aspect-ratio:1920/900"><img src="img/uzemeltetes.jpg" alt=""><div class="scan"></div></div>
-</div>
-</section>
-<!-- 12 -->
-<section class="" data-sec="Gazdaságfejlesztés" data-note="A Csepel Művek csarnokai ismert filmforgatási helyszínek. Érdemes tisztázni, mely területek tartoznak az önkormányzathoz, és van-e most aktív érdeklődés.">
-<div class="w grid2">
- <div>
-  <div class="kick rv">Gazdaságfejlesztés · Csepel Művek</div>
-  <h2 class="rv d1">Ipari terek bemutatása <span class="hl">távoli érdeklődőknek</span></h2>
-  <div class="rc rv d2">
-   <div><small>Helyzet</small><p>Bérlőnek, befektetőnek vagy filmes helyszínkeresőnek már az első tájékozódáshoz is helyszíni út kell.</p></div>
-   <div><small>Amit a digitális tér ad</small><p>Bejárható csarnokok méretekkel; közben az ipari örökség állapota is rögzül.</p></div>
-   <div><small>Eredmény</small><p>Megalapozottabb első döntés, kevesebb eredménytelen bejárás.</p></div>
-  </div>
- </div>
- <div class="rv d2"><div class="tour mp" data-m="AmiwVzax4Ch"><img src="img/estonia.jpg" alt="Estonia"><span class="mpt">Estonia</span><button class="mpp" aria-label="3D bejárás indítása"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z" fill="currentColor"/></svg></button><span class="mpb">3D bejárás indítása</span></div><p class="cap">Saját munka: Estonia ipari tér</p></div>
-</div>
-</section>
-<!-- 13 -->
-<section class="" data-sec="Intézmények" data-note="Rendezvényhelyszíneknél ez a NEXUS360 fő területe. Melyik termeiket adják bérbe, és hogyan mutatják be őket ma?">
-<div class="w grid2">
- <div>
-  <div class="kick rv">Intézmények · rendezvényterek</div>
-  <h2 class="rv d1">Termek, amelyeket a szervező <span class="hl">előre bejárhat</span></h2>
-  <div class="rc rv d2">
-   <div><small>Helyzet</small><p>A szervező általában csak személyes bejárás után dönt, ami több egyeztetést jelent.</p></div>
-   <div><small>Amit a digitális tér ad</small><p>Bejárható termek elrendezési információkkal, a foglalási oldalon.</p></div>
-   <div><small>Eredmény</small><p>Felkészültebb érdeklődők, kevesebb egyeztetési kör.</p></div>
-  </div>
- </div>
- <div class="rv d2"><div class="tour mp" data-m="QQbPKGSAD4H"><img src="img/bmc.jpg" alt="Budapest Music Center"><span class="mpt">Budapest Music Center</span><button class="mpp" aria-label="3D bejárás indítása"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z" fill="currentColor"/></svg></button><span class="mpb">3D bejárás indítása</span></div><p class="cap">Saját munka: Budapest Music Center</p></div>
-</div>
-</section>
-<!-- 14 -->
-<section class="" data-sec="Kultúra" data-note="A Munkásotthon színházterme, a Helytörténeti Gyűjtemény vagy egy időszaki kiállítás lehet jó kiindulópont. Milyen kiállítások vagy évfordulók jönnek?">
-<div class="w grid2">
- <div>
-  <div class="kick rv">Kultúra és örökség</div>
-  <h2 class="rv d1">Kiállítások és terek, <span class="hl">amelyek a bezárás után is elérhetők</span></h2>
-  <div class="rc rv d2">
-   <div><small>Helyzet</small><p>Az időszaki kiállítások lebontás után eltűnnek; a helytörténeti értékek csak helyben láthatók.</p></div>
-   <div><small>Amit a digitális tér ad</small><p>Digitális archívum és online kiállítás a kerület kulturális tereiről.</p></div>
-   <div><small>Eredmény</small><p>Szélesebb elérés, iskolai felhasználás, dokumentált kulturális érték.</p></div>
-  </div>
+  <div class="kick rv">Kultúra, turizmus, városmarketing</div>
+  <h2 class="rv d1">Online kiállítások, <span class="hl">szélesebb közönség</span></h2>
+  <ul class="ls g rv d2"><li><span>Kiállítások és események dokumentálva: a tárlat bezárása után is bejárható marad.</span></li><li><span>Aki nem jut el személyesen, otthonról is megnézheti.</span></li><li><span>A bejárás kedvet csinál, és más településekről is látogatót hoz.</span></li><li><span>Műemlékek és helyi védett épületek állapota megőrizve, felújítás előtt is.</span></li><li><span>A helyi értékek egy helyen, büszkén megmutatva.</span></li></ul>
+  <p class="note rv d3"><b>Eredmény:</b> nagyobb elérés, több látogató, erős érv kulturális és örökségvédelmi pályázatokhoz.</p>
  </div>
  <div class="rv d2"><div class="tour mp" data-m="hnBxDUkWX6p"><img src="img/emlekhely.jpg" alt="József Attila Emlékhely"><span class="mpt">József Attila Emlékhely</span><button class="mpp" aria-label="3D bejárás indítása"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z" fill="currentColor"/></svg></button><span class="mpb">3D bejárás indítása</span></div><p class="cap">Saját munka: József Attila Emlékhely</p></div>
 </div>
 </section>
-<!-- 15 -->
-<section class="" data-sec="Városfejlesztés" data-note="A kép a felmérésből készült gépészeti modellt mutatja. Beruházásoknál a takarásba kerülő szerkezetek rögzítése hosszú távon is hasznos. Milyen beruházások futnak most?">
+<!-- 7 -->
+<section class="" data-sec="Hasznosítás" data-note="">
 <div class="w grid2">
  <div>
-  <div class="kick rv">Városfejlesztés · beruházások</div>
-  <h2 class="rv d1">Dokumentált építési szakaszok, <span class="hl">takarás előtt</span></h2>
-  <div class="rc rv d2">
-   <div><small>Helyzet</small><p>A falba és födémbe kerülő gépészet később csak bontással ellenőrizhető.</p></div>
-   <div><small>Amit a digitális tér ad</small><p>Felmérés a takarás előtt és átadáskor; a gépészet nyomvonala visszanézhető.</p></div>
-   <div><small>Eredmény</small><p>Egy későbbi javításnál vagy átalakításnál pontosabb tájékozódás.</p></div>
-  </div>
+  <div class="kick rv">Hasznosítás · bérbeadás és értékesítés</div>
+  <h2 class="rv d1">Online ingatlanbemutatás, <span class="hl">gyorsabb hasznosítás</span></h2>
+  <ul class="ls g rv d2"><li><span>A bérlő előre bejárja a teret; személyesen többnyire már a komoly érdeklődők jönnek.</span></li><li><span>Eladásnál a kiírás mellett bejárható ingatlan, alaprajzzal és méretekkel.</span></li><li><span>Rendezvénytér, közösségi tér, ideiglenes használat bemutatása.</span></li><li><span>A felszabaduló épületek új hasznosítása előtt a teljes épület egy linken.</span></li></ul>
+  <p class="note rv d3"><b>Eredmény:</b> rövidebb üresjárat, kevesebb kiszállás, hatékonyabb közpénz-felhasználás.</p>
+ </div>
+ <div class="rv d2"><div class="tour mp" data-m="mrsJTbj6DYJ"><img src="img/irhas.jpg" alt="Eladó ingatlan – Irhás árok"><span class="mpt">Eladó ingatlan – Irhás árok</span><button class="mpp" aria-label="3D bejárás indítása"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z" fill="currentColor"/></svg></button><span class="mpb">3D bejárás indítása</span></div><p class="cap">Saját munka: eladó ingatlan, Irhás árok</p></div>
+</div>
+</section>
+<!-- 8 -->
+<section class="" data-sec="Gazdaságfejlesztés" data-note="">
+<div class="w grid2">
+ <div>
+  <div class="kick rv">Gazdaságfejlesztés · befektetők</div>
+  <h2 class="rv d1">Bemutatható ipari területek, <span class="hl">több érdeklődő befektető</span></h2>
+  <ul class="ls g rv d2"><li><span>Szabad csarnokok, ipari és fejlesztési területek bejárhatóan, méretekkel.</span></li><li><span>A betelepülni szándékozó cégek távolról is felmérhetik a lehetőségeket.</span></li><li><span>Az első tájékozódás után már célzottabb a helyszíni látogatás.</span></li></ul>
+  <p class="note rv d3"><b>Eredmény:</b> megalapozottabb befektetői döntések, új vállalkozások, helyi munkahelyek.</p>
+ </div>
+ <div class="rv d2"><div class="tour mp" data-m="AmiwVzax4Ch"><img src="img/estonia.jpg" alt="Ipari terület"><span class="mpt">Ipari terület</span><button class="mpp" aria-label="3D bejárás indítása"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z" fill="currentColor"/></svg></button><span class="mpb">3D bejárás indítása</span></div><p class="cap">Saját munka: ipari terület</p></div>
+</div>
+</section>
+<!-- 9 -->
+<section class="" data-sec="Nyilvántartás" data-note="">
+<div class="w grid2">
+ <div>
+  <div class="kick rv">Nyilvántartás és dokumentáció</div>
+  <h2 class="rv d1">Digitális vagyonnyilvántartás, <span class="hl">átlátható gazdálkodás</span></h2>
+  <ul class="ls g rv d2"><li><span>Az ingatlanok dokumentálva, a vagyonkezelőnél egységes nyilvántartásban.</span></li><li><span>Bérlőváltáskor a ki- és beköltözéskori állapot rögzítve, egyértelmű elszámolással.</span></li><li><span>Állapotfelmérés és felújítás: a hibák helyhez kötve, előtte–utána összevethetően.</span></li><li><span>A vagyonkezelő, a karbantartó és a tervező ugyanazt a teret látja; az információ kéznél van az épülettel dolgozó szakembereknek.</span></li><li><span>A képviselők és a bizottságok egy épületről távoli bejárás után dönthetnek.</span></li></ul>
+  <p class="note rv d3"><b>Eredmény:</b> átlátható vagyongazdálkodás, kevesebb vita, gyorsabb döntések.</p>
+ </div>
+ <div class="reg rv d2"><div class="regimg"><img src="img/szalloda-dollhouse.jpg" alt="Épület makettnézete"></div>
+<div class="regcard"><small>Épület adatlap · minta</small><h4>Városi intézmény</h4>
+<dl><dt>Alapterület</dt><dd>1 240 m²</dd><dt>Szintek</dt><dd>4</dd><dt>Helyiségek</dt><dd>38</dd><dt>Utolsó felmérés</dt><dd>2026. 11.</dd><dt>Állapot</dt><dd>2. emelet: felújítás tervezve</dd></dl>
+<div class="tags"><span>Alaprajz</span><span>Tanúsítvány</span><span>Karbantartási napló</span><span>Bérleti szerződés</span></div></div></div>
+</div>
+</section>
+<!-- 10 -->
+<section class="" data-sec="Beruházások" data-note="">
+<div class="w grid2">
+ <div>
+  <div class="kick rv">Beruházások</div>
+  <h2 class="rv d1">Dokumentált fejlesztések, <span class="hl">látható eredmények</span></h2>
+  <ul class="ls g rv d2"><li><span>Az építési szakaszok rögzítve, a takarásba kerülő gépészet és szerkezet is visszanézhető.</span></li><li><span>A fejlesztés haladása megmutatható a lakosoknak.</span></li><li><span>Az elkészült beruházás bejárhatóan bemutatva, nem csak fotón.</span></li></ul>
+  <p class="note rv d3"><b>Eredmény:</b> átláthatóság, látható eredmények: látszik, mire fordították a közpénzt.</p>
  </div>
  <div class="fr dh rv d2" style="aspect-ratio:1717/916"><img src="img/bim-gepeszet.jpg" alt=""><div class="scan"></div></div>
 </div>
 </section>
-<!-- 16 -->
-<section class="" data-sec="Tájékozódás" data-note="Ez kisebb, de jól érzékelhető terület: akadálymentes megközelítés, ügyfélszolgálat, új kollégák betanítása.">
-<div class="w grid2">
- <div>
-  <div class="kick rv">Lakossági és belső tájékozódás</div>
-  <h2 class="rv d1">Helyismeret <span class="hl">mielőtt valaki elindul</span></h2>
-  <div class="rc rv d2">
-   <div><small>Helyzet</small><p>Ügyfél, új munkatárs vagy beavatkozó először ismeretlenként érkezik egy épületbe.</p></div>
-   <div><small>Amit a digitális tér ad</small><p>Bejárható ügyfélterek, megjelölt útvonalak és fontos pontok; a betanítás támogatása.</p></div>
-   <div><small>Eredmény</small><p>Könnyebb tájékozódás és betanulás; a biztonsági előírásokat nem váltja ki, hanem kiegészíti.</p></div>
-  </div>
+<!-- 11 -->
+<section class="" data-sec="Műszaki adatok" data-note="">
+<div class="w">
+ <div class="kick rv">Műszaki adatok</div>
+ <h2 class="rv d1">Mérhető terek, <span class="hl">pontosabb tervek</span></h2>
+ <div class="mrow">
+  <figure class="mfig rv d2"><img src="img/estonia-meres.jpg" alt="Ipari szint alapterülete a bejárásból mérve"><figcaption><span class="n">Ipari terület · alapterület</span><b>149,5 m², 7,47 × 20,43 m – közvetlenül a térből</b></figcaption></figure>
+  <figure class="mfig rv d3"><img src="img/meres.jpg" alt="Mérés a bejárásban"><figcaption><span class="n">Mérés a térben</span><b>Méretek közvetlenül a bejárásból, méterben</b></figcaption></figure>
  </div>
- <div class="fr rv d2" style="aspect-ratio:16/10;background:#07070a"><svg viewBox="0 0 800 500" style="width:100%;height:100%" xmlns="http://www.w3.org/2000/svg" font-family="Inter,sans-serif">
-<defs><pattern id="gp" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M40 0H0V40" fill="none" stroke="rgba(255,255,255,.05)"/></pattern></defs>
-<rect width="800" height="500" fill="url(#gp)"/>
-<g fill="none" stroke="#cfd0d8" stroke-width="5" stroke-linejoin="round">
-<path d="M60 60H740V440H60Z"/><path d="M60 200H300M380 200H520M600 200H740"/><path d="M300 60V150M300 250V440"/><path d="M520 60V120M520 200V440"/><path d="M300 330H440M500 330H520"/></g>
-<g fill="rgba(255,255,255,.04)"><rect x="62" y="62" width="236" height="136"/><rect x="302" y="62" width="216" height="136"/><rect x="522" y="62" width="216" height="136"/><rect x="62" y="202" width="236" height="236"/><rect x="522" y="202" width="216" height="236"/></g>
-<path d="M120 440V470" stroke="#22a3a6" stroke-width="5"/>
-<path d="M140 470V300H340V250H560V140H630" fill="none" stroke="#2B00FF" stroke-width="6" stroke-dasharray="14 10" stroke-linecap="round"><animate attributeName="stroke-dashoffset" from="48" to="0" dur="1.2s" repeatCount="indefinite"/></path>
-<circle cx="140" cy="470" r="11" fill="#22a3a6"/><circle cx="630" cy="140" r="13" fill="#2B00FF"/><circle cx="630" cy="140" r="22" fill="none" stroke="#2B00FF" stroke-opacity=".5"/>
-<circle cx="405" cy="330" r="10" fill="#FE5965"/><circle cx="700" cy="420" r="10" fill="#FE5965"/><rect x="230" y="80" width="18" height="18" rx="3" fill="#22a3a6"/>
-<g fill="#fff" font-size="15" font-weight="600">
-<text x="160" y="486">Akadálymentes bejárat</text><text x="560" y="105">Ügyfélszolgálat</text><text x="330" y="360">Elzáró</text><text x="590" y="425">Vészkijárat</text><text x="140" y="92">Lift</text></g>
-<g fill="#a9a9b2" font-size="12" letter-spacing="1.5"><text x="76" y="86">IRODA</text><text x="316" y="86">TÁRGYALÓ</text><text x="76" y="226">VÁRÓTÉR</text><text x="536" y="226">GÉPÉSZET</text></g>
-</svg></div>
+ <p class="note rv d4">Saját felmérések. A méretek tervezési és tájékozódási célra megbízhatók; mérnöki pontosság igényét előre egyeztetjük.</p>
 </div>
 </section>
-<!-- 17 -->
-<section class="" data-sec="Adatkezelés" data-note="Gyermekintézményeknél és hivatali tereknél a védett megosztás a természetes választás. Kinél vannak az adatvédelmi döntések?">
+<!-- 12 -->
+<section class="" data-sec="Műszaki adatok" data-note="">
+<div class="w grid2">
+ <div>
+  <div class="kick rv">Műszaki adatok · tervezés és üzemeltetés</div>
+  <h2 class="rv d1">Kevesebb helyszíni felmérés, <span class="hl">gyorsabb tervezés</span></h2>
+  <ul class="ls g rv d2"><li><span><b>E57 pontfelhő, BIM-modell (RVT, IFC), CAD-rajz (DWG, PDF)</b> igény szerint, a felhasználási célhoz igazítva.</span></li><li><span>Tervezők és kivitelezők a meglévő állapotból indulhatnak ki.</span></li><li><span>Üzemeltetés: berendezések, gépészet, helyiségek adatai a térhez kötve.</span></li></ul>
+  <p class="note rv d3"><b>Eredmény:</b> pontos alap a tervezéshez, idő- és költségmegtakarítás.</p>
+ </div>
+ <div class="fr light nat rv d2"><img src="img/bim-modell2.png" alt="BIM-modell"></div>
+</div>
+</section>
+<!-- 13 -->
+<section class="" data-sec="Biztonság" data-note="">
+<div class="w grid2">
+ <div>
+  <div class="kick rv">Biztonság és belső működés</div>
+  <h2 class="rv d1">Előzetes helyismeret, <span class="hl">biztosabb beavatkozás</span></h2>
+  <ul class="ls g rv d2"><li><span>Tűzoltók, katasztrófavédelem és vagyonőrök előre megismerhetik az épületet.</span></li><li><span>Menekülési útvonalak, kijáratok és közműelzárók megjelölve.</span></li><li><span>Az új kollégák gyorsabban betanulnak az épületekbe.</span></li></ul>
+  <p class="note rv d3"><b>Eredmény:</b> felkészültebb beavatkozás, gyorsabb betanulás; a biztonsági előírásokat kiegészíti, nem váltja ki.</p>
+ </div>
+ <div class="fr light rv d2" style="aspect-ratio:1600/1020;position:relative;background:#f3f2f0"><img src="img/alaprajz-bem.jpg" alt="Sematikus alaprajz megjelölt útvonallal">
+<svg viewBox="0 0 1600 1020" style="position:absolute;inset:0;width:100%;height:100%">
+<path d="M580 945 L585 700 L560 490 L1035 492 L1040 300 L1130 250" fill="none" stroke="#2B00FF" stroke-width="11" stroke-dasharray="24 16" stroke-linecap="round" stroke-linejoin="round"><animate attributeName="stroke-dashoffset" from="80" to="0" dur="1.4s" repeatCount="indefinite"/></path>
+<g font-family="Inter,sans-serif" font-size="30" font-weight="600">
+<circle cx="580" cy="945" r="17" fill="#22a3a6"/><rect x="612" y="922" width="140" height="48" rx="24" fill="#111"/><text x="682" y="955" fill="#fff" text-anchor="middle">Bejárat</text>
+<circle cx="1130" cy="250" r="18" fill="#2B00FF"/><circle cx="1130" cy="250" r="34" fill="none" stroke="#2B00FF" stroke-width="4" opacity=".5"/><rect x="1185" y="226" width="170" height="48" rx="24" fill="#2B00FF"/><text x="1270" y="259" fill="#fff" text-anchor="middle">Gépterem</text>
+<circle cx="360" cy="560" r="16" fill="#FE5965"/><rect x="100" y="595" width="200" height="48" rx="24" fill="#111"/><text x="200" y="628" fill="#fff" text-anchor="middle">Vészkijárat</text>
+<circle cx="760" cy="470" r="14" fill="#FE5965"/><rect x="660" y="390" width="220" height="48" rx="24" fill="#111"/><text x="770" y="423" fill="#fff" text-anchor="middle">Közműelzáró</text>
+</g></svg></div>
+</div>
+</section>
+<!-- 14 -->
+<section class="" data-sec="Adatkezelés" data-note="">
 <div class="w">
  <div class="kick rv">Adatkezelés</div>
- <h2 class="rv d1">Eldönthetjük, <span class="hl">ki mit láthat</span></h2>
- <div class="cards c3" style="margin-top:10px">
+ <h2 class="rv d1">Szabályozott hozzáférés, <span class="hl">védett adatok</span></h2>
+ <p class="lead rv d2" style="max-width:900px;margin-bottom:24px">Eldönthető, ki mit láthat: nyilvános bejárás a lakosoknak, védett anyag a belső használatra. Az érzékeny terek és adatok elrejthetők.</p>
+ <div class="cards c3">
   <div class="card rv d2"><span class="n">Nyilvános</span><h3>Bárki megtalálhatja</h3><p>Honlap, hirdetés, pályázati kiírás.</p></div>
   <div class="card rv d3"><span class="n">Linkkel elérhető</span><h3>Csak akinek elküldik</h3><p>Ajánlat, egyeztetés, tervezői munka.</p></div>
   <div class="card rv d4"><span class="n">Védett</span><h3>Jelszóval vagy belső fiókkal</h3><p>Óvodák, iskolák, hivatali és gépészeti terek.</p></div>
  </div>
 </div>
 </section>
-<!-- 18 -->
-<section class="" data-sec="Összegzés" data-note="Összegzésként: a digitális tér eszköz, nem cél. Melyik az a két-három terület, ahol Önöknél a legtöbbet segíthetne?">
+<!-- 15 -->
+<section class="" data-sec="Összegzés" data-note="">
 <div class="w">
- <h2 class="rv d1">Hol segíthet <span class="hl">a kerületnek?</span></h2>
- <p class="lead rv d2" style="max-width:980px;margin-bottom:24px">Nem minden épületnél és területen van rá szükség. Ott érdemes alkalmazni, ahol a helyszín ismerete ma sok időt, utat vagy egyeztetést igényel.</p>
- <div class="cards c5"><div class="card rv d2"><h3>Kapcsolat a lakossággal</h3><p>A lakosok online megismerhetik a kerület épületeit és kiállításait, a térben elhelyezett tartalmakkal pedig folyamatosan tájékoztathatók.</p></div><div class="card rv d2"><h3>Átláthatóbb épületállomány</h3><p>A terek valós állapota egy helyen, bejárhatóan.</p></div><div class="card rv d3"><h3>Kevesebb kiszállás</h3><p>Bemutatás, egyeztetés és felkészülés távolról is.</p></div><div class="card rv d3"><h3>Megalapozott tervezés</h3><p>Méretek és műszaki adatok a meglévő állapotról.</p></div><div class="card rv d4"><h3>Megmaradó tudás</h3><p>Az épületek ismerete nem néhány kollégán múlik.</p></div></div>
+ <h2 class="rv d1">Hol hozhat a legtöbbet <span class="hl">a digitalizáció a településnek?</span></h2>
+ <p class="lead rv d2" style="max-width:1000px;margin-bottom:24px">Nem minden épületnél és területen van rá szükség. Önök választják ki, hol segít a legtöbbet: ott, ahol a helyszín ismerete ma sok időt, utat vagy egyeztetést igényel.</p>
+ <div class="cards c4"><div class="card rv d2"><span class="n">01</span><h3>Lakossági kapcsolat</h3><p>Előre bejárható intézmények, könnyebb ügyintézés.</p></div><div class="card rv d2"><span class="n">02</span><h3>Kultúra, turizmus</h3><p>Online kiállítások, szélesebb közönség.</p></div><div class="card rv d2"><span class="n">03</span><h3>Hasznosítás</h3><p>Gyorsabb bérbeadás, értékesítés, befektetők.</p></div><div class="card rv d2"><span class="n">04</span><h3>Nyilvántartás</h3><p>Átlátható vagyongazdálkodás.</p></div><div class="card rv d3"><span class="n">05</span><h3>Beruházások</h3><p>Dokumentált fejlesztések, látható eredmények.</p></div><div class="card rv d3"><span class="n">06</span><h3>Műszaki adatok</h3><p>Mérhető terek, pontosabb tervek.</p></div><div class="card rv d3"><span class="n">07</span><h3>Biztonság</h3><p>Előzetes helyismeret, gyorsabb betanulás.</p></div><div class="card rv d3"><span class="n">08</span><h3>Adatkezelés</h3><p>Szabályozott, védett hozzáférés.</p></div></div>
 </div>
 </section>
-<!-- 19 -->
-<section class="" data-sec="Következő lépés" data-note="Zárásként egy konkrét következő lépést kérjünk: időpontot egy közös áttekintésre. Kit érdemes még bevonni?">
+<!-- 16 -->
+<section class="" data-sec="Következő lépés" data-note="">
 <div class="w final">
  <div>
   <div class="kick rv">Következő lépés</div>
-  <h2 class="rv d1">Közös áttekintés: <span class="hl">hol segíthet a digitális tér?</span></h2>
-  <p class="lead rv d2" style="max-width:860px;margin:0 auto">Egy rövid egyeztetésen együtt kiválasztjuk azokat a területeket és épületeket, ahol a digitális bejárás valóban segítheti a kerület munkáját.</p>
+  <h2 class="rv d1">Kezdjük ott, <span class="hl">ahol a leggyorsabban látszik az eredmény</span></h2>
+  <p class="lead rv d2" style="max-width:900px;margin:0 auto">Egy 30 perces egyeztetésen kiválasztjuk azt a két-három épületet vagy területet, ahol a digitális bejárás a leggyorsabban hoz kézzelfogható eredményt: kevesebb kiszállást, gyorsabb hasznosítást, egyszerűbb ügyintézést a lakosoknak.</p>
+  <a class="cta rv d3" href="https://calendar.app.google/zFH8etA7r1gQPKPB7" target="_blank" rel="noopener">Időpontot foglalok</a>
  </div>
- <div class="contactrow rv d3">
-  <div><small>Hajdu Dénes, alapító</small><a href="tel:+36704320521">+36 70 432 0521</a></div>
-  <div><small>E-mail</small><a href="mailto:nexus@nexus360.hu">nexus@nexus360.hu</a></div>
+ <div class="contactrow rv d4">
+  <div><small>Hajdu Dénes, alapító</small><a href="tel:+36704320521" target="_top">+36 70 432 0521</a></div>
+  <div><small>E-mail</small><a href="mailto:nexus@nexus360.hu?subject=Digitaliz%C3%A1lt%20%C3%B6nkorm%C3%A1nyzat" target="_top">nexus@nexus360.hu</a></div>
   <div><small>Web</small><a href="https://nexus360.hu" target="_blank" rel="noopener">www.nexus360.hu</a></div>
  </div>
 </div>
