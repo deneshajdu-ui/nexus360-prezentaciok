@@ -336,7 +336,7 @@ html.m .covgrid.mq,html.nx-m .covgrid.mq{position:relative!important;width:100%!
 .side small{display:block;font-family:'JetBrains Mono';font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:#22a3a6;margin-bottom:6px}
 .side b{font:600 15px Outfit;color:#fff}
 /* adatlap */
-.reg{position:relative;aspect-ratio:4/3;border-radius:18px;border:1px solid var(--line);background:radial-gradient(circle at 30% 50%,#17153a,#07070a 70%);overflow:hidden;display:flex;align-items:center}
+.reg{position:relative;min-height:440px;padding:20px 0;border-radius:18px;border:1px solid var(--line);background:radial-gradient(circle at 30% 50%,#17153a,#07070a 70%);overflow:hidden;display:flex;align-items:center}
 .regimg{width:52%;height:100%;display:flex;align-items:center;justify-content:center}
 .regimg img{max-width:100%;max-height:92%;object-fit:contain}
 .regcard{width:44%;margin-right:4%;padding:20px 20px 18px;border-radius:14px;background:rgba(12,12,18,.9);border:1px solid rgba(255,255,255,.14);box-shadow:0 20px 50px -20px rgba(43,0,255,.6)}
@@ -360,6 +360,13 @@ html.m .mfig img,html.nx-m .mfig img{height:auto;width:100%}
 .cta:hover{filter:brightness(1.15)}
 .contactrow a{position:relative;z-index:6}
 html.m .ill .side,html.nx-m .ill .side{display:none}
+
+html.m .reg,html.nx-m .reg{flex-direction:column;padding:16px;gap:14px}
+html.m .regimg,html.nx-m .regimg{width:100%;height:auto}
+html.m .regimg img,html.nx-m .regimg img{max-height:300px}
+html.m .regcard,html.nx-m .regcard{width:100%;margin:0}
+html.m .mfig,html.nx-m .mfig{width:100%}
+html:not(.m) .grid2:has(img[src*="rendelo"]){grid-template-columns:.8fr 1.25fr!important}
 
 </style>
 </head>
@@ -424,14 +431,7 @@ html.m .ill .side,html.nx-m .ill .side{display:none}
   <ul class="ls g rv d2"><li><span>A lakosok előre megnézhetik, hová érkeznek: ügyfélszolgálat, hivatal, egészségház, sportlétesítmény.</span></li><li><span>Könnyebb tájékozódás: bejárat, emelet, iroda, útvonal megjelölve.</span></li><li><span>Iskolai nyílt nap, óvodai beiratkozás vagy idősek klubja előtt is bejárható.</span></li><li><span>Akadálymentes megközelítés bemutatva: rámpák, liftek, bejáratok.</span></li><li><span>Egy tervezett átalakítás előtt a lakosok megnézhetik a teret, és elmondhatják a véleményüket.</span></li></ul>
   <p class="note rv d3"><b>Eredmény:</b> egyszerűbb ügyintézés, kevesebb kérdés és félreértés, esélyegyenlőség, szolgáltató önkormányzat.</p>
  </div>
- <div class="ill rv d2"><div class="ph"><img src="img/bmc.jpg" alt="Előcsarnok bejárása telefonon">
-<div class="phbar">Közösségi ház · földszint</div>
-<span class="pin" style="left:30%;top:52%"><i></i><em>Ügyfélszolgálat</em></span>
-<span class="pin" style="left:66%;top:36%"><i></i><em>Lift · 1–2. emelet</em></span>
-<span class="pin t" style="left:52%;top:74%"><i></i><em>Akadálymentes bejárat</em></span>
-<div class="phnav">Útvonal mutatása →</div></div>
-<div class="side l"><small>Előre</small><b>Megnézi, hová érkezik</b></div>
-<div class="side r"><small>Helyben</small><b>Tudja, merre induljon</b></div></div>
+ <div class="fr nat rv d2"><img src="img/rendelo-infopont.jpg" alt="Rendelő előtere információs pontokkal"></div>
 </div>
 </section>
 <!-- 6 -->
@@ -503,7 +503,7 @@ html.m .ill .side,html.nx-m .ill .side{display:none}
  <div class="kick rv">Műszaki adatok</div>
  <h2 class="rv d1">Mérhető terek, <span class="hl">pontosabb tervek</span></h2>
  <div class="mrow">
-  <figure class="mfig rv d2"><img src="img/bim-retegek.jpg" alt="Alaprajz, makettnézet és BIM-modell"><figcaption><span class="n">Makettnézet, alaprajz, BIM</span><b>Az épület rétegei egy felmérésből</b></figcaption></figure>
+  <figure class="mfig rv d2"><img src="img/estonia-meres.jpg" alt="Ipari szint alapterülete a bejárásból mérve"><figcaption><span class="n">Ipari terület · alapterület</span><b>149,5 m², 7,47 × 20,43 m – közvetlenül a térből</b></figcaption></figure>
   <figure class="mfig rv d3"><img src="img/meres.jpg" alt="Mérés a bejárásban"><figcaption><span class="n">Mérés a térben</span><b>Méretek közvetlenül a bejárásból, méterben</b></figcaption></figure>
  </div>
  <p class="note rv d4">Saját felmérések. A méretek tervezési és tájékozódási célra megbízhatók; mérnöki pontosság igényét előre egyeztetjük.</p>
@@ -530,14 +530,14 @@ html.m .ill .side,html.nx-m .ill .side{display:none}
   <ul class="ls g rv d2"><li><span>Tűzoltók, katasztrófavédelem és vagyonőrök előre megismerhetik az épületet.</span></li><li><span>Menekülési útvonalak, kijáratok és közműelzárók megjelölve.</span></li><li><span>Az új kollégák gyorsabban betanulnak az épületekbe.</span></li></ul>
   <p class="note rv d3"><b>Eredmény:</b> felkészültebb beavatkozás, gyorsabb betanulás; a biztonsági előírásokat kiegészíti, nem váltja ki.</p>
  </div>
- <div class="fr dh rv d2" style="aspect-ratio:16/9;position:relative"><img src="img/iroda-dollhouse.jpg" alt="Épület makettnézete megjelölt útvonallal">
-<svg viewBox="0 0 1920 1080" style="position:absolute;inset:0;width:100%;height:100%">
-<path d="M1085 965 L1120 840 L1150 772 L700 560 L470 452 L395 395" fill="none" stroke="#2B00FF" stroke-width="12" stroke-dasharray="26 18" stroke-linecap="round" stroke-linejoin="round" style="filter:drop-shadow(0 0 10px rgba(43,0,255,.8))"><animate attributeName="stroke-dashoffset" from="88" to="0" dur="1.4s" repeatCount="indefinite"/></path>
+ <div class="fr light rv d2" style="aspect-ratio:1600/1020;position:relative;background:#f3f2f0"><img src="img/alaprajz-bem.jpg" alt="Sematikus alaprajz megjelölt útvonallal">
+<svg viewBox="0 0 1600 1020" style="position:absolute;inset:0;width:100%;height:100%">
+<path d="M580 945 L585 700 L560 490 L1035 492 L1040 300 L1130 250" fill="none" stroke="#2B00FF" stroke-width="11" stroke-dasharray="24 16" stroke-linecap="round" stroke-linejoin="round"><animate attributeName="stroke-dashoffset" from="80" to="0" dur="1.4s" repeatCount="indefinite"/></path>
 <g font-family="Inter,sans-serif" font-size="30" font-weight="600">
-<circle cx="1085" cy="965" r="16" fill="#22a3a6"/><rect x="1110" y="975" width="132" height="46" rx="23" fill="rgba(0,0,0,.75)"/><text x="1176" y="1007" fill="#fff" text-anchor="middle">Bejárat</text>
-<circle cx="395" cy="395" r="18" fill="#FE5965"/><circle cx="395" cy="395" r="34" fill="none" stroke="#FE5965" stroke-width="4" opacity=".6"/><rect x="180" y="300" width="200" height="46" rx="23" fill="rgba(0,0,0,.75)"/><text x="280" y="332" fill="#fff" text-anchor="middle">Vészkijárat</text>
-<circle cx="905" cy="520" r="14" fill="#FE5965"/><rect x="930" y="430" width="220" height="46" rx="23" fill="rgba(0,0,0,.75)"/><text x="1040" y="462" fill="#fff" text-anchor="middle">Közműelzáró</text>
-<circle cx="1470" cy="395" r="14" fill="#22a3a6"/><rect x="1495" y="300" width="170" height="46" rx="23" fill="rgba(0,0,0,.75)"/><text x="1580" y="332" fill="#fff" text-anchor="middle">Gépterem</text>
+<circle cx="580" cy="945" r="17" fill="#22a3a6"/><rect x="612" y="922" width="140" height="48" rx="24" fill="#111"/><text x="682" y="955" fill="#fff" text-anchor="middle">Bejárat</text>
+<circle cx="1130" cy="250" r="18" fill="#2B00FF"/><circle cx="1130" cy="250" r="34" fill="none" stroke="#2B00FF" stroke-width="4" opacity=".5"/><rect x="1185" y="226" width="170" height="48" rx="24" fill="#2B00FF"/><text x="1270" y="259" fill="#fff" text-anchor="middle">Gépterem</text>
+<circle cx="360" cy="560" r="16" fill="#FE5965"/><rect x="100" y="595" width="200" height="48" rx="24" fill="#111"/><text x="200" y="628" fill="#fff" text-anchor="middle">Vészkijárat</text>
+<circle cx="760" cy="470" r="14" fill="#FE5965"/><rect x="660" y="390" width="220" height="48" rx="24" fill="#111"/><text x="770" y="423" fill="#fff" text-anchor="middle">Közműelzáró</text>
 </g></svg></div>
 </div>
 </section>
