@@ -22,8 +22,107 @@
 <meta name="twitter:image" content="https://prezentacio.nexus360.hu/onkormanyzat/altalanos-01/img/elonezet.jpg">
 <link rel="image_src" href="https://prezentacio.nexus360.hu/onkormanyzat/altalanos-01/img/elonezet.jpg">
 <script>try{history.scrollRestoration='manual';if(location.hash)history.replaceState(null,'',location.pathname+location.search)}catch(e){}addEventListener('load',function(){scrollTo(0,0)});</script>
-<link rel="stylesheet" href="/assets/nx-mobil.css">
-<script src="/assets/nx-mobil.js"></script>
+<style>/* NEXUS360 – mobilnézet minden kiküldött anyaghoz.
+   Telefonon (html.nx-m) a diás lapozás helyett folyamatosan görgethető oldal lesz;
+   asztali gépen semmi nem változik. */
+html.nx-m,html.nx-m body{height:auto!important;overflow-x:hidden!important;overflow-y:auto!important}
+html.nx-m main{position:static!important;inset:auto!important}
+html.nx-m section{position:relative!important;inset:auto!important;visibility:visible!important;opacity:1!important;transition:none!important;display:block!important;min-height:0!important;height:auto!important;overflow:visible!important;padding:76px 18px 40px!important}
+html.nx-m section+section{border-top:1px solid rgba(255,255,255,.07)}
+html.nx-m section.cover{display:flex!important;align-items:flex-end!important;min-height:100svh!important;padding:0!important}
+html.nx-m section.cover .in{padding:96px 18px 44px!important}
+html.nx-m section.div{display:flex!important;flex-direction:column;justify-content:center;min-height:52svh!important}
+html.nx-m section[style*="padding:0"]{padding:0!important}
+html.nx-m footer{display:none!important}
+html.nx-m #fs{display:none!important}
+html.nx-m header{background:linear-gradient(0deg,rgba(0,0,0,0),rgba(0,0,0,.92) 45%)!important;padding:14px 18px 22px!important}
+html.nx-m img,html.nx-m video{max-width:100%}
+html.nx-m .fr{max-width:100%}
+html.nx-m table{display:block;overflow-x:auto}
+.nxprog{position:fixed;left:0;top:0;height:3px;width:0;z-index:30;background:linear-gradient(90deg,#2B00FF,#1B8386);transition:width .25s;display:none}
+html.nx-m .nxprog{display:block}
+.nxtop{position:fixed;right:16px;bottom:18px;z-index:30;width:44px;height:44px;border-radius:50%;border:1px solid rgba(255,255,255,.18);background:rgba(10,10,14,.82);color:#fff;font-size:18px;display:none;align-items:center;justify-content:center;-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
+html.nx-m .nxtop.on{display:flex}
+</style>
+<script>/* NEXUS360 – automatikus asztali / mobil nézet.
+   A <head>-ben, defer nélkül kell betölteni (a nx-mobil.css után). */
+(function () {
+  var MQ = '(max-width: 900px), (max-height: 500px), (pointer: coarse) and (max-width: 1100px) and (orientation: portrait)';
+  var mobil = window.matchMedia && matchMedia(MQ).matches;
+  if (/[?&]nezet=asztali/.test(location.search)) mobil = false;
+  if (/[?&]nezet=mobil/.test(location.search)) mobil = true;
+  if (!mobil) return;
+  document.documentElement.classList.add('nx-m');
+
+  // a diás lapozás gesztusait mobilon kikapcsoljuk (függőleges görgetés van helyette)
+  ['touchend', 'wheel', 'keydown'].forEach(function (t) {
+    window.addEventListener(t, function (e) {
+      if (t === 'touchend' && e.target.closest && e.target.closest('#cmp')) return;
+      if (t === 'keydown' && !/Arrow|Page|Home|End|^ $/.test(e.key)) return;
+      e.stopPropagation();
+    }, true);
+  });
+
+  function init() {
+    var S = [].slice.call(document.querySelectorAll('#deck section'));
+    if (!S.length) return;
+
+    // a „dia aktív” animációk mobilon görgetésre indulnak: section.on → section.nxin
+    var css = [];
+    [].forEach.call(document.styleSheets, function (sh) {
+      var R; try { R = sh.cssRules; } catch (e) { return; }
+      [].forEach.call(R || [], function (r) {
+        if (r.selectorText && r.selectorText.indexOf('section.on') > -1) {
+          css.push(r.selectorText.split(',').map(function (s) { return s.indexOf('section.on') > -1 ? 'html.nx-m ' + s.trim().replace(/section\.on/g, 'section.nxin') : null; }).filter(Boolean).join(',') + '{' + r.style.cssText + '}');
+        }
+      });
+    });
+    var st = document.createElement('style'); st.textContent = css.join('\n'); document.head.appendChild(st);
+
+    // keskenyre szorult rácsok (pl. beégetett kétoszlopos elrendezés) egy oszlopba
+    function racs() {
+      [].forEach.call(document.querySelectorAll('#deck section *'), function (el) {
+        var cs = getComputedStyle(el); if (cs.display.indexOf('grid') < 0) return;
+        var cols = cs.gridTemplateColumns.split(' ').filter(Boolean).length; if (cols < 2) return;
+        var keskeny = [].some.call(el.children, function (c) { return c.getBoundingClientRect().width < 150 && (c.textContent || '').trim().length > 40; });
+        if (keskeny || (cols >= 2 && el.clientWidth / cols < 140 && el.textContent.trim().length > 120)) el.style.setProperty('grid-template-columns', '1fr', 'important');
+      });
+    }
+    racs(); setTimeout(racs, 800);
+    var bar = document.createElement('div'); bar.className = 'nxprog'; document.body.appendChild(bar);
+    var top = document.createElement('button'); top.className = 'nxtop'; top.setAttribute('aria-label', 'Vissza a tetejére'); top.textContent = '↑';
+    top.onclick = function () { window.scrollTo({ top: 0, behavior: 'smooth' }); }; document.body.appendChild(top);
+
+    var io = new IntersectionObserver(function (E) {
+      E.forEach(function (e) { if (e.isIntersecting) e.target.classList.add('nxin'); });
+    }, { rootMargin: '0px 0px -12% 0px', threshold: 0.05 });
+    S.forEach(function (s) { io.observe(s); });
+
+    var cur = -1, tick = false;
+    function aktiv() {
+      tick = false;
+      var mid = innerHeight * 0.45, i = 0;
+      for (var k = 0; k < S.length; k++) { var r = S[k].getBoundingClientRect(); if (r.top <= mid) i = k; else break; }
+      var vege = (innerHeight + scrollY) >= document.documentElement.scrollHeight - 4;
+      if (vege) i = S.length - 1;
+      bar.style.width = ((i + 1) / S.length * 100) + '%';
+      top.classList.toggle('on', scrollY > innerHeight);
+      if (i === cur) return;
+      if (cur >= 0) S[cur].classList.remove('nxcur');
+      cur = i; S[i].classList.add('nxcur', 'nxin');
+      S.forEach(function (s, k) { s.querySelectorAll('video').forEach(function (v) { try { if (k === i) { v.muted = true; v.play().catch(function () {}); } else v.pause(); } catch (e) {} }); });
+      try { history.replaceState(null, '', location.pathname + location.search + '#dia-' + (i + 1)); } catch (e) {}
+    }
+    addEventListener('scroll', function () { if (!tick) { tick = true; requestAnimationFrame(aktiv); } }, { passive: true });
+    addEventListener('resize', aktiv);
+
+    var m = /^#dia-(\d+)$/.exec(location.hash);
+    if (m && S[+m[1] - 1] && +m[1] > 1) setTimeout(function () { S[+m[1] - 1].scrollIntoView(); aktiv(); }, 60);
+    aktiv();
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init); else init();
+})();
+</script>
 <script src="/assets/nx-track.js" defer></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap&subset=latin-ext" rel="stylesheet">
@@ -209,6 +308,58 @@ html.nx-m body{position:static}
 html.nx-m section.cover{flex-direction:column!important;align-items:stretch!important;justify-content:flex-start!important;min-height:0!important;padding:90px 0 40px!important}
 html.nx-m .w.final{gap:32px}
 html.m .covtxt h1[style]{font-size:44px!important}
+.covgrid.mq{display:flex!important;gap:12px;aspect-ratio:16/12.6;overflow:hidden;-webkit-mask-image:linear-gradient(180deg,transparent,#000 9%,#000 91%,transparent);mask-image:linear-gradient(180deg,transparent,#000 9%,#000 91%,transparent)}
+.mqc{flex:1;overflow:hidden}
+.mqt{display:flex;flex-direction:column;gap:12px;animation:mqup 46s linear infinite}
+.mqc.dn .mqt{animation-name:mqdn;animation-duration:52s}
+.mqi{aspect-ratio:16/9;border-radius:10px;overflow:hidden;border:1px solid rgba(255,255,255,.12);background:#0b0b10;flex:none}
+.mqi img{width:100%;height:100%;object-fit:cover;display:block}
+.mqi.dh img{object-fit:contain}
+.mqi.dh{background:radial-gradient(circle at 50% 55%,#1a1838,#06060a 70%)}
+@keyframes mqup{from{transform:translateY(0)}to{transform:translateY(calc(-50% - 6px))}}
+@keyframes mqdn{from{transform:translateY(calc(-50% - 6px))}to{transform:translateY(0)}}
+html.m .covgrid.mq,html.nx-m .covgrid.mq{position:relative!important;width:100%!important;right:auto!important;top:auto!important;transform:none!important;aspect-ratio:16/13;margin-top:24px}
+@media (prefers-reduced-motion:reduce){.mqt{animation:none}}
+/* telefon-illusztráció */
+.ill{position:relative;aspect-ratio:16/10;border-radius:18px;border:1px solid var(--line);background:radial-gradient(circle at 50% 40%,#1a1640,#07070a 70%);overflow:hidden}
+.ph{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);height:88%;aspect-ratio:9/18.5;border-radius:34px;border:6px solid #1d1d24;box-shadow:0 30px 80px -20px rgba(43,0,255,.6),0 0 0 1px rgba(255,255,255,.12);overflow:hidden;background:#000}
+.ph>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:28% 50%}
+.phbar{position:absolute;left:0;right:0;top:0;padding:16px 12px 10px;font:600 11px Inter;color:#fff;background:linear-gradient(180deg,rgba(0,0,0,.7),transparent);text-align:center}
+.phnav{position:absolute;left:10px;right:10px;bottom:12px;padding:9px;border-radius:12px;background:#2B00FF;color:#fff;font:600 11px Inter;text-align:center}
+.pin{position:absolute;transform:translate(-50%,-50%);display:flex;flex-direction:column;align-items:center;gap:4px}
+.pin i{width:14px;height:14px;border-radius:50%;background:#fff;box-shadow:0 0 0 4px rgba(43,0,255,.55),0 0 0 9px rgba(43,0,255,.18);animation:pp 2s infinite}
+.pin em{font:600 10px Inter;font-style:normal;color:#fff;background:rgba(0,0,0,.72);padding:4px 7px;border-radius:999px;white-space:nowrap}
+.pin.t i{background:#22a3a6}
+@keyframes pp{50%{box-shadow:0 0 0 6px rgba(43,0,255,.4),0 0 0 14px rgba(43,0,255,0)}}
+.side{position:absolute;top:50%;transform:translateY(-50%);width:23%;padding:14px 16px;border-radius:14px;background:rgba(255,255,255,.04);border:1px solid var(--line)}
+.side.l{left:4%}.side.r{right:4%;text-align:right}
+.side small{display:block;font-family:'JetBrains Mono';font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:#22a3a6;margin-bottom:6px}
+.side b{font:600 15px Outfit;color:#fff}
+/* adatlap */
+.reg{position:relative;aspect-ratio:4/3;border-radius:18px;border:1px solid var(--line);background:radial-gradient(circle at 30% 50%,#17153a,#07070a 70%);overflow:hidden;display:flex;align-items:center}
+.regimg{width:52%;height:100%;display:flex;align-items:center;justify-content:center}
+.regimg img{max-width:100%;max-height:92%;object-fit:contain}
+.regcard{width:44%;margin-right:4%;padding:20px 20px 18px;border-radius:14px;background:rgba(12,12,18,.9);border:1px solid rgba(255,255,255,.14);box-shadow:0 20px 50px -20px rgba(43,0,255,.6)}
+.regcard small{font-family:'JetBrains Mono';font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:#22a3a6}
+.regcard h4{font:600 18px Outfit;color:#fff;margin:6px 0 12px}
+.regcard dl{display:grid;grid-template-columns:auto 1fr;gap:7px 14px;margin:0 0 12px;font-size:13px}
+.regcard dt{color:var(--mute)}.regcard dd{margin:0;color:#fff;text-align:right}
+.regcard .tags{display:flex;flex-wrap:wrap;gap:6px}
+.regcard .tags span{font-size:11px;padding:4px 8px;border-radius:999px;border:1px solid rgba(255,255,255,.18);color:#d8d8e0}
+/* mérés */
+.mrow{display:flex;justify-content:center;gap:28px;margin-top:6px}
+.mfig{margin:0;border-radius:16px;overflow:hidden;border:1px solid var(--line);background:#0b0b10}
+.mfig img{display:block;height:470px;width:auto}
+.mfig figcaption{padding:12px 16px}
+.mfig .n{display:block;font-family:'JetBrains Mono';font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:#22a3a6;margin-bottom:4px}
+.mfig b{font:600 16px Outfit;color:#fff}
+html.m .mrow,html.nx-m .mrow{flex-direction:column;align-items:center}
+html.m .mfig img,html.nx-m .mfig img{height:auto;width:100%}
+/* zárás */
+.cta{display:inline-block;margin-top:28px;padding:16px 30px;border-radius:999px;background:#2B00FF;color:#fff;font:600 18px Outfit;text-decoration:none;box-shadow:0 14px 40px -10px rgba(43,0,255,.8)}
+.cta:hover{filter:brightness(1.15)}
+.contactrow a{position:relative;z-index:6}
+html.m .ill .side,html.nx-m .ill .side{display:none}
 
 </style>
 </head>
@@ -219,11 +370,7 @@ html.m .covtxt h1[style]{font-size:44px!important}
 <main id="deck">
 <!-- 1 -->
 <section class="cover" data-sec="Bevezető" data-note="">
-<div class="covgrid" aria-hidden="true">
- <img src="img/bmc.jpg" alt=""><img src="img/estonia.jpg" alt="">
- <img src="img/emlekhely.jpg" alt=""><img src="img/irhas.jpg" alt="">
- <img src="img/iroda1.jpg" alt=""><img src="img/iroda2.jpg" alt="">
-</div>
+<div class="covgrid mq" aria-hidden="true"><div class="mqc up"><div class="mqt"><div class="mqi"><img src="img/bmc.jpg" alt=""></div><div class="mqi dh"><img src="img/bankett-dollhouse.jpg" alt=""></div><div class="mqi"><img src="img/estonia.jpg" alt=""></div><div class="mqi"><img src="img/iroda1.jpg" alt=""></div><div class="mqi dh"><img src="img/szalloda-dollhouse.jpg" alt=""></div><div class="mqi"><img src="img/bmc.jpg" alt=""></div><div class="mqi dh"><img src="img/bankett-dollhouse.jpg" alt=""></div><div class="mqi"><img src="img/estonia.jpg" alt=""></div><div class="mqi"><img src="img/iroda1.jpg" alt=""></div><div class="mqi dh"><img src="img/szalloda-dollhouse.jpg" alt=""></div></div></div><div class="mqc dn"><div class="mqt"><div class="mqi"><img src="img/emlekhely.jpg" alt=""></div><div class="mqi dh"><img src="img/iroda-dollhouse.jpg" alt=""></div><div class="mqi"><img src="img/irhas.jpg" alt=""></div><div class="mqi dh"><img src="img/bim-gepeszet.jpg" alt=""></div><div class="mqi"><img src="img/iroda2.jpg" alt=""></div><div class="mqi"><img src="img/emlekhely.jpg" alt=""></div><div class="mqi dh"><img src="img/iroda-dollhouse.jpg" alt=""></div><div class="mqi"><img src="img/irhas.jpg" alt=""></div><div class="mqi dh"><img src="img/bim-gepeszet.jpg" alt=""></div><div class="mqi"><img src="img/iroda2.jpg" alt=""></div></div></div></div>
 <div class="covtxt">
  <div class="kick rv">Önkormányzatok részére</div>
  <h1 class="rv d1" style="font-size:84px">Digitalizált<br><span class="hl">önkormányzat</span></h1>
@@ -265,7 +412,7 @@ html.m .covtxt h1[style]{font-size:44px!important}
   </ul>
   <p class="note rv d3">Böngészőből, telefonon és számítógépen is működik, program telepítése nélkül.</p>
  </div>
- <div class="fr dh rv d2" style="aspect-ratio:1660/884"><img src="img/bankett-dollhouse.jpg" alt="Rendezvényterem makettnézete, saját felmérés"></div>
+ <div class="rv d2"><div class="tour mp" data-m="QQbPKGSAD4H"><img src="img/bmc.jpg" alt="Budapest Music Center"><span class="mpt">Budapest Music Center</span><button class="mpp" aria-label="3D bejárás indítása"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z" fill="currentColor"/></svg></button><span class="mpb">3D bejárás indítása</span></div><p class="cap">Saját munka: Budapest Music Center, rendezvénytér</p></div>
 </div>
 </section>
 <!-- 5 -->
@@ -277,7 +424,14 @@ html.m .covtxt h1[style]{font-size:44px!important}
   <ul class="ls g rv d2"><li><span>A lakosok előre megnézhetik, hová érkeznek: ügyfélszolgálat, hivatal, egészségház, sportlétesítmény.</span></li><li><span>Könnyebb tájékozódás: bejárat, emelet, iroda, útvonal megjelölve.</span></li><li><span>Iskolai nyílt nap, óvodai beiratkozás vagy idősek klubja előtt is bejárható.</span></li><li><span>Akadálymentes megközelítés bemutatva: rámpák, liftek, bejáratok.</span></li><li><span>Egy tervezett átalakítás előtt a lakosok megnézhetik a teret, és elmondhatják a véleményüket.</span></li></ul>
   <p class="note rv d3"><b>Eredmény:</b> egyszerűbb ügyintézés, kevesebb kérdés és félreértés, esélyegyenlőség, szolgáltató önkormányzat.</p>
  </div>
- <div class="fr sharp rv d2" style="aspect-ratio:854/480"><video src="img/iroda.mp4" poster="img/iroda.jpg" autoplay muted loop playsinline></video></div>
+ <div class="ill rv d2"><div class="ph"><img src="img/bmc.jpg" alt="Előcsarnok bejárása telefonon">
+<div class="phbar">Közösségi ház · földszint</div>
+<span class="pin" style="left:30%;top:52%"><i></i><em>Ügyfélszolgálat</em></span>
+<span class="pin" style="left:66%;top:36%"><i></i><em>Lift · 1–2. emelet</em></span>
+<span class="pin t" style="left:52%;top:74%"><i></i><em>Akadálymentes bejárat</em></span>
+<div class="phnav">Útvonal mutatása →</div></div>
+<div class="side l"><small>Előre</small><b>Megnézi, hová érkezik</b></div>
+<div class="side r"><small>Helyben</small><b>Tudja, merre induljon</b></div></div>
 </div>
 </section>
 <!-- 6 -->
@@ -313,7 +467,7 @@ html.m .covtxt h1[style]{font-size:44px!important}
   <ul class="ls g rv d2"><li><span>Szabad csarnokok, ipari és fejlesztési területek bejárhatóan, méretekkel.</span></li><li><span>A betelepülni szándékozó cégek távolról is felmérhetik a lehetőségeket.</span></li><li><span>Az első tájékozódás után már célzottabb a helyszíni látogatás.</span></li></ul>
   <p class="note rv d3"><b>Eredmény:</b> megalapozottabb befektetői döntések, új vállalkozások, helyi munkahelyek.</p>
  </div>
- <div class="rv d2"><div class="tour mp" data-m="AmiwVzax4Ch"><img src="img/estonia.jpg" alt="Estonia"><span class="mpt">Estonia</span><button class="mpp" aria-label="3D bejárás indítása"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z" fill="currentColor"/></svg></button><span class="mpb">3D bejárás indítása</span></div><p class="cap">Saját munka: Estonia ipari tér</p></div>
+ <div class="rv d2"><div class="tour mp" data-m="AmiwVzax4Ch"><img src="img/estonia.jpg" alt="Ipari terület"><span class="mpt">Ipari terület</span><button class="mpp" aria-label="3D bejárás indítása"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z" fill="currentColor"/></svg></button><span class="mpb">3D bejárás indítása</span></div><p class="cap">Saját munka: ipari terület</p></div>
 </div>
 </section>
 <!-- 9 -->
@@ -325,7 +479,10 @@ html.m .covtxt h1[style]{font-size:44px!important}
   <ul class="ls g rv d2"><li><span>Az ingatlanok dokumentálva, a vagyonkezelőnél egységes nyilvántartásban.</span></li><li><span>Bérlőváltáskor a ki- és beköltözéskori állapot rögzítve, egyértelmű elszámolással.</span></li><li><span>Állapotfelmérés és felújítás: a hibák helyhez kötve, előtte–utána összevethetően.</span></li><li><span>A vagyonkezelő, a karbantartó és a tervező ugyanazt a teret látja; az információ kéznél van az épülettel dolgozó szakembereknek.</span></li><li><span>A képviselők és a bizottságok egy épületről távoli bejárás után dönthetnek.</span></li></ul>
   <p class="note rv d3"><b>Eredmény:</b> átlátható vagyongazdálkodás, kevesebb vita, gyorsabb döntések.</p>
  </div>
- <div class="fr dh rv d2" style="aspect-ratio:4/3"><img src="img/szalloda-dollhouse.jpg" alt=""><div class="scan"></div></div>
+ <div class="reg rv d2"><div class="regimg"><img src="img/szalloda-dollhouse.jpg" alt="Épület makettnézete"></div>
+<div class="regcard"><small>Épület adatlap · minta</small><h4>Városi intézmény</h4>
+<dl><dt>Alapterület</dt><dd>1 240 m²</dd><dt>Szintek</dt><dd>4</dd><dt>Helyiségek</dt><dd>38</dd><dt>Utolsó felmérés</dt><dd>2026. 11.</dd><dt>Állapot</dt><dd>2. emelet: felújítás tervezve</dd></dl>
+<div class="tags"><span>Alaprajz</span><span>Tanúsítvány</span><span>Karbantartási napló</span><span>Bérleti szerződés</span></div></div></div>
 </div>
 </section>
 <!-- 10 -->
@@ -345,11 +502,11 @@ html.m .covtxt h1[style]{font-size:44px!important}
 <div class="w">
  <div class="kick rv">Műszaki adatok</div>
  <h2 class="rv d1">Mérhető terek, <span class="hl">pontosabb tervek</span></h2>
- <div class="cards c2" style="margin-top:10px">
-  <div class="card mc rv d2"><div class="mi dh" style="height:360px"><img src="img/bim-retegek.jpg" alt=""></div><span class="n">Makettnézet, alaprajz, BIM</span><h3>Az épület rétegei egy felmérésből</h3><p>Alaprajz, makettnézet és a belőle készült BIM-modell.</p></div>
-  <div class="card mc rv d2"><div class="mi dh" style="height:360px"><img src="img/meres.jpg" alt=""></div><span class="n">Mérés a térben</span><h3>Méretek közvetlenül a bejárásból</h3><p>Hossz, szélesség és belmagasság méterben, helyszíni út nélkül.</p></div>
+ <div class="mrow">
+  <figure class="mfig rv d2"><img src="img/bim-retegek.jpg" alt="Alaprajz, makettnézet és BIM-modell"><figcaption><span class="n">Makettnézet, alaprajz, BIM</span><b>Az épület rétegei egy felmérésből</b></figcaption></figure>
+  <figure class="mfig rv d3"><img src="img/meres.jpg" alt="Mérés a bejárásban"><figcaption><span class="n">Mérés a térben</span><b>Méretek közvetlenül a bejárásból, méterben</b></figcaption></figure>
  </div>
- <p class="note rv d3">Saját felmérések. A méretek tervezési és tájékozódási célra megbízhatók; mérnöki pontosság igényét előre egyeztetjük.</p>
+ <p class="note rv d4">Saját felmérések. A méretek tervezési és tájékozódási célra megbízhatók; mérnöki pontosság igényét előre egyeztetjük.</p>
 </div>
 </section>
 <!-- 12 -->
@@ -373,20 +530,15 @@ html.m .covtxt h1[style]{font-size:44px!important}
   <ul class="ls g rv d2"><li><span>Tűzoltók, katasztrófavédelem és vagyonőrök előre megismerhetik az épületet.</span></li><li><span>Menekülési útvonalak, kijáratok és közműelzárók megjelölve.</span></li><li><span>Az új kollégák gyorsabban betanulnak az épületekbe.</span></li></ul>
   <p class="note rv d3"><b>Eredmény:</b> felkészültebb beavatkozás, gyorsabb betanulás; a biztonsági előírásokat kiegészíti, nem váltja ki.</p>
  </div>
- <div class="fr rv d2" style="aspect-ratio:16/10;background:#07070a"><svg viewBox="0 0 800 500" style="width:100%;height:100%" xmlns="http://www.w3.org/2000/svg" font-family="Inter,sans-serif">
-<defs><pattern id="gp" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M40 0H0V40" fill="none" stroke="rgba(255,255,255,.05)"/></pattern></defs>
-<rect width="800" height="500" fill="url(#gp)"/>
-<g fill="none" stroke="#cfd0d8" stroke-width="5" stroke-linejoin="round">
-<path d="M60 60H740V440H60Z"/><path d="M60 200H300M380 200H520M600 200H740"/><path d="M300 60V150M300 250V440"/><path d="M520 60V120M520 200V440"/><path d="M300 330H440M500 330H520"/></g>
-<g fill="rgba(255,255,255,.04)"><rect x="62" y="62" width="236" height="136"/><rect x="302" y="62" width="216" height="136"/><rect x="522" y="62" width="216" height="136"/><rect x="62" y="202" width="236" height="236"/><rect x="522" y="202" width="216" height="236"/></g>
-<path d="M120 440V470" stroke="#22a3a6" stroke-width="5"/>
-<path d="M140 470V300H340V250H560V140H630" fill="none" stroke="#2B00FF" stroke-width="6" stroke-dasharray="14 10" stroke-linecap="round"><animate attributeName="stroke-dashoffset" from="48" to="0" dur="1.2s" repeatCount="indefinite"/></path>
-<circle cx="140" cy="470" r="11" fill="#22a3a6"/><circle cx="630" cy="140" r="13" fill="#2B00FF"/><circle cx="630" cy="140" r="22" fill="none" stroke="#2B00FF" stroke-opacity=".5"/>
-<circle cx="405" cy="330" r="10" fill="#FE5965"/><circle cx="700" cy="420" r="10" fill="#FE5965"/><rect x="230" y="80" width="18" height="18" rx="3" fill="#22a3a6"/>
-<g fill="#fff" font-size="15" font-weight="600">
-<text x="160" y="486">Bejárat</text><text x="560" y="105">Gépterem</text><text x="330" y="360">Közműelzáró</text><text x="590" y="425">Vészkijárat</text><text x="140" y="92">Lift</text></g>
-<g fill="#a9a9b2" font-size="12" letter-spacing="1.5"><text x="76" y="86">IRODA</text><text x="316" y="86">RAKTÁR</text><text x="76" y="226">FOLYOSÓ</text><text x="536" y="226">GÉPÉSZET</text></g>
-</svg></div>
+ <div class="fr dh rv d2" style="aspect-ratio:16/9;position:relative"><img src="img/iroda-dollhouse.jpg" alt="Épület makettnézete megjelölt útvonallal">
+<svg viewBox="0 0 1920 1080" style="position:absolute;inset:0;width:100%;height:100%">
+<path d="M1085 965 L1120 840 L1150 772 L700 560 L470 452 L395 395" fill="none" stroke="#2B00FF" stroke-width="12" stroke-dasharray="26 18" stroke-linecap="round" stroke-linejoin="round" style="filter:drop-shadow(0 0 10px rgba(43,0,255,.8))"><animate attributeName="stroke-dashoffset" from="88" to="0" dur="1.4s" repeatCount="indefinite"/></path>
+<g font-family="Inter,sans-serif" font-size="30" font-weight="600">
+<circle cx="1085" cy="965" r="16" fill="#22a3a6"/><rect x="1110" y="975" width="132" height="46" rx="23" fill="rgba(0,0,0,.75)"/><text x="1176" y="1007" fill="#fff" text-anchor="middle">Bejárat</text>
+<circle cx="395" cy="395" r="18" fill="#FE5965"/><circle cx="395" cy="395" r="34" fill="none" stroke="#FE5965" stroke-width="4" opacity=".6"/><rect x="180" y="300" width="200" height="46" rx="23" fill="rgba(0,0,0,.75)"/><text x="280" y="332" fill="#fff" text-anchor="middle">Vészkijárat</text>
+<circle cx="905" cy="520" r="14" fill="#FE5965"/><rect x="930" y="430" width="220" height="46" rx="23" fill="rgba(0,0,0,.75)"/><text x="1040" y="462" fill="#fff" text-anchor="middle">Közműelzáró</text>
+<circle cx="1470" cy="395" r="14" fill="#22a3a6"/><rect x="1495" y="300" width="170" height="46" rx="23" fill="rgba(0,0,0,.75)"/><text x="1580" y="332" fill="#fff" text-anchor="middle">Gépterem</text>
+</g></svg></div>
 </div>
 </section>
 <!-- 14 -->
@@ -415,12 +567,13 @@ html.m .covtxt h1[style]{font-size:44px!important}
 <div class="w final">
  <div>
   <div class="kick rv">Következő lépés</div>
-  <h2 class="rv d1">Közös áttekintés: <span class="hl">hol segíthet a digitális tér?</span></h2>
-  <p class="lead rv d2" style="max-width:860px;margin:0 auto">Egy rövid egyeztetésen együtt kiválasztjuk azokat a területeket és épületeket, ahol a digitális bejárás valóban segítheti a település munkáját.</p>
+  <h2 class="rv d1">Kezdjük ott, <span class="hl">ahol a leggyorsabban látszik az eredmény</span></h2>
+  <p class="lead rv d2" style="max-width:900px;margin:0 auto">Egy 30 perces egyeztetésen kiválasztjuk azt a két-három épületet vagy területet, ahol a digitális bejárás a leggyorsabban hoz kézzelfogható eredményt: kevesebb kiszállást, gyorsabb hasznosítást, egyszerűbb ügyintézést a lakosoknak.</p>
+  <a class="cta rv d3" href="https://calendar.app.google/zFH8etA7r1gQPKPB7" target="_blank" rel="noopener">Időpontot foglalok</a>
  </div>
- <div class="contactrow rv d3">
-  <div><small>Hajdu Dénes, alapító</small><a href="tel:+36704320521">+36 70 432 0521</a></div>
-  <div><small>E-mail</small><a href="mailto:nexus@nexus360.hu">nexus@nexus360.hu</a></div>
+ <div class="contactrow rv d4">
+  <div><small>Hajdu Dénes, alapító</small><a href="tel:+36704320521" target="_top">+36 70 432 0521</a></div>
+  <div><small>E-mail</small><a href="mailto:nexus@nexus360.hu?subject=Digitaliz%C3%A1lt%20%C3%B6nkorm%C3%A1nyzat" target="_top">nexus@nexus360.hu</a></div>
   <div><small>Web</small><a href="https://nexus360.hu" target="_blank" rel="noopener">www.nexus360.hu</a></div>
  </div>
 </div>
