@@ -369,7 +369,7 @@ html.m .mfig,html.nx-m .mfig{width:100%}
 html:not(.m) .grid2:has(img[src*="rendelo"]){grid-template-columns:.8fr 1.25fr!important}
 .hl{display:inline!important;-webkit-box-decoration-break:clone;box-decoration-break:clone;padding:.02em .16em .06em!important;line-height:1.3}
 
-.fr img.portrait{height:640px;width:auto;object-fit:contain}html.m .fr img.portrait,html.nx-m .fr img.portrait{height:auto;width:100%}
+.fr img.portrait{height:640px;width:auto;object-fit:contain}html.m .fr:has(img.portrait),html.nx-m .fr:has(img.portrait){aspect-ratio:16/10;width:100%!important;background:#0b0b10}html.m .fr img.portrait,html.nx-m .fr img.portrait{height:100%;width:100%;object-fit:contain}
 .arw{display:block!important}.arw .cards{margin:6px 0 22px}.arimg{max-width:820px;margin:0 auto}
 .mqi.light{background:#f2f2f0}.mqi.light img{object-fit:contain}
 </style>
@@ -605,14 +605,16 @@ const S=[...document.querySelectorAll('#deck section')],N=S.length;let idx=-1;
 const pad=n=>String(n).padStart(2,'0');document.getElementById('tot').textContent=pad(N);
 // Az élő bejárások a diára érve (és egy diával előre) töltődnek be; egyszerre legfeljebb kettő.
 function tour(t,on){const f=t.querySelector('iframe');
- if(on&&!f){const x=document.createElement('iframe');x.src='https://my.matterport.com/show/?m='+t.dataset.m+'&play=1&nt=0';x.allow='autoplay; fullscreen; web-share; xr-spatial-tracking';x.setAttribute('frameborder','0');x.setAttribute('allowfullscreen','');x.title='Élő bejárás';t.appendChild(x);try{window.posthog&&posthog.capture('matterport_megnyitva',{seta:x.src})}catch(e){}}
- if(!on&&f)f.remove();}
+ if(on&&!f){document.querySelectorAll('div.tour').forEach(o=>{if(o!==t)tour(o,false)});const x=document.createElement('iframe');x.src='https://my.matterport.com/show/?m='+t.dataset.m+'&play=1&qs=1';x.allow='autoplay; fullscreen; web-share; xr-spatial-tracking';x.setAttribute('frameborder','0');x.setAttribute('allowfullscreen','');x.title='Élő bejárás';t.appendChild(x);
+  /* automatikus betöltés: csak akkor számít megnyitásnak, ha 8 mp-ig látható marad */
+  clearTimeout(t._mt);t._mt=setTimeout(()=>{if(t.querySelector('iframe')){try{window.posthog&&posthog.capture('matterport_megnyitva',{seta:x.src})}catch(e){}}},8000)}
+ if(!on&&f){clearTimeout(t._mt);f.remove()}}
 document.querySelectorAll('div.tour').forEach(t=>t.addEventListener('click',()=>tour(t,true)));
 const ST=document.getElementById('stage');function fit(){if(document.documentElement.classList.contains('nx-m')){document.documentElement.classList.add('m');ST.removeAttribute('style');return}const m=innerWidth<=900||innerHeight<=500;document.documentElement.classList.toggle('m',m);if(m){ST.style.width=innerWidth+'px';ST.style.height=innerHeight+'px';ST.style.transform='none';return}const k=Math.min(innerHeight/900,innerWidth/1280);ST.style.width=(innerWidth/k)+'px';ST.style.height=(innerHeight/k)+'px';ST.style.transform='scale('+k+')'}addEventListener('resize',fit);fit();
 function TW(i){return S.map((s,k)=>k).filter(k=>k>=i&&k<=i+1&&S[k].querySelector('.tour'))}
 function fromHash(){const m=/^#dia-(\d+)$/.exec(location.hash);return m?Math.min(N-1,Math.max(0,+m[1]-1)):0}
 function go(i,push=true){i=Math.max(0,Math.min(N-1,i));if(i===idx)return;idx=i;const tw=TW(i);
- S.forEach((s,k)=>{s.classList.toggle('on',k===i);s.querySelectorAll('video').forEach(v=>{try{k===i?v.play().catch(()=>{}):v.pause()}catch(e){}});if(k!==i)s.querySelectorAll('.tour').forEach(t=>tour(t,false))});S[i].scrollTop=0;
+ S.forEach((s,k)=>{s.classList.toggle('on',k===i);s.querySelectorAll('video').forEach(v=>{try{k===i?v.play().catch(()=>{}):v.pause()}catch(e){}});if(k!==i)s.querySelectorAll('.tour').forEach(t=>tour(t,false))});S[i].scrollTop=0;S[i].querySelectorAll('.tour').forEach(t=>tour(t,true));
  document.getElementById('cur').textContent=pad(i+1);document.getElementById('bar').style.width=((i+1)/N*100)+'%';
  document.getElementById('secn').textContent=S[i].dataset.sec||'';
 }
@@ -622,6 +624,7 @@ let wl=0;addEventListener('wheel',e=>{if(e.target.closest&&e.target.closest('ifr
 let tx=0,ty=0;addEventListener('touchstart',e=>{tx=e.touches[0].clientX;ty=e.touches[0].clientY},{passive:true});
 addEventListener('touchend',e=>{const dx=e.changedTouches[0].clientX-tx,dy=e.changedTouches[0].clientY-ty;if(Math.abs(dx)>50&&Math.abs(dx)>Math.abs(dy)*1.3)go(idx+(dx<0?1:-1))},{passive:true});
 go(0,false);
+if(document.documentElement.classList.contains('nx-m')&&'IntersectionObserver' in window){const io=new IntersectionObserver(E=>E.forEach(e=>{if(e.isIntersecting&&e.intersectionRatio>=.6)tour(e.target,true);else if(!e.isIntersecting)tour(e.target,false)}),{threshold:[0,.6]});document.querySelectorAll('div.tour').forEach(t=>io.observe(t))}
 })();
 
 </script>
