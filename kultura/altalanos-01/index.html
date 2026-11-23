@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+<meta name="robots" content="noindex, nofollow, noarchive">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>3D kiállítás · NEXUS360</title>
+<meta name="description" content="Mindig nyitva, az online térben: megőrzött kiállítás, elérés bárhonnan, tanórába építhető tér, kézzelfogható beszámoló.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="NEXUS360">
+<meta property="og:locale" content="hu_HU">
+<meta property="og:title" content="3D kiállítás · NEXUS360">
+<meta property="og:description" content="Mindig nyitva, az online térben: megőrzött kiállítás, elérés bárhonnan, tanórába építhető tér, kézzelfogható beszámoló.">
+<meta property="og:url" content="https://prezentacio.nexus360.hu/kultura/altalanos-01/">
+<meta property="og:image" content="https://prezentacio.nexus360.hu/kultura/altalanos-01/img/elonezet.jpg">
+<meta property="og:image:secure_url" content="https://prezentacio.nexus360.hu/kultura/altalanos-01/img/elonezet.jpg">
+<meta property="og:image:type" content="image/jpeg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="3D kiállítás – NEXUS360 prezentáció">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://prezentacio.nexus360.hu/kultura/altalanos-01/img/elonezet.jpg">
+<link rel="image_src" href="https://prezentacio.nexus360.hu/kultura/altalanos-01/img/elonezet.jpg">
+<script>try{history.scrollRestoration='manual';if(location.hash)history.replaceState(null,'',location.pathname+location.search)}catch(e){}addEventListener('load',function(){scrollTo(0,0)});</script>
+<style>/* NEXUS360 – mobilnézet minden kiküldött anyaghoz.
+   Telefonon (html.nx-m) a diás lapozás helyett folyamatosan görgethető oldal lesz;
+   asztali gépen semmi nem változik. */
+html.nx-m,html.nx-m body{height:auto!important;overflow-x:hidden!important;overflow-y:auto!important}
+html.nx-m main{position:static!important;inset:auto!important}
+html.nx-m section{position:relative!important;inset:auto!important;visibility:visible!important;opacity:1!important;transition:none!important;display:block!important;min-height:0!important;height:auto!important;overflow:visible!important;padding:76px 18px 40px!important}
+html.nx-m section+section{border-top:1px solid rgba(255,255,255,.07)}
+html.nx-m section.cover{display:flex!important;align-items:flex-end!important;min-height:100svh!important;padding:0!important}
+html.nx-m section.cover .in{padding:96px 18px 44px!important}
+html.nx-m section.div{display:flex!important;flex-direction:column;justify-content:center;min-height:52svh!important}
+html.nx-m section[style*="padding:0"]{padding:0!important}
+html.nx-m footer{display:none!important}
+html.nx-m #fs{display:none!important}
+html.nx-m header{background:linear-gradient(0deg,rgba(0,0,0,0),rgba(0,0,0,.92) 45%)!important;padding:14px 18px 22px!important}
+html.nx-m img,html.nx-m video{max-width:100%}
+html.nx-m .fr{max-width:100%}
+html.nx-m table{display:block;overflow-x:auto}
+.nxprog{position:fixed;left:0;top:0;height:3px;width:0;z-index:30;background:linear-gradient(90deg,#2B00FF,#1B8386);transition:width .25s;display:none}
+html.nx-m .nxprog{display:block}
+.nxtop{position:fixed;right:16px;bottom:18px;z-index:30;width:44px;height:44px;border-radius:50%;border:1px solid rgba(255,255,255,.18);background:rgba(10,10,14,.82);color:#fff;font-size:18px;display:none;align-items:center;justify-content:center;-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
+html.nx-m .nxtop.on{display:flex}
+</style>
+<script>/* NEXUS360 – automatikus asztali / mobil nézet.
+   A <head>-ben, defer nélkül kell betölteni (a nx-mobil.css után). */
+(function () {
+  var MQ = '(max-width: 900px), (max-height: 500px), (pointer: coarse) and (max-width: 1100px) and (orientation: portrait)';
+  var mobil = window.matchMedia && matchMedia(MQ).matches;
+  if (/[?&]nezet=asztali/.test(location.search)) mobil = false;
+  if (/[?&]nezet=mobil/.test(location.search)) mobil = true;
+  if (!mobil) return;
+  document.documentElement.classList.add('nx-m');
+
+  // a diás lapozás gesztusait mobilon kikapcsoljuk (függőleges görgetés van helyette)
+  ['touchend', 'wheel', 'keydown'].forEach(function (t) {
+    window.addEventListener(t, function (e) {
+      if (t === 'touchend' && e.target.closest && e.target.closest('#cmp')) return;
+      if (t === 'keydown' && !/Arrow|Page|Home|End|^ $/.test(e.key)) return;
+      e.stopPropagation();
+    }, true);
+  });
+
+  function init() {
+    var S = [].slice.call(document.querySelectorAll('#deck section'));
+    if (!S.length) return;
+
+    // a „dia aktív” animációk mobilon görgetésre indulnak: section.on → section.nxin
+    var css = [];
+    [].forEach.call(document.styleSheets, function (sh) {
+      var R; try { R = sh.cssRules; } catch (e) { return; }
+      [].forEach.call(R || [], function (r) {
+        if (r.selectorText && r.selectorText.indexOf('section.on') > -1) {
+          css.push(r.selectorText.split(',').map(function (s) { return s.indexOf('section.on') > -1 ? 'html.nx-m ' + s.trim().replace(/section\.on/g, 'section.nxin') : null; }).filter(Boolean).join(',') + '{' + r.style.cssText + '}');
+        }
+      });
+    });
+    var st = document.createElement('style'); st.textContent = css.join('\n'); document.head.appendChild(st);
+
+    // keskenyre szorult rácsok (pl. beégetett kétoszlopos elrendezés) egy oszlopba
+    function racs() {
+      [].forEach.call(document.querySelectorAll('#deck section *'), function (el) {
+        var cs = getComputedStyle(el); if (cs.display.indexOf('grid') < 0) return;
+        var cols = cs.gridTemplateColumns.split(' ').filter(Boolean).length; if (cols < 2) return;
+        var keskeny = [].some.call(el.children, function (c) { return c.getBoundingClientRect().width < 150 && (c.textContent || '').trim().length > 40; });
+        if (keskeny || (cols >= 2 && el.clientWidth / cols < 140 && el.textContent.trim().length > 120)) el.style.setProperty('grid-template-columns', '1fr', 'important');
+      });
+    }
+    racs(); setTimeout(racs, 800);
+    var bar = document.createElement('div'); bar.className = 'nxprog'; document.body.appendChild(bar);
+    var top = document.createElement('button'); top.className = 'nxtop'; top.setAttribute('aria-label', 'Vissza a tetejére'); top.textContent = '↑';
+    top.onclick = function () { window.scrollTo({ top: 0, behavior: 'smooth' }); }; document.body.appendChild(top);
+
+    var io = new IntersectionObserver(function (E) {
+      E.forEach(function (e) { if (e.isIntersecting) e.target.classList.add('nxin'); });
+    }, { rootMargin: '0px 0px -12% 0px', threshold: 0.05 });
+    S.forEach(function (s) { io.observe(s); });
+
+    var cur = -1, tick = false;
+    function aktiv() {
+      tick = false;
+      var mid = innerHeight * 0.45, i = 0;
+      for (var k = 0; k < S.length; k++) { var r = S[k].getBoundingClientRect(); if (r.top <= mid) i = k; else break; }
+      var vege = (innerHeight + scrollY) >= document.documentElement.scrollHeight - 4;
+      if (vege) i = S.length - 1;
+      bar.style.width = ((i + 1) / S.length * 100) + '%';
+      top.classList.toggle('on', scrollY > innerHeight);
+      if (i === cur) return;
+      if (cur >= 0) S[cur].classList.remove('nxcur');
+      cur = i; S[i].classList.add('nxcur', 'nxin');
+      S.forEach(function (s, k) { s.querySelectorAll('video').forEach(function (v) { try { if (k === i) { v.muted = true; v.play().catch(function () {}); } else v.pause(); } catch (e) {} }); });
+      try { history.replaceState(null, '', location.pathname + location.search + '#dia-' + (i + 1)); } catch (e) {}
+    }
+    addEventListener('scroll', function () { if (!tick) { tick = true; requestAnimationFrame(aktiv); } }, { passive: true });
+    addEventListener('resize', aktiv);
+
+    var m = /^#dia-(\d+)$/.exec(location.hash);
+    if (m && S[+m[1] - 1] && +m[1] > 1) setTimeout(function () { S[+m[1] - 1].scrollIntoView(); aktiv(); }, 60);
+    aktiv();
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init); else init();
+})();
+</script>
+<script src="/assets/nx-track.js" defer></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap&subset=latin-ext" rel="stylesheet">
+<style>
+:root{--bg:#000;--ink:#fff;--mute:#a9a9b2;--dim:#66666f;--blue:#2B00FF;--blueL:#2B00FF;--teal:#1B8386;--tealL:#22a3a6;--line:rgba(255,255,255,.12);--glass:rgba(12,12,14,.62);--padB:135.0px}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%;background:#000;color:var(--ink);overflow:hidden;font-family:Inter,system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+img,video{display:block;max-width:100%}
+a{color:inherit}
+.amb{position:absolute;inset:0;pointer-events:none;z-index:0;background:radial-gradient(60% 50% at 85% 10%,rgba(43,0,255,.28),transparent 60%),radial-gradient(50% 50% at 0% 100%,rgba(27,131,134,.24),transparent 60%)}
+.gridbg{position:absolute;inset:0;z-index:0;pointer-events:none;opacity:.35;background-image:linear-gradient(rgba(255,255,255,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.05) 1px,transparent 1px);background-size:64px 64px;-webkit-mask-image:radial-gradient(70% 70% at 50% 40%,#000,transparent);mask-image:radial-gradient(70% 70% at 50% 40%,#000,transparent)}
+header{position:absolute;top:0;left:0;right:0;z-index:10;display:flex;align-items:center;justify-content:space-between;padding:22px 52.0px;pointer-events:none}
+header img{height:30px;width:auto}
+.hm{font-family:'JetBrains Mono';font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--mute);display:flex;gap:14px;align-items:center}
+.hm button{pointer-events:auto;background:none;border:1px solid var(--line);color:var(--mute);border-radius:8px;padding:6px 10px;font:inherit;cursor:pointer}
+.hm button:hover,.hm button.act{color:#fff;border-color:var(--blueL)}
+footer{position:absolute;left:0;right:0;bottom:0;z-index:10;display:flex;align-items:center;gap:18px;padding:0 52.0px 20px}
+.nav{display:flex;gap:8px}
+.nav button{width:44px;height:44px;border-radius:50%;border:1px solid var(--line);background:rgba(0,0,0,.5);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);color:#fff;cursor:pointer;display:grid;place-items:center;transition:.25s}
+.nav button:hover{border-color:var(--blueL);box-shadow:0 0 22px rgba(43,0,255,.55)}
+.nav svg{width:18px;height:18px}
+.count{font-family:'JetBrains Mono';font-size:12px;color:var(--mute);letter-spacing:.1em;min-width:64px;text-align:center}.count b{color:#fff;font-weight:500}
+.prog{flex:1;height:2px;background:var(--line);border-radius:2px;overflow:hidden}
+.prog i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--blue),var(--tealL));box-shadow:0 0 12px var(--blueL);transition:width .9s cubic-bezier(.7,0,.2,1)}
+.sec{font-family:'JetBrains Mono';font-size:11px;letter-spacing:.14em;color:var(--mute);text-transform:uppercase;white-space:nowrap}
+main{position:absolute;inset:0;z-index:2}
+section{position:absolute;inset:0;padding:96px 80.0px var(--padB);display:flex;align-items:center;visibility:hidden;opacity:0;transition:opacity .7s,visibility 0s .7s}
+section.on{visibility:visible;opacity:1;transition:opacity .7s}
+.rv{opacity:0;transform:translateY(24px);transition:opacity .9s cubic-bezier(.2,.7,.2,1),transform .9s cubic-bezier(.2,.7,.2,1)}
+section.on .rv{opacity:1;transform:none}
+section.on .d1{transition-delay:.12s}section.on .d2{transition-delay:.24s}section.on .d3{transition-delay:.36s}section.on .d4{transition-delay:.48s}section.on .d5{transition-delay:.6s}
+.kick{font-family:'JetBrains Mono';font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:#fff;display:flex;align-items:center;gap:12px;margin-bottom:20px}
+.kick:before{content:"";width:26px;height:2px;background:var(--tealL);box-shadow:0 0 10px var(--tealL)}
+h1,h2,h3{font-family:Outfit,sans-serif;font-weight:600;letter-spacing:-.025em}
+h1{font-size:89.6px;line-height:1.2}
+h2{font-size:46.0px;line-height:1.3;margin-bottom:24px}
+h3{font-size:18px;letter-spacing:-.01em;line-height:1.25;margin-bottom:6px}
+.hl{display:inline-block;color:#fff;background:#2B00FF;padding:0 .16em .04em;line-height:1.18;border-radius:.08em;margin-top:.08em}
+.lead{font-size:19.0px;line-height:1.6;color:#d9d9de;font-weight:300;max-width:640px}
+.grid2{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.12fr);gap:72.0px;align-items:center;width:100%}
+.w{width:min(1240px,100%);margin:0 auto}
+.fr{position:relative;border-radius:18px;overflow:hidden;border:1px solid var(--line);box-shadow:0 30px 80px -30px rgba(43,0,255,.55),0 0 0 1px rgba(255,255,255,.04);background:#050507}
+.fr img,.fr video{width:100%;height:100%;object-fit:cover;transform:scale(1.06);transition:transform 7s ease-out}
+.fr.dh{background:#000}.fr.dh img{object-fit:contain}
+.fr.light{background:#f2f2f0}.fr.light img{object-fit:contain}
+.fr.sharp img,.fr.sharp video{transform:none;transition:none}
+section.on .fr img,section.on .fr video{transform:scale(1)}
+.fr .scan{position:absolute;left:0;right:0;height:30%;top:-30%;background:linear-gradient(180deg,transparent,rgba(43,0,255,.22),transparent);pointer-events:none;z-index:2}
+section.on .fr .scan{animation:scan 2.4s .3s cubic-bezier(.6,0,.3,1) forwards}
+@keyframes scan{to{top:110%}}
+.meta{margin-top:30px;display:flex;flex-wrap:wrap;gap:10px 24px;font-family:'JetBrains Mono';font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--mute)}
+.cmeta{position:absolute;left:80.0px;bottom:87px;margin:0}
+.meta span{display:flex;align-items:center;gap:8px}.meta span:before{content:"";width:6px;height:6px;background:var(--tealL);box-shadow:0 0 8px var(--tealL)}
+.cards{display:grid;gap:14px}
+.c2{grid-template-columns:repeat(2,minmax(0,1fr))}.c3{grid-template-columns:repeat(3,minmax(0,1fr))}.c4{grid-template-columns:repeat(4,minmax(0,1fr))}
+.card{position:relative;padding:20px;border-radius:14px;background:var(--glass);border:1px solid var(--line);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);transition:.35s;overflow:hidden}
+.card:hover{border-color:rgba(43,0,255,.7);transform:translateY(-3px);box-shadow:0 18px 40px -18px rgba(43,0,255,.7)}
+.card .n{font-family:'JetBrains Mono';font-size:10.5px;color:var(--tealL);letter-spacing:.12em;margin-bottom:8px;display:block;text-transform:uppercase}
+.card h3{font-size:20px;color:#fff;margin-bottom:8px}
+.card p{font-size:14.5px;line-height:1.55;color:var(--mute)}
+.card p.res{margin-top:10px;color:#fff;font-weight:500;padding-left:10px;border-left:2px solid var(--blue)}
+.mc .mi{height:150px;border-radius:10px;overflow:hidden;margin:-4px -4px 14px;background:#0a0a0c}
+.mc .mi img{width:100%;height:100%;object-fit:cover}
+.mc .mi.dh img{object-fit:contain}.mc .mi.light{background:#f2f2f0}.mc .mi.light img{object-fit:contain}
+ul.ls{list-style:none;display:grid;gap:14px;margin-top:4px}
+ul.ls li{display:grid;grid-template-columns:22px 1fr;gap:10px;font-size:15.5px;line-height:1.55;color:#e6e6ea}
+ul.ls li:before{content:"";width:8px;height:8px;margin:8px 0 0 4px;background:var(--blue);box-shadow:0 0 10px var(--blueL);transform:rotate(45deg)}
+ul.ls.g li:before{background:var(--tealL);box-shadow:0 0 10px var(--tealL)}
+ul.ls b{color:#fff;font-weight:600;display:block;margin-bottom:1px}
+.note{margin-top:22px;padding:14px 18px;border-left:2px solid var(--tealL);background:rgba(27,131,134,.08);border-radius:0 10px 10px 0;font-size:14.5px;line-height:1.55;color:#d9d9de;max-width:960px}
+.src{margin-top:18px;font-size:13px;color:var(--mute);line-height:1.5}
+.split{display:grid;grid-template-columns:1fr 1fr;gap:64.0px;margin-top:10px}
+.split>div{padding-left:22px;border-left:2px solid var(--blue)}.split>div:nth-child(2){border-color:var(--tealL)}
+.split h3{font-size:22px;margin-bottom:14px}
+.tour{position:relative;aspect-ratio:16/10;border-radius:18px;overflow:hidden;border:1px solid var(--line);background:#050507;box-shadow:0 30px 80px -30px rgba(43,0,255,.55)}
+.tour img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.tour iframe{position:absolute;inset:0;width:100%;height:100%;border:0;z-index:2;background:#050507}
+.tour .ld{position:absolute;left:14px;bottom:14px;z-index:1;font-family:'JetBrains Mono';font-size:11px;letter-spacing:.12em;text-transform:uppercase;padding:7px 11px;border-radius:999px;background:rgba(0,0,0,.74);border:1px solid rgba(255,255,255,.2)}
+.open{display:inline-flex;align-items:center;gap:8px;margin-top:14px;font-family:'JetBrains Mono';font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--mute);text-decoration:none}
+.open:hover{color:#fff}.open svg{width:13px;height:13px}
+.rc{display:grid;gap:16px;margin-top:8px}
+.rc div{padding-left:18px;border-left:2px solid var(--blue)}
+.rc div:nth-child(2){border-color:var(--tealL)}.rc div:nth-child(3){border-color:#fff}
+.rc small{display:block;font-family:'JetBrains Mono';font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--mute);margin-bottom:4px}
+.rc p{font-size:15.5px;line-height:1.55;color:#e6e6ea}
+.rc div:nth-child(3) p{color:#fff;font-weight:500}
+.contactbox{display:grid;gap:18px;margin-top:6px}
+.contactbox .row{padding:4px 0 4px 18px;border-left:2px solid var(--tealL)}
+.contactbox small{display:block;font-family:'JetBrains Mono';font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--mute);margin-bottom:4px}
+.contactbox a{font-family:Outfit;font-size:24.0px;font-weight:500;color:#fff;text-decoration:none}
+.contactbox a:hover{color:var(--tealL)}
+#notes{position:absolute;right:52.0px;bottom:84px;z-index:12;width:min(460px,1440.0px);max-height:414.0px;overflow:auto;padding:16px 18px;border-radius:14px;background:rgba(10,10,14,.94);border:1px solid var(--blueL);box-shadow:0 20px 50px -20px rgba(43,0,255,.8)}
+#notes small{display:block;font-family:'JetBrains Mono';font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--tealL);margin-bottom:8px}
+#notes p{font-size:14.5px;line-height:1.6;color:#e6e6ea}
+
+
+.mc .mi.bottom img{object-position:center 88%}
+.grid2.cov{grid-template-columns:minmax(0,.78fr) minmax(0,1.5fr);width:min(1400px,100%)}
+.cov .fr{max-height:666.0px}
+section.cover{padding:0;align-items:stretch}
+.covgrid{position:absolute;top:0;right:0;bottom:0;width:56%;display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr 1fr;gap:4px;background:#000}
+.covgrid img{width:100%;height:100%;object-fit:cover;opacity:.92}
+.covgrid:before{content:"";position:absolute;inset:0 auto 0 0;width:28%;background:linear-gradient(90deg,#000,transparent);z-index:2;pointer-events:none}
+.covtxt{position:relative;z-index:3;width:48%;padding:0 0 0 80.0px;display:flex;flex-direction:column;justify-content:center}
+.covtxt h1{font-size:118.4px;line-height:1.08}
+.covtxt .lead{margin-top:28px;font-size:22.0px}
+.covtxt .meta{margin-top:48px}
+.tour .play{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:84px;height:84px;border-radius:50%;border:0;background:rgba(255,255,255,.94);color:#111;display:grid;place-items:center;cursor:pointer;z-index:1;box-shadow:0 10px 40px rgba(0,0,0,.5);transition:.25s}
+.tour .play svg{width:36px;height:36px;margin-left:4px}
+.tour .play:hover{transform:translate(-50%,-50%) scale(1.06)}
+.tour:after{content:"";position:absolute;inset:0;background:rgba(0,0,0,.18);pointer-events:none}
+.w.final{display:flex;flex-direction:column;justify-content:space-between;align-self:stretch;padding:36.0px 0 18.0px}
+.final h2{font-size:60.0px}
+.contactrow{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;padding-top:28px;border-top:1px solid var(--line)}
+.contactrow small{display:block;font-family:'JetBrains Mono';font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--mute);margin-bottom:8px}
+.contactrow a{font-family:Outfit;font-size:26.0px;font-weight:500;color:#fff;text-decoration:none}
+
+.covgrid{grid-template-rows:1.25fr 1fr 1fr;gap:6px}
+.covgrid img.wide{grid-column:1 / span 2}
+.covgrid img{opacity:1}
+.covgrid:before{width:18%}
+.mp{position:relative;display:block;aspect-ratio:16/10;border-radius:14px;overflow:hidden;border:1px solid var(--line);box-shadow:0 30px 80px -30px rgba(43,0,255,.55);text-decoration:none;color:#fff;background:#111}
+.mp img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .6s}
+.mp:hover img{transform:scale(1.03)}
+.mp:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.55),transparent 28%,transparent 70%,rgba(0,0,0,.55))}
+.mpt{position:absolute;left:18px;top:14px;z-index:2;font-family:Outfit;font-weight:600;font-size:17px;text-shadow:0 1px 6px rgba(0,0,0,.6)}
+.mpp{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);z-index:2;width:78px;height:78px;border-radius:50%;background:rgba(255,255,255,.95);color:#111;display:grid;place-items:center;box-shadow:0 10px 40px rgba(0,0,0,.45)}
+.mpp svg{width:34px;height:34px;margin-left:4px}
+.mpb{position:absolute;left:50%;bottom:16px;transform:translateX(-50%);z-index:2;font-family:'JetBrains Mono';font-size:11px;letter-spacing:.14em;text-transform:uppercase;padding:7px 12px;border-radius:999px;background:rgba(0,0,0,.6);border:1px solid rgba(255,255,255,.25);white-space:nowrap}
+.cap{margin-top:12px;font-family:'JetBrains Mono';font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--mute)}
+.w.final{justify-content:center;align-items:center;text-align:center;gap:81.0px;padding:0}
+.final .kick{justify-content:center}
+.final h2{margin-bottom:22px}
+.contactrow{width:100%;max-width:1000px;text-align:left}
+.hm{background:rgba(0,0,0,.55);padding:6px 10px;border-radius:10px;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);pointer-events:auto}
+section.cover .covgrid{position:absolute;top:50%;right:52.0px;bottom:auto;transform:translateY(-50%);width:52%;height:auto;display:grid;grid-template-columns:1fr 1fr;grid-template-rows:none;gap:10px;background:none}
+section.cover .covgrid:before{display:none}
+section.cover .covgrid img{width:100%;height:auto;aspect-ratio:16/9;object-fit:cover;border-radius:10px;border:1px solid var(--line);grid-column:auto}
+.covtxt{width:42%}
+.fr.nat{aspect-ratio:auto}.fr.nat img{height:auto;transform:none!important;object-fit:contain}
+.c5{grid-template-columns:repeat(5,minmax(0,1fr))}
+.tour.mp{cursor:pointer}
+.tour.mp iframe{position:absolute;inset:0;width:100%;height:100%;border:0;z-index:5;background:#000}
+.mpp{border:0;cursor:pointer}
+
+
+body{position:relative}
+#stage{position:absolute;left:0;top:0;width:1600px;height:900px;transform-origin:0 0;overflow:hidden;background:#000}
+section.cover .covgrid{width:min(52%,860px)}
+/*MOBILE*/
+html.m #stage{--padB:96px}
+html.m header img{height:24px}
+html.m .hm .x{display:none}
+html.m section{align-items:flex-start;padding:76px 18px var(--padB);overflow-y:auto;-webkit-overflow-scrolling:touch}
+html.m .grid2,html.m .split{grid-template-columns:1fr;gap:18px}
+html.m .c2,html.m .c3,html.m .c4{grid-template-columns:1fr}
+html.m .sec{display:none}
+html.m .cmeta{position:static;margin-top:28px}
+html.m footer{background:linear-gradient(180deg,transparent,#000 45%);padding-top:26px}
+html.m header{background:linear-gradient(0deg,transparent,#000 40%)}
+html.m section.cover{flex-direction:column;padding:76px 0 var(--padB)}
+html.m .covgrid{position:relative;width:100%;height:46svh;order:2;margin-top:24px}
+html.m .covgrid:before{display:none}
+html.m .covtxt{width:100%;padding:0 18px}
+html.m .contactrow{grid-template-columns:1fr}
+html.m section.cover .covgrid{position:relative;top:auto;right:auto;transform:none;width:100%;padding:0 18px}
+html.m .covtxt{width:100%}
+html.m .c5{grid-template-columns:1fr}
+html.m section.cover .covgrid{height:auto;margin-top:24px}
+html.m section.cover .covgrid img{height:auto}
+html.m h1{font-size:44px}html.m h2{font-size:28px}html.m .lead{font-size:16px}
+html.m .covtxt h1{font-size:56px}html.m .covtxt .lead{font-size:17px;margin-top:20px}html.m .covtxt .meta{margin-top:24px}
+html.m .final h2{font-size:30px}html.m .contactrow a{font-size:19px}
+html.m .w.final{gap:40px;justify-content:flex-start;padding-top:20px}
+html.m .mc .mi{height:220px!important}
+html.m .card h3{font-size:18px}
+html.m section:after{content:"";display:block;height:1px}
+html.m header{padding:16px 18px}html.m footer{padding:26px 18px 16px}html.m section.cover{justify-content:flex-start}
+html.nx-m #stage{position:static!important;width:auto!important;height:auto!important;transform:none!important;overflow:visible!important}
+html.nx-m header{position:fixed!important;left:0;right:0;top:0}
+html.nx-m .amb,html.nx-m .gridbg{position:fixed!important}
+html.nx-m body{position:static}
+html.nx-m section.cover{flex-direction:column!important;align-items:stretch!important;justify-content:flex-start!important;min-height:0!important;padding:90px 0 40px!important}
+html.nx-m .w.final{gap:32px}
+html.m .covtxt h1[style]{font-size:44px!important}
+.covgrid.mq{display:flex!important;gap:12px;aspect-ratio:16/12.6;overflow:hidden;-webkit-mask-image:linear-gradient(180deg,transparent,#000 9%,#000 91%,transparent);mask-image:linear-gradient(180deg,transparent,#000 9%,#000 91%,transparent)}
+.mqc{flex:1;overflow:hidden}
+.mqt{display:flex;flex-direction:column;gap:12px;animation:mqup 46s linear infinite}
+.mqc.dn .mqt{animation-name:mqdn;animation-duration:52s}
+.mqi{aspect-ratio:16/9;border-radius:10px;overflow:hidden;border:1px solid rgba(255,255,255,.12);background:#0b0b10;flex:none}
+.mqi img{width:100%;height:100%;object-fit:cover;display:block}
+.mqi.dh img{object-fit:contain}
+.mqi.dh{background:radial-gradient(circle at 50% 55%,#1a1838,#06060a 70%)}
+@keyframes mqup{from{transform:translateY(0)}to{transform:translateY(calc(-50% - 6px))}}
+@keyframes mqdn{from{transform:translateY(calc(-50% - 6px))}to{transform:translateY(0)}}
+html.m .covgrid.mq,html.nx-m .covgrid.mq{position:relative!important;width:100%!important;right:auto!important;top:auto!important;transform:none!important;aspect-ratio:16/13;margin-top:24px}
+@media (prefers-reduced-motion:reduce){.mqt{animation:none}}
+/* telefon-illusztráció */
+.ill{position:relative;aspect-ratio:16/10;border-radius:18px;border:1px solid var(--line);background:radial-gradient(circle at 50% 40%,#1a1640,#07070a 70%);overflow:hidden}
+.ph{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);height:88%;aspect-ratio:9/18.5;border-radius:34px;border:6px solid #1d1d24;box-shadow:0 30px 80px -20px rgba(43,0,255,.6),0 0 0 1px rgba(255,255,255,.12);overflow:hidden;background:#000}
+.ph>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:28% 50%}
+.phbar{position:absolute;left:0;right:0;top:0;padding:16px 12px 10px;font:600 11px Inter;color:#fff;background:linear-gradient(180deg,rgba(0,0,0,.7),transparent);text-align:center}
+.phnav{position:absolute;left:10px;right:10px;bottom:12px;padding:9px;border-radius:12px;background:#2B00FF;color:#fff;font:600 11px Inter;text-align:center}
+.pin{position:absolute;transform:translate(-50%,-50%);display:flex;flex-direction:column;align-items:center;gap:4px}
+.pin i{width:14px;height:14px;border-radius:50%;background:#fff;box-shadow:0 0 0 4px rgba(43,0,255,.55),0 0 0 9px rgba(43,0,255,.18);animation:pp 2s infinite}
+.pin em{font:600 10px Inter;font-style:normal;color:#fff;background:rgba(0,0,0,.72);padding:4px 7px;border-radius:999px;white-space:nowrap}
+.pin.t i{background:#22a3a6}
+@keyframes pp{50%{box-shadow:0 0 0 6px rgba(43,0,255,.4),0 0 0 14px rgba(43,0,255,0)}}
+.side{position:absolute;top:50%;transform:translateY(-50%);width:23%;padding:14px 16px;border-radius:14px;background:rgba(255,255,255,.04);border:1px solid var(--line)}
+.side.l{left:4%}.side.r{right:4%;text-align:right}
+.side small{display:block;font-family:'JetBrains Mono';font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:#22a3a6;margin-bottom:6px}
+.side b{font:600 15px Outfit;color:#fff}
+/* adatlap */
+.reg{position:relative;min-height:440px;padding:20px 0;border-radius:18px;border:1px solid var(--line);background:radial-gradient(circle at 30% 50%,#17153a,#07070a 70%);overflow:hidden;display:flex;align-items:center}
+.regimg{width:52%;height:100%;display:flex;align-items:center;justify-content:center}
+.regimg img{max-width:100%;max-height:92%;object-fit:contain}
+.regcard{width:44%;margin-right:4%;padding:20px 20px 18px;border-radius:14px;background:rgba(12,12,18,.9);border:1px solid rgba(255,255,255,.14);box-shadow:0 20px 50px -20px rgba(43,0,255,.6)}
+.regcard small{font-family:'JetBrains Mono';font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:#22a3a6}
+.regcard h4{font:600 18px Outfit;color:#fff;margin:6px 0 12px}
+.regcard dl{display:grid;grid-template-columns:auto 1fr;gap:7px 14px;margin:0 0 12px;font-size:13px}
+.regcard dt{color:var(--mute)}.regcard dd{margin:0;color:#fff;text-align:right}
+.regcard .tags{display:flex;flex-wrap:wrap;gap:6px}
+.regcard .tags span{font-size:11px;padding:4px 8px;border-radius:999px;border:1px solid rgba(255,255,255,.18);color:#d8d8e0}
+/* mérés */
+.mrow{display:flex;justify-content:center;gap:28px;margin-top:6px}
+.mfig{margin:0;border-radius:16px;overflow:hidden;border:1px solid var(--line);background:#0b0b10}
+.mfig img{display:block;height:470px;width:auto}
+.mfig figcaption{padding:12px 16px}
+.mfig .n{display:block;font-family:'JetBrains Mono';font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:#22a3a6;margin-bottom:4px}
+.mfig b{font:600 16px Outfit;color:#fff}
+html.m .mrow,html.nx-m .mrow{flex-direction:column;align-items:center}
+html.m .mfig img,html.nx-m .mfig img{height:auto;width:100%}
+/* zárás */
+.cta{display:inline-block;margin-top:28px;padding:16px 30px;border-radius:999px;background:#2B00FF;color:#fff;font:600 18px Outfit;text-decoration:none;box-shadow:0 14px 40px -10px rgba(43,0,255,.8)}
+.cta:hover{filter:brightness(1.15)}
+.contactrow a{position:relative;z-index:6}
+html.m .ill .side,html.nx-m .ill .side{display:none}
+
+html.m .reg,html.nx-m .reg{flex-direction:column;padding:16px;gap:14px}
+html.m .regimg,html.nx-m .regimg{width:100%;height:auto}
+html.m .regimg img,html.nx-m .regimg img{max-height:300px}
+html.m .regcard,html.nx-m .regcard{width:100%;margin:0}
+html.m .mfig,html.nx-m .mfig{width:100%}
+html:not(.m) .grid2:has(img[src*="rendelo"]){grid-template-columns:.8fr 1.25fr!important}
+.hl{display:inline!important;-webkit-box-decoration-break:clone;box-decoration-break:clone;padding:.02em .16em .06em!important;line-height:1.3}
+
+.mqi.light{background:#f2f2f0}.mqi.light img{object-fit:contain}
+</style>
+</head>
+<body>
+<div id="stage">
+<div class="amb"></div><div class="gridbg"></div>
+<header><img src="img/logo.png" alt="NEXUS360"></header>
+<main id="deck">
+<!-- 1 -->
+<section class="cover" data-sec="Bevezető" data-note="">
+<div class="covgrid mq" aria-hidden="true"><div class="mqc up"><div class="mqt"><div class="mqi"><img src="img/almok-autok.jpg" alt=""></div><div class="mqi dh"><img src="img/almok-dh2.jpg" alt=""></div><div class="mqi"><img src="img/zenehaza.jpg" alt=""></div><div class="mqi"><img src="img/emlekhely.jpg" alt=""></div><div class="mqi"><img src="img/almok-autok.jpg" alt=""></div><div class="mqi dh"><img src="img/almok-dh2.jpg" alt=""></div><div class="mqi"><img src="img/zenehaza.jpg" alt=""></div><div class="mqi"><img src="img/emlekhely.jpg" alt=""></div></div></div><div class="mqc dn"><div class="mqt"><div class="mqi"><img src="img/almok-gozgep.jpg" alt=""></div><div class="mqi dh"><img src="img/penz-infopont.jpg" alt=""></div><div class="mqi light"><img src="img/ja-dh.jpg" alt=""></div><div class="mqi dh"><img src="img/almok-dh1.jpg" alt=""></div><div class="mqi"><img src="img/almok-gozgep.jpg" alt=""></div><div class="mqi dh"><img src="img/penz-infopont.jpg" alt=""></div><div class="mqi light"><img src="img/ja-dh.jpg" alt=""></div><div class="mqi dh"><img src="img/almok-dh1.jpg" alt=""></div></div></div></div>
+<div class="covtxt">
+ <div class="kick rv">Múzeumok és kiállítóhelyek részére</div>
+ <h1 class="rv d1">3D <span class="hl">kiállítás</span></h1>
+ <p class="lead rv d2">Mindig nyitva, az online térben.</p>
+ <p class="lead rv d3" style="margin-top:14px;font-size:17px;color:var(--mute)">Megőrzött kurátori munka, elérés bárhonnan, tanórába építhető tér, kézzelfogható beszámoló.</p>
+ <div class="meta rv d4"><span>Hajdu Dénes, NEXUS360</span><span>Állandó és időszaki kiállítások</span></div>
+</div>
+</section>
+<!-- 2 -->
+<section class="" data-sec="A kiindulás" data-note="">
+<div class="w">
+ <h2 class="rv d1">Sok munka, <span class="hl">rövid idő, szűk kör</span></h2>
+ <div class="cards c3" style="margin-top:10px">
+  <div class="card rv d2"><span class="n">Időszaki kiállítás</span><h3>Hónapokig készül, hamar lebontják</h3><p>Utána csak néhány fotó és egy katalógus marad a kurátori és látványtervezői munkából.</p></div>
+  <div class="card rv d3"><span class="n">Állandó kiállítás</span><h3>Csak az látja, aki eljut oda</h3><p>A vidéki iskola, a külföldi érdeklődő vagy a mozgásában korlátozott látogató sokszor nem.</p></div>
+  <div class="card rv d4"><span class="n">Fenntartó, támogató</span><h3>Eredményt kér, nem benyomást</h3><p>A „jó kiállítás volt” nem mérhető, a beszámolóhoz bizonyíték kell.</p></div>
+ </div>
+</div>
+</section>
+<!-- 3 -->
+<section class="" data-sec="Mit kapnak" data-note="">
+<div class="w">
+ <h2 class="rv d1">Egy felmérés, <span class="hl">öt haszon</span></h2>
+ <p class="lead rv d2" style="max-width:900px;margin-bottom:24px">A kiállítás valósághű, bejárható digitális mása a látogatási időn túl is dolgozik az intézményért.</p>
+ <div class="cards c5">
+  <div class="card rv d2"><span class="n">01</span><h3>Megőrzés</h3><p>A kiállítás a bezárás után is bejárható marad.</p></div>
+  <div class="card rv d2"><span class="n">02</span><h3>Elérés</h3><p>Bárhonnan, bármikor, akadálymentesen, több nyelven.</p></div>
+  <div class="card rv d3"><span class="n">03</span><h3>Oktatás</h3><p>Tanórába építhető tér, felkészülés és ismétlés.</p></div>
+  <div class="card rv d3"><span class="n">04</span><h3>Több látogató</h3><p>Kedvcsináló, ami a személyes látogatásra hív.</p></div>
+  <div class="card rv d4"><span class="n">05</span><h3>Beszámolás</h3><p>Dokumentáció, látogatói adatok, pontos méretek.</p></div>
+ </div>
+</div>
+</section>
+<!-- 4 -->
+<section class="" data-sec="Megőrzés" data-note="">
+<div class="w grid2">
+ <div>
+  <div class="kick rv">01 · Megőrzés és utóélet</div>
+  <h2 class="rv d1">A kiállítás lezárul, <span class="hl">a tér megmarad</span></h2>
+  <ul class="ls g rv d2"><li><span>A kurátori és látványtervezői munka teljes térben megmarad, nem csak fotón.</span></li><li><span>Digitális archívum: évek múlva is visszanézhető, hogyan nézett ki a kiállítás.</span></li><li><span>Vándoroltatás: más intézményeknek egy linkkel megmutatható, mit vinnének haza.</span></li><li><span>Kölcsönadóknak és támogatóknak köszönetként és bizonyítékként átadható.</span></li></ul>
+ </div>
+ <div class="fr dh nat rv d2"><img src="img/almok-dh2.jpg" alt="Álmok Álmodói 20 – a teljes kiállítás makettnézetben"></div>
+</div>
+</section>
+<!-- 5 -->
+<section class="" data-sec="Elérés" data-note="">
+<div class="w grid2">
+ <div>
+  <div class="kick rv">02 · Elérés</div>
+  <h2 class="rv d1">Azoknak is nyitva, <span class="hl">akik nem jutnak el</span></h2>
+  <ul class="ls g rv d2"><li><span>Weboldalba ágyazva, linkként vagy QR-kóddal megosztható.</span></li><li><span>Akadálymentes hozzáférés azoknak, akik fizikailag nem jutnak el.</span></li><li><span>Többnyelvű bejárás külföldi közönségnek és turisztikai partnereknek.</span></li><li><span>Ha a tartalom miatt szükséges, csak linkkel vagy jelszóval elérhető.</span></li></ul>
+ </div>
+ <div class="fr nat rv d2"><img src="img/zenehaza.jpg" alt="Magyar Zene Háza – Hangdimenziók állandó kiállítás"></div>
+</div>
+</section>
+<!-- 6 -->
+<section class="" data-sec="Oktatás" data-note="">
+<div class="w grid2">
+ <div>
+  <div class="kick rv">03 · Oktatás és múzeumpedagógia</div>
+  <h2 class="rv d1">A kiállítás <span class="hl">bemegy az osztályterembe</span></h2>
+  <ul class="ls g rv d2"><li><span><b>Látogatás előtt</b>A pedagógus előre bejárja, megtervezi az órát, a diákok felkészülnek.</span></li><li><span><b>Látogatás után</b>Visszatérhetnek a térbe, és feldolgozhatják a látottakat.</span></li><li><span><b>Távoli tanóra</b>Vidéki és határon túli iskolák is használhatják.</span></li><li><span><b>Vezetett útvonalak és feladatok</b>Korosztályonként vagy témánként, kvízzel, feladatsorral.</span></li></ul>
+ </div>
+ <div class="fr nat rv d2"><img src="img/emlekhely.jpg" alt="József Attila Emlékhely"></div>
+</div>
+</section>
+<!-- 7 -->
+<section class="" data-sec="Több látogató" data-note="">
+<div class="w grid2">
+ <div>
+  <div class="kick rv">04 · Több látogató, erősebb kommunikáció</div>
+  <h2 class="rv d1">Aki belenézett, <span class="hl">el akar jönni</span></h2>
+  <ul class="ls g rv d2"><li><span>Kedvcsináló a weboldalon: a látogató előre látja, mi vár rá.</span></li><li><span>Sajtó- és közösségimédia-tartalom egyetlen linkkel.</span></li><li><span>Csoportszervezés: iskolák, cégek, turisztikai irodák előre látják, mire számíthatnak.</span></li></ul>
+  <p class="note rv d3">A digitális bejárás nem helyettesíti a személyes élményt: felkelti az érdeklődést iránta.</p>
+ </div>
+ <div class="fr nat rv d2"><img src="img/almok-gozgep.jpg" alt="Álmok Álmodói 20 – kiállítótér"></div>
+</div>
+</section>
+<!-- 8 -->
+<section class="" data-sec="Beszámolás" data-note="">
+<div class="w grid2">
+ <div>
+  <div class="kick rv">05 · Beszámolás, mérés, tervezés</div>
+  <h2 class="rv d1">Kézzelfogható bizonyíték, <span class="hl">pontos méretek</span></h2>
+  <ul class="ls g rv d2"><li><span>Támogatói és pályázati beszámolóhoz a megvalósult kiállítás teljes dokumentációja.</span></li><li><span>Látogatói adatok a digitális térből: hányan nézték, mennyi ideig, mit.</span></li><li><span>A következő kiállítás tervezéséhez pontos alaprajz és méretek, igény szerint pontfelhő.</span></li></ul>
+ </div>
+ <div class="fr dh nat rv d2"><img src="img/almok-dh1.jpg" alt="Álmok Álmodói 20 – makettnézet"></div>
+</div>
+</section>
+<!-- 9 -->
+<section class="" data-sec="A gyakorlatban" data-note="">
+<div class="w">
+ <h2 class="rv d1">Így néz ki <span class="hl">a gyakorlatban</span></h2>
+ <div class="cards c3" style="margin-top:6px">
+  <div class="card mc rv d2"><div class="mi" style="background:#fff"><img src="img/ja-dh.jpg" alt="" style="object-fit:cover;transform:scale(1.25)"></div><span class="n">Makettnézet</span><h3>Az egész tér egy képen</h3><p>A termek kapcsolata, a kiállítás szerkezete egy pillantással.</p></div>
+  <div class="card mc rv d3"><div class="mi dh"><img src="img/almok-felulnezet.jpg" alt=""></div><span class="n">Felülnézet, alaprajz</span><h3>Tájékozódás és tervezés</h3><p>Hol mi található, mekkora a tér, merre visz az útvonal.</p></div>
+  <div class="card mc rv d4"><div class="mi dh"><img src="img/penz-infopont.jpg" alt=""></div><span class="n">Infópont</span><h3>Tartalom a tárgy mellett</h3><p>Szöveg, kép, videó, hang, ott, ahol a látogató épp jár.</p></div>
+ </div>
+ <p class="src rv d4">Képek: Magyar Pénzmúzeum és Látogatóközpont, Álmok Álmodói 20, József Attila Emlékhely. Saját munkák.</p>
+</div>
+</section>
+<!-- 10 -->
+<section class="" data-sec="Egy link" data-note="">
+<div class="w grid2">
+ <div>
+  <div class="kick rv">Egyszerű használat</div>
+  <h2 class="rv d1">Egy link, <span class="hl">ennyire egyszerű</span></h2>
+  <ul class="ls g rv d2"><li><span>Nincs alkalmazás, nincs telepítés: telefonon, tableten, számítógépen, böngészőben nyílik, VR-szemüveggel is.</span></li><li><span>Ott használják, ahol már jelen vannak: weboldal, hírlevél, közösségi média, sajtóközlemény, pedagógusoknak küldött levél.</span></li><li><span>QR-kód a plakáton, a bejáratnál, a katalógusban.</span></li><li><span>A link mutathat egyenesen egy tárgyhoz vagy teremhez is.</span></li></ul>
+ </div>
+ <div class="ill rv d2"><div class="ph"><img src="img/ja-mobil.jpg" alt="József Attila Emlékhely telefonon"></div><div class="side l"><small>Kezelés</small><b>Séta, makett, alaprajz, mérés</b></div><div class="side r"><small>Infópont</small><b>Egy koppintás a tárgynál</b></div></div>
+</div>
+</section>
+<!-- 11 -->
+<section class="" data-sec="Hőtérkép" data-note="">
+<div class="w grid2" style="grid-template-columns:minmax(0,.7fr) minmax(0,1.3fr)">
+ <div>
+  <div class="kick rv">Mérhető érdeklődés</div>
+  <h2 class="rv d1">Hőtérkép: <span class="hl">mit néznek?</span></h2>
+  <ul class="ls g rv d2"><li><span>A digitális kiállításban látszik, hol töltenek több időt, mire kattintanak.</span></li><li><span>Adat a kiállítás finomításához és a következő tervezéséhez.</span></li><li><span>Számszerű tartalom a támogatói beszámolóba.</span></li></ul>
+  <p class="note rv d3">Az online látogatók viselkedését mutatja, nem a teremben járókét.</p>
+ </div>
+ <div class="fr dh nat rv d2"><img src="img/almok-hoterkep.jpg" alt="Szemléltető hőtérkép az Álmok Álmodói 20 felülnézetén"></div>
+</div>
+</section>
+<!-- 12 -->
+<section class="" data-sec="A helyszínen is" data-note="">
+<div class="w grid2" style="grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr)">
+ <div>
+  <div class="kick rv">Kiterjesztett valóság a helyszínen</div>
+  <h2 class="rv d1">A látogató telefonja <span class="hl">idegenvezetővé válik</span></h2>
+  <ul class="ls g rv d2"><li><span><b>Útvonalvezetés</b>Kiválasztja, mit keres, és a telefon odavezeti, külön eszköz telepítése nélkül.</span></li><li><span><b>Információ a tárgy mellett</b>Szöveg és felolvasás több nyelven: kevesebb tábla, több tartalom.</span></li><li><span><b>Felfedező útvonal</b>Diákcsoportoknak tematikus állomásokkal és feladatokkal.</span></li></ul>
+ </div>
+ <div class="fr nat rv d2"><img src="img/penz-ar.jpg" alt="Szemléltető AR-útvonalvezetés a Magyar Pénzmúzeumban"></div>
+</div>
+</section>
+<!-- 13 -->
+<section class="" data-sec="Referenciák" data-note="">
+<div class="w grid2">
+ <div>
+  <div class="kick rv">Referencia · időszaki kiállítás</div>
+  <h2 class="rv d1">Álmok Álmodói 20, <span class="hl">Millenáris</span></h2>
+  <p class="lead rv d2">Nagy, interaktív tudománytörténeti kiállítás. A digitális mása a kiállítás futásától függetlenül bejárható marad: így néz ki a megőrzés.</p>
+ </div>
+ <div class="rv d2"><div class="tour mp" data-m="pip6bDbdm2B"><img src="img/almok-autok.jpg" alt="Álmok Álmodói 20"><span class="mpt">Álmok Álmodói 20</span><button class="mpp" aria-label="3D bejárás indítása"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z" fill="currentColor"/></svg></button><span class="mpb">3D bejárás indítása</span></div><p class="cap">Saját munka: Álmok Álmodói 20, Millenáris</p></div>
+</div>
+</section>
+<!-- 14 -->
+<section class="" data-sec="Referenciák" data-note="">
+<div class="w grid2">
+ <div>
+  <div class="kick rv">Referencia · épület és állandó kiállítás</div>
+  <h2 class="rv d1">Magyar Zene Háza, <span class="hl">Hangdimenziók</span></h2>
+  <p class="lead rv d2">Egy felmérés, több felhasználás: az épület bemutatása és a „Hangdimenziók – Zenei utazások térben és időben” állandó kiállítás egyben.</p>
+ </div>
+ <div class="rv d2"><div class="tour mp" data-m="kz4XqmbwUd1"><img src="img/zenehaza.jpg" alt="Magyar Zene Háza"><span class="mpt">Magyar Zene Háza</span><button class="mpp" aria-label="3D bejárás indítása"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z" fill="currentColor"/></svg></button><span class="mpb">3D bejárás indítása</span></div><p class="cap">Saját munka: Magyar Zene Háza</p></div>
+</div>
+</section>
+<!-- 15 -->
+<section class="" data-sec="Referenciák" data-note="">
+<div class="w grid2">
+ <div>
+  <div class="kick rv">Referencia · emlékhely</div>
+  <h2 class="rv d1">József Attila Emlékhely, <span class="hl">Gát utca</span></h2>
+  <p class="lead rv d2">Kis tér, nagy történet: egy emlékhely, amely iskolai órába is beépíthető, és bárhonnan bejárható.</p>
+ </div>
+ <div class="rv d2"><div class="tour mp" data-m="hnBxDUkWX6p"><img src="img/emlekhely.jpg" alt="József Attila Emlékhely"><span class="mpt">József Attila Emlékhely</span><button class="mpp" aria-label="3D bejárás indítása"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z" fill="currentColor"/></svg></button><span class="mpb">3D bejárás indítása</span></div><p class="cap">Saját munka: József Attila Emlékhely</p></div>
+</div>
+</section>
+<!-- 16 -->
+<section class="" data-sec="Megoldások" data-note="">
+<div class="w">
+ <h2 class="rv d1">Két kiindulási <span class="hl">megoldás</span></h2>
+ <div class="split rv d2">
+  <div><h3>Időszaki kiállítás · Megőrző</h3><ul class="ls g"><li><span>Felmérés a megnyitás után</span></li><li><span>Kezdőnézet, szintek, infópontok a kurátori szövegből</span></li><li><span>Megosztható link, és a bezárás után is elérhető archívum</span></li></ul></div>
+  <div><h3>Állandó kiállítás · Digitális kapu</h3><ul class="ls g"><li><span>Felmérés, infópontok, tematikus és oktatási útvonalak</span></li><li><span>Többnyelvűség igény szerint</span></li><li><span>Folyamatos gondozás: tartalomfrissítés, új útvonalak, például tanévhez kötve</span></li></ul></div>
+ </div>
+</div>
+</section>
+<!-- 17 -->
+<section class="" data-sec="Hogyan dolgozunk" data-note="">
+<div class="w">
+ <h2 class="rv d1">Hogyan dolgozunk, <span class="hl">és miért számít az időzítés</span></h2>
+ <div class="cards c4" style="margin-top:6px">
+  <div class="card rv d2"><span class="n">01</span><h3>Rövid egyeztetés</h3><p>Mire használnák: megőrzés, oktatás, kommunikáció.</p></div>
+  <div class="card rv d2"><span class="n">02</span><h3>Felmérés zárvatartáskor</h3><p>A látogatókat nem zavarja, a tárgyakhoz nem nyúlunk, vaku nem kell.</p></div>
+  <div class="card rv d3"><span class="n">03</span><h3>Feldolgozás, tartalom</h3><p>A szöveget, hangot, képet az intézmény adja, mi elhelyezzük.</p></div>
+  <div class="card rv d3"><span class="n">04</span><h3>Átadás, betanítás</h3><p>Kurátor, pedagógus, kommunikáció: ki hogyan használja.</p></div>
+ </div>
+ <p class="note rv d4"><b>Miért a megnyitás utáni napokban?</b> Ha a felmérés a kiállítás elején történik, a 3D kiállítás a teljes futási idő alatt dolgozik: kedvcsinálóként, iskolai előkészítéshez, sajtóanyagként. Ha csak a zárás előtt készül, csak archívum lesz.</p>
+</div>
+</section>
+<!-- 18 -->
+<section class="" data-sec="Következő lépés" data-note="">
+<div class="w final">
+ <div>
+  <div class="kick rv">Következő lépés</div>
+  <h2 class="rv d1">Nézzük meg együtt, <span class="hl">mit hozna az Önök kiállításának</span></h2>
+  <p class="lead rv d2" style="max-width:900px;margin:0 auto">Egy 30 perces online beszélgetésen végigjárunk egy, az Önökéhez hasonló kiállítást, és megnézzük, a megőrzés, az oktatás vagy a kommunikáció hozná-e a legtöbbet.</p>
+  <a class="cta rv d3" href="https://calendar.app.google/zFH8etA7r1gQPKPB7" target="_blank" rel="noopener">Kérek egy 30 perces online bemutatót</a>
+ </div>
+ <div class="contactrow rv d4">
+  <div><small>Hajdu Dénes, alapító</small><a href="tel:+36704320521" target="_top">+36 70 432 0521</a></div>
+  <div><small>E-mail</small><a href="mailto:nexus@nexus360.hu?subject=3D%20ki%C3%A1ll%C3%ADt%C3%A1s" target="_top">nexus@nexus360.hu</a></div>
+  <div><small>Web</small><a href="https://nexus360.hu" target="_blank" rel="noopener">www.nexus360.hu</a></div>
+ </div>
+</div>
+</section>
+</main>
+<footer>
+ <div class="nav"><button id="pv" aria-label="Előző"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 6l-6 6 6 6"/></svg></button><button id="nx" aria-label="Következő"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6l6 6-6 6"/></svg></button></div>
+ <div class="count"><b id="cur">01</b> / <span id="tot"></span></div>
+ <div class="prog"><i id="bar"></i></div>
+ <div class="sec" id="secn"></div>
+</footer>
+</div>
+<script>
+(function(){
+const S=[...document.querySelectorAll('#deck section')],N=S.length;let idx=-1;
+const pad=n=>String(n).padStart(2,'0');document.getElementById('tot').textContent=pad(N);
+// Az élő bejárások a diára érve (és egy diával előre) töltődnek be; egyszerre legfeljebb kettő.
+function tour(t,on){const f=t.querySelector('iframe');
+ if(on&&!f){const x=document.createElement('iframe');x.src='https://my.matterport.com/show/?m='+t.dataset.m+'&play=1';x.allow='autoplay; fullscreen; web-share; xr-spatial-tracking';x.setAttribute('frameborder','0');x.setAttribute('allowfullscreen','');x.title='Élő bejárás';t.appendChild(x);try{window.posthog&&posthog.capture('matterport_megnyitva',{seta:x.src})}catch(e){}}
+ if(!on&&f)f.remove();}
+document.querySelectorAll('div.tour').forEach(t=>t.addEventListener('click',()=>tour(t,true)));
+const ST=document.getElementById('stage');function fit(){if(document.documentElement.classList.contains('nx-m')){document.documentElement.classList.add('m');ST.removeAttribute('style');return}const m=innerWidth<=900||innerHeight<=500;document.documentElement.classList.toggle('m',m);if(m){ST.style.width=innerWidth+'px';ST.style.height=innerHeight+'px';ST.style.transform='none';return}const k=Math.min(innerHeight/900,innerWidth/1280);ST.style.width=(innerWidth/k)+'px';ST.style.height=(innerHeight/k)+'px';ST.style.transform='scale('+k+')'}addEventListener('resize',fit);fit();
+function TW(i){return S.map((s,k)=>k).filter(k=>k>=i&&k<=i+1&&S[k].querySelector('.tour'))}
+function fromHash(){const m=/^#dia-(\d+)$/.exec(location.hash);return m?Math.min(N-1,Math.max(0,+m[1]-1)):0}
+function go(i,push=true){i=Math.max(0,Math.min(N-1,i));if(i===idx)return;idx=i;const tw=TW(i);
+ S.forEach((s,k)=>{s.classList.toggle('on',k===i);s.querySelectorAll('video').forEach(v=>{try{k===i?v.play().catch(()=>{}):v.pause()}catch(e){}});if(k!==i)s.querySelectorAll('.tour').forEach(t=>tour(t,false))});S[i].scrollTop=0;
+ document.getElementById('cur').textContent=pad(i+1);document.getElementById('bar').style.width=((i+1)/N*100)+'%';
+ document.getElementById('secn').textContent=S[i].dataset.sec||'';
+}
+document.getElementById('nx').onclick=()=>go(idx+1);document.getElementById('pv').onclick=()=>go(idx-1);
+addEventListener('keydown',e=>{if(['ArrowRight','PageDown',' '].includes(e.key)){e.preventDefault();go(idx+1)}if(['ArrowLeft','PageUp'].includes(e.key)){e.preventDefault();go(idx-1)}if(e.key==='Home')go(0);if(e.key==='End')go(N-1);});
+let wl=0;addEventListener('wheel',e=>{if(e.target.closest&&e.target.closest('iframe'))return;const s=S[idx];if(s.scrollHeight>s.clientHeight+4)return;const t=Date.now();if(t-wl<900||Math.abs(e.deltaY)<20)return;wl=t;go(idx+(e.deltaY>0?1:-1))},{passive:true});
+let tx=0,ty=0;addEventListener('touchstart',e=>{tx=e.touches[0].clientX;ty=e.touches[0].clientY},{passive:true});
+addEventListener('touchend',e=>{const dx=e.changedTouches[0].clientX-tx,dy=e.changedTouches[0].clientY-ty;if(Math.abs(dx)>50&&Math.abs(dx)>Math.abs(dy)*1.3)go(idx+(dx<0?1:-1))},{passive:true});
+go(0,false);
+})();
+
+</script>
+</body>
+</html>
