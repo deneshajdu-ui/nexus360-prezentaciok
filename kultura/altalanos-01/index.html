@@ -21,7 +21,7 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://prezentacio.nexus360.hu/kultura/altalanos-01/img/elonezet.jpg">
 <link rel="image_src" href="https://prezentacio.nexus360.hu/kultura/altalanos-01/img/elonezet.jpg">
-<script>try{history.scrollRestoration='manual';if(location.hash)history.replaceState(null,'',location.pathname+location.search)}catch(e){}addEventListener('load',function(){scrollTo(0,0)});</script>
+<script>try{history.scrollRestoration='manual'}catch(e){}addEventListener('load',function(){if(!/^#dia-\d+$/.test(location.hash))scrollTo(0,0)});addEventListener('pageshow',function(e){if(e.persisted)return});</script>
 <style>/* NEXUS360 – mobilnézet minden kiküldött anyaghoz.
    Telefonon (html.nx-m) a diás lapozás helyett folyamatosan görgethető oldal lesz;
    asztali gépen semmi nem változik. */
@@ -478,9 +478,9 @@ html:not(.m) .grid2:has(img[src*="rendelo"]){grid-template-columns:.8fr 1.25fr!i
  <div class="cards c3" style="margin-top:6px">
   <div class="card mc rv d2"><div class="mi" style="background:#fff"><img src="img/ja-dh.jpg" alt="" style="object-fit:cover;transform:scale(1.25)"></div><span class="n">Makettnézet</span><h3>Az egész tér egy képen</h3><p>A termek kapcsolata, a kiállítás szerkezete egy pillantással.</p></div>
   <div class="card mc rv d3"><div class="mi dh"><img src="img/almok-felulnezet.jpg" alt=""></div><span class="n">Felülnézet</span><h3>Könnyű tájékozódás</h3><p>Hol mi található, és merre visz az útvonal.</p></div>
-  <div class="card mc rv d4"><div class="mi dh"><img src="img/penz-infopont.jpg" alt=""></div><span class="n">Infópont</span><h3>Tartalom a tárgy mellett</h3><p>Szöveg, kép, videó, hang, ott, ahol a látogató épp jár.</p></div>
+  <div class="card mc rv d4"><div class="mi"><img src="img/ja-infopont.jpg" alt=""></div><span class="n">Infópont</span><h3>Tartalom a tárgy mellett</h3><p>Szöveg, kép, videó, hang, ott, ahol a látogató épp jár.</p></div>
  </div>
- <p class="src rv d4">Képek: Magyar Pénzmúzeum és Látogatóközpont, Álmok Álmodói 20, József Attila Emlékhely. Saját munkák.</p>
+ <p class="src rv d4">Képek: József Attila Emlékhely, Álmok Álmodói 20. Saját munkák.</p>
 </div>
 </section>
 <!-- 10 -->
@@ -491,7 +491,7 @@ html:not(.m) .grid2:has(img[src*="rendelo"]){grid-template-columns:.8fr 1.25fr!i
   <h2 class="rv d1">Egy link, <span class="hl">ennyire egyszerű</span></h2>
   <ul class="ls g rv d2"><li><span>Nincs alkalmazás, nincs telepítés: telefonon, tableten, számítógépen, böngészőben nyílik, VR-szemüveggel is.</span></li><li><span>Ott használják, ahol már jelen vannak: weboldal, hírlevél, közösségi média, sajtóközlemény, pedagógusoknak küldött levél.</span></li><li><span>QR-kód a plakáton, a bejáratnál, a katalógusban.</span></li><li><span>A link mutathat egyenesen egy tárgyhoz vagy teremhez is.</span></li></ul>
  </div>
- <div class="rv d2" style="display:flex;justify-content:center"><div class="fr sharp" style="width:auto;max-width:100%"><img src="img/ja-mobil.jpg" alt="József Attila Emlékhely telefonon, infóponttal" class="portrait"></div></div>
+ <div class="rv d2"><div class="fr nat sharp"><img src="img/penz-infopont.jpg" alt="Magyar Pénzmúzeum – bejárás böngészőben, nyitott videós infóponttal"></div><p class="cap">Saját munka: Magyar Pénzmúzeum és Látogatóközpont</p></div>
 </div>
 </section>
 <!-- 11 -->
@@ -605,16 +605,16 @@ const S=[...document.querySelectorAll('#deck section')],N=S.length;let idx=-1;
 const pad=n=>String(n).padStart(2,'0');document.getElementById('tot').textContent=pad(N);
 // Az élő bejárások a diára érve (és egy diával előre) töltődnek be; egyszerre legfeljebb kettő.
 function tour(t,on){const f=t.querySelector('iframe');
- if(on&&!f){document.querySelectorAll('div.tour').forEach(o=>{if(o!==t)tour(o,false)});const x=document.createElement('iframe');x.src='https://my.matterport.com/show/?m='+t.dataset.m+'&play=1&qs=1';x.allow='autoplay; fullscreen; web-share; xr-spatial-tracking';x.setAttribute('frameborder','0');x.setAttribute('allowfullscreen','');x.title='Élő bejárás';t.appendChild(x);
-  /* automatikus betöltés: csak akkor számít megnyitásnak, ha 8 mp-ig látható marad */
-  clearTimeout(t._mt);t._mt=setTimeout(()=>{if(t.querySelector('iframe')){try{window.posthog&&posthog.capture('matterport_megnyitva',{seta:x.src})}catch(e){}}},8000)}
- if(!on&&f){clearTimeout(t._mt);f.remove()}}
+ if(on&&!f){const x=document.createElement('iframe');x.src='https://my.matterport.com/show/?m='+t.dataset.m+'&play=1&qs=1';x.allow='autoplay; fullscreen; web-share; xr-spatial-tracking';x.setAttribute('frameborder','0');x.setAttribute('allowfullscreen','');x.title='Élő bejárás';t.appendChild(x)}}
+/* megnyitásnak az számít, ha a séta legalább 8 mp-ig látható (a séták eleve betöltve vannak) */
+function seen(t,on){clearTimeout(t._mt);if(on&&!t._sent)t._mt=setTimeout(()=>{t._sent=1;try{window.posthog&&posthog.capture('matterport_megnyitva',{seta:'https://my.matterport.com/show/?m='+t.dataset.m})}catch(e){}},8000)}
+document.querySelectorAll('div.tour').forEach(t=>tour(t,true));
 document.querySelectorAll('div.tour').forEach(t=>t.addEventListener('click',()=>tour(t,true)));
 const ST=document.getElementById('stage');function fit(){if(document.documentElement.classList.contains('nx-m')){document.documentElement.classList.add('m');ST.removeAttribute('style');return}const m=innerWidth<=900||innerHeight<=500;document.documentElement.classList.toggle('m',m);if(m){ST.style.width=innerWidth+'px';ST.style.height=innerHeight+'px';ST.style.transform='none';return}const k=Math.min(innerHeight/900,innerWidth/1280);ST.style.width=(innerWidth/k)+'px';ST.style.height=(innerHeight/k)+'px';ST.style.transform='scale('+k+')'}addEventListener('resize',fit);fit();
 function TW(i){return S.map((s,k)=>k).filter(k=>k>=i&&k<=i+1&&S[k].querySelector('.tour'))}
 function fromHash(){const m=/^#dia-(\d+)$/.exec(location.hash);return m?Math.min(N-1,Math.max(0,+m[1]-1)):0}
 function go(i,push=true){i=Math.max(0,Math.min(N-1,i));if(i===idx)return;idx=i;const tw=TW(i);
- S.forEach((s,k)=>{s.classList.toggle('on',k===i);s.querySelectorAll('video').forEach(v=>{try{k===i?v.play().catch(()=>{}):v.pause()}catch(e){}});if(k!==i)s.querySelectorAll('.tour').forEach(t=>tour(t,false))});S[i].scrollTop=0;S[i].querySelectorAll('.tour').forEach(t=>tour(t,true));
+ S.forEach((s,k)=>{s.classList.toggle('on',k===i);s.querySelectorAll('video').forEach(v=>{try{k===i?v.play().catch(()=>{}):v.pause()}catch(e){}});s.querySelectorAll('.tour').forEach(t=>seen(t,k===i))});S[i].scrollTop=0;try{history.replaceState(null,'',location.pathname+location.search+'#dia-'+(i+1))}catch(e){}
  document.getElementById('cur').textContent=pad(i+1);document.getElementById('bar').style.width=((i+1)/N*100)+'%';
  document.getElementById('secn').textContent=S[i].dataset.sec||'';
 }
@@ -623,8 +623,8 @@ addEventListener('keydown',e=>{if(['ArrowRight','PageDown',' '].includes(e.key))
 let wl=0;addEventListener('wheel',e=>{if(e.target.closest&&e.target.closest('iframe'))return;const s=S[idx];if(s.scrollHeight>s.clientHeight+4)return;const t=Date.now();if(t-wl<900||Math.abs(e.deltaY)<20)return;wl=t;go(idx+(e.deltaY>0?1:-1))},{passive:true});
 let tx=0,ty=0;addEventListener('touchstart',e=>{tx=e.touches[0].clientX;ty=e.touches[0].clientY},{passive:true});
 addEventListener('touchend',e=>{const dx=e.changedTouches[0].clientX-tx,dy=e.changedTouches[0].clientY-ty;if(Math.abs(dx)>50&&Math.abs(dx)>Math.abs(dy)*1.3)go(idx+(dx<0?1:-1))},{passive:true});
-go(0,false);
-if(document.documentElement.classList.contains('nx-m')&&'IntersectionObserver' in window){const io=new IntersectionObserver(E=>E.forEach(e=>{if(e.isIntersecting&&e.intersectionRatio>=.6)tour(e.target,true);else if(!e.isIntersecting)tour(e.target,false)}),{threshold:[0,.6]});document.querySelectorAll('div.tour').forEach(t=>io.observe(t))}
+go(document.documentElement.classList.contains('nx-m')?0:fromHash(),false);
+if(document.documentElement.classList.contains('nx-m')&&'IntersectionObserver' in window){const io=new IntersectionObserver(E=>E.forEach(e=>seen(e.target,e.isIntersecting&&e.intersectionRatio>=.6)),{threshold:[0,.6]});document.querySelectorAll('div.tour').forEach(t=>io.observe(t))}
 })();
 
 </script>
