@@ -52,6 +52,11 @@
     }, { rootMargin: '0px 0px -12% 0px', threshold: 0.05 });
     S.forEach(function (s) { io.observe(s); });
 
+    // minden videó lejátszódik, amíg látható a képernyőn (iOS: némítva, sorban)
+    var vio = new IntersectionObserver(function (E) {
+      E.forEach(function (e) { var v = e.target; try { if (e.isIntersecting) { v.muted = true; v.setAttribute('muted', ''); v.playsInline = true; v.play().catch(function () {}); } else v.pause(); } catch (x) {} });
+    }, { threshold: 0.25 });
+    [].forEach.call(document.querySelectorAll('#deck video'), function (v) { vio.observe(v); });
     var cur = -1, tick = false;
     function aktiv() {
       tick = false;
@@ -64,7 +69,7 @@
       if (i === cur) return;
       if (cur >= 0) S[cur].classList.remove('nxcur');
       cur = i; S[i].classList.add('nxcur', 'nxin');
-      S.forEach(function (s, k) { s.querySelectorAll('video').forEach(function (v) { try { if (k === i) { v.muted = true; v.play().catch(function () {}); } else v.pause(); } catch (e) {} }); });
+      // a videókat a láthatóság indítja (lásd lent), nem az aktuális dia
       try { history.replaceState(null, '', location.pathname + location.search + '#dia-' + (i + 1)); } catch (e) {}
     }
     addEventListener('scroll', function () { if (!tick) { tick = true; requestAnimationFrame(aktiv); } }, { passive: true });
